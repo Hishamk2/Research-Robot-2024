@@ -1,6 +1,11 @@
 This repo includes all data sets and scripts used in "Developers Discussions on Robotics: A First Look", including a data set of all questions on Stack overflow matching the
 "robot" and "robots" tag, a subset of 300 of those questions, 224 coded robot questions,  a dataset of over one million random questions from Stack Overflow, and a dataset of
-over one million random answers from Stack Overflow. It is expected that the robot dataset will be useful for future work, as such, details are given about this dataset below:
+over one million random answers from Stack Overflow. 
+
+To run the scripts, enter a csv file with the robot dataset as the first command line argument and  the overall question dataset as the second command line argument and the overall answer dataset as the third command line argument and the path of the file to create for the random robot question dataset as the fourth command line argument, and the file of the subset of robot questions for thematic analysis as the fifth command line argument.
+
+
+It is expected that the robot dataset will be useful for future work, as such, details are given about this dataset below:
 
 
 
