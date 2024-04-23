@@ -7,24 +7,24 @@ over one million random answers from Stack Overflow. It is expected that the rob
 Dataset of robot questions and answers on Stack Overflow between August 1, 2008 and March 27, 2024 (extracted April 3 2024).
 
 Includes: 
-Question Id
-Question Title
-Tags
-Question Body
-Question Creation Date
-Accepted Answer Id Question View Count
-Answer Count
-Comment Count
-Question Score
-Question Favourite Count*
-Question Asker User Id
-Question Asker User Location
-Question Asker User Creation Date
-Question Asker User Views
-Answer Id
-Answer Body
-Answer User Id
-Answer Score
+Question Id,
+Question Title,
+Tags,
+Question Body,
+Question Creation Date,
+Accepted Answer Id, Question View Count,
+Answer Count,
+Comment Count,
+Question Score,
+Question Favourite Count*,
+Question Asker User Id,
+Question Asker User Location,
+Question Asker User Creation Date,
+Question Asker User Views,
+Answer Id,
+Answer Body,
+Answer User Id,
+Answer Score,
 Answer Comment Count
 
 For questions with multiple answers and/or multiple comments, the question will appear in multiple rows in the data set with a different answer in the answer columns for
