@@ -1,5 +1,5 @@
 This repo includes all data sets and scripts used in "Developers Discussions on Robotics: A First Look", including a data set of all questions on Stack overflow matching the
-"robot" and "robots" tag, a subset of 301 of those questions, 225 coded robot questions,  a dataset of over one million random questions from Stack Overflow, and a dataset of
+"robot" and "robots" tag, a subset of 300 of those questions, 224 coded robot questions,  a dataset of over one million random questions from Stack Overflow, and a dataset of
 over one million random answers from Stack Overflow. It is expected that the robot dataset will be useful for future work, as such, details are given about this dataset below:
 
 
