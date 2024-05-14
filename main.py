@@ -89,7 +89,7 @@ def calculatePopularity():
     questionScoreAll = calculatePopularityFactor("Score", dataQuestionAll,"Id")
     answerCountAll = calculatePopularityFactor("AnswerCount",dataQuestionAll, "Id")
     commentsQuestionAll = calculatePopularityFactor("CommentCount",dataQuestionAll,"Id")
-   # favoritesAll = calculatePopularityFactor("FavoriteCount",dataQuestionAll,"Id")
+   # favoritesAll = calculatePopularityFactor("FavoriteCount",dataQuestionAll,"Id") 
     viewsAll = calculatePopularityFactor("viewCount",dataQuestionAll,"Id")
 
     #calulating normalized scores for questions
@@ -97,7 +97,7 @@ def calculatePopularity():
     A = answerCountRobot / answerCountAll
     C = commentsQuestionRobot / commentsQuestionAll
     V = viewsRobot / viewsAll
-    P = (S + A + C + V )
+    P = (S + A + C + V)
     p4 = P/4
     print('S: ')
     print(S)
@@ -134,7 +134,7 @@ def calculatePopularity():
     print(PA)
     print('PA / 2')
     print(PA2)
-   # calculatePopularityCategories(questionScoreAll, answerCountAll, commentsQuestionAll, viewsAll)
+   # calculatePopularityCategories(questionScoreAll, answerCountAll, commentsQuestionAll, viewsAll) 
     dataConnections = dataSubsetRobot.loc[
         (dataSubsetRobot['code'] == 'internet') | (dataSubsetRobot['code'] == 'wpi') | (
                     dataSubsetRobot['code'] == 'sc')]
@@ -187,7 +187,6 @@ def calculatePopularity():
                 dataSubsetRobot['code'] == 'sensors')]
     calculatePopularityCategoriesGeneral(dataIncoming, "Incoming", questionScoreAll, answerCountAll, commentsQuestionAll,viewsAll,answerScoreAll, commentsAnswerAll)
 
-
 #generalized method for calculating the popularity for a category.
 def calculatePopularityCategoriesGeneral(dataSet, themeLabel, questionScoreAll, answerCountAll, commentsQuestionAll,viewsAll, answerScoreAll, commentsAnswerAll):
     questionScoreCategory = calculatePopularityFactor("questionScore", dataSet, "questionId")
@@ -230,14 +229,14 @@ def calculatePopularityCategoriesGeneral(dataSet, themeLabel, questionScoreAll, 
     print(themeLabel + ' PA / 2')
     print(PA2)
 
-
-
-
 if __name__ == '__main__':
     if len(sys.argv)!=6:
-        print("enter a csv file with the robot dataset as the first command line argument and  the overall question dataset as the second command line argument"
-              "and the overall answer dataset as the third command line argument and the path of the file to create for the random robot question dataset as the fourth command line argument, and the file of the subset of robot"
-              "questions for thematic analysis as the fifth command line argument")
+        print('''   
+                enter a csv file with the robot dataset as the first command line argument and 
+                the overall question dataset as the second command line argument
+                and the overall answer dataset as the third command line argument 
+                and the path of the file to create for the random robot question dataset as the fourth command line argument 
+                and the file of the subset of robot questions for thematic analysis as the fifth command line argument''')
     else:
         csvFileRobot = sys.argv[1]
         dataRobot = pd.read_csv(csvFileRobot)
@@ -249,7 +248,7 @@ if __name__ == '__main__':
         randomRobotFile = sys.argv[4]
 
         #The following is how I got my robot subset of qs, commented out to not generate new random qs
-       # randomXQuestions(300, yearDict)
+       # randomXQuestions(300, yearDict) 
 
         thematicAnalysisFile = sys.argv[5]
         dataSubsetRobot = pd.read_csv(thematicAnalysisFile)

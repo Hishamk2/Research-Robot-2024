@@ -1,0 +1,35 @@
+questionId,questionTitle,Tags,questionBody,questionCreationDate,AcceptedAnswerId,questionViewCount,AnswerCount,CommentCount,questionScore,questionFavoriteCount,questionUserId,questionUserLocation,questionUserCreationDate,questionUserViews,answerId,answerBody,answerUserId,answerScore,answerCommentCount,commentId,commentText
+5611290,Is it a good idea to use a single-board-computer in a UAV robot?,|robotics|,"<p>I'm not sure it's good or bad, the robot should have computer vision for SLAM. What's your idea?</p>
+",4/10/2011 11:00,5611298,442,2,0,0,0,689779,"Toronto, ON, Canada",4/3/2011 12:10,822,28297959,"<p>It is a great idea to use a Single Board Computer and <a href=""https://www.toradex.com/computer-on-modules"" rel=""nofollow"">System on Modules</a> for developing a UAV robot. In fact, it has already been successfully implemented before. I remember seeing a similar implementation of using a Toradex Colibri on Iris Carrier Board for an entry to the Embedded Design Challenge contest by Toradex. Here are the details of the project including the video, updates and source codes at the following link: <a href=""http://www.challenge.toradex.com/projects/10099-tdxcopter"" rel=""nofollow"">http://www.challenge.toradex.com/projects/10099-tdxcopter</a></p>
+",4374122,1,0,,
+5692261,API for controlling the OWI-535 robot arm,|c#|.net|python|robotics|,"<p>For fun I've been fiddling with the OWI-535 robot arm, and I came across <a href=""http://notbrainsurgery.livejournal.com/38622.html"" rel=""nofollow"">this</a> blog post about controlling the arm in Linux(or OSX). Has anyone done an API for it in .Net? Once again, a case of trying to not reinvent the wheel...</p>
+
+<p>I did find <a href=""http://python-poly.blogspot.com/2011/01/in-beginning.html"" rel=""nofollow"">this</a> about controlling it in Python, but I wanted to check if anyone had done a .Net version before I began chasing down the pipe.</p>
+",4/17/2011 7:40,5692290,1945,1,0,3,,561664,"Seattle, WA",1/3/2011 19:28,116,5692290,"<p>You can use <a href=""http://sourceforge.net/projects/libusbdotnet/"" rel=""nofollow"">LibUsbDotNet</a> to control the arm.  It's not specifically for this purpose, but it gives you the tools to do it.</p>
+
+<p><a href=""http://sourceforge.net/apps/phpbb/libusbdotnet/viewtopic.php?f=3&amp;t=75"" rel=""nofollow"">Here</a> is an example program someone wrote using libusbdotnet.</p>
+",61164,3,1,,
+5702225,A simple robot simulator which has automatic IR scanning for coordinates and simple state mapping,|simulator|robot|path-finding|a-star|infrared|,"<p>I am currently doing a project for a post-grad agents paper. For my project I have an idea about extending anytime searches such as ARA* ADA* and DLite*. I want to test this idea by simulating it on a robot. I've been looking at different software for the past few nights and have had no luck. </p>
+
+<p>Ultimately I need something that has a robot which will have the following information available at all times and in a discrete fashion:</p>
+
+<p>Coordinates (x,y,z) 
+Velocity</p>
+
+<p>I also need the robot to have some way of gathering coordinates from its environment, such as having an IR scanner which will map x,y coordinates with (passable/impassible).</p>
+
+<p>Finally I'll need to be able to program in algorithms which will use the environment information in order to suggest which states to pass through in its path to a goal coordinate.</p>
+
+<p>My question is whether or not there is software which I can achieve all of this without too much effort. I wouldn't want to spend more than 7 nights programming this and Ideally I would like to have some visible results within a night or two.</p>
+
+<p>I have programmed a lot of heuristic search algorithms for my dissertation (i.e. Perimeter search, BiMaxf, BS*, A*, my own bidirectional search algorithm and also some front-to-front searches) All of which have been based on the 8/15-puzzle and can solve reasonably hard problems within a few seconds in Java. I'm comfortable using C languages or scripting ones, as all I'll be needing will be hashtables and priority queues for the ADTs.</p>
+
+<p>So is there any opensource software which I can achieve simulations with (in real time) with reasonable ease. If not, does creating my own simulator sound out of the question? If I were to do that, then it would most likely just be a 2D simulator which <em>knows</em> of its surrounds within a given radius... It would just be nice to do it on something already out there as the experiments wouldn't be (as) biased...</p>
+",4/18/2011 11:35,5702304,338,1,0,0,0,703636,"Sydney, Australia",4/12/2011 8:21,117,5702304,"<p>Have you considered Player/Stage?</p>
+
+<p><a href=""http://playerstage.sourceforge.net/"" rel=""nofollow"">http://playerstage.sourceforge.net/</a></p>
+
+<p>Player is an open source robotics platform, and stage is a simulation environment that's coupled with it. In it's basic form you can quickly create a mobile 2D robot, with a laser/IR/sonar scanner and simulate it in the simulation environment. Here's a picture of what it would look like: <a href=""http://goo.gl/BV4X8"" rel=""nofollow"">http://goo.gl/BV4X8</a></p>
+
+<p>It's open source, fairly straightforward to install (on linux anyway) and write simple configurations for. There's tutorials to help you along too.</p>
+",713312,0,1,,
