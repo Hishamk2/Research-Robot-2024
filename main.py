@@ -5,6 +5,7 @@ import matplotlib
 matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 import openpyxl
+import time
 
 # TODO how about converting the csv into a csv with no duplicate questions as we done lots of checking for duplicates
 
@@ -105,18 +106,26 @@ def calculatePopularity():
     V = viewsRobot / viewsAll
     P = (S + A + C + V)
     p4 = P/4
-    print('S: ')
-    print(S)
-    print('A:')
-    print(A)
-    print('C')
-    print(C)
-    print('V:')
-    print(V)
-    print('P')
-    print(P)
-    print ('P/4')
-    print(p4)
+
+    print(f'''(Danika fixed) All Robot Questions Popularity Factors:   
+    Score: {S:.2f}
+    Answer Count: {A:.2f}
+    Comment Count: {C:.2f} 
+    View Count: {V:.2f}
+    Popularity: {p4:.2f}\n''')
+
+    # print('Score: ')
+    # print(f"{S:.2f}")
+    # print('Answer:')
+    # print(f'{A:.2f}')
+    # print('C')
+    # print(f'{C:.2f}')
+    # print('V:')
+    # print(f'{V:.2f}')
+    # print('P')
+    # print(f'{P:.2f}')
+    # print ('P/4')
+    # print(f'{p4:.2f}')
 
     #calculating robot answer popularity factors
     answerScoreRobot = calculatePopularityFactor("answerScore", dataRobot, "answerId")
@@ -132,19 +141,21 @@ def calculatePopularity():
     CAnswer = commentsAnswerRobot / commentsAnswerAll
     PA = (SAnswer + CAnswer)
     PA2 = PA / 2
-    print('SAnswer')
-    print(SAnswer)
-    print('CAnswer')
-    print(CAnswer)
-    print('PA')
-    print(PA)
-    print('PA / 2')
-    print(PA2)
+
+    print(f'''(Danika fixed) All Robot Answer Popularity Factors:  
+    Score: {SAnswer:.2f}
+    Comment Count: {CAnswer:.2f}
+    Popularity: {PA2:.2f}\n''')
+   
+    # print('SAnswer')
+    # print(f'{SAnswer:.2f}')
+    # print('CAnswer')
+    # print(f'{CAnswer:.2f}')
+    # print('PA')
+    # print(f'{PA:.2f}')
+    # print('PA / 2')
+    # print(f'{PA2:.2f}')
    # calculatePopularityCategories(questionScoreAll, answerCountAll, commentsQuestionAll, viewsAll) 
-    dataConnections = dataSubsetRobot.loc[
-        (dataSubsetRobot['code'] == 'internet') | (dataSubsetRobot['code'] == 'wpi') | (
-                    dataSubsetRobot['code'] == 'sc')]
-    calculatePopularityCategoriesGeneral(dataConnections, "Connections", questionScoreAll, answerCountAll, commentsQuestionAll,viewsAll,answerScoreAll, commentsAnswerAll)
 
     dataSpecifications = dataSubsetRobot.loc[
         (dataSubsetRobot['code'] == 'api') | (dataSubsetRobot['code'] == 'hr') | (
@@ -156,24 +167,30 @@ def calculatePopularity():
         (dataSubsetRobot['code'] == 'wireless') | (dataSubsetRobot['code'] == 'cpmr')]
     calculatePopularityCategoriesGeneral(dataRemote, "Remote",questionScoreAll, answerCountAll, commentsQuestionAll,viewsAll,answerScoreAll, commentsAnswerAll)
 
+    dataConnections = dataSubsetRobot.loc[
+        (dataSubsetRobot['code'] == 'internet') | (dataSubsetRobot['code'] == 'wpi') | (
+                    dataSubsetRobot['code'] == 'sc')]
+    calculatePopularityCategoriesGeneral(dataConnections, "Connections", questionScoreAll, answerCountAll, commentsQuestionAll,viewsAll,answerScoreAll, commentsAnswerAll)
+
     dataCoordinates =  dataSubsetRobot.loc[
         (dataSubsetRobot['code'] == 'position') | (dataSubsetRobot['code'] == 'orientation')]
     calculatePopularityCategoriesGeneral(dataCoordinates, "Coordinates", questionScoreAll, answerCountAll, commentsQuestionAll,viewsAll,answerScoreAll, commentsAnswerAll)
 
     dataMotionPlanning = dataSubsetRobot.loc[
-        (dataSubsetRobot['code'] == 'mp') | (dataSubsetRobot['code'] == 'Obstacles') | (
-                dataSubsetRobot['code'] == 'Mapping') | (
+        (dataSubsetRobot['code'] == 'mp') | (dataSubsetRobot['code'] == 'obstacles') | (
+                dataSubsetRobot['code'] == 'mapping') | (
                 dataSubsetRobot['code'] == 'SLAM')]
     calculatePopularityCategoriesGeneral(dataMotionPlanning, "Motion Planning", questionScoreAll, answerCountAll, commentsQuestionAll,viewsAll,answerScoreAll, commentsAnswerAll)
 
-    dataActuator =  dataSubsetRobot.loc[
+# TODO dont forget wc
+    dataActuator =  dataSubsetRobot.loc[(dataSubsetRobot['code'] == 'wc') |
         (dataSubsetRobot['code'] == 'ik') | (dataSubsetRobot['code'] == 'hc') | (
                 dataSubsetRobot['code'] == 'mc') | (
-                dataSubsetRobot['code'] == 'Balance')]
+                dataSubsetRobot['code'] == 'balance')]
     calculatePopularityCategoriesGeneral(dataActuator, "Actuation ", questionScoreAll, answerCountAll, commentsQuestionAll,viewsAll,answerScoreAll, commentsAnswerAll)
 
     dataProgramming = dataSubsetRobot.loc[
-        (dataSubsetRobot['code'] == 'Pointers') | (dataSubsetRobot['code'] == 'dt') | (
+        (dataSubsetRobot['code'] == 'pointers') | (dataSubsetRobot['code'] == 'dt') | (
                 dataSubsetRobot['code'] == 'overflow') | (
                 dataSubsetRobot['code'] == 'list')]
     calculatePopularityCategoriesGeneral(dataProgramming, "Programming", questionScoreAll, answerCountAll, commentsQuestionAll,viewsAll,answerScoreAll, commentsAnswerAll)
@@ -183,12 +200,12 @@ def calculatePopularity():
     calculatePopularityCategoriesGeneral(dataErrors, "Errors",questionScoreAll, answerCountAll, commentsQuestionAll,viewsAll,answerScoreAll, commentsAnswerAll )
 
     dataTiming = dataSubsetRobot.loc[
-        (dataSubsetRobot['code'] == 'Timing') | (dataSubsetRobot['code'] == 'multithreading') | (
+        (dataSubsetRobot['code'] == 'timing') | (dataSubsetRobot['code'] == 'multithreading') | (
                     dataSubsetRobot['code'] == 'rg')]
     calculatePopularityCategoriesGeneral(dataTiming, "Timing", questionScoreAll, answerCountAll, commentsQuestionAll,viewsAll,answerScoreAll, commentsAnswerAll)
 
     dataIncoming = dataSubsetRobot.loc[
-        (dataSubsetRobot['code'] == 'Cameras') | (dataSubsetRobot['code'] == 'Vision') | (
+        (dataSubsetRobot['code'] == 'cameras') | (dataSubsetRobot['code'] == 'vision') | (
                 dataSubsetRobot['code'] == 'line tracking') | (
                 dataSubsetRobot['code'] == 'sensors')]
     calculatePopularityCategoriesGeneral(dataIncoming, "Incoming", questionScoreAll, answerCountAll, commentsQuestionAll,viewsAll,answerScoreAll, commentsAnswerAll)
@@ -206,18 +223,26 @@ def calculatePopularityCategoriesGeneral(dataSet, themeLabel, questionScoreAll, 
     V = viewsCategory / viewsAll
     P = (S + A + C + V)
     p4 = P / 4
-    print(themeLabel +' S: ')
-    print(S)
-    print(themeLabel +' A:')
-    print(A)
-    print(themeLabel + ' C')
-    print(C)
-    print(themeLabel +' V:')
-    print(V)
-    print(themeLabel +' P')
-    print(P)
-    print(themeLabel + ' P/4')
-    print(p4)
+
+    print(f'''(Danika fixed) Robot Questions {themeLabel} Popularity Factors:
+    Score: {S:.2f}
+    Answer Count: {A:.2f}
+    Comment Count: {C:.2f}
+    View Count: {V:.2f}
+    Popularity: {p4:.2f}\n''')
+
+    # print(themeLabel +' Score: ')
+    # print(f'{S:.2f}')
+    # print(themeLabel +' A:')
+    # print(f'{A:.2f}')
+    # print(themeLabel + ' C')
+    # print(f'{C:.2f}')
+    # print(themeLabel +' V:')
+    # print(f'{V:.2f}')
+    # print(themeLabel +' P')
+    # print(f'{P:.2f}')
+    # print(themeLabel + ' P/4')
+    # print(f'{p4:.2f}')
 
     answerScoreCategory = calculatePopularityFactor("answerScore", dataSet, "answerId")
     commentsAnswerCategory = calculatePopularityFactor("answerCommentCount", dataSet, "answerId")
@@ -226,18 +251,24 @@ def calculatePopularityCategoriesGeneral(dataSet, themeLabel, questionScoreAll, 
     CAnswer = commentsAnswerCategory / commentsAnswerAll
     PA = (SAnswer + CAnswer)
     PA2 = PA / 2
-    print(themeLabel + ' SAnswer')
-    print(SAnswer)
-    print(themeLabel + ' CAnswer')
-    print(CAnswer)
-    print(themeLabel + ' PA')
-    print(PA)
-    print(themeLabel + ' PA / 2')
-    print(PA2)
 
+    print(f'''(Danika fixed) Robot Answers {themeLabel} Popularity Factors:
+    Score: {SAnswer:.2f}
+    Comment Count: {CAnswer:.2f}
+    Popularity: {PA2:.2f}\n''')
+
+    # print(themeLabel + ' SAnswer')
+    # print(f'{SAnswer:.2f}')
+    # print(themeLabel + ' CAnswer')
+    # print(f'{CAnswer:.2f}')
+    # print(themeLabel + ' PA')
+    # print(f'{PA:.2f}')
+    # print(themeLabel + ' PA / 2')
+    # print(f'{PA2:.2f}')
 
 
 if __name__ == '__main__':
+    startTime = time.time()
     if len(sys.argv)!=6:
         print('''   
                 enter a csv file with the robot dataset as the first command line argument and 
@@ -261,3 +292,5 @@ if __name__ == '__main__':
         thematicAnalysisFile = sys.argv[5]
         dataSubsetRobot = pd.read_csv(thematicAnalysisFile)
         calculatePopularity()
+
+    print("Time taken: " + str(time.time() - startTime) + " seconds")

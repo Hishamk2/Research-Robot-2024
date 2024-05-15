@@ -107,6 +107,7 @@ def plot_data(year_count_dict):
     plt.xticks(list(year_count_dict.keys()), rotation=45, fontsize=20)
 
 
+ 
 def calculatePopularity(allRobotDataSet, allQuestionData, allAnswerDataSet, randomRobotWithCodesData, randomRobotAllData):
     allPopularityFactorsQuestions = calculatePopularityAllRobotQuestions(allRobotDataSet, allQuestionData)
     allPopularityFactorsAnswers = calculatePopularityAllRobotAnswers(allRobotDataSet, allAnswerDataSet)
@@ -132,15 +133,14 @@ def calculatePopularity(allRobotDataSet, allQuestionData, allAnswerDataSet, rand
     dataProgramming = randomRobotWithCodesData.loc[(randomRobotWithCodesData['code'] == 'pointers') | (randomRobotWithCodesData['code'] == 'dt') | (randomRobotWithCodesData['code'] == 'overflow') | (randomRobotWithCodesData['code'] == 'list')]
     calculatePopularityCategoriesGeneral(dataProgramming, "Programming", allPopularityFactorsQuestions, allPopularityFactorsAnswers)
 
-    dataLibrary = randomRobotWithCodesData.loc[(randomRobotWithCodesData['code'] == 'li') | (randomRobotWithCodesData['code'] == 'bf')]
-    calculatePopularityCategoriesGeneral(dataLibrary, "Library", allPopularityFactorsQuestions, allPopularityFactorsAnswers)
+    dataError = randomRobotWithCodesData.loc[(randomRobotWithCodesData['code'] == 'li') | (randomRobotWithCodesData['code'] == 'bf')]
+    calculatePopularityCategoriesGeneral(dataError, "Library", allPopularityFactorsQuestions, allPopularityFactorsAnswers)
 
     dataTiming = randomRobotWithCodesData.loc[(randomRobotWithCodesData['code'] == 'timing') | (randomRobotWithCodesData['code'] == 'multithreading') | (randomRobotWithCodesData['code'] == 'rg')]
     calculatePopularityCategoriesGeneral(dataTiming, "Timing", allPopularityFactorsQuestions, allPopularityFactorsAnswers)
 
     dataIncoming = randomRobotWithCodesData.loc[(randomRobotWithCodesData['code'] == 'cameras') | (randomRobotWithCodesData['code'] == 'vision') | (randomRobotWithCodesData['code'] == 'line tracking') | (randomRobotWithCodesData['code'] == 'sensors')]
     calculatePopularityCategoriesGeneral(dataIncoming, "Incoming", allPopularityFactorsQuestions, allPopularityFactorsAnswers)
-
 
 
 def calculatePopularityAllRobotAnswers(allRobotData, allAnswerData):
@@ -152,7 +152,7 @@ def calculatePopularityAllRobotAnswers(allRobotData, allAnswerData):
     commentCount = normalizedAllRobotAnswerPopularityFactors[1]
     popularity = (score + commentCount) / 2
     
-    print(f'''All Robot Answer Popularity Factors:  
+    print(f'''(Hisham) All Robot Answer Popularity Factors:  
     Score: {score:.2f}
     Comment Count: {commentCount:.2f}
     Popularity: {popularity:.2f}\n''')
@@ -183,7 +183,7 @@ def calculatePopularityAllRobotQuestions(allRobotData, allQuestionData):
     viewCount = normalizedAllRobotPopularityFactors[3]
     popularity = (score + answerCount + commentCount + viewCount) / 4
 
-    print(f'''All Robot Questions Popularity Factors:   
+    print(f'''(Hisham) All Robot Questions Popularity Factors:   
     Score: {score:.2f}
     Answer Count: {answerCount:.2f}
     Comment Count: {commentCount:.2f} 
@@ -209,8 +209,6 @@ def getAllQuestionsPopularityFactors(allQuestionsData):
     commentCount = calculatePopularityFactorAvg('CommentCount', allQuestionsData, 'Id')
     viewCount = calculatePopularityFactorAvg('viewCount', allQuestionsData, 'Id')
     return score, answerCount, commentCount, viewCount
-
-
 
 
 def calculatePopularityCategoriesGeneral(dataSet, codeLabel, allPopularityFactorsQuestions, allPopularityFactorsAnswers):
@@ -241,18 +239,19 @@ def calculatePopularityCategoriesGeneral(dataSet, codeLabel, allPopularityFactor
     questionPopularity = (questionScore + answerCount + commentCount + viewCount) / 4
     answerPopularity = (answerScore + answerCommentCount) / 2
 
-    print(f'''Robot Questions {codeLabel} Popularity Factors:
+    print(f'''(Hisham) Robot Questions {codeLabel} Popularity Factors:
     Score: {questionScore:.2f}
     Answer Count: {answerCount:.2f}
     Comment Count: {commentCount:.2f}
     View Count: {viewCount:.2f}
     Popularity: {questionPopularity:.2f}\n''')
 
-    print(f'''Robot Answers {codeLabel} Popularity Factors:
+    print(f'''(Hisham) Robot Answers {codeLabel} Popularity Factors:
     Score: {answerScore:.2f}
     Comment Count: {answerCommentCount:.2f}
     Popularity: {answerPopularity:.2f}\n''')
     
+
 
 # popularityFactor is the column name of the popularity factor in the dataframe
 # dataframe is the dataframe to calculate the popularity factor from
@@ -303,7 +302,5 @@ if __name__ == "__main__":
     randomRobotAllDataSet = pd.read_csv("RandomRobot-Full.csv")
     
     calculatePopularity(allRobotDataSet, allQuestionDataSet, allAnswerDataSet, randomRobotWithCodesDataSet, randomRobotAllDataSet)
-    # calculatePopularityAllRobotQuestions(allRobotDataSet, allQuestionDataSet, allAnswerDataSet, randomRobotWithCodesDataSet, randomRobotAllDataSet)
-    # calculatePopularityAllRobotAnswers(allRobotDataSet, allQuestionDataSet, allAnswerDataSet, randomRobotWithCodesDataSet, randomRobotAllDataSet)
-    # plotQuestionsByYear(allRobotDataSet)
+    plotQuestionsByYear(allRobotDataSet)
     print(f"--- {time.time() - start_time:.2f} seconds ---")
