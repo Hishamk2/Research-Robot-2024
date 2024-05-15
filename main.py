@@ -107,7 +107,7 @@ def calculatePopularity():
     P = (S + A + C + V)
     p4 = P/4
 
-    print(f'''(Danika fixed) All Robot Questions Popularity Factors:   
+    print(f'''(Danika og) All Robot Questions Popularity Factors:   
     Score: {S:.2f}
     Answer Count: {A:.2f}
     Comment Count: {C:.2f} 
@@ -142,7 +142,7 @@ def calculatePopularity():
     PA = (SAnswer + CAnswer)
     PA2 = PA / 2
 
-    print(f'''(Danika fixed) All Robot Answer Popularity Factors:  
+    print(f'''(Danika og) All Robot Answer Popularity Factors:  
     Score: {SAnswer:.2f}
     Comment Count: {CAnswer:.2f}
     Popularity: {PA2:.2f}\n''')
@@ -177,20 +177,20 @@ def calculatePopularity():
     calculatePopularityCategoriesGeneral(dataCoordinates, "Coordinates", questionScoreAll, answerCountAll, commentsQuestionAll,viewsAll,answerScoreAll, commentsAnswerAll)
 
     dataMotionPlanning = dataSubsetRobot.loc[
-        (dataSubsetRobot['code'] == 'mp') | (dataSubsetRobot['code'] == 'obstacles') | (
-                dataSubsetRobot['code'] == 'mapping') | (
+        (dataSubsetRobot['code'] == 'mp') | (dataSubsetRobot['code'] == 'Obstacles') | (
+                dataSubsetRobot['code'] == 'Mapping') | (
                 dataSubsetRobot['code'] == 'SLAM')]
     calculatePopularityCategoriesGeneral(dataMotionPlanning, "Motion Planning", questionScoreAll, answerCountAll, commentsQuestionAll,viewsAll,answerScoreAll, commentsAnswerAll)
 
 # TODO dont forget wc
-    dataActuator =  dataSubsetRobot.loc[(dataSubsetRobot['code'] == 'wc') |
+    dataActuator =  dataSubsetRobot.loc[
         (dataSubsetRobot['code'] == 'ik') | (dataSubsetRobot['code'] == 'hc') | (
                 dataSubsetRobot['code'] == 'mc') | (
-                dataSubsetRobot['code'] == 'balance')]
+                dataSubsetRobot['code'] == 'Balance')]
     calculatePopularityCategoriesGeneral(dataActuator, "Actuation ", questionScoreAll, answerCountAll, commentsQuestionAll,viewsAll,answerScoreAll, commentsAnswerAll)
 
     dataProgramming = dataSubsetRobot.loc[
-        (dataSubsetRobot['code'] == 'pointers') | (dataSubsetRobot['code'] == 'dt') | (
+        (dataSubsetRobot['code'] == 'Pointers') | (dataSubsetRobot['code'] == 'dt') | (
                 dataSubsetRobot['code'] == 'overflow') | (
                 dataSubsetRobot['code'] == 'list')]
     calculatePopularityCategoriesGeneral(dataProgramming, "Programming", questionScoreAll, answerCountAll, commentsQuestionAll,viewsAll,answerScoreAll, commentsAnswerAll)
@@ -200,12 +200,12 @@ def calculatePopularity():
     calculatePopularityCategoriesGeneral(dataErrors, "Errors",questionScoreAll, answerCountAll, commentsQuestionAll,viewsAll,answerScoreAll, commentsAnswerAll )
 
     dataTiming = dataSubsetRobot.loc[
-        (dataSubsetRobot['code'] == 'timing') | (dataSubsetRobot['code'] == 'multithreading') | (
+        (dataSubsetRobot['code'] == 'Timing') | (dataSubsetRobot['code'] == 'multithreading') | (
                     dataSubsetRobot['code'] == 'rg')]
     calculatePopularityCategoriesGeneral(dataTiming, "Timing", questionScoreAll, answerCountAll, commentsQuestionAll,viewsAll,answerScoreAll, commentsAnswerAll)
 
     dataIncoming = dataSubsetRobot.loc[
-        (dataSubsetRobot['code'] == 'cameras') | (dataSubsetRobot['code'] == 'vision') | (
+        (dataSubsetRobot['code'] == 'Cameras') | (dataSubsetRobot['code'] == 'Vision') | (
                 dataSubsetRobot['code'] == 'line tracking') | (
                 dataSubsetRobot['code'] == 'sensors')]
     calculatePopularityCategoriesGeneral(dataIncoming, "Incoming", questionScoreAll, answerCountAll, commentsQuestionAll,viewsAll,answerScoreAll, commentsAnswerAll)
@@ -224,7 +224,7 @@ def calculatePopularityCategoriesGeneral(dataSet, themeLabel, questionScoreAll, 
     P = (S + A + C + V)
     p4 = P / 4
 
-    print(f'''(Danika fixed) Robot Questions {themeLabel} Popularity Factors:
+    print(f'''(Danika og) Robot Questions {themeLabel} Popularity Factors:
     Score: {S:.2f}
     Answer Count: {A:.2f}
     Comment Count: {C:.2f}
@@ -252,7 +252,7 @@ def calculatePopularityCategoriesGeneral(dataSet, themeLabel, questionScoreAll, 
     PA = (SAnswer + CAnswer)
     PA2 = PA / 2
 
-    print(f'''(Danika fixed) Robot Answers {themeLabel} Popularity Factors:
+    print(f'''(Danika og) Robot Answers {themeLabel} Popularity Factors:
     Score: {SAnswer:.2f}
     Comment Count: {CAnswer:.2f}
     Popularity: {PA2:.2f}\n''')
