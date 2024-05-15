@@ -6,6 +6,7 @@ matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 import openpyxl
 
+# TODO how about converting the csv into a csv with no duplicate questions as we done lots of checking for duplicates
 
 def plotQuestionsByYear():
     questionIdsSeenSet = set()
@@ -30,27 +31,32 @@ def plotQuestionsByYear():
     plt.show()
     return yearCountDict
 
-
+# popularityFactor is the column name of the popularity factor in the dataframe
+# dataframe is the dataframe to calculate the popularity factor from
+# idLabel is the column name of the id in the dataframe
 def calculatePopularityFactor(popularityFactor, dataframe, idLabel):
     popularityFactorTotal = 0
     questionIdsSeenSet = set()
-    totalNumberOfRows = 0
+    totalNumUniqueQuestions = 0
+
     for index, row in dataframe.iterrows():
         questionId = row[idLabel]
-        if questionId is not None and questionId not in questionIdsSeenSet:
-            if not pd.isna(row[popularityFactor]):
-                popularityFactorQuestion = row[popularityFactor]
-                popularityFactorTotal += popularityFactorQuestion
-                totalNumberOfRows += 1
+        if ((questionId is not None) and 
+            (questionId not in questionIdsSeenSet) and 
+            (not pd.isna(row[popularityFactor]))):
+                popularityFactorCount = row[popularityFactor]
+                popularityFactorTotal += popularityFactorCount
+                totalNumUniqueQuestions += 1
                 questionIdsSeenSet.add(questionId)
-    if totalNumberOfRows == 0:
+
+    # I don't think this is necessary, but I'm keeping it in case it is
+    # because even if 0 questions are found, the popularity factor should be 0 so no division by 0 error
+    if totalNumUniqueQuestions == 0:
         return 0
 
-    #This is how I determine how many unique questions there are for each dataset
-    #print("number of rows ")
-    #print(totalNumberOfRows)
-
-    return popularityFactorTotal / totalNumberOfRows
+    # return the average popularity factor
+    # This is NOT normalizing the factor, it is just the average
+    return popularityFactorTotal / totalNumUniqueQuestions
 
 #creates a new excel file with a subset of X random questions from the supplied question dataset, with the same distribution of years as the original
 def randomXQuestions(X, yearDict):
@@ -228,6 +234,8 @@ def calculatePopularityCategoriesGeneral(dataSet, themeLabel, questionScoreAll, 
     print(PA)
     print(themeLabel + ' PA / 2')
     print(PA2)
+
+
 
 if __name__ == '__main__':
     if len(sys.argv)!=6:
