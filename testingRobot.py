@@ -6,6 +6,8 @@ matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 import openpyxl
 import time
+import math
+start_time = time.time()
 
 # def plotQuestionsByYear(dataRobot):
 #     questionIdsSeenSet = set()
@@ -256,6 +258,7 @@ def calculatePopularityCategoriesGeneral(dataSet, codeLabel, allPopularityFactor
 # popularityFactor is the column name of the popularity factor in the dataframe
 # dataframe is the dataframe to calculate the popularity factor from
 # idLabel is the column name of the id in the dataframe
+# check for nan because there are a few cells that are empty fsm
 def calculatePopularityFactorAvg(popularityFactor, dataframe, idLabel):
     popularityFactorTotal = 0
     questionIdsSeenSet = set()
@@ -289,10 +292,56 @@ def normalizePopularityFactors(popularityFactors, allPopularityFactors):
 def normalizePopularityFactor(popularityFactor, allPopularityFactor):
     return popularityFactor / allPopularityFactor
 
+global x
+x = 0
+
+# confirm the passed in csv files have all the above theme labels as well as make sure there are 10, and only 10, theme labels 
+# the theme labels are (specifications, remote, connections, coordinates, moving, actuator, programming, error, timing, incoming)
+def getAllMajorThemeLabels(robotCodedData):
+    allMajorThemes = set()
+    allSubThemes = getAllSubThemeLabels(robotCodedData)
+    themesAndSubThemesDict = {'Specifications': ['api', 'hr', 'os', 'lu'], 
+                              'Remote': ['wireless', 'cpmr'],
+                              'Connections': ['internet', 'wpi', 'sc'],
+                              'Coordinates': ['position', 'orientation'],
+                              'Moving': ['mp', 'obstacles', 'mapping', 'SLAM'],
+                              'Actuator': ['ik', 'hc', 'wc', 'mc', 'balance'],
+                              'Programming': ['pointers', 'dt', 'overflow', 'list'],
+                              'Error': ['li', 'bf'],
+                              'Timing': ['timing', 'multithreading', 'rg'],
+                              'Incoming': ['cameras', 'vision', 'line tracking', 'sensors'],
+                              'Other' : ['gs', 'bp', 'repeat', 'decoupling', 'install', 'ra', 'ros', 'rn', 'dl', 'rl', 'dc', 'distance']}
+    
+    # make sure all subThemes from Appendix A are in the dataset
+    for theme in themesAndSubThemesDict.keys():
+        allMajorThemes.add(theme)
+        for subTheme in themesAndSubThemesDict[theme]:
+            if subTheme not in allSubThemes.values():
+                print(f"Subtheme `{subTheme}` (from Appendix A) not found in the dataset")
+
+    # make sure all subThemes from dataset are in Appendix A
+    for subTheme in allSubThemes.items():
+        found = False
+        for theme in themesAndSubThemesDict.keys():
+            if subTheme[1] in themesAndSubThemesDict[theme]:
+                found = True
+                break
+        if not found:
+            print(f"Subtheme (from dataset) `{subTheme[1]}` at index {subTheme[0]} (probably line {subTheme[0] + 2}) not found in the theme dictionary (Appendix A)")
+    
+
+def getAllSubThemeLabels(robotCodedData):
+    allSubThemes = {}
+    for index, row in robotCodedData.iterrows():
+        if pd.isna(row["code"]):
+            print(f"Cell for codes at index {index} (probably line {index + 2}) is empty")
+        else:        
+            code = row["code"]
+            allSubThemes[index] = code
+    return allSubThemes
 
 
 if __name__ == "__main__":
-    start_time = time.time()
 
     
     allRobotDataSet = pd.read_csv("RobotDataSet.csv")
@@ -301,6 +350,8 @@ if __name__ == "__main__":
     randomRobotWithCodesDataSet = pd.read_csv("RandomRobot - Coded.csv")
     randomRobotAllDataSet = pd.read_csv("RandomRobot-Full.csv")
     
-    calculatePopularity(allRobotDataSet, allQuestionDataSet, allAnswerDataSet, randomRobotWithCodesDataSet, randomRobotAllDataSet)
-    plotQuestionsByYear(allRobotDataSet)
+    getAllMajorThemeLabels(randomRobotWithCodesDataSet)
+
+    # calculatePopularity(allRobotDataSet, allQuestionDataSet, allAnswerDataSet, randomRobotWithCodesDataSet, randomRobotAllDataSet)
+    # plotQuestionsByYear(allRobotDataSet)
     print(f"--- {time.time() - start_time:.2f} seconds ---")
