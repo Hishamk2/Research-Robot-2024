@@ -7,46 +7,7 @@ import matplotlib.pyplot as plt
 import openpyxl
 import time
 import math
-start_time = time.time()
 
-# def plotQuestionsByYear(dataRobot):
-#     questionIdsSeenSet = set()
-#     yearCountDict = {}
-#     total_count = 0
-#     for index, row in dataRobot.iterrows():
-#         questionId = row["questionId"]
-#         #if questionId is in questionIdsSeenSet, it is a duplicate row for comments or answers
-#         if questionId not in questionIdsSeenSet:
-#             dateStamp = pd.to_datetime(row["questionCreationDate"], format="%m/%d/%Y %H:%M" )
-#             if dateStamp.year in yearCountDict.keys():
-#                 yearCountDict[dateStamp.year] = yearCountDict[dateStamp.year] + 1
-#             else:
-#                 yearCountDict[dateStamp.year] = 0
-#         questionIdsSeenSet.add(questionId)
-    
-#     # sum all counts 
-#     total_count = sum(yearCountDict.values())
-    
-#     plt.bar(range(len(yearCountDict)), 
-#             list(yearCountDict.values()), 
-#             tick_label = list(yearCountDict.keys()), 
-#             label = "Robot  questions on Stack Overflow by year")
-
-#     for i, count in enumerate(yearCountDict.values()):
-#         plt.text(i, count, str(count), ha='center', va='bottom', fontsize=15)
-
-#     plt.xticks(fontsize = 20)
-#     font1 = { 'color': 'black', 'size': 35}
-#     font2 = { 'color': 'black', 'size': 30}
-#     plt.xlabel("Year", fontdict=font2)
-#     plt.ylabel("Number of robot questions asked", fontdict=font2)
-#     plt.title("Robot  Questions on Stack Overflow by Year", fontdict=font1)
-    
-#     plt.text(-1,140, f'(DANIKA)Total: {total_count}', ha='left', fontsize=15)
-
-    
-#     plt.show()
-#     return yearCountDict
 
 def plotQuestionsByYear(dataRobot):
     # Initialize sets and dictionary
@@ -292,8 +253,6 @@ def normalizePopularityFactors(popularityFactors, allPopularityFactors):
 def normalizePopularityFactor(popularityFactor, allPopularityFactor):
     return popularityFactor / allPopularityFactor
 
-global x
-x = 0
 
 # confirm the passed in csv files have all the above theme labels as well as make sure there are 10, and only 10, theme labels 
 # the theme labels are (specifications, remote, connections, coordinates, moving, actuator, programming, error, timing, incoming)
@@ -341,7 +300,58 @@ def getAllSubThemeLabels(robotCodedData):
     return allSubThemes
 
 
+def randomXQuestions(numQuestions, allRobotDataSet: pd.DataFrame, previousRandomQuestions: pd.DataFrame):
+    copyAllRobotDataSet = allRobotDataSet.copy(deep=True) #why do deep copy? because we don't want to change the original dataset
+    copyAllRobotDataSet = copyAllRobotDataSet.drop_duplicates('questionId')
+    
+    listQuestionIdPreviousRandom = getListOfQuestionIds(previousRandomQuestions)    
+
+    # now drop duplcates that are in the previous random questions
+    copyAllRobotDataSet = copyAllRobotDataSet.drop(axis=0, index=copyAllRobotDataSet[copyAllRobotDataSet['questionId'].isin(listQuestionIdPreviousRandom)].index)
+
+    randomQuestions = copyAllRobotDataSet.sample(n=numQuestions)
+
+    with open('testingRobotRandomSTOPPP.csv', 'w', encoding="utf-8") as f:
+        randomQuestions.to_csv(f, lineterminator='\n')
+
+    print(f'Are questions from the new random questions unique from the previous random questions? {areQuestionsUnique(randomQuestions, previousRandomQuestions)}\n')
+    plotQuestionsByYear(randomQuestions)
+
+def areQuestionsUnique(dataSet: pd.DataFrame, previousDataSet: pd.DataFrame):
+    dataSetQuestionIds = getListOfQuestionIds(dataSet)
+    previousDataSetQuestionIds = getListOfQuestionIds(previousDataSet)
+
+    for questionId in dataSetQuestionIds:
+        if questionId in previousDataSetQuestionIds:
+            return False
+    return True
+
+def getListOfQuestionIds(dataSet: pd.DataFrame):
+    listOfQuestionIds = dataSet['questionId'].values.tolist()
+    return listOfQuestionIds
+
+def doesQuestionIDExist(questionID, robotDataSet):
+    return questionID in robotDataSet['questionId'].values
+
+
+# Get list of all questionIds from codedRobot and allRobot
+# compare which questionIds are in allRobot but not in codedRobot (those were removed, the false positives)
+# extract the rows from the above questionIds
+def getFalsePositiveQuestions(codedRobot: pd.DataFrame, allRobot: pd.DataFrame):
+    codedRobotQuestionIds = getListOfQuestionIds(codedRobot)
+    allRobotQuestionIds = getListOfQuestionIds(allRobot)
+
+    falsePositiveQuestionIds = list(set(allRobotQuestionIds) - set(codedRobotQuestionIds))
+
+    falsePositiveQuestions = allRobot.loc[allRobot['questionId'].isin(falsePositiveQuestionIds)]
+
+    with open('testingRobotFalsePositive.csv', 'w', encoding="utf-8") as f:
+        falsePositiveQuestions.to_csv(f, lineterminator='\n')
+    
+    print(f"Number of false positive questions: {len(falsePositiveQuestions)}")
+
 if __name__ == "__main__":
+    start_time = time.time()
 
     
     allRobotDataSet = pd.read_csv("RobotDataSet.csv")
@@ -350,7 +360,10 @@ if __name__ == "__main__":
     randomRobotWithCodesDataSet = pd.read_csv("RandomRobot - Coded.csv")
     randomRobotAllDataSet = pd.read_csv("RandomRobot-Full.csv")
     
-    getAllMajorThemeLabels(randomRobotWithCodesDataSet)
+    getFalsePositiveQuestions(randomRobotWithCodesDataSet, randomRobotAllDataSet)
+
+    # getAllMajorThemeLabels(randomRobotWithCodesDataSet)
+    # randomXQuestions(300, allRobotDataSet, randomRobotAllDataSet)
 
     # calculatePopularity(allRobotDataSet, allQuestionDataSet, allAnswerDataSet, randomRobotWithCodesDataSet, randomRobotAllDataSet)
     # plotQuestionsByYear(allRobotDataSet)
