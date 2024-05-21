@@ -39,7 +39,7 @@ As for using the mouse for tracking how far you have driven: It did not work wel
 <p>Not to worry, though. As you mentioned, <a href=""http://www.boost.org/doc/libs/1_39_0/doc/html/lambda.html"" rel=""nofollow noreferrer"">Boost.Lambda</a> is a nifty library that you can use. What is nice is that it is implemented as templates completely in headers. So, all you have to do is include the headers. Any standards-conforming C++ compiler should support it. I understand your desire to stick with what you already have, but the effort it takes to download and use these headers should really be minimal.</p>
 
 <p>If you really don't want to use Boost, then you can try using C#, but I recommend that you just try the Boost Lambda library. It is probably easier than you think.</p>
-",35881,-1,2,,,,
+",35881,-1,2,,,lu,
 269,1085351,An algorithm for a drawing and painting robot - any tips?,|image-processing|artificial-intelligence|computer-vision|robotics|,"<p>Algorithm for a drawing and painting robot -</p>
 
 <p>Hello </p>
@@ -246,7 +246,7 @@ Vikram</p>
 <p>So much of control is digital these days, so EE and computer science will be a part of it.</p>
 
 <p>It's a big field.  Good luck.</p>
-",37213,1,0,4365470,"You'd probably get better answers if you provide your current background in electronics, automation and similar stuff.",NEW,
+",37213,1,0,4365470,"You'd probably get better answers if you provide your current background in electronics, automation and similar stuff.",gs,
 845,4173306,Can I implement potential field/depth first method for obstacle avoidance using boost graph?,|c++|boost|robotics|boost-graph|,"<p>I implemented an obstacle avoidance algorithm in Matlab which assigns every node in a graph a potential and tries to descend this potential (the goal of the pathplanning is in the global minimum). Now there might appear local minima, so the (global) planning needs a way to get out of these. I used the strategy to have a list of open nodes which are reachable from the already visited nodes. I visit the open node which has the smallest potential next. </p>
 
 <p>I want to implement this in C++ and I am wondering if Boost Graph has such algorithms already. If not - is there any benefit from using this library if I have to write the algorithm myself and I will also have to create my own graph class because the graph is too big to be stored as adjacency list/edge list in memory.</p>
@@ -327,7 +327,7 @@ As far as forums go, you could check out the <a href=""http://www.ai-forum.org/"
 <a href=""http://area51.stackexchange.com/proposals/2149/cognitive-science"">Cognitive Science</a><br>
 <a href=""http://area51.stackexchange.com/proposals/29987/robotics-research"">Robotics Research</a><br>
 <a href=""http://area51.stackexchange.com/proposals/26434/machine-learning"">Machine Learning</a>  </p>
-",545616,2,1,6604513,"Probably I'm not the best person to give this kind of advice (that's why I leave just a comment), but I'd go for the control class before. You should know what robots can/can't do and how do they work before trying to control them",NEW,
+",545616,2,1,6604513,"Probably I'm not the best person to give this kind of advice (that's why I leave just a comment), but I'd go for the control class before. You should know what robots can/can't do and how do they work before trying to control them",gs,
 1149,6140332,Real time live streaming with an iPhone for robotics,|objective-c|sockets|video-streaming|vlc|robotics|,"<p>For a research purpose, I developed and app to control a wheeled mobile robot using the gyro and the accelerometer of an iPhone. The robot has a IP address, and I control it by sending messages through a socket. Since the robot has to be controlled from anywhere in the world, I mounted a camera on top of it. I tried to stream the video from the camera using the http live streaming protocol and vlc, but the latency is too high (15-30sec) to properly control it.</p>
 
 <p>Now, vlc has the possibility to stream over udp or http, but the point is how do I decode the stream on the iPhone? How should I treat the data coming into the socket in order to visualize them as a continuous live video? </p>
@@ -340,7 +340,7 @@ What I am trying to do with this system is make sure that it is really vibrating
 
 <p>What I am looking for is any better way to go about detecting that the system is vibrating, and not being effected by a jolt, my primary issue is that that I do not miss detect a jolt for a vibration because then that will cause the values on the PID to be lowered unnecessarily.</p>
 ",7/8/2011 6:37,6620873,137,2,0,2,0,144600,California,7/24/2009 16:05,288,6620873,"<p>FFT.  It will separate out the ""jolts"" from the vibrations, because jolts will register across all frequencies and vibrations will spike around a particular frequency.</p>
-",,1,1,,,,
+",,1,1,,,sensor,
 1218,6641055,Obstacle avoidance with stereo vision,|opencv|computer-vision|robotics|,"<p>I'm working on a stereo-camera based obstacle avoidance system for a mobile robot. It'll be used indoors, so I'm working off the assumption that the ground plane is flat. We also get to design our own environment, so I can avoid specific types of obstacle that generate false positives or negatives.</p>
 
 <p>I've already found plenty of resources for calibrating the cameras and getting the images lined up, as well as information on generating a disparity map/depth map. What I'm struggling with is techniques for detecting obstacles from this. A technique that instead worked by detecting the ground plane would be just as useful.</p>
@@ -407,7 +407,7 @@ Liu.</p>
 <p>I have a write up on the <a href=""http://stephenholiday.com/articles/2011/introduction-to-mapreduce/"" rel=""nofollow"">basics of MapReduce</a>.</p>
 
 <p>There is the famous <a href=""http://hadoop.apache.org/"" rel=""nofollow"">Haddop implementation</a> as well as <a href=""http://discoproject.org/"" rel=""nofollow"">Disco</a> (python/erlang) and a very simple shell implementation called <a href=""https://github.com/erikfrey/bashreduce"" rel=""nofollow"">BashReduce</a> that Last.fm created.</p>
-",429688,0,0,,,,
+",429688,0,0,,,lu,
 1260,7980785,Unit-testing code with unpredictable external dependencies,|java|junit|robotics|,"<p>I am involved with a project which must, among other things, controlling various laboratory instruments (robots, readers, etc...)</p>
 
 <p>Most of these instruments are controlled either through DCOM-based drivers, the serial port, or by launching proprietary programs with various arguments. Some of these programs or drivers include simulation mode, some don't. Obviously, my development computer cannot be connected to all of the instruments, and while I can fire up virtual machines for the instruments whose drivers include a simulation mode, some stuff cannot be tested without the actual instrument.</p>
@@ -430,7 +430,7 @@ Liu.</p>
 <li>Capture the details of those failures as you see them and encode further tests in your mocks to replicate these. Consequently your logging needs to be sound, to capture the failure details. As time goes on, your test set will expand to encompass and regression test these scenarios.</li>
 <li>Your interfaces to these system may be able to capture all errors, but present them in a finite subset of errors. e.g. categorise all errors into (say) connection errors, timeouts etc. That way you restrict your scenarios to a small set of failures. I don't know if this is practical for your application, unfortunately.</li>
 </ol>
-",12960,4,0,,,,
+",12960,4,0,,,NEW,
 1284,8799363,Robotics Club Programming Portion,|microcontroller|robotics|labview|robot|,"<p>My school has entered into a Robotics Tournament that competes several schools against each other(this is my school's first year). The objective of the robot is to shoot a ball into a hoop. I am a member of the Programming team. Our job as the programmers is to program a robot and a computer to control the robot. The computer has 2 joy sticks attached to it, one for moving the entire robot(spinning the wheels and causing the robot to move) and one is for the ""throwing arm"". A signal is going to be sent from the computer to the robot using wifi. All of the programming MUST be done in LabView. </p>
 
 <p>I have never heard of LabView before until i joined this club and i have my doubts about it. The reason why we must use LabView is because most of the kids on the programming team have no programming experience whatsoever. LabView has to be able to interface with the joy sticks and then send that information to the robot using wifi. The micro controller on the robot supports LabView.</p>
@@ -606,7 +606,7 @@ it shows cygwin,solarize,linux,macosx,mingw gcc</p>
 ",3/27/2012 17:27,9895161,484,1,0,0,,,,,,9895161,"<p>Eclipse does not look for AVR toolchain by default, even if it is in path (you did add it there?). You need to create an cross GCC project, then tell it the prefix of your toolchain (avr- i guess). When you select ""New C project"" select Cross GCC in Toolchains listbox, then in next step enter the prefix, set path to toolchain (if not in path), etc. For this you need to install ""GCC Cross Compiler Support"". You do this from Help -> Install new software -> Mobile and Device development. You will probably also want at least GDB hardware debugging. </p>
 
 <p>You can also try special <a href=""http://avr-eclipse.sourceforge.net/wiki/index.php/The_AVR_Eclipse_Plugin"" rel=""nofollow"">eclipse plug-in for AVR</a>.</p>
-",395851,0,0,,,,
+",395851,0,0,,,fp,
 1353,10075285,vehicle's obstacle avoidance sensor,|c|microcontroller|sensors|robotics|,"<p>I'm new in robotics and I would like to make a vehicle in order to play with my 3 years-old son. I have a PIC 16F917 microcontroller and a Half H bridge L293DNE. What I've tried so far in order to make the vehicle move is s C code guided by the following link: <a href=""http://www.google.gr/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;ved=0CCQQFjAA&amp;url=http%3A%2F%2Fwww.societyofrobots.com%2Fmember_tutorials%2Ffiles%2FLukas%2520PIC%2520Tutorial.doc&amp;ei=8tWCT4GeNZD6sgaQmYzRBA&amp;usg=AFQjCNFw6ZoQSyoKwRj3uPaLmchgBzGY4Q&amp;sig2=tLQ7VN9IJen-TXCznu4jLA"" rel=""nofollow"">http://www.google.gr/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;ved=0CCQQFjAA&amp;url=http%3A%2F%2Fwww.societyofrobots.com%2Fmember_tutorials%2Ffiles%2FLukas%2520PIC%2520Tutorial.doc&amp;ei=8tWCT4GeNZD6sgaQmYzRBA&amp;usg=AFQjCNFw6ZoQSyoKwRj3uPaLmchgBzGY4Q&amp;sig2=tLQ7VN9IJen-TXCznu4jLA</a>. So I was able to make the robot move forward, backward and turn left and right. What I want to do now is to find suitable sensors for obstacle avoidance. Since I have no previous experience could someone recommend the appropriate  compatible with the microcontroller sensors? If so, I would like to know in which pins of microcontroller I should connect the sensors and moreover the suitable programming order in C , for the sensors to interact with the microcontroller.</p>
 
 <p>Thanks in advance!!!</p>
@@ -649,7 +649,7 @@ it shows cygwin,solarize,linux,macosx,mingw gcc</p>
 <p>The manufacturer of your device may have chosen '*' for commands that have similar functionality, or they may have chosen to implement ALL of their proprietary AT commands with '*' as the first character.</p>
 
 <p>There are many AT command references available online in PDF format from many different manufacturers.  Perhaps the manufacturer of your device makes this information available as well.</p>
-",2592733,0,0,13514626,"My question is not about the command, but about the choice of * in the command.",,
+",2592733,0,0,13514626,"My question is not about the command, but about the choice of * in the command.",wireless,
 1407,11581346,Voice and face recognition libraries for .Net Gadgeteer,|voice-recognition|robotics|face-recognition|.net-micro-framework|.net-gadgeteer|,"<p>Recently, I've been looking into robotics and I've become interested in trying to make a robot of my own. It woulde be a simple one but I want it to be capable of face and speech recognition at least.</p>
 
 <p>I've found a set called EZ-Robots that comes with face/speech recognition libraries already, but thought that .NET gadgeteer would be better (more simple, scalable...). So far, I haven't tried any programming yet, I still need to decide which set to buy (which way to go).</p>
@@ -701,7 +701,7 @@ Now, we all know it is a <strong>projective transformation</strong> not obviousl
 
 <p><img src=""https://i.stack.imgur.com/ZvaZK.png"" alt=""matrix computation""></p>
 ",7/30/2012 16:07,11731236,5275,5,6,6,0,699559,,4/9/2011 1:47,978,11726686,"<p>You can use the <a href=""http://en.wikipedia.org/wiki/Direct_linear_transformation"" rel=""nofollow"">DLT algorithm</a> for this purpose.  There are MATLAB routines available for doing that in <a href=""http://www.csse.uwa.edu.au/~pk/research/matlabfns/"" rel=""nofollow"">Peter Kovesi's homepage</a>.</p>
-",128966,1,0,15558765,"in Matlab simply H=B/A where B=[b1 b2 b3 b4], A=[a1 a2 a3 a4]",,
+",128966,1,0,15558765,"in Matlab simply H=B/A where B=[b1 b2 b3 b4], A=[a1 a2 a3 a4]",fp,
 1449,11794299,Distance and Angle robot control,|algorithm|robotics|,"<p>I am sorry if it is not the right Stack Exchange website i should ask this question on, but it seems to me that this is closely related to software programming more than electrican engineering ! If it should be elsewhere, please tell me.</p>
 
 <p>Let's assume we want to control a 2 motorized wheels robot to go from point A to point B. Let's assume i want to control my robot by providing it the distance and angle. </p>
@@ -809,7 +809,7 @@ Is is worth to learn it? </p>
 
 <p>P.S: I know that such a uC will require appropriate power supply setup and things.</p>
 ",12/22/2012 12:08,,1293,1,5,2,,1592082,,8/11/2012 10:24,109,35949961,"<p>The key is in getting and deeply studying the manufacturer's datasheets for each device you remove and wish to reuse.  I am supposing that since you asked the question that you did that you are not a professional electrical engineer - that's OK, but you will need to do hours, days, or weeks of study to truly understand the datasheets well enough to successfully reuse your motherboard chips because they are written for professional engineers with years of experience, and unfortunately they were not written to be understood by hobbyists.  If you can succeed in acquiring and thoroughly understanding all of the datasheets (and the related user's guides as well for the more complex chips) then you have made it to the point where you might be able to start a custom design based on your recovered parts, on paper at least.  In order to test your design and insure that each part of it is working will require at least an oscilloscope and volt meter - and the knowledge of how to use them.  An understanding of basic electronics is essential, you will not succeed without it.  Very good soldering/rework/assembly skills will be required as well if you hope to have your design truly work - you can do everything else right and it can still fail if your skills in this area are lacking.  There is simply not enough time for me to advise you on everything you will need to know - but if you are motivated, dedicated, and you don't give up when setbacks and roadblocks occur (and trust me, they occur all too frequently for even the best engineers and best designs) - meaning that you are not easily frustrated when things don't work - then you have a chance at success.  I wish you all the best, and try to have fun while doing it (important in case fun is all you ever get out of your project).  :)</p>
-",6045061,0,0,19397251,Thanks dwelch. I think that ought to open some doors...,,
+",6045061,0,0,19397251,Thanks dwelch. I think that ought to open some doors...,hr,
 1589,14041109,how to recognise a zebra crossing from top view using opencv?,|opencv|computer-vision|robotics|,"<p>you can get all the details about the problem from this pdf document: www.shaastra.org/2013/media/events/70/Tab/422/Modern_Warfare_ps_v1.pdf</p>
 
 <p>how to recognize a zebra crossing from top view using opencv ?? 
@@ -830,7 +830,7 @@ thanks in advance ....</p>
 <p><a href=""http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2874980/"" rel=""nofollow"">Detecting and Locating Crosswalks using a Camera Phone</a></p>
 
 <p>While this is not an opencv implementation it should be a reasonable place to start.  </p>
-",684650,2,2,19398538,I'd put some research into recognizing a zebra from Hough transform.,,
+",684650,2,2,19398538,I'd put some research into recognizing a zebra from Hough transform.,vision,
 1594,14219623,frisbee trajectory,|c++|robotics|,"<p>This is my first post.  I'm the lead programmer on a FIRST robotics team, and this year's competition is about throwing Frisbees.  I was wondering if there was some sort of ""grand unified equation"" for the trajectory that takes into account the air resistance, initial velocity, initial height, initial angle, etc.  Basically, I would like to acquire data from an ultrasonic rangefinder, the encoders that determine the speed of our motors, the angle of our launcher, the rotational force (should be pretty constant.  We'll determine this on our own) and the gravitational constant, and plug it into an equation in real time as we're lining up shots to verify/guesstimate whether or not we'll be close.  If anyone has ever heard of such a thing, or knows where to find it, I would really appreciate it!  (FYI, I have already done some research, and all I can find are a bunch of small equations for each aspect, such as rotation and whatnot.  It'll ultimately be programmed in C++). Thanks!</p>
 ",1/8/2013 16:30,14219916,607,1,5,1,0,1958743,,1/8/2013 16:17,11,14219916,"<p>I'm a mechanical engineer who writes software for a living. Before moving to tech startups, I worked for Lockheed Martin writing simulation software for rockets. I've got some chops in this area.</p>
 
@@ -845,7 +845,7 @@ thanks in advance ....</p>
 <p>This is the empirical modeling process: launch a frisbee across a matrix of pitch and roll angles, launch speeds, frisbee spin speeds, etc... and backfit a model to your results. This can be as easy as linear interpolation of the results of your table, so that any combination of input variables can generate a prediction.</p>
 
 <p>It's not guess and check, because you populate your tables ahead of time, so can make some sort of prediction about the results. You will get much better information faster than trying the idealized models, though you will have to keep going to fetch your frisbee :)</p>
-",53139,6,0,19853022,"We'll be competing in an enclosed stadium, so unless the cheering fans somehow knock our Frisbee off path, almost everything is constant.  I guess we'll have to make data tables  :/  The only actual variable we will be manipulating is the angle of the launcher.  Because of this, the Frisbee should only be angled in one axis.  Our launcher is bizarrely consistent, so I guess making data tables won't be terrible, just really time consuming.  Hopefully we'll be able to generate a parabolic equation that can get us to within a few feet of our target.  Thanks!",,
+",53139,6,0,19853022,"We'll be competing in an enclosed stadium, so unless the cheering fans somehow knock our Frisbee off path, almost everything is constant.  I guess we'll have to make data tables  :/  The only actual variable we will be manipulating is the angle of the launcher.  Because of this, the Frisbee should only be angled in one axis.  Our launcher is bizarrely consistent, so I guess making data tables won't be terrible, just really time consuming.  Hopefully we'll be able to generate a parabolic equation that can get us to within a few feet of our target.  Thanks!",mp,
 1621,14437630,hardware emulation,|hardware|driver|robot|device-emulation|,"<p>I need to write controlling software for a very specialized and fairly complex industrial robot. I'm not allowed to access the actual robot before testing the final software, because it has to work all the time. It would be necessary to somehow emulate the robot, so I can develop my code. I have drivers for the robot, and some manuals but since it is a complex stuff, I would prefer not to build a simulator from scratch.</p>
 
 <p>What I'm looking for is a software where I just load the device drivers and based on them, the hardware can be simulated, with all of its capabilities.</p>
@@ -1180,7 +1180,7 @@ Also, (if it holds any relevancy):</p>
 For each population (in this case each input collection) you can calculate the score of an individual by subtracting the population mean from it, and then dividing it by their standard deviation.</p>
 
 <p>This does not leave you with numbers between 0 and 1 but does allow you to compare two populations with each other</p>
-",2062285,0,0,,,,
+",2062285,0,0,,,fp,
 1709,16250256,"Object distance to camera, using opencv",|c++|opencv|robotics|,"<p>I want to estimate the distance of an object to my camera. This must be using Opencv.
 I read that I have to use 2 cameras in stead of one and I found some code with Matlab, but I don't have any experience in it.
 Any help will be appreciated.</p>
@@ -1212,7 +1212,7 @@ Any help will be appreciated.</p>
 1772,17103286,Any alternatives to libhand?,|opengl|computer-vision|robotics|ogre|libhand|,"<p><strong><a href=""http://www.libhand.org/"" rel=""nofollow"">LibHand</a></strong> seems to be tightly integrated with <strong>OGRE</strong> for rendering. And extending any OGRE program beyond the basics is an uphill task.</p>
 
 <p>Are there any alternatives to LibHand? I'm hoping to use it with simple OpenGL programs.</p>
-",6/14/2013 7:29,,447,0,2,1,,1630,"Santa Clara, CA, USA",8/17/2008 17:03,7263,,,,,,24756268,"As an experienced SO user, you should know that we're not a replacement for Google.",,
+",6/14/2013 7:29,,447,0,2,1,,1630,"Santa Clara, CA, USA",8/17/2008 17:03,7263,,,,,,24756268,"As an experienced SO user, you should know that we're not a replacement for Google.",vision,
 1781,17724865,Hardware to Software incorporation/interaction,|robotics|hardware-interface|,"<p>I have taken interest in basic hardware interaction with software.</p>
 
 <p>What's a good language to start learning to control hardware? Can Java do the job?</p>
@@ -1879,7 +1879,7 @@ The MATLAB Function block allows you to add MATLAB® functions to Simulink® mod
 <p><img src=""https://i.stack.imgur.com/fjGtl.png"" alt=""enter image description here""></p>
 
 <p>to see an example check out <a href=""http://www.mathworks.com/help/simulink/ug/creating-an-example-model-that-uses-a-matlab-function-block.html"" rel=""nofollow noreferrer"">this page</a>.</p>
-",1926629,1,0,31642350,"the way it was asked, it sounded as it was specific to the robotics toolbox. See NKN's answer for integrate MATLAB functions in Simulink.",,
+",1926629,1,0,31642350,"the way it was asked, it sounded as it was specific to the robotics toolbox. See NKN's answer for integrate MATLAB functions in Simulink.",fp,
 1894,21059100,UAV simulation in MATLAB for target tracking,|matlab|simulink|robotics|,"<p>My objective is to track a moving target on ground by an UAV and this simulation is to be done in MATLAB. I have written code for developing Urban environment plot and also put a moving point in the plot(for the target).Now for the UAV I need to implement certain guidance laws(is what I understand from resources on the Internet).So how should I proceed with it?Will I be able to write code for that also?Or should I develop a simulink model and integrate my previous code as well?
 Thanks a lot in advance.</p>
 ",1/11/2014 6:03,,1069,1,0,0,,2417324,,5/24/2013 11:31,34,21074683,"<p>It should be possible to implement a simulation either with Matlab or Simulink. Which is more fit will depend on the approach you decide to take. Maybe you should decide what motion planning algorithm to implement before jumping into implementation. Wikipedia has a list of common algorithms:
@@ -1980,7 +1980,7 @@ p=mstraj(path, [15 15 15], [], [1 0 1], 0.02 , 0.2);
 
 % etc...
 </code></pre>
-",2257388,0,0,,,,
+",2257388,0,0,,,fp,
 1899,21178005,Find all polygons formed by intersections of lines,|geometry|computational-geometry|robotics|maze|,"<p>I have a maze described by walls as line segments (no given order). Given a point, I need to determine whether its inside the maze or no. Everything is in the Cartezian plane(no discretization).</p>
 
 <hr>
@@ -2038,7 +2038,7 @@ while current point is different than fist one
 <p>The set of particles you updated with the odometry readings is your proposal distribution. By just taking the particle with the highest weight into account you completely ignore this distribution. It would be the same if you just randomly spread particles in the whole state space and then take the one particle that explains the sonar data the best. You only rely on the sonar reading and as sonar data is very noisy your estimate is very bad. A better approach is to assign a weight to each particle, normalize the weights, multiply each particle state by its weight and sum them up to obtain your posterior state. </p>
 
 <p>For your resample step i would recommend to remove the random samples around the predicted state as they corrupt your proposal distribution. It is legit to generate random samples in order to recover from failures, but those are supposed to be spread over the whole state space and explicitly not around your current prediction. </p>
-",3127962,5,1,32053386,"Please don't ask the same question on [multiple stack exchange sites](http://robotics.stackexchange.com/q/2337/37). If you accidentally ask on the wrong site, it can be migrated to the correct one.",,
+",3127962,5,1,32053386,"Please don't ask the same question on [multiple stack exchange sites](http://robotics.stackexchange.com/q/2337/37). If you accidentally ask on the wrong site, it can be migrated to the correct one.",mp,
 1914,21743600,How to measure distance at angle in image python,|python|mapping|robotics|particle-filter|,"<p>I'm working on a particle filter for an autonomous robot right now, and am having trouble producing expected distance measurements by which to filter the particles. I have an image that I'm using as a map. Each pixel represents a certain scaled area in the enviroment. Space the robot can occupy is white, walls are black, and areas that are exterior to the enviroment are grey.</p>
 
 <p>If you are unfamiliar with what a particle filter is, my python code will create a predetermined number of random guesses as to where it might be (x,y,theta) in the white space. It will then measure the distance to the nearest wall with ultrasonic sensors at several angles. The script will compare these measurements with the measurements that would have been expected at each angle for each guessed location/orientation. Those that most closely match the actual measurements will survive while guesses that are less likely to be right will be eliminated.</p>
@@ -2327,7 +2327,7 @@ for (i=0;i&lt;number_of_actuators;i++)
 ",6/11/2014 8:29,,397,1,4,3,0,,,,,24352306,"<p>This may explain your case. The algorithm is too big. For me it explains the things well. Have a look </p>
 
 <p><a href=""http://people.csail.mit.edu/ibaran/papers/2007-SIGGRAPH-Pinocchio.pdf"" rel=""nofollow"">http://people.csail.mit.edu/ibaran/papers/2007-SIGGRAPH-Pinocchio.pdf</a></p>
-",3219193,0,1,37283598,"I still think it's too big. Just my opinion, though, perhaps someone else will find the time and will to answer you.",,
+",3219193,0,1,37283598,"I still think it's too big. Just my opinion, though, perhaps someone else will find the time and will to answer you.",fp,
 2003,24719506,Mindstorms NXT Programming opposite facing ultrasonic and light sensors,|robotics|lego-mindstorms|nxt|,"<p>I'm not usually one to ask for help, but after weeks of trying to get this to work, I'm reaching out for help as a ditch attempt.</p>
 
 <p>I've been having trouble with programming my LEGO Sumo bot. Because of this, I started to learn the program more and more. I've still had this one problem though. How would I program my sumo bot to utilize opposite facing ultrasonic sensors? The closest I've gotten was having two normal 'spin seek destroy back up' loops running in parallel with another loop of the same idea only with opposite directions and the other sensor ports. </p>
@@ -2605,7 +2605,7 @@ All connected by a steering &quot;brain&quot; function.</p>
   <li>SURVEY - allows to query state of multiple applications in a single    go</li>
   </ul>
 </blockquote>
-",1099876,1,2,45535833,`multiprocessing` ... its a builtin library it has things called `Pipe`'s that do about what you want,,
+",1099876,1,2,45535833,`multiprocessing` ... its a builtin library it has things called `Pipe`'s that do about what you want,multithreading,
 2183,28951574,Implementing a stack to use backtracking for struct,|c|struct|backtracking|robot|,"<p>This is a program that enables a Robot to follow black lines through a ""maze"". The maze is made of 7x7 black lines with a entry line leading through it. There can be empty squares and lines leading nowhere. where the black lines meet there is a white square. </p>
 
 <p>The idea is to save these squares in a struct and make the robot run through the maze and save the individual structs in a stack. </p>
@@ -2829,7 +2829,7 @@ You cannot set the process noise as </p>
 </code></pre>
 
 <p>because you may have negative covariance, this doesn't make sense.</p>
-",2827670,0,4,46560281,"q is the euclidean distance -> if q = Inf, then one of the parameters fx,fy,x,y is also Inf.  Which one?",,
+",2827670,0,4,46560281,"q is the euclidean distance -> if q = Inf, then one of the parameters fx,fy,x,y is also Inf.  Which one?",vision,
 2219,29399433,Path planning algorithm for connected multi-robot system,|algorithm|robotics|motion-planning|,"<p>Say I have three robots connected as a triangle, how do I manage to avoid obstacles in working space?</p>
 
 <p>I'm thinking about using A*, but I got problem that it works for one robots but when comes to 3 robots it will cause collision. </p>
@@ -3314,7 +3314,7 @@ A PID controller is a feedback control loop. </p>
 <p>Now the PID controller takes the <code>error = desired position - actual position</code> and uses the error to create the next command. The overall goal is to drive the <code>error</code> down to 0, in other words <code>desired position = actual position</code> The exact details of your PID coefficients are based on your specific setup and usually they must be tuned manually in order to achieve desirable results (see the links provided for more details). </p>
 
 <p>Loooking at the <a href=""http://playground.arduino.cc/Code/PIDLibrary"" rel=""nofollow noreferrer"">Arduino PID Library Documentation</a> shows that they have easy methods to set <code>KP, KD, KI, input, output</code> THey even have an autotune parameter that can automatically find your PID constants. Hope that helps, Good luck.</p>
-",2705382,1,0,,,,
+",2705382,1,0,,,wireless,
 2453,35722264,Kinect robotic arm detection,|image-processing|kinect|robotics|motion-detection|lbr-iiwa-rapi|,"<p>can i use Kinect sensor to detect the motion of a robotic arm (KUKA LBR iiwa 7R800) and calculate it's links angles in order to make it control another robotic arm.</p>
 ",3/1/2016 11:56,,378,1,3,0,,6002349,,3/1/2016 11:47,5,35724567,"<p>Of course this is possible but I don't think it is a good idea.</p>
 
@@ -3378,7 +3378,7 @@ Here is the section of my code:</p>
 <pre><code>alpha_1 = mod(alpha_1, pi);
 alpha_2 = mod(alpha_2, pi);
 </code></pre>
-",670206,4,1,59596013,"this maybe because `atan2` returns a value of `aux_t` between -pi and pi, so it changes sign as soon as it crosses that half-line.",,
+",670206,4,1,59596013,"this maybe because `atan2` returns a value of `aux_t` between -pi and pi, so it changes sign as soon as it crosses that half-line.",obstacles,
 2466,36340961,Building robotlocomotion drake-distro,|java|installation|cygwin|robotics|,"<p>I have 64 bit win 8 and installed cygwin 64(and jdk 8).
 when I use make command this pops up:
 error message </p>
@@ -3386,7 +3386,7 @@ error message </p>
 <p><a href=""https://i.stack.imgur.com/ysnuN.png"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/ysnuN.png"" alt=""enter image description here""></a>
 the distro' link is <a href=""https://github.com/RobotLocomotion/drake"" rel=""nofollow noreferrer"">drake distro</a>
 Thanks in advance</p>
-",3/31/2016 18:26,,62,0,3,0,,5556374,,11/12/2015 20:33,67,,,,,,60310194,"It might help to be more specific about what this project is, and/or where it's from. Is it from here: https://github.com/lcm-proj/lcm ? If so, specific build issues with building from source might get quicker responses if you create an issue ticket on the project?",,
+",3/31/2016 18:26,,62,0,3,0,,5556374,,11/12/2015 20:33,67,,,,,,60310194,"It might help to be more specific about what this project is, and/or where it's from. Is it from here: https://github.com/lcm-proj/lcm ? If so, specific build issues with building from source might get quicker responses if you create an issue ticket on the project?",li,
 2469,36403200,Same coordinate system between two objects C#,|c#|robotics|coordinate-systems|kinect-sdk|,"<p>I am writing a code using C#. I use a Kinect SDK V2 and a robot, for example my robot model is an IRB 1600. From the Kinect sensor I take a human point cloud when a human is detecting from the camera and from the robot I take one position (X-Y-Z position) that tells me where the robot is every time I ask it.</p>
 <p>My problem is that the camera and robot have got different coordinate systems the sensor have the sender of the camera and the robot has his bases. I want to create a same coordinate system between them for distance calculation between human and robot. Are any methods to do that? tutorials?</p>
 ",4/4/2016 12:50,,87,1,0,1,,5436280,,10/12/2015 10:30,19,36409262,"<p>I think you just need to make a calibration...</p>
@@ -3396,7 +3396,7 @@ Thanks in advance</p>
 <p>Nevertheless, if you have both 3D positions of the two sensors, a simple calculation in 3D gives you the distance.</p>
 
 <p>Distance=sqrt(X2-X1)^2+(Y2-Y1)^2+(Z2-Z1)^2)</p>
-",2205242,0,0,,,,
+",2205242,0,0,,,sensor,
 2470,36482498,How to register Point clouds using HandEye calibration,|robot|point-clouds|,"<p>I have built a fringe projection based 3D-Scanner with a projector and camera each. I intend to mount this system on an industrial robot and use it for automatic scanning of components. I know that HandEye calibration needs to be performed to find transformation between Camera co-ord system to Robot base co-ord system. Now, I want to use this information to register point clouds. </p>
 
 <p>To make it more clear:</p>
@@ -3595,7 +3595,7 @@ The file passed in to the checksum method is the final file with 0x00 in the che
 <p><strong>Derivative:</strong> This is supposed to account for the ""future"". It uses the slope of the most recent samples. Remember this is the slope, it has nothing to do with the position error(<code>current-goal</code>), it is <code>previous measured position - current measured position</code>. This is most sensitive to noise and when it is too high often causes ringing. A higher value encourages change since we are ""<em>amplifying</em>"" the slope.</p>
 
 <p>I hope that helps. Maybe someone else can offer another viewpoint, but that's typically how I think about it.</p>
-",2705382,1,0,,,,
+",2705382,1,0,,,wireless,
 2541,37311326,Command received by controller through serial interface but robot arm doesn't move,|c#|serial-port|embedded|robotics|,"<pre><code>using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -3967,7 +3967,7 @@ As tutorial said we have to use <code>numpy_msg(type)</code> wrapper to be able 
 <p>You are concerned with the EKF (case 1).  What is a good linear approximation of a function?  If you zoom way in on a curve, it starts to look like a straight line, with a slope that's the derivative of the function at that point.  If that sounds strange, look at <a href=""https://en.wikipedia.org/wiki/Taylor_series"" rel=""nofollow noreferrer"" title=""the Wikipedia entry on Taylor series"">Taylor series</a>.  The multi-variate equivalent is called the Jacobian.  So we evaluate the Jacobian of <code>f()</code> at <code>x</code> to give us an <code>F</code>.  Now <code>Fx != f(x)</code>, but that's okay as long as the changes we're making to <code>x</code> are small (small enough that our approximated <code>F</code> wouldn't change much from before to after).</p>
 
 <p>The main problem with the EKF approximation is that when we use the approximation to update the distributions after the measurement step, it tends to make the resulting covariance <code>P</code> too low.  It acts like corrections ""work"" in a linear way.  The actual update will depart slightly from the linear approximation and not be quite as good.  These small amounts of overconfidence build up as the KF iterates and have to be offset by adding some fictitious process noise to <code>Q</code>.</p>
-",479989,3,0,,,,
+",479989,3,0,,,SLAM,
 2637,41645196,Robot Obstacle Recording/Avoiding,|java|while-loop|robotics|,"<p>I'm trying to make this robot go in random directions until it reaches an obstacle. Then it should record that obstacle (Obstacle = 1,2,3 etc) and switch direction. This should go on until the timer expires.</p>
 
 <pre><code>public static void main(String args[]) throws Exception{
@@ -4254,7 +4254,7 @@ def drive_for(dist = 10):
 
 <p>docs on PID:
 <a href=""http://robotpy.readthedocs.io/projects/wpilib/en/latest/_modules/wpilib/pidcontroller.html"" rel=""nofollow noreferrer"">http://robotpy.readthedocs.io/projects/wpilib/en/latest/_modules/wpilib/pidcontroller.html</a>?</p>
-",9421876,1,0,73425414,Which parameters (wrt the robot's movement) do you have control over?,,
+",9421876,1,0,73425414,Which parameters (wrt the robot's movement) do you have control over?,mc,
 2761,43414357,Why is my nested while loop not working?,|while-loop|nested-loops|robotics|robotc|,"<p>I'm currently programming in RobotC, for a Vex 2.0 Cortex. I'm using encoders to make my robot go straight.</p>
 
 <p>This is my code:</p>
@@ -4356,7 +4356,7 @@ midpoint of the rear axle.) </li>
 <p>I would much prefer to have a general way to do this. Then I would be able to add pitch information (from an IMU/INS) and also determine the position of my hitch, each row of the planter, etc.</p>
 
 <p>From reading other questions here, I think I want to do a rigid body transformation with a constraint (no pitch). Am I close? I strongly prefer a Python solution.</p>
-",5/21/2017 13:41,,150,0,1,1,,7362612,"Rensselaer, IN, United States",1/1/2017 14:21,35,,,,,,75425224,This might help: http://nghiaho.com/?page_id=671,,
+",5/21/2017 13:41,,150,0,1,1,,7362612,"Rensselaer, IN, United States",1/1/2017 14:21,35,,,,,,75425224,This might help: http://nghiaho.com/?page_id=671,position,
 2809,44874441,How to convert a rotation matrix to axis angle form?,|matlab|robotics|rotational-matrices|,"<pre><code>theta=acos((trace(R)-1)/2);
 if trace(R)==3
     vec = [0 0 0];
@@ -4484,7 +4484,7 @@ It has one <strong>RS-232</strong> and one <strong>RS-485</strong> port for seri
 </code></pre>
 
 <p>This works by drawing a line between an fixed point you can think of as the imaginary back of the robot's eye and the person. The point where this line intersects the LED strip is the point that the eye should be centered. This solution makes the (naive) assumption that there is one LED per unit distance, so you'll have to make some changes, but we can't do EVERYTHING for you ;)</p>
-",5090081,0,2,79080390,"Being 'dumb' and 'new to programming' are two very different things. Don't start thinking you're dumb because someone with years of experience is better at something than yourself. I would also struggle with the code I gave you back when I was a newbie. That being said, have you solved your problem, or do you need more guidance?",,
+",5090081,0,2,79080390,"Being 'dumb' and 'new to programming' are two very different things. Don't start thinking you're dumb because someone with years of experience is better at something than yourself. I would also struggle with the code I gave you back when I was a newbie. That being said, have you solved your problem, or do you need more guidance?",fp,
 2888,45996174,Control a robot with REST API with JS and Mongodb,|mysql|rest|raspberry-pi|robotics|,"<p>I tried to write a control connection between my robot and PC or Android. 
 Ok. So right now it looks like so:
 There is an local apache2 server on my raspberry pi and my robot checks every time my MySQL database which is not efficient especially because MySQL is slow</p>
@@ -5069,7 +5069,7 @@ Of course you could get fancy and implement the loop within a signal-and-wait me
 
 <p>How can I make my repo to do that? Do I have to add some commands in CMakelists or package.xml?</p>
 ",1/10/2018 14:30,,1291,1,0,1,,5107689,,7/12/2015 9:59,17,48257864,"<p>Turns out that I can change permissions on script files and commit them on github. Their permission will hold in other machines. </p>
-",5107689,1,0,,,,
+",5107689,1,0,,,li,
 2989,48227848,Using for / list comprehension for creating a tuple from any amount of other tuples,|python|tuples|list-comprehension|robotics|,"<p>With the following code I'm looking at how to create the <code>TRACKS[0]</code> and <code>ARM[0]</code> tuples (or even a whole set, e.g. <code>ARM</code>), as they are very similar - I think something like a list comprehension would work (as I'm picturing a for each loop).</p>
 
 <pre><code># MOTORS: all, m1, m2, m3, m4, m5 (+, -)
@@ -5340,7 +5340,7 @@ void Play() {   // write arm position data to servos
 <p>When your microcontroller is started, the variable <code>mode</code> is set to 1. If you look carefully at the <code>loop</code> function you can see that your code will enter the <code>case 1</code> branch at least once where it basically writes data to the EEPROM and - more importantly - will set <code>addr</code> to a value other than 0, due to the <code>addr++</code> instructions (unless you run the code so long that you encounter an integer overflow).</p>
 
 <p>The only place where you attempt to read from the EEPROM is in the <code>Play</code> function. Due to the <code>if (addr == 0)</code> condition in this function you will never execute the <code>EEPROM.read</code> instructions as <code>addr</code> will not be 0 as explained above.</p>
-",,1,1,83906103,done editing it.,,
+",,1,1,83906103,done editing it.,hc,
 3021,48999577,How to convert an image to RGB data values in c++,|c++|colors|robotics|,"<p>I am creating a robot along with my team (of which is called The Rusty Huskies) for a <em>FIRST</em> competition. We need to know how to convert an image to different values of rgb so that our robot can detect which switch we are looking at (the switch is where we would be placing our blocks to gain points).</p>
 
 <p>So it would turn out to be something like this:</p>
@@ -5558,7 +5558,7 @@ icp.align(*result);
 
 <p>This works well if the scene is not too cluttered but also often fails and then gives a completely wrong transformation (randomly rotated). Since the point clouds are already aligned with the ground plane and the robot only moves on the ground plane the clouds actually only differ in translation and the y (up) rotation. Is is possible to set this in PCL?</p>
 ",4/5/2018 9:28,,1734,1,0,1,0,4848533,,4/29/2015 23:17,2,50121742,"<p><a href=""http://docs.pointclouds.org/trunk/classpcl_1_1registration_1_1_warp_point_rigid3_d.html"" rel=""nofollow noreferrer"">WarpPointRigid3D</a> will allow you to do a 1D rotation and a 2D translation.  Here's a <a href=""http://www.pcl-users.org/Restricting-Transform-Dimensions-in-Cloud-Registration-ICP-td4020375.html"" rel=""nofollow noreferrer"">relevant mailing list</a> post.</p>
-",730138,0,0,,,,
+",730138,0,0,,,orientation,
 3145,50849484,Translate degrees into 3-motor movement,|python|math|robotics|,"<p>I have a robot with three motors (red), each with an omni-directional (blue) (<a href=""https://www.vexrobotics.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/2/1/217-2584.jpg"" rel=""nofollow noreferrer"">see example of omniwheel here</a>). If I want the robot to move forward, I can activate both motor 1 and 3, and the wheel at 2 will spin freely, perpendicular to the direction its motor can spin.</p>
 
 <p>How could I write a function that takes degrees as an input and outputs 3 values ranging from 0-1 (no motor speed, full motor speed), so the robot faces the same direction while moving towards the true bearing specified in degrees?</p>
@@ -5996,7 +5996,7 @@ end
 </code></pre>
 
 <p>Try examples using this link <a href=""https://github.com/uArm-Developer/uArm-Python-SDK/tree/2.0/examples/api"" rel=""nofollow noreferrer"">https://github.com/uArm-Developer/uArm-Python-SDK/tree/2.0/examples/api</a></p>
-",7484853,1,0,,,,
+",7484853,1,0,,,NEW,
 3342,55258526,Accelerometer too noisy,|python|robotics|,"<p>I am working on a group project for building a robot and we are trying to implement an accelerometer that triggers an alarm if the robot is picked up/pushed on the way. Right now our accelerometer is very noisy and not very reliable. Could someone point me in the right direction on how to fix this?
 Current code:</p>
 
@@ -6029,7 +6029,7 @@ Current code:</p>
 </code></pre>
 
 <p>The second method is trying to tackle the noisiness but it is still not very nice... </p>
-",3/20/2019 10:26,,40,0,4,0,,10585692,,10/31/2018 11:53,16,,,,,,97255737,"Basically, when it is turned on now and the robot is even static, it prints out the coordinates to the console every millisecond. We want to try to reduce the number of outputs to only appear when the robot moves more than 10cm in direction.",,
+",3/20/2019 10:26,,40,0,4,0,,10585692,,10/31/2018 11:53,16,,,,,,97255737,"Basically, when it is turned on now and the robot is even static, it prints out the coordinates to the console every millisecond. We want to try to reduce the number of outputs to only appear when the robot moves more than 10cm in direction.",sensor,
 3347,55313613,How rotate source vector to target (to nearest vector) by using only 2 Euler angles,|matrix|vector|geometry|coordinates|robotics|,"<p>I need to rotate source 3D vector to target vector by rotation around only two axes YZ.</p>
 
 <p>I have mechanism with 2 motors rotating around Y and then around Z. I have random source vector attached to this mechanism.</p>
@@ -6355,7 +6355,7 @@ def l()
    PTP P3 ...
 END
 </code></pre>
-",8882513,0,1,,,,
+",8882513,0,1,,,fp,
 3375,55787126,Can someone explain how to add the slider object so it controls its own individual servo motor?,|user-interface|arduino|processing|computer-science|robotics|,"<p>The problem is that every time I add a slider object and try to connect it to a different servo motor through a different pin the sliders both only control the same servo motor. It won't allow for me to add a servo motor that controls each servo motor independently through the user-interface. I'm using Processing as the interface and Arduino as the IDE. </p>
 
 <p>I have tried adding other slider objects but they all still control the same servo. I do not know if the issue is through Arrduino or Processing. When I add the other sliders, I connect them to their own pins but it still doesn't allow for them to be controlled individually.</p>
@@ -6469,7 +6469,7 @@ controlP5.addSlider(""servoAngle3"",0,180,servoAngle3,20,10,180,20);
 </code></pre>
 
 <p>that should more or less do it. You know many years ago, we have to write our own processing to arduino serial protocol to do this.</p>
-",11530294,-1,0,,,,
+",11530294,-1,0,,,wireless,
 3385,55997039,Algorithms for a line follower robot (with camera) capable following very sharp turns and junction,|python|opencv|computer-vision|robotics|opencv3.1|,"<p>I want to write code (python,opencv) for a line follower robot equipped with a camera and Raspberry Pi. I want to make to robot go has fast as possible</p>
 
 <ol>
@@ -6490,7 +6490,7 @@ line?</p></li>
 ",5/5/2019 22:42,,2045,1,3,1,,11455950,,5/5/2019 16:25,8,62512400,"<p>I can recommend this awesome video on YouTube:</p>
 <p><a href=""https://www.youtube.com/watch?v=tpwokAPiqfs&amp;t=868s"" rel=""nofollow noreferrer"">https://www.youtube.com/watch?v=tpwokAPiqfs&amp;t=868s</a></p>
 <p>It contains several episodes and teachs a lot of useful stuff. Good luck!!!</p>
-",13749389,0,0,98641189,"I'm experimenting, I wrote a code that slices the input image from the camera (horizontal). On each slice I run threshold-> findcontours-> find the centeroid of the contour. I keep track on the line using a sliding window, because on the right to of the line (in some places) there are signaling lines and I need to filter them out. When I get close to a sharp  turn, the sliding doesn't work well",,
+",13749389,0,0,98641189,"I'm experimenting, I wrote a code that slices the input image from the camera (horizontal). On each slice I run threshold-> findcontours-> find the centeroid of the contour. I keep track on the line using a sliding window, because on the right to of the line (in some places) there are signaling lines and I need to filter them out. When I get close to a sharp  turn, the sliding doesn't work well",mp,
 3388,55999981,Distance between two Aruco Markers in Python?,|python|opencv|computer-vision|robotics|aruco|,"<p>I am trying to calculate the distance between two Aruco markers in Python. I have code that can calculate the pose of one marker but I am not sure how to move from there. Is there anyone that has done something similar or can point me in the right direction?</p>
 
 <p>Thank you!</p>
@@ -6512,7 +6512,7 @@ print calculateDistance(x1, y1, x2, y2)
 </code></pre>
 
 <p>This code will give the distance between the two corners</p>
-",10151093,2,2,,,,
+",10151093,2,2,,,fp,
 3390,56067475,"Doing things (driving servos, turning on led) using joystick input",|python|robotics|joystick|evdev|,"<p>I'm building a basic DVa Mech robot (hobby).  This is non-bipedal.  Wheeled chassis. All code in python. </p>
 
 <p>How do I continuously perform activities while holding down a button, pushing a joystick?  And can I even do two (or more) at once: move wheels forward, turn torso, fire guns?</p>
@@ -6604,7 +6604,7 @@ for event in gamepad.read_loop():
 <p>Without <code>continuous_servo</code>, one should consider the use of <code>select()</code> with <strong>timeout</strong> (<code>select([gamepad], [], [], timeout)</code>) as described in <a href=""https://python-evdev.readthedocs.io/en/latest/tutorial.html#reading-events-from-multiple-devices-using-select"" rel=""nofollow noreferrer"">readthedoc: python-evdev</a>.</p>
 
 <p>The timeout will allow angle computation.</p>
-",425540,0,1,,,,
+",425540,0,1,,,wireless,
 3393,56360142,What does it actually mean by Task Planning?,|robotics|,"<p>I have just started studying robotics. This is my first question to get started with robotics. Pardon me if this question is too naive.</p>
 
 <p>What does it actually mean by <a href=""https://ieeexplore.ieee.org/document/56654"" rel=""nofollow noreferrer"">Task Planning</a> in case of robotics?</p>
@@ -6613,7 +6613,7 @@ for event in gamepad.read_loop():
 ",5/29/2019 12:00,56373815,40,1,0,0,,159072,,6/2/2009 18:25,6588,56373815,"<p><strong>Robot Motion control</strong> is generally dealt with low-level navigation like localization (what is the current location of the robot), path planning (chose a path from a to b by avoiding obstacles).</p>
 
 <p><strong>Tasking planning</strong> is generally dealing with high-level planning. For example, task for a robot with a manipulator is to clean the desk (go to desk, find objects on desk and choose the order to pickup items, move the picked items to dusbin).</p>
-",1595504,1,0,,,,
+",1595504,1,0,,,gs,
 3394,56488829,Looking for solution how to exit the loop at the right place,|c#|robotics|,"<p>Okay guys so first I want to find three freePositions, one is sortedSystem.BooleanCellSystem[row][column] and than go back and change the row, my question is where I should put {break;} So I can Have 3 freePosition with different row. Thank you :) </p>
 
 <pre><code>public void FindingFreeCells(SortingSystem sortedSystem, int number)
@@ -6656,7 +6656,7 @@ for event in gamepad.read_loop():
   }
 }
 </code></pre>
-",6/7/2019 6:11,,60,0,9,0,,,,,,,,,,,99567430,"Can you help with the implementation of that structure, how it should looks.",,
+",6/7/2019 6:11,,60,0,9,0,,,,,,,,,,,99567430,"Can you help with the implementation of that structure, how it should looks.",fp,
 3404,56592230,In general is it ok to loop if statements with goto under else?,|lua|robotics|,"<p>So I have a task to be done which is to program the robot (AUBO) to pick different objects and place them in a certain order (Point A, B, C, D). 
 I'm using some vision system known as pim60. So if an object is detected it will go and pick and the rest of the program are waypoints to drop products. The first problem is I want it to go to the next waypoint to drop the and the second thing is, the next drop point cannot be skipped until an object is detected for that drop point. </p>
 
@@ -6730,7 +6730,7 @@ Drop at position B
 </code></pre>
 
 <p>Also, if you're repeating the same code three times, you should extract it into a function, and maybe give the position as a parameter. Or at least put the whole thing into a <code>for</code> loop.</p>
-",235548,1,3,99773559,My noobish program makes it appear so. And I had posted incorrect stuff after not touching the code for some time.,,
+",235548,1,3,99773559,My noobish program makes it appear so. And I had posted incorrect stuff after not touching the code for some time.,mp,
 3417,56883538,Simulink model 'to workspace' output,|matlab|simulink|robotics|pid-controller|,"<p>I am trying to control motor torque and am using a workspace variable in Simulink and want to output similar variable to workspace.</p>
 
 <p>I have size(T_u)=[3, 91] whereas the output I am getting from the simulation has size [91, 90]</p>
@@ -6771,7 +6771,7 @@ end
 <p>where 90 is the signal dimension and 138 is the number of timesteps in your Simulink model.</p>
 
 <p>You could now use the last row of the data (which has the length 90) and add it to your array.</p>
-",3562088,0,1,100314942,"Hi @Capri as I don't have the Control System Toolbox installed, could you provide the arrays `C_PI`, `T_u` and `T_l` for `k=1`?",,
+",3562088,0,1,100314942,"Hi @Capri as I don't have the Control System Toolbox installed, could you provide the arrays `C_PI`, `T_u` and `T_l` for `k=1`?",fp,
 3442,57038494,how can I use gpiozero robot library to change speeds of motors via L298N,|python-3.x|raspberry-pi2|robotics|gpiozero|,"<p>In my raspberry pi, i need to run two motors with a L298N.
 I can pwm on enable pins to change speeds. But i saw that gpiozero robot library can make things a lot easier. But 
 When using gpiozero robot library, how can i alter speeds of those motors by giving signel to the enable pins.</p>
@@ -6782,7 +6782,7 @@ So here is my line of code:
 
 <p>Hope it works for you!
 I have some interesting code on the stocks for controlling the robot's absolute position, so it can explore its environment.</p>
-",5559525,1,0,,,,
+",5559525,1,0,,,mc,
 3445,57065924,What is the data contained in ROS topic velodyne_msgs/VelodynePacket Message?,|ros|robotics|lidar|,"<p>I am doing a light weight program to monitor received beams for lidar. Preferably, I do not want to cache the entire UDP data packet or point cloud data due to the light weight nature.</p>
 
 <p>The question is what is the data contained in ROS message velodyne_msgs/VelodynePacket. This message contains smaller data but I do not know if it is related. </p>
@@ -6805,7 +6805,7 @@ cat VelodyneScan.msg</code> </p>
 <li>Put your code in a ROS Nodelet. This gives you the advantages of ROS data abstractions while eliminating the network data transfer that occurs between nodes. This is akin to using a pointer to the data field. </li>
 <li>If you really don't want all the scan data, but still want to use ROS, you can write your own driver node. This will read from the LIDAR the data you want and discard the data you don't. You can do the raw data processing in that node (no ROS message required) or publish the data you care about and do the processing in another node. </li>
 </ol>
-",3954529,-1,2,,,,
+",3954529,-1,2,,,sensor,
 3461,57675404,Data structure to store a grid (that will have negative indices),|c++|data-structures|ros|robotics|,"<p>I'm studying robotics at the university and I have to implement on my own SLAM algorithm. To do it I will use ROS, Gazebo and C++.</p>
 
 <p>I have a doubt about what data structure I have to use to store the map (and what I'm going to store it, but this is another story).</p>
@@ -6960,7 +6960,7 @@ The above class was used by me in a similar setting and we used a <code>std::map
 <p>To store if we had found any walls at a certain position.
 <br>
 By using this <code>std::map</code> based method you avoid having to do math to know what offset you have to have inside an 2D array (or some structure like that). It also allows you to move freely as there is no chance that you'll travel outside of the predefined bounds you set at construction. This structure is also more space efficient against a 2D array as this structure only saves the areas where the robot has been. This is also a C++ way of doing things: relying on the STL instead of creating your own 2D map using C constructs.</p>
-",8548828,1,1,101798646,I have updated my question to better clarify my problem.,,
+",8548828,1,1,101798646,I have updated my question to better clarify my problem.,dt,
 3527,57940967,"In Peter Corke‘s Robot Book, the same Function `rpy2r()` yields different results?",|matlab|robotics|,"<p><img src=""https://i.stack.imgur.com/hdCFF.png"" alt=""enter image description here""></p>
 
 <p>but matlab result:</p>
@@ -7006,12 +7006,12 @@ lambda =
 <p>Because of this, the last column given by <code>eig</code> is the vector provided by <code>tr2angvec</code>.  Note that <code>theta=0.3655</code> while the real eigenvalue is one (because rotations do not change length). Then notice that the real part of the imaginary eigenvalues is <code>0.9339</code>, and that <code>acos(0.9339)=0.365626358 rad</code>. </p>
 
 <p>Then recall that the imaginary eigenvalues of a rotation matrix are <code>cos(theta) + i sin(theta)</code> and <code>cos(theta) - i sin(theta)</code>.</p>
-",3007075,0,1,,,,
+",3007075,0,1,,,fp,
 3531,58100832,How is it possible for the RPA bot to look constantly in a folder if there is a new File?,|robotics|blueprism|rpa|,"<p>This file is stored in ""Microsoft Azure Storage Explorer"". It should be added to the queue.</p>
 
 <p>It is not sure when the file is added, because it is created by an other application, that has nothing to do with rpa.</p>
 ",9/25/2019 14:32,,457,1,2,-1,,12040775,,9/9/2019 9:25,32,58115548,"<p>Well, you have action ""Utility - File Management: File exist?"", and you have action ""Utility - General:Sleep"". If you combine these two, then you'll have the answer.</p>
-",5779258,3,1,102617719,"I mean, how this works. How can I tell blueprism: ""please look constantly if there is a new file. If there is a new file, conduct process XY"".",,
+",5779258,3,1,102617719,"I mean, how this works. How can I tell blueprism: ""please look constantly if there is a new file. If there is a new file, conduct process XY"".",fp,
 3546,58625888,Generate probability density after single sensor measurement,|robotics|,"<p>In MCL localization, the robot is able to generate a density map after receiving a single sensor scan. An example is given on page 10 of the following link.</p>
 
 <p><a href=""http://robots.stanford.edu/papers/thrun.robust-mcl.pdf"" rel=""nofollow noreferrer"">http://robots.stanford.edu/papers/thrun.robust-mcl.pdf</a></p>
@@ -7028,10 +7028,10 @@ lambda =
 <p>In <code>Fig.3c</code>, these probabilities are plotted such that higher the probability higher the darkness.</p>
 
 <p>I guess these positions of particle are taken from <code>Fig. 6a</code> as example. You can see in <code>Fig. 3c</code> that particles in the corridor have high probability (more dark). </p>
-",1595504,0,0,,,,
+",1595504,0,0,,,sensor,
 3572,58681419,Ultra96 or Pynq-Z2 kit?,|python|arm|iot|robotics|,"<p>Which one is more suitable for my project? I want to build a human gesture mimicking Robotic arm. The application is to be built using an open source PYNQ framework. It requires me to choose either one of the kits Ultra96 or PYNQ-Z2 kit for my project so that they can provide me with it. I am unable to find the exact difference between the functionalities of the two, and when to use which? Please help me.</p>
 ",11/3/2019 15:02,,198,1,0,0,,6024781,,3/6/2016 8:44,6,61090911,"<p>I have been using the Z2 board and it would seem to work just fine for your project. Although I can't speak for the ultra96 it's worth noting that it is a community board and so is not officially supported by Pynq. </p>
-",1748173,0,0,,,,
+",1748173,0,0,,,hr,
 3578,58744003,Custom addon not displayed in the addons menu in G1ANT studio,|c#|automation|robotics|rpa|g1ant|,"<p>I am trying to  create a new addon but the addon is not being displayed in the addons menu in G1ANT Studio. Even other addons installed from the marketplace are also not displayed. I am using the latest version. I have tried running G1ANT studio as administrator. Yet it makes no difference. </p>
 
 <p>Here is the Addon.cs file of my addon:</p>
@@ -7089,7 +7089,7 @@ namespace G1ANT.Addon.LibreOffice
 <p>Remember
 1. All dlls in the solution should be marked as ""Resource"" and will be embeded into your addon
 2. The target .NET Framework of your project should be 4.6.1</p>
-",12360767,3,1,,,,
+",12360767,3,1,,,li,
 3586,58808291,Printing serial data from IRobot Create 2,|c++|byte|robotics|,"<p>I'm working on an interface for the irobot create 2 and am having trouble reading a single incoming data packet. Where can I find more detailed information about doing this via the use of termios, read(), write(), and printf()? I'm fairly new to this kind of programming, aside from some robotics projects during college, and am probably missing some key points. Please spare my ignorance.</p>
 
 <p>So far I've successfully confirmed sending of commands which initialize the robot, start it in various modes, start/stop the IO, and turn the robot off. To read the data, which comes in as a single byte, I've sent the commands to locate the designated sensor packet via the write function and this is where I get confused. I've allocated a vector for a single byte and am trying to read() the returned value and then printf() it. I'm not sure which data types to use when printing the value or if I'm even getting what I want. </p>
@@ -7198,7 +7198,7 @@ if(bumper_state &amp; RIGHT_BUMPER){ printf(""right bumper actuated\n"") }
 <p>The best data type to use us usually an unsigned type of the same size as the thing you're reading, in this case a uint8_t would be good.</p>
 
 <p>Also, you don't need an array, you could read into a single byte if you wanted.  It'll probably help avoid confusion later.</p>
-",405312,0,6,,,,
+",405312,0,6,,,sc,
 3588,58836477,Robot won't connect to a new connection on our SQL server to AWS,|sql|automation|robotics|rpa|g1ant|,"<p>I’ve been connecting the G1ANT robot to SQL server and it works fine.
 However now I've created a new connection on our SQL server to AWS but it's not connecting to it.</p>
 
@@ -7220,10 +7220,10 @@ However now I've created a new connection on our SQL server to AWS but it's not 
 </code></pre>
 
 <p>Good luck! </p>
-",11261776,0,0,,,,
+",11261776,0,0,,,internet,
 3598,58904495,"FTC Robotics code is slow to start, becasue of ""problem with ""imu""""",|java|robotics|,"<p>I am running some code for my FTC robotics team, but when I press init, an orange error appears: ""problem with ""imu"""". There is no variable in our code named imu, and it is an orange runtime error, which is usually caused by a problem with the rev hub. After pressing run, there is a long delay before anything happens, after which the program runs as normal. What does this error mean?</p>
 ",11/17/2019 19:44,59814602,296,1,2,1,,11842161,"Moscow, ID",7/26/2019 14:51,25,59814602,"<p>If you are using two rev hubs that are connect together check to make sure that in the I2C Bus 0 there is not two instances of IMU. Because the IMU is used for tasks like compass and gyro if you have two imu's in your configuration the app gets confused.</p>
-",11986567,1,0,104071790,Do you know what IMU stands for?,,
+",11986567,1,0,104071790,Do you know what IMU stands for?,li,
 3600,58934308,fast light and accurate person-detection algorithm to run on raspberry pi,|python|computer-vision|raspberry-pi3|object-detection|robotics|,"<p>Hope you are doing well.</p>
 
 <p>I am trying to build a following robot which follows a person.
@@ -7237,12 +7237,12 @@ I have a raspberry pi and and a calibrated stereo camera setup.Using the camera 
 I am using intel d435 as my depth camera. 
 TIA</strong></p>
 ",11/19/2019 12:37,58934824,1003,2,1,0,,11381978,,4/19/2019 3:55,36,58934824,"<p>You can use pretrained model. Nowadays there's <a href=""https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md"" rel=""nofollow noreferrer"">plenty</a> of them to choose from. There're also lighter versions for mobile devices. Check <a href=""https://medium.com/@madhawavidanapathirana/real-time-human-detection-in-computer-vision-part-2-c7eda27115c6"" rel=""nofollow noreferrer"">this</a> blog post. It's also worth to check <a href=""https://www.tensorflow.org/lite"" rel=""nofollow noreferrer"">TensorFlow Lite</a>. Some architectures will give you boundig boxes, some masks. Guess you'd be more interested in masks.</p>
-",9230562,0,0,104127910,Maybe d435 can't help you match and some sort of IR camera will suit better.,,
+",9230562,0,0,104127910,Maybe d435 can't help you match and some sort of IR camera will suit better.,vision,
 3615,59229077,Custom Python Transpiler,|python|assembly|robotics|transpiler|lego-mindstorms|,"<p><br/>
 I am participating in FLL (FIRST LEGO League, a Mindstorm robotics competition) and this year they piloted a program allow teams to code in Python. I have found a way to disassemble the LEGO Mindstorm block language to the LEGO assembly code. How can I write a python-based transpiler to convert the python to the assembly code or vice versa? I will try to upload the assembly code. </p>
 
 <p>Many thanks for any help you can provide!</p>
-",12/7/2019 18:32,,167,0,2,0,,11846654,"New York, NY, USA",7/27/2019 22:35,33,,,,,,104671444,maybe ask author of [Transcrypt](https://www.transcrypt.org/) which transpiles Python to JavaScript,,
+",12/7/2019 18:32,,167,0,2,0,,11846654,"New York, NY, USA",7/27/2019 22:35,33,,,,,,104671444,maybe ask author of [Transcrypt](https://www.transcrypt.org/) which transpiles Python to JavaScript,lu,
 3621,59447623,Webots - Open multiple windows side by side,|robotics|webots|,"<p>I'd like to edit my proto files and my project files side by side in two different windows (I've a big screen / monitor). However seems like I can only create a ""New world"" which will open in the same window, and there is no ""Window"" menu either. Is it possible to have multiple webots world windows simultaneously open?</p>
 
 <p><a href=""https://i.stack.imgur.com/5dZjM.png"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/5dZjM.png"" alt=""enter image description here""></a></p>
@@ -7251,7 +7251,7 @@ I am participating in FLL (FIRST LEGO League, a Mindstorm robotics competition) 
 
 <p>P.S. I use macOS.</p>
 ",12/22/2019 19:55,59450666,123,1,0,2,,1210650,"Seattle, WA, USA",2/15/2012 6:49,483,59450666,"<p>It's not possible to open several world files simultaneously in Webots. However, you can open several instances of Webots with different world files. But within the same instance of Webots you can edit as many PROTO files as you like. You should simply open them from the <code>File</code> menu, <code>Open Text File...</code>.</p>
-",810268,1,1,,,,
+",810268,1,1,,,fp,
 3623,59476046,Webots - BoundingObject of Robot becomes null after world reload (how to prevent that?),|robotics|webots|,"<p>I've a Robot node with children = [SolidCylinderJoint]. SolidCylinderJoint is a proto that I created, which defines a DEF node as a field, i.e.,</p>
 <pre><code>field SFNode geometry DEF BODY Cylinder {
                 height 0.1
@@ -7272,7 +7272,7 @@ field SFNode appearance PBRAppearance { baseColor IS baseColor metalness 0.3 }
 <p>About the issue with the DEF-USE, this is indeed a bug, it seems default argument of the PROTO are created after the root node and therefore not found at the creation of the root node.
 I have reported this here and hopefully it will be fixed in the next version of Webots:
 <a href=""https://github.com/cyberbotics/webots/issues/1231"" rel=""nofollow noreferrer"">https://github.com/cyberbotics/webots/issues/1231</a></p>
-",8427891,1,0,,,,
+",8427891,1,0,,,li,
 3630,59866125,"Find the next 3D point given a starting point, a orientation quaternion, and a distance travelled",|math|quaternions|robotics|slam|,"<p>What is the formula I need to use to find the second 3D point (P1) given:</p>
 
 <ol>
@@ -7304,7 +7304,7 @@ Quaternion multiplication and orthogonal matrix multiplication can both be used 
 2*qx*qy + 2*qz*qw   1 - 2*qx2 - 2*qz2   2*qy*qz - 2*qx*qw
 2*qx*qz - 2*qy*qw   2*qy*qz + 2*qx*qw   1 - 2*qx2 - 2*qy2
 </code></pre>
-",844416,0,3,,,,
+",844416,0,3,,,orientation,
 3632,60002484,Fusing asynchronous measurements from multiple sensors,|embedded|sensors|robotics|sensor-fusion|,"<p>I have a set of 12 IMUs mounted on the end effector of my robot arm which I read using a micro controller to determine it's movement. With my controller I can read two sensors simultaneously using direct memory access. After acquiring the measurements I would like to fuse them to make up for the sensor error and generate a more reliable reading than having only one sensor.</p>
 
 <p>After some research my understanding is that I can use a Kalman filter to reach my desired outcome, but still have the problem of all the sensor values having different time stamps, since I can read only two at a time and even if both time stamps will be synchronized perfectly, the next pair will have a different time stamp if only in the µs range. </p>
@@ -7316,7 +7316,7 @@ Therefore my question, can anybody point me into the right direction by naming m
 ",1/31/2020 10:52,60005677,254,1,0,0,,9395961,Germany,2/22/2018 11:18,3,60005677,"<p>The topic you are dealing with is not an easy one. Try to have a look at the multi-rate kalman filters.</p>
 
 <p>The idea is that you design different kalman filters for each combination of sensor that you can available at the same time, and use it when you have the data from those sensors, while the system state is passed between the various filters.  </p>
-",12753914,0,1,,,,
+",12753914,0,1,,,sensor,
 3633,60086354,Finding fastest path for robotic drive base,|algorithm|physics|path-finding|robotics|,"<p>I am trying to create an algorithm to find the fastest path a robot can take between 2 points in terms of time. The robot I would be using would be powered by a drive wheel on each side and have limited acceleration and velocity. I was also hoping to build in some obstacle avoidance so the robot is able to path around obstacles. I am familiar with pathfinding algorithms such as a* that find the fastest path in terms of distance between two points but this algorithm does not always find the fastest path for a robot with bounded acceleration and velocity.</p>
 
 <p>I've been thinking about this for a couple days and honestly I'm not really sure where to start or where to find resources on the topic so any help is appreciated.</p>
@@ -7330,7 +7330,7 @@ Therefore my question, can anybody point me into the right direction by naming m
 <p>At point A (x = 0, y = 0) the velocities of the robots wheels are 50 and 30 for the left and right wheels respectively and the robot is at a 30 degree angle relative to the x-axis. At point B (x = 1000, y = -600) we want the robot to be stationary and have a -75 degree angle relative to the x-axis</p>
 
 <p>What is the most time efficient path for the robot to take from point A to point B given it's starting and ending velocities and headings while also avoiding the obstacles?</p>
-",2/6/2020 1:11,,125,0,5,1,,10887179,,1/9/2019 1:12,3,,,,,,106272787,The search terms `hybrid a*` and `hybrid a* stanford` get some interesting hits.,,
+",2/6/2020 1:11,,125,0,5,1,,10887179,,1/9/2019 1:12,3,,,,,,106272787,The search terms `hybrid a*` and `hybrid a* stanford` get some interesting hits.,mp,
 3654,60536927,TRPO - RL: I need to get a 8DOF robot arm to move to a specified point. I need to implement the TRPO RL code using OpenAI gym with Gazebo environment?,|reinforcement-learning|robotics|openai-gym|gazebo-simu|,"<p>TRPO - RL: I need to get a 8DOF robot arm to move a specified point. I need to implement the TRPO RL code using OpenAI gym. I already have the gazebo environement. But I am unsure of how to write the code for the reward functons and the algorithm for the joint space motion. Please help. </p>
 ",3/5/2020 1:18,,89,1,0,0,,1690356,,9/22/2012 5:05,16,60573165,"<h3>Reward</h3>
 
@@ -7344,11 +7344,11 @@ These are significantly harder to specify and will have to be hand-designed acco
 
 <p>This will largely depend on your stack.
 I am adding this part in just as a passing comment, but for instance, if you are using ROS as your middleware, then you can easily integrate <a href=""https://moveit.ros.org/documentation/faqs/"" rel=""nofollow noreferrer"">Move-It</a> to handle all the movement for you.</p>
-",9147640,0,0,,,,
+",9147640,0,0,,,fp,
 3655,60586230,Issues in spying a windows application utilizing BluePrism,|windows|robotics|blueprism|,"<p>I am facing the below issue while working on BluePrism, the issue relates to spying elements from a windows application called ""Cashier"", the application is written in VB, I provided the .exe file for it and the application launched properly, however, I can't properly spy the individual rows in the table shown in the attached picture. I can only spy the box as a whole, and no information is retrieved.
 <a href=""https://i.stack.imgur.com/2Dm4S.jpg"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/2Dm4S.jpg"" alt=""Windows Application Spying issue""></a></p>
 ",3/8/2020 9:43,,91,1,2,-1,,10403857,,9/23/2018 12:59,20,60705350,"<p>possible the application spawns the elements in a new process? perhaps check the task manager once and make sure another process hasn't spawned to show the results in?</p>
-",4026969,-1,0,107302964,"yes, I did with no luck. @esqew",,
+",4026969,-1,0,107302964,"yes, I did with no luck. @esqew",fp,
 3660,60640639,Minibrick8 doesnt connect to computer via RS-232 serial cable when there is a Snap-action-switch (microswitch) attatched,|robotics|dmx512|,"<p>I am using a MiniBrick8 (from Gilderfluke &amp; Company in Burbank, California), as part of a lighting/ projector rig. The MiniBrick8 needs an input from a button (using a switch) to start a program running (PCMacs). At the moment the MiniBrick8 is also connected to a BrightSign Media Player.</p>
 
 <p>Minibrick8 doesnt connect to computer via RS-232 serial cable when there is a Snap-action-switch (microswitch) attatched and drawing power from the '9-24 VDC' screw output.</p>
