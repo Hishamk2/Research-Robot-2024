@@ -2247,7 +2247,7 @@ void resetCount()
 <li><p>NEVER use Serial inside interrupt;  if Serial buffer is full, it will call Serial.flush(), that will wait for Serial interrupt of byte written, but because you are alreadi inside an interrupt will never happen...dead lock aka you code hangs forever!</p></li>
 <li><p>because your ""moving"" function use quite a long time to execute, if multiple command arrive to the serial, thay will remain isnode the buffer until readed. So if in the terminal you write ""asd"" and then ""e"", you will see robot go left, backward, right, stop (yes, actually the stop function is not usefull as it does nothing because your ""moving"" function are ""blocking"", that mean they won't return until they ended, so the loop() code (and the read of ""e"") will not execute until the buffer of serial has been processed.</p></li>
 </ol>
-",1668605,1,0,34688720,"General advice: keep the interrupt handlers small and do not spawn other activities.  That means remove those Serial.println().  If you need something echo'd, do it in the loop().  Encoders always count.  Don't turn on and off the interrupts.  If I walk up and physically push the robot, the encoders should still count.  Similar, if it stops on a hill, you want it to hold its position.  As alternate to on/off: When you start a move, capture a snapshot of the current position and calculate the target.  When reach the target can stop.  Last: don't ride that thing without a helmet :)",,
+",1668605,1,0,34688720,"General advice: keep the interrupt handlers small and do not spawn other activities.  That means remove those Serial.println().  If you need something echo'd, do it in the loop().  Encoders always count.  Don't turn on and off the interrupts.  If I walk up and physically push the robot, the encoders should still count.  Similar, if it stops on a hill, you want it to hold its position.  As alternate to on/off: When you start a move, capture a snapshot of the current position and calculate the target.  When reach the target can stop.  Last: don't ride that thing without a helmet :)",mc,
 1954,23207910,Basic continuous 2D map exploration ( with obstacles ) algorithms,|algorithm|mapping|2d|robotics|,"<p>Here is the problem: There is a map which size is anywhere from 200*200 pixels to 1000*1000 pixels. Each pixel is a third of an inch in length/width.  </p>
 
 <p>The map has walls coming from it (which can be of any size), and can be pre-processed by any means. However, when the problem starts, a robot (of pixel size 18*18) is placed in an unknown location, along with several obstacles and one goal, all of which are in an unknown location.</p>
@@ -2264,7 +2264,7 @@ void resetCount()
 <p>Using this algorithm you should be able to find all the obstacles and eventually find the goal, also you will find the shortest path to the goal.</p>
 
 <p>The only big difference is that you have to move an 80x80 object instead of a 1x1 object, but I will let you deal with the way you will implement this.</p>
-",2253278,0,0,,,,
+",2253278,0,0,,,mp,
 1977,24095107,Working of CCD algorithm for Inverse Kinematics,|algorithm|3d|vector-graphics|robotics|inverse-kinematics|,"<p>Lets say I've a robotic arm with joints at points A,B,C,D in a 3D space. Let D be the end effector(bottommost child) and A be the topmost parent. Let T be the target point anywhere in the space. The aim is to make the end effector reach the target with minimum rotations in top levels(parents).</p>
 
 <p>What I initially thought:</p>
@@ -2312,7 +2312,7 @@ for (i=0;i&lt;number_of_actuators;i++)
 <p>then you have to exclude its rotation axises from CCD and set it before CCD</p>
 </li>
 </ol>
-",2521214,1,7,37164184,Do you calculate the actual angle? Or the angle in the arm's movement plane? The latter would be the correct approach.,,
+",2521214,1,7,37164184,Do you calculate the actual angle? Or the angle in the arm's movement plane? The latter would be the correct approach.,hc,
 1995,24158126,Factors to find weight painting formula for Auto-Rigging,|algorithm|opengl|animation|artificial-intelligence|robotics|,"<p>I'm trying to re-implement Auto-rigging for human skeletons. (similar to Blender and Mixamo's)</p>
 
 <p>For each vertex in the human skin, I've to find the joints that affect this vertex. (I could do this.)</p>
@@ -2346,7 +2346,7 @@ for (i=0;i&lt;number_of_actuators;i++)
 <p>This is the code inside each loop:
 <img src=""https://i.stack.imgur.com/XYSCr.png"" alt=""inside each loop""></p>
 ",7/13/2014 4:16,,3052,1,6,0,,3833554,,7/13/2014 3:57,10,30516761,"<p>Check both sensors in a loop and use the output of both sensors to decide which action to take.</p>
-",2250588,0,0,38341231,"It sounds like you need to check both sensors in one ""spin seek destroy back up"" loop.",,
+",2250588,0,0,38341231,"It sounds like you need to check both sensors in one ""spin seek destroy back up"" loop.",sensor,
 2010,24986253,Touch sensor not working,|c|robotics|nxt|,"<p>I am attempting to create a very simple program in RobotC. In this program the robot will move forward until the touch sensor is hit.</p>
 
 <pre><code>#pragma config(Sensor, S2,     touchSensor,    sensorTouch)
@@ -2385,7 +2385,7 @@ Whenever I try and do anything with the touch sensor it does not work. When I ou
     return isOn;
 }
 </code></pre>
-",1896761,2,0,38844972,"Awesome, that's what I'd expect given those values. So, change the while statement to `while(sensorValue(touchSensor) > 500)` and let me know what happens.",,
+",1896761,2,0,38844972,"Awesome, that's what I'd expect given those values. So, change the while statement to `while(sensorValue(touchSensor) > 500)` and let me know what happens.",sensor,
 2102,26486572,Scan Matching Algorithm giving wrong values for translation but right value for rotation,|python|robotics|least-squares|slam-algorithm|,"<p>I've already posted it on robotics.stackexchange but I had no relevant answer.</p>
 
 <p>I'm currently developing a SLAM software on a robot, and I tried the Scan Matching algorithm to solve the odometry problem.</p>
@@ -2417,7 +2417,7 @@ for Sensor Displacement Estimation</a></p>
 <p>I myself am going to try sba (<a href=""http://users.ics.forth.gr/~lourakis/sba/"" rel=""nofollow"">http://users.ics.forth.gr/~lourakis/sba/</a>), or more specifically cvsba (<a href=""http://www.uco.es/investiga/grupos/ava/node/39/"" rel=""nofollow"">http://www.uco.es/investiga/grupos/ava/node/39/</a>) because I'm on opencv.</p>
 
 <p>If you have enough cpu/gpu power, give a chance to AKAZE feature detector and descriptor.</p>
-",1254714,0,0,,,,
+",1254714,0,0,,,SLAM,
 2127,26935863,Robotics - Recursive function for fractal.,|python|recursion|robotics|myro|calico-project|,"<p>I'm currently working with Myro/Calico with Robotics.  I'm trying to run a recursive function of a fractal. I'm using Python.</p>
 
 <p>I've been following pseudocode here.
@@ -2491,7 +2491,7 @@ def fractal(x, l):
     else:
         fractal((x-1), l/3)
 </code></pre>
-",2097159,1,1,42416511,"I'm not sure, but I think you need to have two variables to `fractal` instead of just one. You can't easily represent the fractal depth _and_ the width of the curve with just one variable. What if I want a five iteration Koch curve that's 100 pixels wide? What would the call to `fractal` look like, and how would it differ if I wanted a seven iteration curve that's 100 pixels wide?",,
+",2097159,1,1,42416511,"I'm not sure, but I think you need to have two variables to `fractal` instead of just one. You can't easily represent the fractal depth _and_ the width of the curve with just one variable. What if I want a five iteration Koch curve that's 100 pixels wide? What would the call to `fractal` look like, and how would it differ if I wanted a seven iteration curve that's 100 pixels wide?",mp,
 2149,27716172,RobotC: Multithreading in TeleOp (controlling mode),|multithreading|robot|,"<p>I am making a program for a robot in a competition, and need to multithread.</p>
 
 <p>When I make a second task (task two()) and try to start (startTask) it with a button press from a controller, it just executes the first statement of the task and only as long as the button is pressed, instead of the whole block. I've tried many things including putting a loop in the second task also, using a function instead of a task and sleeping for 200 milliseconds before, and after the startTask(two); function, but the same thing happens every time.</p>
@@ -2546,7 +2546,7 @@ Motor10Speed = 0;
 <p>Expand the above program so it matches your current function, while using the <code>MotorSpeed</code> variables as <code>setMotorSpeed</code> variables.</p>
 
 <p>This should make you able to drive and run a function at the same time without them interrupting each other.</p>
-",3527863,1,0,,,,
+",3527863,1,0,,,multithreading,
 2170,28534527,Programming a robot to explore a grid,|java|performance|grid|robot|,"<p>In my project I'm simply trying to make a robot which explores as much of the grid as it can, without taking the same path twice. Also, it has a sensor to see if an object is lying in its way(the object can only be in a corridor). But I'm having trouble trying to make the robot avoid taking the same path.</p>
 
 <p>I tried resolving this issue by creating a 2D array for storing an integer value for each square in the grid. A value of 0 means the robot has not been on that square in the grid yet, a value of 1 means that square is blocked in the grid and a value of 2 means that the robot has been on that square before. If the robot sees that the square ahead of its current heading has value 2, then it would keep rotating to find a square with a value of 0, but if no square of value 0 around the robot exists, then it begins to backtrack.</p>
@@ -2573,7 +2573,7 @@ Motor10Speed = 0;
 <p>Furthermore, when the robot eventually travels all the way to the north, tile (0,6) you know there is a wall to the north and to the west because of its position. You could then intelligently guess that the open slot has to be to the east because the western tile (-1,6) is not valid and (0,7) is not valid either.</p>
 
 <p>Without changing the sensor to see 2 blocks or installing more sensors on the robot (ie one on every side), there is not much more optimization that can be done due to the limited availability of information.</p>
-",4080860,1,4,,,,
+",4080860,1,4,,,mp,
 2171,28616358,Python bus between processes,|python|robotics|,"<p>I am completely starting over with my robots brain. All is developed in Python.</p>
 <p>I want to keep everything as modular as possible and allow the use of multiple CPU cores (Raspberry PI 2).</p>
 <p>I thought of using multiple processes. One for serial communication, one for every sensor, one for every higher function.
@@ -2735,7 +2735,7 @@ proxy pop()
     else return a[top--];
 }
 </code></pre>
-",2413201,0,0,,,,
+",2413201,0,0,,,mp,
 2184,28994556,Can somebody help explain RobotC Syntax?,|c|robotics|,"<p>I have been programming for some time in Python, and JavaScript.  I have also programmed with the arduino language which is a mix between C and C++.  I was just introduced to RobotC.  The syntax used for RobotC is not like any language I have learned.  Can someone help explain these syntax differences so I can better understand it?</p>
 
 <p><strong>Problem 1:</strong></p>
@@ -2775,7 +2775,7 @@ motor[leftMotor] = 127;
 motor[rightMotor] = speed;
 motor[leftMotor] = motor[rightMotor];
 </code></pre>
-",3133680,5,0,46237974,"To understand Problem 1, you need to find the definition of `motor`. If that doesn't clear things up for you, then you'll need to add the definition of `motor` to the question. All three snippets in #2 do the same thing, and the first snippet has been allowed since C was originally developed, which would be around 1970.",,
+",3133680,5,0,46237974,"To understand Problem 1, you need to find the definition of `motor`. If that doesn't clear things up for you, then you'll need to add the definition of `motor` to the question. All three snippets in #2 do the same thing, and the first snippet has been allowed since C was originally developed, which would be around 1970.",mc,
 2199,29168032,Extended Kalman Filter - error in update step,|matlab|prediction|robotics|kalman-filter|atan2|,"<p>I have to implement EKF without actually having good mathematical understanding of it. (Great... not...) So far I have been doing well but since I tried to implement the prediction step things started going wrong. </p>
 
 <ol>
@@ -2839,7 +2839,7 @@ You cannot set the process noise as </p>
 <p>I don't need the actual code, just a feasible idea is fine.</p>
 
 <p>Thanks in advance!!!</p>
-",4/1/2015 19:43,,116,0,2,1,,2730755,,8/29/2013 20:26,143,,,,,,46975006,"What exactly do you mean by 'connected as a triangle'? Are they attached to inflexible rods and must move simultanously, or are they 'connected' in terms of communication?",,
+",4/1/2015 19:43,,116,0,2,1,,2730755,,8/29/2013 20:26,143,,,,,,46975006,"What exactly do you mean by 'connected as a triangle'? Are they attached to inflexible rods and must move simultanously, or are they 'connected' in terms of communication?",cpmr,
 2240,29615931,Building an Android app for ROS,|android|gradle|robotics|ros|,"<p>I am following <a href=""http://wiki.ros.org/ApplicationsPlatform/Clients/Android/Tutorials/Getting%20Started#Building_An_Android_App"" rel=""nofollow"">this tutorial</a> to build and android app for ROS</p>
 
 <p>After I import this in Android studio having following problem, I am using Android studio in windows 7.</p>
@@ -2849,7 +2849,7 @@ Possible causes:The project 'android_apps' may be using a version of Gradle that
 Open Gradle wrapper fileThe build file may be missing a Gradle plugin.
 Apply Gradle plugin
 </code></pre>
-",4/13/2015 22:09,,330,0,2,0,,474986,"Grenoble, France",10/13/2010 19:53,538,,,,,,47377663,Please include the specific code you are using from the tutorial so this question ages gracefully. It's possible that link might go offline or be moved in the future.,,
+",4/13/2015 22:09,,330,0,2,0,,474986,"Grenoble, France",10/13/2010 19:53,538,,,,,,47377663,Please include the specific code you are using from the tutorial so this question ages gracefully. It's possible that link might go offline or be moved in the future.,li,
 2242,29952691,Error libraries Raspbian with GoPiGo,|python|opencv|raspberry-pi|raspbian|robotics|,"<p>I am working on a GoPiGo and i'm trying to make this robot to move when the camera detect a circle. </p>
 
 <p>The mainly problem i have here is that when i try to use the gopigo library in order to use functions as fwd(),stop(), etc, if i do NOT use sudo in the command line, and just type ""python CircleDetector_MOVEMENT.py"" it detects the gopigo library, but doesn't detect the picamera.array:</p>
@@ -2933,7 +2933,7 @@ copia_RGB = imagen_RGB.copy()
         break
 </code></pre>
 ",4/29/2015 19:20,,726,1,0,3,,4837678,,4/27/2015 12:31,7,40457954,"<p>Are you using a virtual environment to run the OpenCV code? If yes then you might have to copy gopigo.py to your virtual environment and run <code>python &lt;filename&gt;</code> to have it working.</p>
-",7093992,0,1,,,,
+",7093992,0,1,,,li,
 2246,30382559,serial interfacing of 89s52 with Hyperterminal... getting garbage values,|serial-port|embedded|microcontroller|robotics|8051|,"<p>I need to transfer data serially from AT89s52 to Hyperterminal of PC.
 For that I made a sample program to print ""Hello"" on the hyperterminal of my PC by programming the below given code inside 89s52 microcontroller and connecting it to my PC via serial port. Now when I am opening hyperterminal for the respective port, I should be seeing ""Hello"" printed on the screen multiple times, but what actually I am seeing is some garbage data getting printed.
 This is the code I have used.</p>
@@ -2982,7 +2982,7 @@ for(i=0;i&lt;25000;i++);
 <p>In the Hyper terminal I am not getting correct output i.e. Hello. Instead I am seeing some Garbage characters..
 Can anybody help on this please..?</p>
 ",5/21/2015 19:20,,396,1,6,1,,4924902,,5/21/2015 13:22,2,30447360,"<p>Can you See P1 is toggling? I would rather send a single character first and observe what is sending by using an oscilloscope. You should see a digital signal corresponding to the ASCII value of the character being split-out from the TX pin of the micro. Also you can check the baud rate (exact value) by using the scope. If you are convinced that the correct value is sent at the right baud rate it is most likely that you got a bad connection or perhaps the baud rate should slightly be changed. </p>
-",4816842,0,0,48878942,What's the crystal frequency?,,
+",4816842,0,0,48878942,What's the crystal frequency?,sc,
 2254,30577463,Get turn angle to position on coordinate map?,|python|math|geometry|robotics|,"<p>I'm trying to get a robot to turn to face another robot, based on their respective coordinates on a global coordinate map.</p>
 
 <p>This is the code I wrote, but it doesn't seem to work at all:</p>
@@ -3025,7 +3025,7 @@ Can anybody help on this please..?</p>
 </code></pre>
 
 <p>Note using of atan2 function, that returns angle between -pi and pi. It correctly determines rotation direction and finds the shortest turn. If you need to rotate in clockwise direction only, add 180 if turnArc is negative</p>
-",844416,0,1,49226183,How do you know it doesn't work?,,
+",844416,0,1,49226183,How do you know it doesn't work?,orientation,
 2278,31478749,Controlling two dc motors (on arduino) through c++ source code,|c++|eclipse|opencv|arduino|robotics|,"<p>I'm working on a face detection robot project.I'm using opencv software to detect faces. When the face is detected i want to get the x-y coordinates and send them to an arduino board. </p>
 
 <p>The arduino has two dc motors connected. The first dc motor will spin a base (the base of a robot's head) according to y-coordinates (y-axis). </p>
@@ -3042,7 +3042,7 @@ Can anybody help on this please..?</p>
 <p>On the Arduino side, you certainly want to look at the <a href=""https://www.arduino.cc/en/reference/serial"" rel=""nofollow"">Arduino Serial interface</a> to receive the data you're sending.</p>
 
 <p>To follow that up, look for a tutorial on basic usage. Start with a simple ""Hello World"" and then try to echo back and forth between your C++ code and your Arduino. Then, it's up to you to design your data transfer protocol.</p>
-",1576412,1,0,,,,
+",1576412,1,0,,,wireless,
 2281,31547941,ROS - ROAR compile error on Ubuntu,|ubuntu|robotics|ros|,"<p>I am trying to install <code>ROAR</code> on Ubuntu 14.04 following this tutorial: <a href=""http://wiki.ros.org/roar"" rel=""nofollow"">http://wiki.ros.org/roar</a></p>
 
 <p>However, I am stuck on <code>Compiling</code> step 3.2 <code>rosmake roar --rosdep-install</code><br/>
@@ -3054,7 +3054,7 @@ and set PATH to <code>export ROS_PACKAGE_PATH=~/ros:$/home/myfolder/ros/roar_sta
 <p>What am I doing wrong?</p>
 
 <p><strong>update</strong> I installed a clean version of <code>Ubuntu 14.04</code> on VMware and installed <code>ROS Jade</code> and the same problem persists.</p>
-",7/21/2015 19:28,,294,0,9,0,,1057045,,11/21/2011 2:22,531,,,,,,51057256,"I rebooted and now `rosmake -h` returns data, but i ran your steps then tried to run `rosmake` and now getting `command not found`",,
+",7/21/2015 19:28,,294,0,9,0,,1057045,,11/21/2011 2:22,531,,,,,,51057256,"I rebooted and now `rosmake -h` returns data, but i ran your steps then tried to run `rosmake` and now getting `command not found`",li,
 2294,31620428,Software to model mechanical linkages,|simulation|robotics|kinematics|,"<p>I recently got interested in Theo Jensen's strandbeest, (If you haven't seen them before look them up! Such incredible engineering.) and I want to mess around with the design he has for his strandbeests' legs. However doing straight forward kinematics is waaay over my head for something like this.</p>
 
 <p>Here's what I'm trying to model:
@@ -3082,7 +3082,7 @@ and set PATH to <code>export ROS_PACKAGE_PATH=~/ros:$/home/myfolder/ros/roar_sta
 <p>There site is <a href=""http://ode.org/"" rel=""nofollow"">ode.org</a>, and it looks like you should be able to evaluate it from there. ""[S]imulating rigid body dynamics"" is what you want, right? From what I understand, it ought to fit the bill. C++ is probably a reasonable language to attempt this in. I presume you have previous programming experience? This is not what I would consider a beginner's project.</p>
 
 <p>When you get to the evolution, search for Genetic Algorithms. They're frequently used for optimization, and could help you out considerably. Another thing to consider is what you're actually optimizing for (lowest wind speed to function, fasted movement, etc).</p>
-",4430622,1,2,,,,
+",4430622,1,2,,,fp,
 2299,31898387,Void function with two arguments but not both need to be used,|java|android|null|arguments|robotics|,"<p>First Tech Challenge, A robotics organization now has an android platform instead of Lego. My team is transitioning to java but I have one simple question. If I have a function that has two arguments <code>power1</code> and <code>power2</code> and both can be set to a double but if the second one isn't specified, it shall run both motors with only the <code>power1</code> variable. Here is my code:</p>
 
 <pre><code>package com.qualcomm.ftcrobotcontroller.opmodes;
@@ -3128,14 +3128,14 @@ if (power2 == null) { // or -1 like I said before
     motorRight.setPower(power2);
 }
 </code></pre>
-",4371389,0,3,51711929,And what is the question ?,,
+",4371389,0,3,51711929,And what is the question ?,mc,
 2349,32292996,interface with the computer in a motor vehicle using the .NET framework,|.net|interface|robotics|,"<p>Is there a way to communicate with the ECU or engine computer of a car to do things like read ODB/CAN codes similar to a handheld code scanner you would get at the local auto parts store? </p>
 
 <p>Ideally a Microsoft .NET API or COM interface is what I am personally looking for, but I can see an API like that coming in other strange and legacy flavors.  </p>
 ",8/30/2015 3:53,,56,2,0,0,,589509,"Arkham, Essex County, Massachusetts.",1/25/2011 19:09,620,32293235,"<p>You can't just plug USB in to your car and expect it to work, there will be some kind of hardware between the two. That peice of hardware will come with a SDK to write software that uses it.</p>
 
 <p>What you need to do is choose a piece of hardware to buy that comes with a SDK that works in .NET (in a fully managed class or, more likely, as a set of C interfaces you will need to P/Invoke to).</p>
-",80274,0,0,,,,
+",80274,0,0,,,api,
 2361,32419077,General Advice to Creating a C++ Robot Template,|c++|oop|templates|robotics|,"<p>I'm working on a project that has evolved so many times, I've really started thinking about writing a generic class that controls other nested generic classes.</p>
 
 <p>The issue is, I have so many ways I could go about it that I've become completely overwhelmed. I've reviewed vectors and template class examples, but I truly have no idea how to begin.</p>
@@ -3243,7 +3243,7 @@ Onyx.numleg_numL_length(i,2,140); //Defines L2 of Leg1 as 114mm
 <p>and on and on and on and on.</p>
 
 <p>Please tell me there's a simple trick that allows me to assign multiple variables to a named class instead of this infinite chain of methods functions and subclasses</p>
-",9/6/2015 1:07,,222,0,3,0,,5304869,,9/6/2015 0:12,11,,,,,,52704546,"One quick reaction is that it’s possible to access an object’s members’ methods if they’re public, but you don’t want to do this. A basic approach is that the robot has certain parts, and the code to translate a command into low-level motions should be part of the `Robot`class methods.  The legs should be `private` data. So, the class itself should be implementing `Onyx.moveTo(x,y)` by turning it into a bunch of commands like `legs[0].move()`. If you want the controller to be able to move individual legs, too, there should be a public interface like `Onyx.moveLeg(whichLeg, how)`.",,
+",9/6/2015 1:07,,222,0,3,0,,5304869,,9/6/2015 0:12,11,,,,,,52704546,"One quick reaction is that it’s possible to access an object’s members’ methods if they’re public, but you don’t want to do this. A basic approach is that the robot has certain parts, and the code to translate a command into low-level motions should be part of the `Robot`class methods.  The legs should be `private` data. So, the class itself should be implementing `Onyx.moveTo(x,y)` by turning it into a bunch of commands like `legs[0].move()`. If you want the controller to be able to move individual legs, too, there should be a public interface like `Onyx.moveLeg(whichLeg, how)`.",NEW,
 2371,32683092,Trigger a relay with Java,|java|robotics|,"<p>I haven't yet started this project, but I am trying to figure out the best way a trigger a relay when a button is clicked on a UI in java. The relay will release a lock on a door when the button is clicked. I've looked at rasberri pi, but I am not familiar with that product. Can anyone suggest how I should go about doing this?</p>
 ",9/20/2015 19:00,,1263,1,5,0,,4513904,,1/31/2015 6:03,41,32683738,"<p>I've implemented this in several different ways and indeed done all sorts of device interface with Java for engineering experimentation and automation.</p>
 
@@ -3269,7 +3269,7 @@ Onyx.numleg_numL_length(i,2,140); //Defines L2 of Leg1 as 114mm
 <p>Certainly you could alternatively use a Raspberry Pi and its GPIOs to either control a separate relay purchased from <a href=""http://www.digikey.com/product-search/en/relays?k=relay"" rel=""nofollow"">Digi-Key</a> or in fact use the GPIOs themselves as a relay assuming very low voltage was used. I'm imagining two scenarios, one where the user is actually directly interfacing with the Pi or another where the Pi is on the network and through a user interface running on a separate PC the user is leveraging <a href=""https://en.wikipedia.org/wiki/Java_remote_method_invocation"" rel=""nofollow"">RMI</a> to cause the Pi to change GPIO states.</p>
 
 <p>Really, what I would suggest is looking at what relay you want to use, and post a more specific question regarding how to interface to that relay assuming Java is your preferred language. Alternatively, you could ask what the lowest barrier to entry/learning curve/cost options there are for relays that can be controlled through Java. Without more detail, it's hard to recommend a path forward.</p>
-",2665000,2,2,53211023,http://denkovi.com/usb-eight-channel-relay-board-for-automation,,
+",2665000,2,2,53211023,http://denkovi.com/usb-eight-channel-relay-board-for-automation,wireless,
 2405,33680363,Map representation for localization,|java|dictionary|localization|robotics|data-representation|,"<p>I would like to write in Java localization system for a robot. However I am stuck at the very beginning. I don't know how to represent the map. The map is not complicated and will never be bigger than few meters by few meters. It doesn't change when robot is moving. </p>
 
 <p>The readings that I will have from sensors are angle (provided by compass) and pairs of integers (angle and distance). </p>
@@ -3281,7 +3281,7 @@ Onyx.numleg_numL_length(i,2,140); //Defines L2 of Leg1 as 114mm
 </ul>
 
 <p>The suitability of each approach depends on how sparse / cluttered the environment is and what types of sensors are available for updating the map.</p>
-",2246,1,0,55133802,What is in the map? Is it discrete or vector based? And why do you want to represent a map? Isn't what you have a list of readings instead of a map?,,
+",2246,1,0,55133802,What is in the map? Is it discrete or vector based? And why do you want to represent a map? Isn't what you have a list of readings instead of a map?,mapping,
 2412,34290860,Tracking position and velocity using a kalman filter,|opencv|localization|robotics|kalman-filter|,"<p>I am using a kalman filter (constant velocity model) to track postion and velocity of an object. I measure x,y of the object and track x,y,vx,vy . Which works but if a add gausian noise of +- 20 mm to the sensor readings x,y,vx,vy fluctuates even though the point is not moving just noise. For location that is good enough for my needs but velocity changes when the point is stationary and that is causing problems with my object speed calculations. Is there a way around this problem? also if switching to constant acceleration model improve on this? I am tracking a robot via a camera.</p>
 
 <p>I am using opencv implementation and my kalman model is same as [1]</p>
@@ -3296,7 +3296,7 @@ Onyx.numleg_numL_length(i,2,140); //Defines L2 of Leg1 as 114mm
 </ul>
 
 <p>And finally, even with all of that correct, keep in mind that the KF is ultimately a linear filter.  Whatever noise you put in will show up in the output, just scaled by some factor (the Kalman gain).</p>
-",479989,3,0,,,,
+",479989,3,0,,,cameras,
 2445,35374892,Quadricopter + arduino+mpu6050(gyro+oscillo) +PID,|arduino|arduino-uno|robotics|gyroscope|pid-controller|,"<p>so I'm trying to creat a quadricopter with an arduino and gyroscope mp6050 and this with PID algorithme (using arduino PID,mpu library) so I make everything work separately but when it comes to use PID  I don't know how to do it which one will be the input or setput ... I'm confused on how I can use gyroscope information and brushless information and other information to make my quadri fly ... thank you </p>
 ",2/13/2016 1:13,35464003,1612,1,0,-2,,4366398,,12/16/2014 12:48,33,35464003,"<p>It sounds like you need a better understanding of what PID does. Here is a great article about real world implmentation of PID  <a href=""http://eas.uccs.edu/~cwang/ECE4330F12/PID-without-a-PhD.pdf"" rel=""nofollow noreferrer"">http://eas.uccs.edu/~cwang/ECE4330F12/PID-without-a-PhD.pdf</a> </p>
 
@@ -3323,7 +3323,7 @@ A PID controller is a feedback control loop. </p>
 <p>Kuka robots can output their joint angles directly. Use this data for synchronization or control both robots using the same external data.</p>
 
 <p>Any measurement error might cause unwanted movements which in case of industrial robots can cause severe damage!</p>
-",2858170,0,3,59123778,what's the motivation? what's the second robot type?,,
+",2858170,0,3,59123778,what's the motivation? what's the second robot type?,sensor,
 2456,35733974,Single Core processor: Undesirable behaviour with Pthreads and OpenCV,|multithreading|opencv|posix|robotics|,"<p>I'm developing a surveillance robot in which I'm using a PcDuino2 board (ARM Cortex A8 Single-Core) as the unique processor in the project. Ubuntu is installed on the board as my OS of choice.</p>
 
 <p>My software was written in this way: I'm using Posix threads, I've a threaded TCP server which receives commands from a HTML interface (Websocket), thus, this commands are validated as soon as the server receives them and some functions are called in order to move the robot (up, down, left, right) or start/stop a OpenCV thread that looks for a colored ball (just an example). </p>
@@ -3339,7 +3339,7 @@ A PID controller is a feedback control loop. </p>
 <p>The main files to take a look are server.cpp and tasks.cpp, so you'll get a better understanding of what I've written.</p>
 
 <p>It's possible, using a sigle-core processor, to keep motors running in parallel with OpenCV thread processing?</p>
-",3/1/2016 21:33,,105,0,5,0,,6004484,,3/1/2016 20:08,2,,,,,,59378675,"not sure what the ""right"" way is to implement it. maybe som event-loop like system?",,
+",3/1/2016 21:33,,105,0,5,0,,6004484,,3/1/2016 20:08,2,,,,,,59378675,"not sure what the ""right"" way is to implement it. maybe som event-loop like system?",multithreading,
 2463,35970213,Angle to a circle tangent line,|matlab|math|geometry|robotics|,"<p>I cannot upload pics so I will try to explain my problem the best. I want to simulate the detection of a moving object by a unicycle type robot. The robot is modelled with position (x,y) and direction theta as the three states. The obstacle is represented as a circle of radius r1. I want to find the angles alpha_1 and alpha_2 from the robot's local coordinate frame to the circle, as shown here:</p>
 
 <p><img src=""https://i.stack.imgur.com/FdSY4.jpg"" alt=""""></p>
@@ -3411,7 +3411,7 @@ Thanks in advance</p>
 <p>And this library:</p>
 
 <p><a href=""http://pointclouds.org/"" rel=""nofollow"">http://pointclouds.org/</a></p>
-",6076911,0,1,,,,
+",6076911,0,1,,,sensor,
 2473,36625422,how robot tracking ball with fixed distance?,|c|tracking|robotics|,"<p>I am tracking ball with camera in my android phone and send x,y position,radius of ball (x,y position is a pixel in screen android phone ) to my stm32f board via bluetooth. I assemble my phone and stm32f1 kit in a mobile robot. Now i would like my robot move to ball with a fixed distance. </p>
 
 <p>Ex: I set distance 10cm. When i move ball forward, my robot forward to ball and always keep 10cm from robot to ball</p>
@@ -3429,7 +3429,7 @@ end
 </code></pre>
 
 <p>Now all you have to do is code this up in C.</p>
-",253056,1,9,,,,
+",253056,1,9,,,mp,
 2486,36758570,Robotics Square Grid Intersection Point,|algorithm|math|geometry|trigonometry|robotics|,"<p>I'm trying to determine the point at which my robot will intersect with a wall given its location in a map and an angle its pointing at in radians. So to sum the problem up, given a square grid of any size [1-infinity], a object within that grid, and the angle at which that object is facing (radians), find the point of intersection with the border of the grid. For instance you have a 10 x 10 grid, your object is at position (5,5), and it is facing at an angle of pi/8 radians (Northeast direction). If this object were to move in a straight line, where would it intersect with the wall? Is there a generalized solution that would work for any position and any angle? So far what I'm doing is calculating a point outside the grid on the same trajectory and looking at all the points until I find a wall, but I feel like there is probably a more elegant solution. Thanks for the help!</p>
 ",4/21/2016 2:33,36777656,324,2,1,1,,6233200,"Hanover, MD, USA",4/21/2016 2:21,42,36760730,"<p>Pseudocode for ray with starting points inside rectangle:<br>
 Starting point <code>(X0, Y0)</code><br>
@@ -3460,7 +3460,7 @@ if tx &lt;= ty then  //vertical first
 else            //horizontal first
     return  Intersection = (X0 + ty * c, YY)
 </code></pre>
-",844416,0,0,61099581,"Does you grid consist of 100 cells and you need intersections with each grid line touched? Or just single rectangle, and you need intersection with it's perimeter?",,
+",844416,0,0,61099581,"Does you grid consist of 100 cells and you need intersections with each grid line touched? Or just single rectangle, and you need intersection with it's perimeter?",mp,
 2506,36891435,Contour Detection in Opencv Python 2.7,|python-2.7|opencv|image-processing|automation|robotics|,"<p>I have been trying to identify the contours of red colored objects in Open Cv (python 2.7) and we have succeeded in identifying them. But, I want to detect the position of the red colored object (left or right) and I have not succeeded in doing so. If anyone could give me the code or steps to do so, I would be really thankful.</p>
 
 <p>Our current code for identifying red colored objects is as follows:</p>
@@ -3515,7 +3515,7 @@ cv2.circle(frame, center, radius, (255, 0, 0), 3)
 </code></pre>
 
 <p>in this case, center will be the position of your object. This code only takes in account the first contour in the array...</p>
-",888688,1,2,,,,
+",888688,1,2,,,vision,
 2508,36960242,How does this piece of code verify a checksum?,|java|checksum|robotics|,"<p><strong>Context:</strong>
 My teacher ported the Darwin-OP Framework from C++ to Java, allowing students like me to use it without having to master C++. Darwin has two controllers: the main controller runs Linux and runs the java code, and has a serial connection with the sub controller (a microcontroller) that controls all the sensors/servo's/transducers etc.</p>
 
@@ -3566,7 +3566,7 @@ The file passed in to the checksum method is the final file with 0x00 in the che
 = XOR(file) + 0xFF - XOR(file)
 = 0xFF
 </code></pre>
-",103959,2,3,,,,
+",103959,2,3,,,fp,
 2514,37075632,"PID controller affect on a differential driving robot when the parameters (Kp, Ki, and Kd) are increased individually. [full Q written below]",|robotics|pid-controller|,"<p>Question: <strong>A PID controller has three parameters Kp, Ki and Kd which could affect the output performance. A differential driving robot is controlled by a PID controller. The heading information is sensed by a compass sensor. The moving forward speed is kept constant. The PID controller is able to control the heading information to follow a given direction. Explain the outcome on the differential driving robot performance when the three parameters are increased individually.</strong></p>
 
 <p>This is a question that has come up in a past paper but most likely won't show up this year but it still worries me. It's the only question that has me thinking for quite some time. I'd love an answer in simple terms. Most stuff i've read on the internet don't make much sense to me as it goes heavy into the detail and off topic for my case.</p>
@@ -3701,7 +3701,7 @@ namespace SerialPort
 </code></pre>
 
 <p><a href=""https://msdn.microsoft.com/en-us/library/system.io.ports.serialport.writeline(v=vs.110).aspx"" rel=""nofollow"">https://msdn.microsoft.com/en-us/library/system.io.ports.serialport.writeline(v=vs.110).aspx</a></p>
-",3390788,0,3,,,,
+",3390788,0,3,,,mc,
 2545,37649397,Python pip install qibuild exception then I installed pip yet.,|python|python-2.7|pip|robotics|debian-based|,"<p>I'm new on this forum and I will ask you to be friendly with my first publication. Thank you!!</p>
 
 <p>So, here is my problem. I installed pip and now I try to install qibuild with it. But I've got a problem.
@@ -3738,7 +3738,7 @@ Storing debug log for failure in /root/.pip/pip.log
 
 <p>Change your system date to current date in accordance with your time zone ,
 Hope this helps</p>
-",6473089,0,0,,,,
+",6473089,0,0,,,bf,
 2554,38647114,ORB_SLAM installation on Ubuntu Xenial 16.04,|opencv|ubuntu|ros|robotics|slam|,"<p>Is it possible to install ORB_SLAM/ORB_SLAM2 on last version of Ubuntu (Xenial 16.04) without black magic? I know that the recommendation is to use Ubuntu 14.04 according to <a href=""https://github.com/raulmur/ORB_SLAM2"" rel=""nofollow"">https://github.com/raulmur/ORB_SLAM2</a>, but I currently have last version and I don't really want to change it or install 14 together with 16. I use OpenCV 2.4.8 and ROS/catkin build system and get the next error:</p>
 
 <pre><code>/home/roman/ORB_SLAM2/src/Optimizer.cc:1244:1:   required from here
@@ -3754,7 +3754,7 @@ Hope this helps</p>
 
 <pre><code>sudo dpkg -i libeigen3-dev_3.2.0-8_all.deb
 </code></pre>
-",6876969,2,0,,,,
+",6876969,2,0,,,install,
 2561,39203597,How to order one dimensional matrices base on values,|matlab|matrix|geometry|coordinate-systems|robotics|,"<p>I want to determine a point in space by geometry and I have math computations that gives me several theta values. After evaluating the theta values, I could get N 1 x 3 dimension matrix where N is the number of theta evaluated. Since I have my targeted point, I only need to decide which of the matrices is closest to the target with adequate focus on the three coordinates (x,y,z).
 Take a view of the analysis in the figure below:</p>
 
@@ -3781,7 +3781,7 @@ Zd = (z-Ref_point(3))^2 ;
 distance = sqrt(Xd + Yd + Zd);
 %find the minimum distance
 </code></pre>
-",6564973,0,0,65765849,"I don't think an ordering is really what you need.  I think what you're really asking about is ""spatial indexing"" (https://en.wikipedia.org/wiki/Spatial_database#Spatial_index).  For example: https://en.wikipedia.org/wiki/R-tree.",,
+",6564973,0,0,65765849,"I don't think an ordering is really what you need.  I think what you're really asking about is ""spatial indexing"" (https://en.wikipedia.org/wiki/Spatial_database#Spatial_index).  For example: https://en.wikipedia.org/wiki/R-tree.",fp,
 2567,39688964,Robots moving boxes,|c#|robot|,"<p>This is an exam question I couldn't solve and I need to solve it because I can face it in my next exam again ( and it decides whether you get a D or an A).
 <br>
 <br><b>The problem:</b><br><br></p>
@@ -3945,7 +3945,7 @@ textBox1.Text = sb.ToString();
 <li>Why do I divide by 5 at the end ?-)</li>
 <li>Why is the number of solutions <strong>not</strong> always increasing ?-)</li>
 </ul>
-",3152130,2,6,66679497,"Yes. More hints: you know that there are 6 full moves. You can combine them in a string. You need a List<string> next. . For each recursion the recursive function passes on the curren t list and the current count of remaining boxes. And it branches out be adding 6 more string, expanding the current one by each of the 6 full moves. it termnates when less than 3 boxes are left. 0 or 1 os ok, 2 is an illegal result, which must be deleted. finally count the lengths of the list strings. for easier coding put the six moves with a name and their box count into a Dictionary<string, int>..",,
+",3152130,2,6,66679497,"Yes. More hints: you know that there are 6 full moves. You can combine them in a string. You need a List<string> next. . For each recursion the recursive function passes on the curren t list and the current count of remaining boxes. And it branches out be adding 6 more string, expanding the current one by each of the 6 full moves. it termnates when less than 3 boxes are left. 0 or 1 os ok, 2 is an illegal result, which must be deleted. finally count the lengths of the list strings. for easier coding put the six moves with a name and their box count into a Dictionary<string, int>..",fp,
 2579,39719865,ROS custom message and numpy arrays,|numpy|ros|robotics|,"<p>I want custom message to contain numpy arrays(I mean creation of .msg file and compiling it).
 As tutorial said we have to use <code>numpy_msg(type)</code> wrapper to be able to send numpy arrays. But is it possible to include it into my own .msg file?</p>
 ",9/27/2016 8:33,39743101,2345,1,0,0,,2157254,,3/11/2013 14:43,178,39743101,"<p>The message file doesn't change, you still use the ROS-style arrays (e.g., <code>float32[]</code>).</p>
@@ -3955,7 +3955,7 @@ As tutorial said we have to use <code>numpy_msg(type)</code> wrapper to be able 
 <p>all of your array data must be initialized as numpy arrays</p>
 <p>every numerical array in the Message must be initialized with a numpy array of the correct data type.</p>
 </blockquote>
-",256798,1,0,,,,
+",256798,1,0,,,fp,
 2590,40584193,Why calculate jacobians in ekf-slam,|robotics|kalman-filter|slam|,"<p>I know it is a very basic question but I want to know why do we calculate the Jacobian matrices in EKF-SLAM, I have tried so hard to understand this, well it won't be that hard but I want to know it. I was wondering if anyone could help me on this.</p>
 ",11/14/2016 8:01,41658660,422,1,0,1,,6831268,,9/14/2016 13:58,100,41658660,"<p>The Kalman filter operates on linear systems.  The steps update two parts in parallel:  The state <code>x</code>, and the error covariances <code>P</code>.  In a linear system we predict the next <code>x</code> by <code>Fx</code>.  It turns out that you can compute the exact covariance of <code>Fx</code> as <code>FPF^T</code>.  In a non-linear system, we can update <code>x</code> as <code>f(x)</code>, but how do we update <code>P</code>?  There are two popular approaches:</p>
 
@@ -4017,7 +4017,7 @@ while (System.currentTimeMillis() - before &lt; x){
 <p>The first iteration of while loop takes entire time duration of 10 seconds because of <code>Thread.sleep(10000)</code>.</p>
 
 <p>Sleep amount should be significantly lesser than total duration.</p>
-",2327745,0,4,70490511,"Yes, sorry, I didn't write it down here.",,
+",2327745,0,4,70490511,"Yes, sorry, I didn't write it down here.",obstacles,
 2669,42251596,Analytic calculation of Jacobian derivative(second order kinematic differentials),|c++|robotics|,"<p>I need to calculate the time derivative of the Jacobian. I want to do it analytical, I cannot calculate it numerical. I calculate <code>J_i</code> with the scheme in respect of the Denavit-Hartenberg Parameters
 <code>J_i = [z_(i-1) 0]^T</code> if it is an linear-axis etc.</p>
 
@@ -4033,7 +4033,7 @@ J_i = [(w_(i-1) x z_(i-1)) x r_(i-1) + z_(i-1) x ( v_(i,n9 + w_(i-1) x r_(i-1)) 
 <p>Here <code>r_i-1</code> is the distance to the TCP. I don t know what <code>w_i-1</code> and <code>v_i,n</code> is. Any help or any different suggestion?</p>
 
 <p>Thank you guys </p>
-",2/15/2017 14:06,,108,0,2,0,,7357997,,12/30/2016 13:07,8,,,,,,71662335,It sounds like a question more suitable for http://math.stackexchange.com/,,
+",2/15/2017 14:06,,108,0,2,0,,7357997,,12/30/2016 13:07,8,,,,,,71662335,It sounds like a question more suitable for http://math.stackexchange.com/,fp,
 2680,42355760,Get centroid of point cloud data based on color using kinect v2 in ROS,|kinect|ros|point-cloud-library|robotics|kinect-v2|,"<p>I want to get the centroid of point cloud data based on color using kinect v2. Even after searching for a long time I was not able to find a package which can do this task. But since this is a general problem, I think there should be a existing package. </p>
 
 <p>Please help. Thanks in advance!</p>
@@ -4058,7 +4058,7 @@ pcl::computeCentroid(*cloud, centroid);
                 centroid.y = y / (cloud-&gt;size() + 0.0);
                 centroid.z = z / (cloud-&gt;size() + 0.0);
 </code></pre>
-",6674213,2,0,,,,
+",6674213,2,0,,,api,
 2687,42371935,How to make a stable feedback controller which can only generate intermittent impulses?,|signal-processing|robotics|robot|control-theory|feedback-loop|,"<p>I have a kuka iiwa (7 joint robot arm).  Attached to it is a circular aluminum platter with a steel ball on it.  The goal of the project (for giggles/ challenge) was to use the internal torque sensors of the robot in order to balance the ball in the middle of the platter.  Due to the fact that I was unable/ not allowed to use FRI (fast robot interface) whereby I can control the robot from C at about 3ms feedback loop, I can only update the robot position at about 4Hz... My quick and dirty solution consisted of the following:</p>
 
 <p>Measure the torque on the final two axes of the arm and apply a mapping to generate the ball's position (filtration and hysteresis were well implemented to improve the data quality).  If the ball velocity was sufficiently stable, generate a motion that would cancel out that velocity (with an impulse ""go to angle and return to neutral position"" motion).  Overlaid on that was also a small proportional gain which would tend the ball towards the center of the platter.</p>
@@ -4074,7 +4074,7 @@ Where bal.posX dictates strength y.rot.arm ?</p>
 
 <p>I once coded something alike it, my colleague who's into PLC's called it that.
 I did fuzzy logic optimization then..</p>
-",613326,1,0,,,,
+",613326,1,0,,,sc,
 2724,42510907,Generate trajectories for 3 agents/robots with same tangent in specific point - MATLAB,|matlab|simulink|robotics|,"<p>I want to simulate the movements of 3 robots/agents in space and I would like to generate 3 different trajectories which have one constraint: in a certain time T the all the trajectories must have the same tangent.</p>
 <p>I want something like in the following picture:
 <a href=""https://i.stack.imgur.com/kBG1q.png"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/kBG1q.png"" alt=""enter image description here"" /></a></p>
@@ -4136,7 +4136,7 @@ grid on
 
 <p>What do you think? Does it make sense?
 Thanks again.</p>
-",2761849,0,0,,,,
+",2761849,0,0,,,fp,
 2730,42667789,How to exclude poses of a wheel based robot which place behind of the porevious pose,|robotics|kalman-filter|sensor-fusion|,"<p>I am currently working on coding sensor fusion of a wheel based robot pose from GPS, Lidar, Vision and Vehicle measure. Its model is basic kinematics using EKF and no discrimination against sensors i.e. data comes in based on time stamp.  </p>
 
 <p>I have difficulty to fuse those sensors due to following issue;
@@ -4171,7 +4171,7 @@ If you take several sensors observing the same variable, as GPS and Lidar for fo
 <p>Finally, the most obvious and simple approach: <strong>discard observations based on some statistical test</strong>. A chi-square test of the residual can be used to determine if an observation is too far from expected values and must be discarded. Be careful with this options, though: observation rejection schemes must be completed with a state vector reinitialization logic to resutl in a stable behavior.</p>
 
 <p>Almost all these solutions require knowning the source of each observation, so you would no longer be able to treat them indistinctly.</p>
-",1076211,0,0,,,,
+",1076211,0,0,,,sensor,
 2750,43175819,Distance on robot,|python|robotics|,"<p>I created a <code>robot</code> that will run based on <code>python</code>. For its autonomous program I need it to run for a certain distance( say 10 feet). Currently I am using time to have it go the distance, but is there any way to implement distance in the code to make it more exact. Thank you.</p>
 
 <p>This was code for an old robotics competition i did and i want to learn by improving it. I used these libraries:</p>
@@ -4329,7 +4329,7 @@ task main()
 <p>What you have written now makes <code>Tcount</code> increase everytime it moves ahead. By the time it reaches 1000 steps, <code>Tcount</code> is already 1000.</p>
 
 <p>Your <code>times</code> is 10. So `Tcount >= time and it wont enter the outer while loop again.</p>
-",2858773,1,0,73887612,RobotC is **not C**!,,
+",2858773,1,0,73887612,RobotC is **not C**!,mp,
 2786,44097582,rigid body transformation with only two points,|python|matrix|3d|gps|robotics|,"<p>I have a tractor with two GPS antennas which are mounted at the front of the tractor on either side.</p>
 
 <p><a href=""https://i.stack.imgur.com/dCNT2.jpg"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/dCNT2.jpg"" alt=""view of the front of the tractor""></a></p>
@@ -4418,7 +4418,7 @@ end
 
 <pre><code>axang = axang(:, [2 3 4 1]);
 </code></pre>
-",7621674,2,0,76729193,Aah. @SardarUsama thanks. New to stack overflow. Fixed my problem anyway. I was dividing by 0 in one case. You ended up helping me when you said 'Provide the relation between rotation matrix and axis angle form'. Thanks anyway.,,
+",7621674,2,0,76729193,Aah. @SardarUsama thanks. New to stack overflow. Fixed my problem anyway. I was dividing by 0 in one case. You ended up helping me when you said 'Provide the relation between rotation matrix and axis angle form'. Thanks anyway.,fp,
 2823,45093135,Controller for robotic arm in computer vision system,|c++|c|controller|robotics|,"<p>I'm working on a project of building a computer vision system. I have an embedded computer (Matrox 4Sight GPm) for running a C++ (OpenCV) program which I tested it with my laptop's built-in camera and it works.</p>
 
 <p>And the idea is that when the certain conditions are met, the vision system will output a signal to trigger a robotic arm to perform a task.</p>
@@ -4438,7 +4438,7 @@ It has one <strong>RS-232</strong> and one <strong>RS-485</strong> port for seri
 <p>If the robotic arm consists of servo motors then, in that case, you definitely need a microcontroller which has <strong>PWM</strong> on it. You need to program the <strong>RS-232</strong> of <strong>Matrox 4Sight GPm</strong> to send some custom commands to the microcontroller on the <strong>UART</strong> and you can write a simple program for microcontroller to drive the servo motors of that arm using <strong>PWM</strong> depending on the command received over the <strong>RS-232</strong> serial channel from <strong>Matrox 4Sight GPm</strong>.</p>
 
 <p>I hope I have cleared some of your doubts.</p>
-",2805824,1,1,77163420,"Most of the controllers are coded in C, that's why I also include C. And ppl who are familiar with C and controller might have some suggestions.",,
+",2805824,1,1,77163420,"Most of the controllers are coded in C, that's why I also include C. And ppl who are familiar with C and controller might have some suggestions.",wireless,
 2838,45709339,How to specify a column name and data item in Blueprism?,|c#|sql|vbscript|automation|robotics|,"<p>I'm using Blueprism to work with SQL queries and in my query, the column name is referenced like this <code>[columnName]</code> which is the right way and data items are referenced this way <code>[dataItem]</code>. </p>
 
 <p>For example, ""SELECT * FROM table WHERE <code>[columnName] = [dataItem]</code>"" </p>
@@ -4447,7 +4447,7 @@ It has one <strong>RS-232</strong> and one <strong>RS-485</strong> port for seri
 ",8/16/2017 9:03,45710964,997,1,0,2,,4633221,,3/4/2015 17:07,25,45710964,"<p>I figured out what the problem was. I had to append the sql query and the variable. </p>
 
 <p><code>""SELECT * FROM [Customer Details] WHERE [Name] ='"" &amp; [Test] &amp;  ""' ""</code></p>
-",4633221,0,0,,,,
+",4633221,0,0,,,fp,
 2883,45944714,LED stripe should follow a person,|python|ros|led|robot|,"<p>I got a LED stripe connected with a RasPi3. The stripe should be installed at an automated guided vehicle as the human maschine interface. I would like to program the stripe so that there are ""eyes"" on it (e.g. <em>3 LED pixel on -- 5 LED pixel off -- 3 LED pixel on</em>), which follow automatically a person who is standing in front of it.</p>
 
 <p>Actually i have the methods:</p>
@@ -4494,7 +4494,7 @@ There is an local apache2 server on my raspberry pi and my robot checks every ti
 <p>Is it efficient if I setup REST server on my raspberry pi with MongoDB in JS? MongoDB should be much faster than my current MySQL solution. And If I had REST service I can use it to communicate android app or webapp or my pc to my robot.</p>
 
 <p>Could you give me any tip if that helps with my case? Or the current solution client-server with MySQL will give me the same effect. Or there is any other better solution to ensure control connection between raspberry pi robot and different clients.</p>
-",9/1/2017 8:32,,137,0,5,0,,3904216,,8/3/2014 15:59,392,,,,,,78972636,Is the webserver necessary? What about  querying the database directly from the controller? Is there a way to do that?,,
+",9/1/2017 8:32,,137,0,5,0,,3904216,,8/3/2014 15:59,392,,,,,,78972636,Is the webserver necessary? What about  querying the database directly from the controller? Is there a way to do that?,internet,
 2893,46136105,Getting a point in the local frame of a simulated robot,|robotics|game-development|coordinate-transformation|kinematics|homogenous-transformation|,"<p>This is for a robot simulation that I'm currently working on. 
 If you look at the diagram provided, you'll see two co-ordinate frames. <strong>Frame A</strong>, <strong>Frame B</strong>; and you will find a point <em>p</em>. </p>
 
@@ -4522,7 +4522,7 @@ point_in_frameB_y = point_in_frameA_x * sin(theta) + point_in_frameA_y * cos(the
 ",9/9/2017 23:53,,96,1,0,0,,848423,,7/17/2011 6:05,122,46173021,"<p>Follow <a href=""https://en.wikipedia.org/wiki/Right-hand_rule"" rel=""nofollow noreferrer"">right hand rule</a> for assigning coordinate frames. In your picture axes of either frame A or frame B must be changed. </p>
 
 <p><a href=""https://i.stack.imgur.com/xd1WU.jpg"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/xd1WU.jpg"" alt=""enter image description here""></a></p>
-",1595504,0,2,,,,
+",1595504,0,2,,,fp,
 2899,46326949,Is it possible to change the OMPL source code for the V-Rep plug-in?,|robotics|motion-planning|,"<p>I develop motion planning algorithms using ompl and I'm wondering if I can somehow change the V-Rep ompl plug-in so it runs my own ompl planning algorithms (like replace RRT-Connect, FMT,... etc with my own algorithms)?</p>
 
 <p>How should I have do this?</p>
@@ -4534,7 +4534,7 @@ point_in_frameB_y = point_in_frameA_x * sin(theta) + point_in_frameA_y * cos(the
 <code>cmake . ../..</code> then <code>make -j4</code></li>
 <li>Include the header file of your custom planner wherever needed.</li>
 </ol>
-",3504538,0,0,,,,
+",3504538,0,0,,,mp,
 2901,46455274,RobotC Sonar Sensor Array,|arrays|while-loop|rotation|robot|robotc|,"<p>I am using a sonar sensor to create an obstacle avoiding robot. The robot needs to be able to check 180 degrees in front of it, so I have made a ""head"" the sensor is mounted on that is attached to a motor with an axle that runs through a potentiometer. I have found the potentiometer values for the 5 sets of 45 degree intervals with the total 180 degrees required and documented. The sonar sensor must be able to scan a distance and then move 45 degrees, repeating the process until it reaches 180 degrees (to the right) only once it reaches that point of rotation, the scan distances are put into an array to be used by an avoidance task to be developed at a later time.
 However, the sonar sensor stores values for certain angles before the head has actually reached that specified angle. 
 <a href=""https://i.stack.imgur.com/CjFeQ.jpg"" rel=""nofollow noreferrer"">Obstacle Avoidance Robot (Head rotation system in the middle)</a></p>
@@ -4810,12 +4810,12 @@ task main()
 </code></pre>
 
 <p>Also, I would highly recommend the VEX forums (found here: <a href=""https://www.vexforum.com/"" rel=""nofollow noreferrer"">https://www.vexforum.com/</a>) for future questions involving vex. It is more specialized towards your needs. My username is Tark1492. Feel free to message me directly if you ever get stuck on a specific question about RobotC.</p>
-",9937692,0,0,,,,
+",9937692,0,0,,,sensor,
 2936,46906286,Is the C language supported as a V-REP script,|simulation|robotics|,"<p>I am quite new to V-rep and while I'm reading the documentation, in the section Regular API, all the provided script functions are written for both Lua and C, but officially, Lua is the supported language for scripting.</p>
 
 <p>My question is, can I write the scripts in C ?</p>
 ",10/24/2017 9:02,,32,1,0,0,,1483023,,6/26/2012 14:11,42,49824463,"<p>No, the only thing you can do is to use the remote API to write an external C++ program that handles the simulation.</p>
-",9106031,1,0,,,,
+",9106031,1,0,,,fp,
 2938,47102736,Forward Kinematics for Baxter,|python|robotics|kinematics|,"<p>I've put together this Forward Kinematics function for Baxter arm robot based on its <a href=""http://sdk.rethinkrobotics.com/wiki/Hardware_Specifications#Joint_Names"" rel=""noreferrer"">hardware specs</a> and the following joints axis:<a href=""https://i.stack.imgur.com/JRWHX.png"" rel=""noreferrer""><img src=""https://i.stack.imgur.com/JRWHX.png"" alt=""baxter zero configuration""></a>
 The joint positions for the following forward kinematics are not matching the corresponding Cartesian coordinates, what am I doing wrong here?</p>
 
@@ -4965,7 +4965,7 @@ sin(gamma)    cos(gamma)     0      0;
 <p>That is essentially what the DH parameters helps you do, but I like to think of the individual steps to get from one frame to the next instead of jumping there with the DH parameters. </p>
 
 <p>With the corrected H0 through H6 transformations, your approach is correct. Just change the definitions of H0 through H6 in your code. </p>
-",7117084,1,0,81410343,"Maybe you could comment your code a little bit. It is not that straight forward to understand what you intend with each step. I figured e.g. out that RXX is the robots joints rotation, but then you do not give us your coordinates for joints...",,
+",7117084,1,0,81410343,"Maybe you could comment your code a little bit. It is not that straight forward to understand what you intend with each step. I figured e.g. out that RXX is the robots joints rotation, but then you do not give us your coordinates for joints...",hc,
 2945,47126874,JavaScript Liquid Handling Robot,|javascript|robotics|,"<p>I have the following code  (Using <a href=""https://www.w3schools.com/js/"" rel=""nofollow noreferrer"">https://www.w3schools.com/js/</a>  Because i don't know how else to test it)</p>
 
 <pre><code>&lt;p id=""demo""&gt;&lt;/p&gt;
@@ -5011,7 +5011,7 @@ document.getElementById(""demo"").innerHTML = text;</code></pre>
 </div>
 </div>
 </p>
-",8888888,0,4,,,,
+",8888888,0,4,,,fp,
 2946,47127628,Is Parse in JavaScript possible?,|javascript|robotics|,"<p>I have tried searching and haven't been able to see anything that can parse in JavaScript.</p>
 
 <p>It would only have to parse a .txt (tab delimited) file with the following:</p>
@@ -5034,7 +5034,7 @@ document.getElementById(""demo"").innerHTML = text;</code></pre>
 ",11/5/2017 23:09,,48,1,4,0,,5008663,,6/14/2015 15:48,9,47127643,"<pre><code>var input = /* your data */;
 var table = input.split(""\n"").map(line =&gt; line.split(""\t"")); // here's your table
 </code></pre>
-",283863,2,0,81205433,"Yep, parsing usually involves regular expressions",,
+",283863,2,0,81205433,"Yep, parsing usually involves regular expressions",fp,
 2950,47165908,Running python script in the background - Raspbian,|python|background-process|raspberry-pi3|robotics|,"<p>I have recently constructed a small robot car using my raspberry pi 3 with raspbian stretch. I am currently at the point where I can drive the car around using an xbox360 controller plugged into the pi USB port. My issue is that I do not like having to ssh into the pi and run the script I have written in order to use the robot (robot.py).</p>
 
 <p>What I would like to do is have a script running in the background which works something like this:</p>
@@ -5054,7 +5054,7 @@ var table = input.split(""\n"").map(line =&gt; line.split(""\t"")); // here's yo
 <p>My question is, am I going about this in the right way? Having a script running in the background which is basically an infinite loop with conditionals inside seems silly to me. Would it be better to have something more event driven?</p>
 ",11/7/2017 19:22,,555,1,0,0,,8088724,,5/30/2017 21:21,13,47166379,"<p>Here is something I might do, thought a bit of a hack.  Put the python code in to a loop, adding a very short sleep at the end of each loop to limit cpu usage.  Then run the python script inside a session of tmux, detached of course.  The python script will then run until the tmux session is killed, even if your ssh session exits.  tmux is just an example utility, by the way.  There are others.
 Of course you could get fancy and implement the loop within a signal-and-wait mechanism, which would wait for a signal from your controller, then launch that from an operating system daemon.  Depends how deep you want to go ...</p>
-",2363348,0,0,,,,
+",2363348,0,0,,,wireless,
 2983,48189649,ROS Python Script is not executable when catkin build is done,|python|ros|robotics|catkin|,"<p>I'm new to ROS.</p>
 
 <p>I have developed a ROS python project. : <a href=""https://github.com/ildoonet/ros-video-recorder"" rel=""nofollow noreferrer"">https://github.com/ildoonet/ros-video-recorder</a></p>
@@ -5154,14 +5154,14 @@ x = reduce(__or__, myiterable)
 </code></pre>
 
 <p>to <code>or</code> them all together. I don't really understand the way your tuples are nested so I'm not going to try and go into specifics.</p>
-",2084384,0,1,83439916,"@BoarGules - yes, essentially - although `motormsk()` does something a bit more specific - a general replacement could take an arbitrary number of motor tuples, the direction (i.e. +, -) and `OR` the components.",,
+",2084384,0,1,83439916,"@BoarGules - yes, essentially - although `motormsk()` does something a bit more specific - a general replacement could take an arbitrary number of motor tuples, the direction (i.e. +, -) and `OR` the components.",list,
 2995,48271579,How to do sensor fusion?,|sensors|robotics|,"<p>Let suppose that I have two measures from two difference sensors of the same variable. I'd like to know if there's a way to do an information fusion and obtain a unique measure that describes the best way possible the whole system (Both sensors). </p>
 
 <p>I know Bar-Shalom - Campo sensor fusion model, but I'd like to know if there are any model that doesn't adopte the classical Gaussian assumption, so that the sensor fusion can deal with bad data/gross erros.</p>
 
 <p>Thank you.</p>
 ",1/15/2018 22:29,48337666,248,2,2,0,,,,,,48337666,"<p>For sensor fusion, you can go for Kalman Filter. There are few tutorials and research papers available for extended kalman filter, used for sensor fusion. </p>
-",9238248,0,0,83526941,"FYI, as you did this twice. Plural form of `sensor` is `sensors` not `sensores`",,
+",9238248,0,0,83526941,"FYI, as you did this twice. Plural form of `sensor` is `sensors` not `sensores`",sensor,
 3004,48455762,How to code EEPROM with potentiometer in Arduino,|c++|arduino|robotics|eeprom|servo|,"<p>I have A code I got from a site. I've been trying to add EEPROM in that code but I can't get it right. I tried adding EEPROM.write and EEPROm.read I also add another servo</p>
 
 <p>Can someone help me with it, <strong>Adding EEPROM in the code?</strong> Thank you in advance :) </p>
@@ -5381,7 +5381,7 @@ START_ROBOT_CLASS(Robot)
 <p>In this post the same question is discussed, depends with camera manufacturer.</p>
 
 <p>You have to search for a library to work with your camera, writing a code might be too difficult.</p>
-",2244977,1,0,85004523,Install OpenCV in your project. It has many real-time image processing functionalities for such robotic projects,,
+",2244977,1,0,85004523,Install OpenCV in your project. It has many real-time image processing functionalities for such robotic projects,vision,
 3035,49205761,How to run two turtle bots simultaneously in ROS Kinetic?,|ros|robotics|,"<p>I am trying to run two turtle bots from two different terminals on ROS. But as soon as I run the second command it closes the first turtlebot and runs the other with same name. I think I am looking for a way to change the turtlebot node names while running it. </p>
 ",3/10/2018 5:40,,412,1,1,0,,4928387,"Surat, Gujarat, India",5/22/2015 9:29,25,49215805,"<p>you can change  name of node in a launch file
 for that create a launch file 
@@ -5393,13 +5393,13 @@ and in launch file</p>
 </code></pre>
 
 <p>you can use remap in your launch file too</p>
-",8772302,0,0,85419734,"Please share some more information what exactly you tried. Add some launch commands, your hardware setup, ... With the information give by you it's hard to help. Maybe this page helps: http://wiki.ros.org/Nodes",,
+",8772302,0,0,85419734,"Please share some more information what exactly you tried. Add some launch commands, your hardware setup, ... With the information give by you it's hard to help. Maybe this page helps: http://wiki.ros.org/Nodes",cpmr,
 3036,49209624,generating occupancy grid maps from open source maps,|mapping|ros|robotics|,"<p>I want to know is it possible to write a program that  generates a 2d occupancy grid map from an open source map such as ""Openstreetmap"" in order to use it with robot localization ..</p>
 
 <p>Will the information that can be extracted from such maps will be enough to know if this is a building so it's an occupied cell but this is a street so it's a free cell?</p>
 
 <p>The program should take a map in XML file for example and automatically output the OGM.</p>
-",3/10/2018 13:29,,451,0,3,0,,9351257,,2/12/2018 17:59,1,,,,,,85442451,"No, it will most likely not be enough for robot localization. There are a lot of things changing all the time in the real world, and they will not be visible in the map. The robot's localization is likely to fail if you use outdated data from the map.",,
+",3/10/2018 13:29,,451,0,3,0,,9351257,,2/12/2018 17:59,1,,,,,,85442451,"No, it will most likely not be enough for robot localization. There are a lot of things changing all the time in the real world, and they will not be visible in the map. The robot's localization is likely to fail if you use outdated data from the map.",mapping,
 3045,49348325,Local minima in a Moore neighborhood,|algorithm|artificial-intelligence|robotics|motion-planning|,"<p>While trying to use a wavefront algorithm, I came across a scenario that I haven’t been able to easily solve.  I populate an array with a wavefront algorithm and using a Moore neighborhood, how do I decide which way to travel given that several of the neighbors are the exact same.</p>
 
 <p><a href=""https://i.stack.imgur.com/ownV1.png"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/ownV1.png"" alt=""Moore Neighborhood""></a></p>
@@ -5444,7 +5444,7 @@ I had incorrectly generated the numbers, embarrassing.</p>
 <p><a href=""https://i.stack.imgur.com/IjHt5.png"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/IjHt5.png"" alt=""enter image description here""></a> </p>
 
 <p><a href=""https://i.stack.imgur.com/HY4Ea.png"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/HY4Ea.png"" alt=""enter image description here""></a></p>
-",3/18/2018 13:20,,161,0,2,0,,1413678,"Syracuse, NY",5/23/2012 21:48,36,,,,,,86349070,"You are absolutely correct on my pics, I calculated the wavefront by hand and placed on a spreadsheet to view the array. My calculation is off. I have since actually created a function to calculate automatically for me. After the numbers are correctly generated, the problem goes away.  The choice however resurfaces again using Van Neumann generation and navigation.",,
+",3/18/2018 13:20,,161,0,2,0,,1413678,"Syracuse, NY",5/23/2012 21:48,36,,,,,,86349070,"You are absolutely correct on my pics, I calculated the wavefront by hand and placed on a spreadsheet to view the array. My calculation is off. I have since actually created a function to calculate automatically for me. After the numbers are correctly generated, the problem goes away.  The choice however resurfaces again using Van Neumann generation and navigation.",mp,
 3056,49581278,Origin of a ROS map representation,|datagrid|maps|ros|robotics|,"<p>I am working with ROS and its map_server node.</p>
 
 <p>I dont understand what the origin metadata info of a map means (conceptually). According to the official documetation:</p>
@@ -5515,7 +5515,7 @@ I had incorrectly generated the numbers, embarrassing.</p>
 
 <p>For more information on the nav stack go: <a href=""http://wiki.ros.org/navigation"" rel=""nofollow noreferrer"">http://wiki.ros.org/navigation</a>
 and here: <a href=""https://www.dis.uniroma1.it/~nardi/Didattica/CAI/matdid/robot-programming-ROS-introduction-to-navigation.pdf"" rel=""nofollow noreferrer"">https://www.dis.uniroma1.it/~nardi/Didattica/CAI/matdid/robot-programming-ROS-introduction-to-navigation.pdf</a></p>
-",10026869,0,0,,,,
+",10026869,0,0,,,mapping,
 3059,49614877,How to move a delta ASDA-B2 motor to position x and y?,|java|robotics|servo|,"<p>I want to write a method which gets two number, <code>x</code> and <code>y</code> and move the servo to the correct position. <code>x</code> and <code>y</code> are the position of an object in an image which I extracted before. I have no idea how to move the servo in java. I skimmed the <a href=""http://www.acontrol.com.pl/uploads/pdf/instrukcje/ASDA-B2-user-guide.pdf"" rel=""nofollow noreferrer"">manual</a> and it seems there is nothing related to my issue. The servo should point to the position of the object. Mapping the position <code>x</code> and <code>y</code> to the suitable number for servo movement can be done after finding the way to move the servo.In addition, the servo is placed in the position N and M/2 of an NxM image and should point to the position of the object.
 <strong>I use a PC or Laptop to communicate with servo (maybe USB or COM port)</strong></p>
 
@@ -5536,7 +5536,7 @@ public void servoMove (int x, int y){
 </code></pre>
 
 <p><a href=""https://i.stack.imgur.com/zIbvH.png"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/zIbvH.png"" alt=""enter image description here""></a></p>
-",4/2/2018 16:23,,156,0,6,1,0,7030791,USA,10/17/2016 11:37,503,,,,,,94966876,"Not sure this will help you though. Please check the protocol being used for your ASDA-B2 is this one. If it is, you can start playing around with it by sending bits to RS232 port(by using the protocol specification). https://www.manualslib.com/manual/1286287/Delta-Asd-B2-0121-B.html?page=253#manual For Cartesian to polar coordinate conversion, [![enter image description here](https://i.stack.imgur.com/u7dYz.jpg)](https://i.stack.imgur.com/u7dYz.jpg)",,
+",4/2/2018 16:23,,156,0,6,1,0,7030791,USA,10/17/2016 11:37,503,,,,,,94966876,"Not sure this will help you though. Please check the protocol being used for your ASDA-B2 is this one. If it is, you can start playing around with it by sending bits to RS232 port(by using the protocol specification). https://www.manualslib.com/manual/1286287/Delta-Asd-B2-0121-B.html?page=253#manual For Cartesian to polar coordinate conversion, [![enter image description here](https://i.stack.imgur.com/u7dYz.jpg)](https://i.stack.imgur.com/u7dYz.jpg)",wireless,
 3071,49668825,Align Point Clouds with PCL on only one rotation axis,|computer-vision|point-cloud-library|robotics|point-clouds|,"<p>I'm trying to align two point clouds acquired from a robot with PCL. I compute correspondences and then align them with <code>estimateRigidTransformation</code>:</p>
 
 <pre><code>pcl::registration::TransformationEstimationSVD&lt;PointT, PointT&gt; transformation;
@@ -5620,7 +5620,7 @@ icp.align(*result);
 <p>If after calculations some velocity has absolute value V that exceeds 1.0, divide all velocities by this value to ensure they are in range    </p>
 
 <p>(of course, real-life dynamic is more complex)</p>
-",844416,2,0,88701978,"Isn't it just that the speed of the outer edge of a wheel due to rotation (along the motor axis) should be equal to the magnitude of the component of the travel velocity in the direction perpendicular to the motor axis? Cool setup though, I learned that omni wheels exist.",,
+",844416,2,0,88701978,"Isn't it just that the speed of the outer edge of a wheel due to rotation (along the motor axis) should be equal to the magnitude of the component of the travel velocity in the direction perpendicular to the motor axis? Cool setup though, I learned that omni wheels exist.",mc,
 3156,51187676,What's the difference between ROS2 and DDS?,|robotics|data-distribution-service|ros2|,"<p>ROS2 is a distributed architecture using publisher/subscriber messaging between nodes.</p>
 
 <p>ROS2 has taken a different approach in its messaging layer and now employs the industry standard called Data Distributed Services (DDS).</p>
@@ -5635,7 +5635,7 @@ icp.align(*result);
 <p>You can use DDS directly (if you configure properly your publisher and subscriber you can also communicate with ROS2 publisher and subscriber) however you will have to create the message (.idl), call the generator to get the corresponding structure and sources files, create a domain, assign a topic, configure the datawriters/datareader,.. (have a look at some examples <a href=""https://github.com/rticommunity/rticonnextdds-examples/tree/master/examples/listeners/c"" rel=""noreferrer"">https://github.com/rticommunity/rticonnextdds-examples/tree/master/examples/listeners/c</a>)</p>
 
 <p>So ROS2 is making your life easier. Plus, there are lots of packages that can be used above the messages.</p>
-",6949178,6,0,,,,
+",6949178,6,0,,,ros,
 3160,51205858,Finding the translation between 2d and 3d coordinate,|python|opencv|math|robotics|coordinate-systems|,"<p>I have a task to find the object in an image.</p>
 
 <p><img src=""https://i.stack.imgur.com/T3gGG.png"" alt=""object1""></p>
@@ -5665,7 +5665,7 @@ arm_z = z
 </code></pre>
 
 <p>For more complex rotations please refer to the answers to <a href=""https://stackoverflow.com/questions/6802577/rotation-of-3d-vector"">this question</a>.</p>
-",1833711,0,2,89392819,"In my understanding you are able to find 3D coordinates centered on the camera, but you need to obtain arm-centered coordinates? Am I right?",,
+",1833711,0,2,89392819,"In my understanding you are able to find 3D coordinates centered on the camera, but you need to obtain arm-centered coordinates? Am I right?",cameras,
 3172,51385737,ROS Human-Robot mapping (Baxter),|ros|virtual-reality|robotics|,"<p>I'm having some difficulties understanding the concept of teleoperation in ROS so hoping someone can clear some things up.</p>
 
 <p>I am trying to control a Baxter robot (in simulation) using a HTC Vive device. I have a node (publisher) which successfully extracts PoseStamped data (containing pose data in reference to the lighthouse base stations) from the controllers and publishes this on separate topics for right and left controllers.</p>
@@ -5699,7 +5699,7 @@ arm_z = z
 <p><a href=""https://www.microsoft.com/en-us/research/publication/real-time-human-pose-recognition-in-parts-from-a-single-depth-image/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2F%3Fid%3D145347"" rel=""nofollow noreferrer"">https://www.microsoft.com/en-us/research/publication/real-time-human-pose-recognition-in-parts-from-a-single-depth-image/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2F%3Fid%3D145347</a></p>
 
 <p>I am not familiar with the Vive device. You should see if it offers a similar api for accessing skeleton tracking information since reverse engineering Microsoft's algorithm will be challenging.  </p>
-",1556335,1,4,89754780,"If you can render a common reference frame for both the data coming from your VR setup and the real robot, then whatever poses you get from VR can be sent for control on the robot via an appropriate transformation. This assumes you have a task space controller for the robot. Then you can totally avoid any configuration mapping between humans and Baxter because it all operates in a common operational (task) space.",,
+",1556335,1,4,89754780,"If you can render a common reference frame for both the data coming from your VR setup and the real robot, then whatever poses you get from VR can be sent for control on the robot via an appropriate transformation. This assumes you have a task space controller for the robot. Then you can totally avoid any configuration mapping between humans and Baxter because it all operates in a common operational (task) space.",fp,
 3173,51448305,Should samples from np.random.normal sum to zero?,|python|numpy|statistics|robotics|normal-distribution|,"<p>I am working on the motion model of a robot. In every time step, the robot's motion is measured, then I sample the normal distribution with the measurement as the mean and a small sigma value for covariance in order to simulate noise. This noisy motion is then added to the robot's previous state estimate.</p>
 
 <p>But when I keep the robot still, these noisy measurements seem to accumulate and the robot ""thinks it's moving.""</p>
@@ -5740,7 +5740,7 @@ plt.show()
 
 <pre><code>np.mean([np.random.normal(0, 0.1) for _ in range(1000)])
 </code></pre>
-",8146556,1,0,89867187,"No. https://en.wikipedia.org/wiki/Sum_of_normally_distributed_random_variables, notice the std increases",,
+",8146556,1,0,89867187,"No. https://en.wikipedia.org/wiki/Sum_of_normally_distributed_random_variables, notice the std increases",fp,
 3177,51480521,ValueError: Cannot use the given session to evaluate tensor: the tensor's graph is different from the session's graph,|python|tensorflow|deep-learning|ros|robot|,"<p>I want to use tensorflow model in ROS.and this code can work,however,it is very slow because of everytime it restore the model</p>
 
 <pre><code>class image_converter:
@@ -5805,7 +5805,7 @@ def callback(self, data):
 <strong>ValueError: Cannot use the given session to evaluate tensor: the tensor's graph is different from the session's graph.</strong></p>
 
 <p>so,what should i do to solve this error.thank you very much.</p>
-",7/23/2018 13:53,,774,0,0,2,0,8211166,,6/25/2017 6:24,117,,,,,,,,,
+",7/23/2018 13:53,,774,0,0,2,0,8211166,,6/25/2017 6:24,117,,,,,,,,dl,
 3182,51877976,Troubles to move turtlebot_gazebo,|c++|geometry|ros|robotics|,"<p>I started a small project where I wanted to move the turtlebot in gazebo. I launched: roslaunch turtlebot_gazebo turtlebot_world.launch</p>
 
 <p>I wrote a code to move it:</p>
@@ -5848,13 +5848,13 @@ while(ros::ok()){
 
 <p>Other parameters don't do anything.
 So, in your code, using the above 2 parameters will move the bot. Rest of the parameters won't affect the bot in any way.</p>
-",7615877,0,0,,,,
+",7615877,0,0,,,fp,
 3191,51995191,Using Flexible Collision Library (FCL),|c++11|collision-detection|robotics|,"<p>I am trying to implement self-Collision checks on a manipulator arm using the <em>Flexible Collision Library</em> and its difficult to find examples or tutorials. </p>
 
 <p>The documentation available at for is not verbose enough with examples for integration and I just couldn't wrap my head around it. </p>
 
 <p>Where can I find any suitable resources? </p>
-",8/23/2018 22:38,,1717,0,2,0,,4796617,"San Francisco, CA, USA",4/16/2015 12:46,48,,,,,,94969703,"Maybe you can start from reading the code snippets from https://github.com/flexible-collision-library/fcl#interfaces and the related interfaces, which is well documented in the header files.",,
+",8/23/2018 22:38,,1717,0,2,0,,4796617,"San Francisco, CA, USA",4/16/2015 12:46,48,,,,,,94969703,"Maybe you can start from reading the code snippets from https://github.com/flexible-collision-library/fcl#interfaces and the related interfaces, which is well documented in the header files.",obstacles,
 3222,52974661,Multiple View Stereo software recommendation,|computer-vision|robotics|,"<p>I have a collection of camera images taken by 4 calibrated cameras mounted on a mobile robot moving in a static outdoor environment. In addition, I have information from a farely accurate OxTS RT3000 Inertial Navigation System (IMU + GPS).</p>
 
 <p>I would like to combine these images to form a 3d model (point cloud) of the static environment. I know there are many Structure from Motion applications, but I would like to find some software/library that is able to make use of the odometry and calibration, at least as an initialization, and to produce a dense point cloud. (All of this is for offline recordings.)</p>
@@ -5871,7 +5871,7 @@ So, in your code, using the above 2 parameters will move the bot. Rest of the pa
 <p>Taken from page 21 of <a href=""http://www.agisoft.com/pdf/photoscan-pro_1_4_en.pdf"" rel=""nofollow noreferrer"">http://www.agisoft.com/pdf/photoscan-pro_1_4_en.pdf</a></p>
 
 <p>You may have to do some wrangling of data to get it into a supported format, but it's certainly possible. You'll probably want to use the local coordinate output of the OxTS IMU to go from lat/lon/alt to XYZ and save yourself the conversion. Be careful also to correct for the extrinsic parameters - the rotations and translations between the IMU navigation frame and the cameras.</p>
-",6261432,0,2,,,,
+",6261432,0,2,,,cameras,
 3223,53070070,Create a moving marker. Robot Operating System (ROS),|openstreetmap|ros|path-finding|robotics|planning|,"<p>I'm trying to plan routes in ROS using OSM data and show the results in Rviz, using Python. Until now, my result is the following one:</p>
 
 <p>Correct path computed by the algorithm shown in Rviz:
@@ -5888,7 +5888,7 @@ So, in your code, using the above 2 parameters will move the bot. Rest of the pa
 
 <p>also you can use any existing models(It may not look like the thing you want)
 and if you don't know your moving frame you can use Axe inside Rviz to represent the location of the frame at any moment</p>
-",7350738,1,0,,,,
+",7350738,1,0,,,mp,
 3230,53311457,Is best first search optimal and complete?,|artificial-intelligence|path-finding|robotics|heuristics|best-first-search|,"<p>I have some doubts regarding best first search algorithm. The pseudocode that I have is the following:
 <a href=""https://i.stack.imgur.com/OgPtS.png"" rel=""noreferrer"">best first search pseudocode</a></p>
 
@@ -5909,7 +5909,7 @@ So, it needs to calculate the actual cost of the path to reach a particular node
 <p>Check the implementation of <a href=""https://en.wikipedia.org/wiki/A*_search_algorithm"" rel=""nofollow noreferrer"">A* algorithm</a> which is an example of best first search on path planning.</p>
 
 <p><strong>TLDR</strong> In best first search, you need to calculate the cost of a node as a sum of the cost of the path to get to that node and the heuristic function that estimate the cost of the path from that node to the goal. If the heuristic function will be admissible and consistent the algorithm will be optimal and complete.</p>
-",6779656,3,2,,,,
+",6779656,3,2,,,fp,
 3241,53493976,Loop arcsin possible answers,|python|python-3.x|python-2.7|robotics|,"<p>I am currently taking a robotic course in my study . There is a lab that we require to find inverse kinematics for our robots and in order to do that, there will be many arcsin and arccos needed to find the all the theta(s)</p>
 
 <p>For example,</p>
@@ -5920,7 +5920,7 @@ theta3 = arcsin(theta1/theta2) &lt;--- This too
 </code></pre>
 
 <p>So my question is , how do I loop to find all the multiple solutions for those dependent equations ?</p>
-",11/27/2018 6:30,,124,0,5,0,,5957146,"Ottawa, ON, Canada",2/20/2016 23:32,26,,,,,,93857654,"Since sin is a cyclic function, there is actually an infinite amount of solutions, x = x0 + 2k*pi for any integer k. arcsin just returns the solution with 0 <= x < 2*pi.",,
+",11/27/2018 6:30,,124,0,5,0,,5957146,"Ottawa, ON, Canada",2/20/2016 23:32,26,,,,,,93857654,"Since sin is a cyclic function, there is actually an infinite amount of solutions, x = x0 + 2k*pi for any integer k. arcsin just returns the solution with 0 <= x < 2*pi.",ik,
 3287,54620356,How to correctly use ode45 function in MATLAB for differential drive robot?,|matlab|ode|robotics|,"<p>I am trying to determine the pose (x,y,theta) of a differential drive robot using ode45. The code I have below solves for the x position, but I am having an issue with the initial condition. I set it to 0 since at time 0 the robot is assumed to be at the origin, but I get an error. How do I set the initial condition for ode45 such that I get the expected output?</p>
 
 <p>I tried to make the initial conditions vector of the same length as dxdt by setting initial conditions as a 41x1 zeros matrix, but I didn't understand the output and I don't believe I did it correctly.</p>
@@ -5981,7 +5981,7 @@ end
 </code></pre>
 
 <p>at the top of your script to avoid polluting your workspace with previously defined variables.</p>
-",6459621,1,1,,,,
+",6459621,1,1,,,orientation,
 3319,55038180,How to use the uArm Pro Python library,|python-2.7|robotics|,"<p>I am just getting started with uArm Pro and need to write a test controller in Python. I came across the python library for uArm on Github. How can I use it to my advantage?</p>
 ",3/7/2019 7:24,,985,1,0,-1,,10133412,"Haldia, West Bengal, India",7/25/2018 12:25,12,55038414,"<p>uArm provides baisc Movement on Python. The library only supports uArm Swift/SwiftPro. For Metal, please use pyuarm or pyuf instead.</p>
 
@@ -6092,7 +6092,7 @@ S = exp(-b E3) E2
 </code></pre>
 
 <p>I have just derived those equations so this is untested and there might be some mistake. Take it as is.</p>
-",9147444,0,0,,,,
+",9147444,0,0,,,orientation,
 3366,55429137,How to control a 4 DOF robotic arm using Ardunio?,|arduino|arduino-uno|robotics|,"<p>I recently bought a 4 DOF <em>(Degree Of Freedom)</em> robotic arm kit. I successfully assembled it and now I want to program the arduino to control it.
 I know how to make the servos work using arduino but could not figure out how to move the hand to specific positions.</p>
 
@@ -6219,7 +6219,7 @@ void loop(){}
 ",3/30/2019 7:17,57345583,3582,1,4,0,,10182024,"Kerala, India",8/5/2018 6:28,164,57345583,"<p>I finally solved the problem ! I tried figuring out the inverse kinematics for the arms but I found out it is very hard and due to the uncertainty in the hardware it doesn't work good either. The actual solution was to use sensors. I put distance sensors (Ultra-sonic) on the arm so that I can measure distance between arm parts in real time. Since I know the length of each segment of the arm (I don't have to worry about uncertainty here.) and also the distance between them I can do simple trigonometry to calculate the coordinates of the tip of the arm. This means that I can simply use a feedback loop to position the arm with ineradicable accuracy and overcome the limitations of the Hardware.</p>
 
 <p>I do understand that this is not the exact answer for the asked question but I found out from my experience that this method is the most suitable for the situation (When compared to the attempt according to the question).</p>
-",10182024,1,0,97643335,"You need to find the inverse kinematics equations for your robot configuration. Probably, as it is a kit, someone else has calculated them and you can find them online. If that's not the case, you need to obtain the Denavit-Hartemberg parameters for the configuration, and then obtain the matrices for each DOF.",,
+",10182024,1,0,97643335,"You need to find the inverse kinematics equations for your robot configuration. Probably, as it is a kit, someone else has calculated them and you can find them online. If that's not the case, you need to obtain the Denavit-Hartemberg parameters for the configuration, and then obtain the matrices for each DOF.",hc,
 3372,55608358,"How to fix Mujoco CmakeLists build error ""/usr/bin/ld: cannot find -lglfw""?",|c++|cmake|shared-libraries|simulator|robotics|,"<p>I'm trying to simulate physics of a robot with Mujoco in C++. Because the project is a part of a bigger workspace, I need to use cmake to build the executable. However, I cannot seem to properly link all the dependant libraries, so I cannot get rid of the error:</p>
 
 <pre><code>~: /usr/bin/ld: cannot find -lglfw
@@ -6280,7 +6280,7 @@ target_link_libraries(${BIN_NAME} libglew.so libglfw.so.3 libglewegl.so libglewo
 ",4/10/2019 8:47,55608420,9020,1,0,1,,5576434,,11/18/2015 11:56,63,55608420,"<p>You should find the GL/GLW package instead ot this: <code>target_link_libraries(${BIN_NAME} libglew.so libglfw.so.3 libglewegl.so libglewosmesa.so)</code>. This doesn't ensure that these libraries are available and can be found, whereas the <code>FIND_PACKAGE(GLEW)</code>.</p>
 
 <p>See <a href=""https://stackoverflow.com/questions/27472813/linking-glew-with-cmake"">Linking GLEW with CMake</a> for more information on the subject.</p>
-",2266772,3,0,,,,
+",2266772,3,0,,,bf,
 3373,55772405,How to store local Sub Program names in an array and call them in a loop iterating over said Array in KUKA Robotic Language,|robotics|kuka-krl|,"<p>The problem:<br/>
 The main structure of the code the way I want it to be-<br/></p>
 
@@ -15276,3 +15276,4 @@ I configured the IP addresses of both the robot PC and my PC. The robot was conn
 <p>I don't know what I should do any suggestions?</p>
 <p>I'm just trying to connect and upload this simple code to the esp via FTDI usb</p>
 ",3/23/2024 20:44,,19,0,1,0,,23759528,,3/23/2024 20:39,1,,,,,,137888784,"If I'm asking it's because I haven't gotten the answer on Google, It's common sense.",,
+,,,,,,,,,,,,,,,,,,,,,,,,
