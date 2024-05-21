@@ -57,7 +57,7 @@ def calculatePopularityFactor(popularityFactor, dataframe, idLabel):
 
     # return the average popularity factor
     # This is NOT normalizing the factor, it is just the average
-    return popularityFactorTotal / totalNumUniqueQuestions
+    return popularityFactorTotal / totalNumUniqueQuestions 
 
 #creates a new excel file with a subset of X random questions from the supplied question dataset, with the same distribution of years as the original
 def randomXQuestions(X, yearDict):
