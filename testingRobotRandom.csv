@@ -281,9 +281,12 @@ Which language to use (possible for Java for example)?</p>
 <p><a href=""http://opencv.org"" rel=""nofollow"">http://opencv.org</a></p>
 
 <p>It has a lot of useful vision algorithms built in, and supports, C, C++ and Python, as well as GPU functionality.</p>
-",213489,3,0,19870840,"[Moving camera_motion_detection][1] thread may be useful as it deals with the similar problem.
-
-
+",213489,3,0,19870840,"[Moving camera_motion_detection][1] thread may be useful as it deals with the similar problem.
+
+
+
+
+
   [1]: http://stackoverflow.com/questions/12986265/detecting-motion-on-opencv-c-moving-camera",cameras,
 1015,5287575,"Modelling a robotic arm motion in 3D, ideas?",|python|modeling|robotics|inverse-kinematics|,"<p>I hope you don't mind if I ask for a bit of advice regarding modelling robotic systems. I've recently become rather interested in using inverse kinematics (IK) to control a 5 dof robotic manipulator. I have a solid foundation in IK but what I'm having trouble with is a way to visualize how the manipulator moves with respect to joint angles.</p>
 <p>I've looked into using 3D toolkits (such as Blender, Panda3D, vPython) to create a 3d model of the arm, but I'm not sure if I should be looking something with physics support. I'm also not sure how well I can model motion with these packages. Anyone have any suggestions? What I'm NOT looking for is a full blown robotic simulator like Microsoft's Robotic Studio, I'd like to start with the basics and learn how everything works first, ie code the IK in Python, then visualize the motion in 3D. I'm very familiar with Python, so something that interfaces with Python would be preferable.</p>
@@ -889,7 +892,7 @@ I need to set an integer to 1 when a button is pressed, but in order for the pro
 ",1/25/2013 2:32,14515103,128,4,2,1,,394842,New York,7/17/2010 20:22,304,14514458,"<p>Try remembering the current position of the button, and only take action when its state changes from off to on.</p>
 
 <p>Depending on the hardware, you might also get a signal as though it flipped back and forth several times in a millisecond.  If that's an issue, you might want to also store the timestamp of the last time the button was activated, and then ignore repeat events during a short window after that.</p>
-",459640,0,1,20235194,how about `positionSelect = 1;` ? Or set it back to 0 `SensorValue[positionSelectButton] = 0`,sensor,
+",459640,0,1,20235194,how about `positionSelect = 1,` ? Or set it back to 0 `SensorValue[positionSelectButton] = 0`,sensor
 1648,14818109,How to properly set projection and modelview matrices in OpenGL using camera parameters,|python|opengl|opencv|computer-vision|robotics|,"<p>I have a set of points (3D) taken from a range scanner. Sample data can be found here: <a href=""http://pastebin.com/RBfQLm56"" rel=""nofollow"">http://pastebin.com/RBfQLm56</a></p>
 
 <p>I also have the following parameters for the scanner: </p>
@@ -4998,18 +5001,30 @@ document.getElementById(""demo"").innerHTML = text;
 <p>Thank you</p>
 ",11/5/2017 21:34,47126962,55,1,0,-1,,5008663,,6/14/2015 15:48,9,47126962,"<p>This should works, hope it helps!</p>
 
-<p><div class=""snippet"" data-lang=""js"" data-hide=""false"" data-console=""true"" data-babel=""false"">
-<div class=""snippet-code"">
-<pre class=""snippet-code-js lang-js prettyprint-override""><code>var text = """", start = 8, end = 25;
-
-for (var i = start; i &lt; end; i++) {
-    text += ""&lt;br&gt;"" + ((i % 8) + 1) + "","" + (Math.floor(i / 8) + 1)
-}
-
-document.getElementById(""demo"").innerHTML = text;</code></pre>
-<pre class=""snippet-code-html lang-html prettyprint-override""><code>&lt;p id=""demo""&gt;&lt;/p&gt;</code></pre>
-</div>
-</div>
+<p><div class=""snippet"" data-lang=""js"" data-hide=""false"" data-console=""true"" data-babel=""false"">
+
+<div class=""snippet-code"">
+
+<pre class=""snippet-code-js lang-js prettyprint-override""><code>var text = """", start = 8, end = 25;
+
+
+
+for (var i = start; i &lt; end; i++) {
+
+    text += ""&lt;br&gt;"" + ((i % 8) + 1) + "","" + (Math.floor(i / 8) + 1)
+
+}
+
+
+
+document.getElementById(""demo"").innerHTML = text;</code></pre>
+
+<pre class=""snippet-code-html lang-html prettyprint-override""><code>&lt;p id=""demo""&gt;&lt;/p&gt;</code></pre>
+
+</div>
+
+</div>
+
 </p>
 ",8888888,0,4,,,fp,
 2946,47127628,Is Parse in JavaScript possible?,|javascript|robotics|,"<p>I have tried searching and haven't been able to see anything that can parse in JavaScript.</p>
@@ -7373,7 +7388,7 @@ I am adding this part in just as a passing comment, but for instance, if you are
 <p>Here is a source: <a href=""https://youtu.be/pf_Mngbx32w"" rel=""nofollow noreferrer"">YouTube Video: https://youtu.be/pf_Mngbx32w</a></p>
 
 <p>^^ This helped me figure it out.</p>
-",8564483,1,0,,,,
+",8564483,1,0,,,NEW,
 3663,60682233,Problem with robot orientation due to euler angles,|python|ros|robotics|euler-angles|gazebo-simu|,"<p>I am trying to implement a basic path planning algorithm using python with a 4 wheels robot created for ROS and Gazebo, RViz.</p>
 
 <p>The only thing required for my algorithm is to make my robot oriented towards a given (using mouse) point in the x,y plane.</p>
@@ -7409,7 +7424,7 @@ Theta_deg:179.99
 
 <pre><code>Theta_deg:-179.99
 </code></pre>
-
+Minibrick8
 <p>to</p>
 
 <pre><code>Theta_deg:179.99
@@ -7456,7 +7471,7 @@ How can I overcome this issue?</p>
     pub.publish(speed)
     r.sleep()
 </code></pre>
-",3/14/2020 11:29,,464,0,2,0,,12969878,,2/26/2020 23:42,10,,,,,,107371483,"Instead of fixing the maths aspect, can you make it so that your robot always goes in the shortest rotation direction? For example from `-179.99` to `+179.99` degrees would not be a full turn but `-0.02` degrees. I think `dθ = min(dθ%360, dθ%360 + 360, key=abs)` would work.",,
+",3/14/2020 11:29,,464,0,2,0,,12969878,,2/26/2020 23:42,10,,,,,,107371483,"Instead of fixing the maths aspect, can you make it so that your robot always goes in the shortest rotation direction? For example from `-179.99` to `+179.99` degrees would not be a full turn but `-0.02` degrees. I think `dθ = min(dθ%360, dθ%360 + 360, key=abs)` would work.",orientation.,
 3665,60883932,Controller_manager : [ERROR] Controler Spawner couldn't find the expected controller_manager ROS interface,|controller|runtime-error|ros|robot|gazebo-simu|,"<p>I know there is already a lot of questions on this particular error but none of the ones i found solved the issue for me...</p>
 
 <p>I'm trying to implement the ROS differential drive controller for a two wheeled robot in gazebo, but when launching the controller spawner I get the following output :</p>
@@ -7659,7 +7674,7 @@ All system dependencies have been satisified
 [FATAL] [1598502340.698639178]: Could not initialize robot simulation interface
 </code></pre>
 <p>As you can see in the two last lines, gazebo is not finishing ok.</p>
-",13939780,0,0,,,,
+",13939780,0,0,,,li,
 3675,60927654,How to control Turtlebot3 in Gazebo using a web interface?,|html|ros|robot|gazebo-simu|,"<p>If I have a simulated Turtlebot3 robot in Gazebo, how could I link it and control its movement using a self-made HTML/Bootstrap web interface (website?) I have tried many tutorials but none of them have worked (may be because they are all from a few years ago). Would appreciate any recent links or tutorials!</p>
 ",3/30/2020 9:33,,1019,2,0,0,,13151812,,3/30/2020 9:29,8,60936765,"<p>This is not something I have done before, but with a quick search I found some useful information.</p>
 
@@ -7698,7 +7713,7 @@ All system dependencies have been satisified
 </code></pre>
 
 <p>As you can see above the JavaScript code creates an instance of the Twist message with the linear and angular robot velocities and then publishes this message to ROS's <code>/cmd_vel</code> topic. What you need to do is to integrate this into your website, make the velocities in this code to be dynamic based on the website UI controls and start the <code>rosbridge</code> server.</p>
-",4946896,0,0,,,,
+",4946896,0,0,,,NEW,
 3678,61001497,How to publish odom (nav_msgs/Odometry) from MD49 encoders outputs?,|python|ros|robotics|odometry|,"<p>I am using MD49 Motor Drive with its motors</p>
 
 <p><a href=""https://www.robot-electronics.co.uk/htm/md49tech.htm"" rel=""nofollow noreferrer"">https://www.robot-electronics.co.uk/htm/md49tech.htm</a></p>
@@ -7842,7 +7857,7 @@ if __name__ == 'main':
 </code></pre>
 
 <p>I think this would work</p>
-",13185389,0,1,,,,
+",13185389,0,1,,,NEW,
 3681,61055315,Change speed of TestFX robots?,|java|javafx|robot|testfx|,"<p>Specifically the <code>WriteRobot</code> / <code>WriteRobotImpl</code>. It seems to write things rather slowly and I'd like to make it write faster.</p>
 
 <p><strong>Edit</strong><br>
@@ -7891,7 +7906,7 @@ static {
 </code></pre>
 
 <p>I also wondered whether maybe that <code>static{...}</code> code block happens so early than you need to set the <code>System</code> property before the tests are run. I tried setting this property in gradle.build. Still no success.</p>
-",4/6/2020 7:58,,580,0,10,0,,595305,"London, United Kingdom",1/29/2011 21:24,2736,,,,,,108025333,[WriteRobotImpl](https://github.com/TestFX/TestFX/blob/ca90e066d9339282973e3872212d608402a8d9d6/subprojects/testfx-core/src/main/java/org/testfx/robot/impl/WriteRobotImpl.java)?,,
+",4/6/2020 7:58,,580,0,10,0,,595305,"London, United Kingdom",1/29/2011 21:24,2736,,,,,,108025333,[WriteRobotImpl](https://github.com/TestFX/TestFX/blob/ca90e066d9339282973e3872212d608402a8d9d6/subprojects/testfx-core/src/main/java/org/testfx/robot/impl/WriteRobotImpl.java)?,mc,
 3692,61319036,How to control a physical robot using a web interface,|ubuntu-18.04|robot|ros2|,"<p>I would like to know how I could control the movement of a physical robot using a web interface. For example, I have created a web interface with four movement buttons (front, back, left, right) but do not know how to connect that interface to the physical robot and control its movements. I have experience in controlling a simulated Turtlebot (in Gazebo) with the interface locally on my laptop using ROSBRIDGE and SimpleHTTPServer. Would I have to use these as well to control a physical robot?</p>
 
 <p>I'm running ROS2 Crystal, Ubuntu 18.04. Thank you!</p>
@@ -7901,7 +7916,7 @@ You will need to to publish control command to <code>/cmd_vel</code> topic and t
 <p>You can also look into using <a href=""http://robotwebtools.org/"" rel=""nofollow noreferrer"">Robot Web Tools</a> for the web interface.   </p>
 
 <p>Additionally if you could provide more detiails about your setup I could give more information.</p>
-",2661982,2,0,,,,
+",2661982,2,0,,,wireless,
 3694,61363106,ROS move_base node is generating pre-Hydro warning,|c++|navigation|ros|robotics|catkin|,"<p>I am working with move_base from navigation stack. However, I am getting the warning that</p>
 
 <p>""local_costmap: preHydro parameter ""static_map"" unused since ""plugins"" is provided""</p>
@@ -7975,7 +7990,7 @@ local_costmap:
 ",4/22/2020 10:40,61363290,5569,1,0,0,,13184375,,4/1/2020 13:17,18,61363290,"<p>The <code>static_map</code> parameter has been deprecated and is no longer used.</p>
 
 <p>Just remove the <code>static_map: false</code> line inside the <code>local_costmap</code> parameters to make the warning go away.</p>
-",2661982,0,1,,,,
+",2661982,0,1,,,rn,
 3695,61379723,Recovery behavior clears the obstacle layer,|c++|navigation|mapping|ros|robot|,"<p>I am using RP-Lidar /scan topic together with move_base from navigation stack. Although the obstacle layer is parameterized to get the LaserScan type data from /scan topic, I am recieving the message that ""Recover behavior will clear layer 'obstacles'"". I would like to mention that the UniTest over /scan topic and /odom topic are working fine. Thus in my RVIZ, the obstacle are not shown neither the planner takes them into account to prevent a collision.
 For clarity here is my common config file:</p>
 
@@ -8021,7 +8036,7 @@ obstacle_layer:
   <p>The topic on which sensor data comes in for this source. Defaults to
   the name of the source.</p>
 </blockquote>
-",2661982,1,0,,,,
+",2661982,1,0,,,obstacles,
 3704,61709336,C programming for Robotics,|c|robotics|webots|,"<p>I have a robotic car in Webots simulation that needs to stop at a place whenever I press a key on keyboard. So if I press 1, it should stop at coordinate X = 140 and coordinate Z = 50. On this code, the speed goes up and down with UP and DOWN arrow. I may have to insert if statement under case 1 but don't know how to implement. The robot constantly runs on a line and should only stop or act when prompted with a keyboard command. The code given below is just a snippet, I can provide the full code if necessary. I'm a novice just starting a course on C.</p>
 
 <pre><code>// GPS
@@ -8088,7 +8103,7 @@ void check_keyboard() {
      break;
 }
 </code></pre>
-",5/10/2020 8:48,,351,0,2,0,,3237985,United Kingdom,1/26/2014 17:09,13,,,,,,109154005,"You can't put `if (gps_coords[X] == ""104.9"" && gps_coords[Z] == ""48.9"") { set_speed(speed - speed); }` inside the keyboard handler because it will only check that wen you press the number.  You need to have the keyboard handler set a flag and then in your main do `if (one_pressed == true && gps_coords[X] == ""104.9"" && gps_coords[Z] == ""48.9"") { set_speed(speed - speed); }`",,
+",5/10/2020 8:48,,351,0,2,0,,3237985,United Kingdom,1/26/2014 17:09,13,,,,,,109154005,"You can't put `if (gps_coords[X] == ""104.9"" && gps_coords[Z] == ""48.9"") { set_speed(speed - speed); }` inside the keyboard handler because it will only check that wen you press the number.  You need to have the keyboard handler set a flag and then in your main do `if (one_pressed == true && gps_coords[X] == ""104.9"" && gps_coords[Z] == ""48.9"") { set_speed(speed - speed); }`",NEW,
 3708,62019726,Real Time Stepper Motors Control using ESP8266 and Blynk app,|c++|arduino|arduino-esp8266|robot|blynk|,"<p>I wanted to control 2 Stepper Motors for running a robot using the joystick of Blynk App and NodeMCU/ESP8266. But when I searched for the codes of real time controlling of Stepper Motors online I didn't get much code and most of them were not real time.</p>
 
 <p>This is code I am currently working on:-</p>
@@ -8265,7 +8280,7 @@ The preferred option is to use Timers to interactively call your functions and a
   }
 }
 </code></pre>
-",16530042,0,0,109699787,"I think you should find out what real time means. I doubt that most code for constrolling stepper motors is not realtime as you claim. also note that it is not a very good idea to search for complete solutions and tutorials on your specific project. rather break your project down into sub-problems which are more common. you won't find a tutorial on how to look like Arnold Schwarzenegger with pink hair, but you'll find plenty of resources on how to do body building and on how to dye hair properly.",,
+",16530042,0,0,109699787,"I think you should find out what real time means. I doubt that most code for constrolling stepper motors is not realtime as you claim. also note that it is not a very good idea to search for complete solutions and tutorials on your specific project. rather break your project down into sub-problems which are more common. you won't find a tutorial on how to look like Arnold Schwarzenegger with pink hair, but you'll find plenty of resources on how to do body building and on how to dye hair properly.",wireless,
 3714,62046666,Find 3D coordinate with respect to the camera using 2D image coordinates,|matlab|image-processing|robotics|coordinate-systems|,"<p>I need to calculate the X,Y coordinates in the world with respect to the camera using u,v coordinates in the 2D image. I am using an S7 edge camera to send a 720x480 video feed to MATLAB.</p>
 
 <p>What I know: Z i.e the depth of the object from the camera, size of the camera pixels (1.4um), focal length (4.2mm)</p>
@@ -8300,7 +8315,7 @@ The preferred option is to use Timers to interactively call your functions and a
 <p><strong>Remember:</strong> If you want the inverse transformation (camera to world) just invert you Camera Matrix and be happy!</p>
 
 <p><a href=""https://www.mathworks.com/help/vision/ug/camera-calibration.html#bu0nh2_"" rel=""nofollow noreferrer"">Matlab has also a very good guide for this transformation. Take a look.</a></p>
-",11522398,4,4,,,,
+",11522398,4,4,,,Cameras,
 3722,62414292,NVIDIA Jetson Nano with Realsense 435i via Isaac - Camera not found,|robotics|nvidia-jetson|realsense|slam|nvidia-jetson-nano|,"<p>I posted about this over on the Isaac forums, but listing it here for visibility as well. I am trying to get the Isaac Realsense examples working on a Jetson Nano with my 435i (firmware downgraded to 5.11.15 per the Isaac documentation), but I've been unable to so far. I've got a Nano flashed with Jetpack4.3 and have installed all dependencies on both the desktop and the Nano. The realsense-viewer works fine, so I know the camera is functioning properly and is being detected by the Nano. However, when I run <code>./apps/samples/realsense_camera/realsense_camera</code> it throws an error:</p>
 
 <pre><code>ERROR engine/alice/components/Codelet.cpp@229: Component 'camera/realsense' of type 'isaac::RealsenseCamera' reported FAILURE:
@@ -8350,10 +8365,10 @@ ERROR engine/alice/backend/event_manager.cpp@42: Stopping node 'camera' because 
 0m2020-06-15 17:18:30.724 INFO  engine/alice/backend/allocator_backend.cpp@66: Optimized memory CUDA allocator.0m
 
 </code></pre>
-",6/16/2020 17:28,,536,0,0,1,,9459427,,3/7/2018 23:27,6,,,,,,,,,
+",6/16/2020 17:28,,536,0,0,1,,9459427,,3/7/2018 23:27,6,,,,,,,,wpi,
 3729,62630556,"Mapping, and autonomous drones",|artificial-intelligence|augmented-reality|robotics|,"<p>What is a good software to be able to navigate a drone in an augmented reality, is there anything that exists for individual and educational use in this area?</p>
 ",6/29/2020 2:58,,61,1,0,0,,13830207,"Fortuna, CA, USA",6/28/2020 17:40,6,62701790,"<p>I'm not sure this is the platform to ask this question, but here is an answer. There were a few companies that tackled this issue in the past, dARwing was doing exactly that and edgybees did something similar. Both companies are no longer in this field.</p>
-",3360466,0,1,,,,
+",3360466,0,1,,,api,
 3735,62761806,How can I use an Arduino Ultrasonic Sensor connected to an Arduino UNO to measure distance using Pyfirmata or Python Generally?,|python|arduino|robotics|,"<p>Here is the Code I have in Arduino. Pyfirmata, as I am concerned doesn't have a PulseIn function, so how can I bypass this obstacle? I want to turn an LED on when the sensor senses an object that it's distance from it is 20cm or smaller!</p>
 <pre><code>// defines pins numbers
 const int trigPin = 12;
@@ -9076,7 +9091,7 @@ void loop()
 </ol>
 <p>Now we have added the code for PULSE_IN in both the platforms Python and Arduino AVR. See the examples in Link#1 to make use of PULSE_IN function. ENJOY.</p>
 <p>P.S. I didnt add the test.py file, couldnt find where to add it and what file to replace. If u have error try adding that as well. If u find anything do post.</p>
-",14288649,4,0,110987711,FYI: [arduino.se],,
+",14288649,4,0,110987711,FYI: [arduino.se],sensors,
 3842,63516972,how to convert coordinates from azimuth/altitude to tilt-tilt,|robotics|astronomy|kinematics|,"<p>I'm trying to build a lightweight antenna tracker with two servos. For mechanical reasons, I'm first mounting servo1 on a base so that it tilts forward/backwards, then mount servo2 on it twisted 90˚so it can tilt left/right.</p>
 <p>I can basically use the first servo to select a from the great circles that go through azimuth=0˚ and alt=0˚ and az=180˚ and alt=0˚, and use hte 2nd servo to move on the chosen great circle. This way, I should be able to point at the entire upper hemisphere even though I might need to reposition the antenna when crossing the midline (the servos only have 180 degrees of movement.)</p>
 <p>I'm trying to find the function that maps az/alt to the tilt/tilt servo angles. I suspect that should be similar to how equatorial telescope mounts work, but I couldn't find a good reference on how to do it - neither do I trust my own math.</p>
@@ -9088,7 +9103,7 @@ void loop()
 <p>$\epsilon=\atan2(\sin\delta, \cos\delta\cdot\sin\alpha)$</p>
 <p>$\lambda = \arccos(\cos\alpha\cdot\cos\delta)$</p>
 <p>where $\alpha$ is azimuth, $\delta$ is elevation or altitude, $epsilon$ is the angle for the first and $lambda$ the angle for the 2nd servo. This seems to work for all values of $\alpha$ and for values in $[0,\pi/2]$ for $\delta$.</p>
-",12835990,0,0,,,,
+",12835990,0,0,,,orientation,
 3846,63705598,unity3d cant open port,|c#|unity-game-engine|robotics|,"<p>I'm trying to control my Dynamixel AX-12+ servo using unity3d, using the dynamixel SDK (C#). the servo is connected to my windows 10 pc using a u2d2 (not an Arduino!) and it works fine using visual studio. I imported the dll to unity and wrote a script for controlling the servomotor and there are no errors in the script but when I try to run it, it fails to open the port and after that, the visual studio code also fails to open the port (until i disconnect and reconnect the USB).</p>
 <p>the part of the code trying to open the port:</p>
 <pre><code>  // Open port (COM9)
@@ -9461,9 +9476,9 @@ public static class PlayStateNotifier
     }
 }
 </code></pre>
-",11782176,0,0,112710303,"Did you see following on link : USB2DYNAMIXELs purchased before July 2015 may not work with the latest FTDI drivers 2.12.00. For a fix, please see our blog post on the matter",,
+",11782176,0,0,112710303,"Did you see following on link : USB2DYNAMIXELs purchased before July 2015 may not work with the latest FTDI drivers 2.12.00. For a fix, please see our blog post on the matter",NEW,
 3880,64070085,Question about relationship between wb_motor_set_position and wb_robot_step,|c|robotics|webots|,"<p>I'm really new to Webots and a novice at programming. I'm currently trying to drive a robot with rotational motors along a known path using a controller in C language. I'm mainly using the wb_motor_set_position function. However, the amount the robot actually travels in the simulation seems to depend on the position I set in this function, as well as the time step. I am currently running a while loop, setting wb_robot_step(TIME_STEP) and then using wb_motor_set_position. I've been reading the documentation on these, but it still doesn't seem to click to me. Does anyone know how these two functions are dependent/related to each other and how I could maybe determine the distance the robot would go with these (without using a position sensor first) - instead of my current just plug and chug method...? Thank you!</p>
-",9/25/2020 19:07,,261,0,3,0,,14342141,,9/25/2020 18:59,4,,,,,,113298552,"Rather than only describe your code, post it here.",,
+",9/25/2020 19:07,,261,0,3,0,,14342141,,9/25/2020 18:59,4,,,,,,113298552,"Rather than only describe your code, post it here.",NEW,
 3893,64386937,Navigating the robot by finding the shortest way,|python|for-loop|shortest-path|robotics|,"<p>I have this task where I have to make my robot find the shortest way when I enter a destination point. I've created some functions to assign numbers (distances) for each square and counts its way back to my robot by deleting the other options. Then the robot should only follow the numbers.</p>
 <p><img src=""https://i.stack.imgur.com/ZzM52.jpg"" alt=""Here's also a screenshot of the map it navigates in:
 "" /></p>
@@ -9508,7 +9523,7 @@ for k in range(0, map.width):
         if map.value[k,l] == map.value[final_x,final_y] and k != final_x and l != final_y:
             map.value[k,l] = 0
 </code></pre>
-",10/16/2020 9:56,,126,0,2,1,,10329083,,9/7/2018 6:27,1,,,,,,113854038,"If your code works and you are looking for advice on improving it, your question is off-topic for SO, but would probably be a good fit for https://codereview.stackexchange.com/.",,
+",10/16/2020 9:56,,126,0,2,1,,10329083,,9/7/2018 6:27,1,,,,,,113854038,"If your code works and you are looking for advice on improving it, your question is off-topic for SO, but would probably be a good fit for https://codereview.stackexchange.com/.",bp,
 3898,64417385,How to find the transformation between two IMU measurements?,|quaternions|robotics|imu|,"<p>I am looking at the Clubs Dataset <a href=""https://clubs.github.io/"" rel=""nofollow noreferrer"">https://clubs.github.io/</a> for some research into multiway registration of point clouds. I am initially trying to use the ICP registration method in a sequential order adding one point cloud at a time.</p>
 <p>The dataset has the RGB parameters for the various poses of the object.</p>
 <pre><code>1525694104,-0.0913515162993169,-0.16815189159691318,0.4504956847817425,0.4591556084159897,-0.7817619820248951,-0.3682132612946675,0.20601769355692517
@@ -9520,7 +9535,7 @@ for k in range(0, map.width):
 <p>filename, translation across 3 axes, quaternion for rotation.</p>
 </blockquote>
 <p>I converted the images into point clouds and when I try to align the point clouds, I would need to have a good estimation of the transformation. Given the measurements at two points, how would I find out the transformation between those points. I would use that as my intiial estimate of my ICP registration algorithm.</p>
-",10/18/2020 19:18,,131,0,0,1,,3961840,,8/20/2014 20:26,4,,,,,,,,,
+",10/18/2020 19:18,,131,0,0,1,,3961840,,8/20/2014 20:26,4,,,,,,,,NEW,
 3910,64563152,Issue with Google's edge TPU compiler,|artificial-intelligence|robotics|tpu|google-coral|,"<p>I tried to install edge TPU compiler on my raspberrypi 3b+ but apparently it is no longer supported on 32bit. Can I install compiler on a 64bit machine, compile my code, turn it into a code readable by the edge tpu and bring this code back and run it on my raspberry pi? Or will there be conflict of some sort?</p>
 ",10/27/2020 21:28,,115,1,2,1,,14531758,,10/27/2020 21:23,2,64579829,"<ul>
 <li><p>As far as application goes:
@@ -9531,7 +9546,7 @@ The edgetpu compiler can only be installed on the <code>x86_64</code> machine, a
 </li>
 </ul>
 ",6262757,0,0,114167270,"Assuming that you have connected a TPU device(Like USB Accelerator) with your RPI. You can run the compiled model on that RPI. Please see the requirements at : https://coral.ai/docs/accelerator/get-started/#requirements.
-It's just that the compiler cannot be installed on a 32-bit machine but the output (.tflite) format can be executed on TPU connected to a ARMv7 32-bit machine.",,
+It's just that the compiler cannot be installed on a 32-bit machine but the output (.tflite) format can be executed on TPU connected to a ARMv7 32-bit machine.",NEW,
 3917,64689816,Line following and obstacle avoidance with ePuck [Webots],|python|python-3.x|robotics|webots|,"<p>So I'm trying to program a very simple collision avoidance behavior by following the line using ground and distance sensors of E-puck robot. The robot program was written in Python and the simulation is running on <a href=""https://www.cyberbotics.com/#cyberbotics"" rel=""nofollow noreferrer"">Webots</a>. The robot should go forwards following the line until an obstacle is detected by the front distance sensors, and then to turn towards the obstacle-free direction and then get back to the line. Something like <a href=""https://www.youtube.com/watch?v=jM_hqbmrdQ8"" rel=""nofollow noreferrer"">that</a>. So I'm trying to reproduce the same behaviour but when the robot aproaches to an obstacle it stucks and doesn't try to avoid it. When I remove either line following part of code or obstacle avoidance part the appropriate result is working but simultaneously they don't functioning. I've seen some codes written in C but I'm not familiar with C programming language. Please don't send me to see the tutorials, since I already followed them. My code:</p>
 <pre><code>&quot;&quot;&quot;line_following_behavior controller.&quot;&quot;&quot;
 
@@ -9663,7 +9678,7 @@ while robot.step(timestep) != -1:
     leftMotor.setVelocity(leftSpeed)
     rightMotor.setVelocity(rightSpeed)
 </code></pre>
-",11/5/2020 1:09,,2287,0,0,0,,11059311,,2/13/2019 23:42,21,,,,,,,,,
+",11/5/2020 1:09,,2287,0,0,0,,11059311,,2/13/2019 23:42,21,,,,,,,,obstacles,
 3924,65115603,lost in 3D space - tilt values (euler?) from rotation matrix (javafx affine) only works partially,|javafx|rotation|robotics|,"<p>it is a while ago that I asked this question:
 <a href=""https://stackoverflow.com/questions/48850937/javafx-how-to-apply-yaw-pitch-and-roll-deltas-not-euler-to-a-node-in-respec"">javafx - How to apply yaw, pitch and roll deltas (not euler) to a node in respect to the nodes rotation axes instead of the scene rotation axes?</a></p>
 <p>Today I want to ask, how I can get the tilt (fore-back and sideways) relative to the body (not to the room) from the rotation matrix. To make the problem understandable, I took the final code from the fantastic answer of José Pereda and basicly added a method &quot;getEulersFromRotationMatrix&quot;. This is working a bit, but at some point freaks out.</p>
@@ -9911,7 +9926,7 @@ No, that was wrong. I indeed calculated the Tait-Bryan x y z rotations. So this 
     r33 = rot.getMyy();
 </code></pre>
 <p>and now it really does what I want.  :)</p>
-",2081279,0,0,115405053,"Ok - I was re-testing with a different version. Back to the version I posted above: When I do 3x turn-right, then tilt-fore and tilt-back, then I get values as expected: tilt-fore/back=0 and tilt-sideways=0. But when I add on single tilt-left to that, then I get tilt-fore/back=68 and tilt-sideways=69. Isn't this completely off from what we should expect, as both tilts were zero before, and we just did a 30° tilting to one side? Or do you get different values?",,
+",2081279,0,0,115405053,"Ok - I was re-testing with a different version. Back to the version I posted above: When I do 3x turn-right, then tilt-fore and tilt-back, then I get values as expected: tilt-fore/back=0 and tilt-sideways=0. But when I add on single tilt-left to that, then I get tilt-fore/back=68 and tilt-sideways=69. Isn't this completely off from what we should expect, as both tilts were zero before, and we just did a 30° tilting to one side? Or do you get different values?",orientation,
 3937,65649719,PID Control: Is adding a delay before the next loop a good idea?,|c++|robotics|control-theory|pid-controller|,"<p>I am implementing PID control in c++ to make a differential drive robot turn an accurate number of degrees, but I am having many issues.</p>
 <p><strong>Exiting control loop early due to fast loop runtime</strong></p>
 <p>If the robot measures its error to be less than .5 degrees, it exits the control loop and consider the turn &quot;finished&quot; (the .5 is a random value that I might change at some point). It appears that the control loop is running so quickly that the robot can turn at a very high speed, turn <em>past</em> the setpoint, and exit the loop/cut motor powers, because it <em>was</em> at the setpoint for a short instant. I know that this is the entire purpose of PID control, to accurately reach the setpoint without overshooting, but this problem is making it very difficult to tune the PID constants. For example, I try to find a value of kp such that there is steady oscillation, but there is never any oscillation because the robot thinks it has &quot;finished&quot; once it passes the setpoint. To fix this, I have implemented a system where the robot has to be at the setpoint for a certain period of time before exiting, and this has been effective, allowing oscillation to occur, but the issue of exiting the loop early seems like an unusual problem and my solution may be incorrect.</p>
@@ -10000,7 +10015,7 @@ No, that was wrong. I indeed calculated the Tait-Bryan x y z rotations. So this 
 
 turnHeading(90, .37, 0, .00004, .12);
 </code></pre>
-",1/10/2021 2:49,,202,0,3,0,,14486787,Austin,10/20/2020 16:15,5,,,,,,116072604,"You might get more results posting the in the Electrical Engineering group. Lots of experienced control theory people there. Also, if you log position, time, and motor control you can get a lot of info to adjust feedback constants.",,
+",1/10/2021 2:49,,202,0,3,0,,14486787,Austin,10/20/2020 16:15,5,,,,,,116072604,"You might get more results posting the in the Electrical Engineering group. Lots of experienced control theory people there. Also, if you log position, time, and motor control you can get a lot of info to adjust feedback constants.",mc,
 3940,65679789,Obtaining input from Joystick with C# and DirectX using Tutorial,|c#|directx|visual-studio-2019|robotics|joystick|,"<p>I'm using Visual Studio 2019 my question is closely aligned with the use of this <a href=""https://www.codeproject.com/Tips/850730/Obtaining-Input-Form-a-Joystick-with-Csharp-and-Di?msg=5633819#xx5633819xx"" rel=""nofollow noreferrer"">Tutorial</a>. I've done all the steps such as:</p>
 <ol>
 <li>Creation of a Window Form in C#</li>
@@ -10146,13 +10161,14 @@ public partial class Form1 : Form
         }
     }
 </code></pre>
-",11507778,0,0,116153378,"Note that tutorial uses legacy Managed DirectX which is *ancient*, and only deployed by the legacy DirectX End-User Runtime. You should use [SlimDX](https://code.google.com/archive/p/slimdx/) or [SharpDX](http://sharpdx.org/) for DirectX interop instead.",,
+",11507778,0,0,116153378,"Note that tutorial uses legacy Managed DirectX which is *ancient*, and only deployed by the legacy DirectX End-User Runtime. You should use [SlimDX](https://code.google.com/archive/p/slimdx/) or [SharpDX](http://sharpdx.org/) for DirectX interop instead.",wireless,
 3948,65693285,How to load urdf.xacro in Pybullet?,|python|visualization|robotics|pybullet|,"<p>Usually in Pybullet we can do:</p>
 <pre><code>robot = p.loadURDF(os.path.join(urdfRootPath, &quot;robot.urdf&quot;),useFixedBase=True)
 </code></pre>
 <p>to load a URDF. Is it possible to load a urdf.xacro file directly?</p>
 ",1/12/2021 22:56,,1736,1,0,0,0,7106915,,11/2/2016 21:05,288,68579422,"<p>I think you can load <code>.xacro</code> files directly using <code>loadURDF</code> function. Just like a bunch of examples showed <a href=""https://www.programcreek.com/python/example/122126/pybullet.loadURDF"" rel=""nofollow noreferrer"">here</a>.</p>
-",8256101,0,0,,,,
+",8256101,0,0,,,"NEW
+",
 3977,66340344,Compile the Robot Control Library for a different beaglebone cape,|beagleboneblack|robotics|,"<p>How should I go about modifying and/or compiling the <a href=""http://strawsondesign.com/docs/librobotcontrol/"" rel=""nofollow noreferrer"">Robot Control Library</a> for use with a different beaglebone cape that uses slightly different pin assignments?</p>
 <p>My primary reason for wanting to re-use the Robot Control Library is the ability to read a fourth encoder via the PRU.  Beyond that, I only need access to the encoder and pwm modules.</p>
 ",2/23/2021 20:07,66394399,372,1,1,1,0,3830019,,7/11/2014 15:21,12,66394399,"<h1>TL;DR</h1>
@@ -10535,7 +10551,7 @@ to do the trick.</p>
 open to the beaglebone so that I could observe the boot sequence.  With the help of some 5-minute epoxy, I was
 eventually able to make a 90-degree header to bring the JTAG port out from under an installed cape.</p>
 <p><a href=""https://elinux.org/Beagleboard:BeagleBone_Black_Serial"" rel=""nofollow noreferrer"">https://elinux.org/Beagleboard:BeagleBone_Black_Serial</a></p>
-",3830019,3,0,117331116,"You've asked a question without providing any relevant details whatsoever, in which case the answer would be ""follow instructions to update the code to match your specifications"".",,
+",3830019,3,0,117331116,"You've asked a question without providing any relevant details whatsoever, in which case the answer would be ""follow instructions to update the code to match your specifications"".",li,
 3998,66947260,How to control this robot with a PS4 DualShock controller (Python)?,|python|loops|object|robotics|,"<p>I am trying to control a robot with a ps4 controller connected via Bluetooth to raspberry pi, but have a problem with the while loop I need to make it move. The robot cycles leg positions in a pattern that makes it walk. I made a successful program that uses the keyboard where holding w, a, s, or d will move the robot in the usual directions and stop the robot once released. However, the ps4 controller uses functions for input in a way that confuses me.</p>
 <p>Here is the keyboard code:</p>
 <pre><code>from move import move, steady, steady_X
@@ -10676,7 +10692,7 @@ event_definition = None)
 controller.listen()
 </code></pre>
 <p>On a separate note, I think this issue might be because you do not have a &quot;default&quot; condition where the robot does nothing. Usually the way I would go about with such a problem is to define the general behaviour of the robot as doing nothing, and define the x key as an interrupt. So, whenever the key is pressed, an event occurs, and the equivalent eventHandler is called <em>(think of ISR if you know microcontrollers well)</em> . Designing it in this way will probably give you more control.</p>
-",8955618,0,0,,,,
+",8955618,0,0,,,wireless,
 4002,67072289,Eye-In-Hand Calibration OpenCV,|python|opencv|camera-calibration|robotics|,"<p>I have a setup where a (2D) camera is mounted on the end-effector of a robot arm - similar to the OpenCV <a href=""https://docs.opencv.org/master/d9/d0c/group__calib3d.html"" rel=""nofollow noreferrer"">documentation</a>:
 <a href=""https://i.stack.imgur.com/pRWnu.png"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/pRWnu.png"" alt=""enter image description here"" /></a></p>
 <p>I want to calibrate the camera and find the transformation from camera to end-effector.
@@ -10686,7 +10702,7 @@ Any guidance in the right direction will be appreciated.</p>
 ",4/13/2021 9:35,67155501,6224,1,4,3,0,11166171,,3/7/2019 14:53,33,67155501,"<p>You are close to the answer.</p>
 <p>Yes, it is based on the size of the checkerboard. But instead of directly taking those parameters and an image, this function is taking target2cam. How to get target2cam? Just simply move your robot arm above the chessboard so that the camera can see the chessboard and take a picture. From the picture of the chessboard and camera intrinsics, you can find target2cam. Calculating the extrinsic from the chessboard is already given in opencv.</p>
 <p>Repeat this a couple of times at different robot poses and collect multiple target2cam. Put them calibrateHandEye() and you will get what you need.</p>
-",2104452,4,1,118704183,"Are you implementing everything in ROS, in ROS we can set the TF of camera and the EF.",,
+",2104452,4,1,118704183,"Are you implementing everything in ROS, in ROS we can set the TF of camera and the EF.",Cameras,
 4006,67081917,How do I get my code to loop until I press a button (Lego EV3),|python|robotics|lego-mindstorms|lego-mindstorms-ev3|,"<p>The question pure and simple. I've tried using while loops, rearranging code, but all that happens is that the program starts when i press the button or does absolutely nothing at all. Can anyone see what I am doing wrong?</p>
 <pre><code>#!/usr/bin/env python3
 from ev3dev2.motor import MoveTank, OUTPUT_B, OUTPUT_C
@@ -10727,7 +10743,7 @@ while True:
         print(&quot;q pressed, ending loop&quot;)
         break
 </code></pre>
-",10413299,0,1,118574083,what do you mean?,,
+",10413299,0,1,118574083,what do you mean?,NEW,
 4034,67731514,How do I get eulerangles from two Vector3 coordinates based on openpose 3d?,|python|robotics|openpose|,"<p>In short. I want to make following program.</p>
 <p>Input: Two Vector3 coordinates
 P1 = (x1, y1, z1)
@@ -10767,14 +10783,14 @@ It Converts openpose to BVH data.
 These programs work very well.</p>
 <p>GitHub: <a href=""https://github.com/KevinLTT/video2bvh"" rel=""nofollow noreferrer"">https://github.com/KevinLTT/video2bvh</a></p>
 ",16049595,0,0,119724260,"I am sorry, but I have not made any code.
-I added a diagram and brief summary of code to help people understand what I want to do.",,
+I added a diagram and brief summary of code to help people understand what I want to do.",orientation,
 4040,68225798,"How stepper motor torque will behave for two different supply, 24v/5A and 36v/5A",|robotics|stepper|,"<p>How stepper motor torque will behave for two different supply, 24v/5A and 36v/5A. I am using three Nema 23 , 10kg-cm stepper motors. Using TB6600 Driver which will limit my current to rated current from the supply. It accepts 12-36v and 2.8 is the rated current.</p>
 <p>I want to achieve max torque. I went through T depends on Current.
 What is my motor torque behavior, when 24v/5A, 36v/5A. Speed will be very less in my use case - kind of robitics arm.</p>
 ",7/2/2021 13:09,,240,1,0,0,,10527120,,10/19/2018 3:17,14,68550350,"<p>If the TB6600 is current limiting the motor to 2.8A, then the torque will be identical for any power supply that can supply over 2.8A.</p>
 <p>Internally I expect the TB6600 is using a chopper driver to limit the total average current - <a href=""https://i.stack.imgur.com/rfaoz.png"" rel=""nofollow noreferrer"">Chopper driver waveform</a> from <a href=""https://www.linearmotiontips.com/what-is-a-chopper-drive-for-a-stepper-motor/"" rel=""nofollow noreferrer"">https://www.linearmotiontips.com/what-is-a-chopper-drive-for-a-stepper-motor/</a></p>
 <p>So if you increase the voltage supplied to the driver, you might see the torque ripple increase in frequency, but the average torque will still be the same.</p>
-",15339016,0,0,,,,
+",15339016,0,0,,,mc,
 4041,68257668,Correct tf frames setting in ndt_matching,|ros|robotics|,"<p>ndt_matching succeeded in autoware, but the vehicle model cannot be set correctly.</p>
 <ol>
 <li>How do I set the correct angle for the vehicle model?</li>
@@ -10782,7 +10798,7 @@ What is my motor torque behavior, when 24v/5A, 36v/5A. Speed will be very less i
 </ol>
 <p>tf.launch</p>
 <pre><code>&lt;node pkg=&quot;tf&quot;  type=&quot;static_transform_publisher&quot; name=&quot;world_to_map&quot; args=&quot;0 0 0 0 0 0 /world /map 10&quot; /&gt;
-&lt;node pkg=&quot;tf&quot;  type=&quot;static_transform_publisher&quot; name=&quot;map_to_points_map&quot; args=&quot;0 0 0 0 0 0 /map /points_map 10&quot; /&gt;
+&lt;node pkg=&quot;tf&quot;  type=&quot;static_transform_publisher&quot; nurdf.xacro file roboticsame=&quot;map_to_points_map&quot; args=&quot;0 0 0 0 0 0 /map /points_map 10&quot; /&gt;
 &lt;node pkg=&quot;tf&quot;  type=&quot;static_transform_publisher&quot; name=&quot;velodyne_to_lidar_top&quot; args=&quot;0 0 0 0 0 0 /velodyne /lidar_top 10&quot; /&gt;
 </code></pre>
 <p><a href=""https://i.stack.imgur.com/s77bf.png"" rel=""nofollow noreferrer"">Image for RViz</a></p>
@@ -10795,12 +10811,12 @@ To change the angle of the vehicle model, I made the following settings.</p>
 </ol>
 <p>I wrote an article about these issues, Thank you JWCS!</p>
 <p><a href=""https://medium.com/yodayoda/localization-with-autoware-3e745f1dfe5d"" rel=""nofollow noreferrer"">https://medium.com/yodayoda/localization-with-autoware-3e745f1dfe5d</a></p>
-",9724286,1,0,120741210,Cool... Would you like to post an answer that describes what you did to fix it?,,
+",9724286,1,0,120741210,Cool... Would you like to post an answer that describes what you did to fix it?,orientation,
 4049,68386445,Installing MRPT on Fedora,|robotics|mobile-robot-toolkit|,"<p>Can anyone provide a detailed procedure for installing MRPT on Fedora 33 Scientific (one of the Fedora Labs which has a KDE interface)? The MRPT installation instructions for Ubuntu mentions something about cmake/cmake-gui. Checking the man pages, F33Sci has no such thing. It must be possible to accomplish this somehow, because Fedora Robotics Lab includes MRPT. I've already tried &quot;$sudo dnf install mrpt&quot;, resulting in &quot;Error: Unable to find a match: mrpt&quot;. However, &quot;$dnf search mrpt&quot; results in a bunch of items from mrpt-base... to mrpt-stereo-camera-calibration.</p>
 ",7/15/2021 0:21,,88,1,0,1,,4561673,,2/13/2015 0:41,3,68453480,"<p>The version of MRPT that ships with Fedora is really outdated, so you do well in building from sources.</p>
 <p><code>cmake-gui</code> is not 100% required, it is only mentioned in the instructions to make things easier to those preferring GUIs, but you should be able to compile using the console commands <a href=""https://docs.mrpt.org/reference/latest/compiling.html#using-the-console"" rel=""nofollow noreferrer"">here</a> (that is, the standard workflow with cmake).</p>
 <p>Next, the CMake configuration process will warn you about missing libraries. Most are optional, but at least make sure of installing eigen3, opencv and wxwidgets. Those should be installed with the standard commands used in Fedora...</p>
-",1631514,0,2,,,,
+",1631514,0,2,,,li,
 4067,69101225,PID implementation in line following bot using turtlebot,|python|opencv|ros|robotics|,"<p>I am using ROS melodic,turtlebot 2 on Ubuntu 18.04.</p>
 <p>The idea is to create an environment consisting of lines as a path (slightly curved), and to program the turtlebot to follow the lines. Basically, a line following bot.</p>
 <p>The idea is to click photos using the camera mounted on the turtlebot,process them to segment out the path which needs to be followed, and then control the bot's orientation, by using PID to control the angular velocity, so that it moves along the path.</p>
@@ -11077,7 +11093,7 @@ if _name_ == '_main_':
 </code></pre>
 <p>The problem I'm having is to implement the PID part properly. How exactly should I approach writing the PID (...) function?</p>
 ",9/8/2021 10:17,,568,1,1,0,,14407957,,10/7/2020 14:05,57,69103416,"<p>As a comment suggested, there's a lot to tackle here, so I'll just focus on what you asked in your title. When concering PIDs in the ROS ecosystem I'd almost always suggest using the <a href=""http://wiki.ros.org/pid"" rel=""nofollow noreferrer"">PID</a> package. From your description it should do everything you need.</p>
-",11245187,0,0,122130376,"that's a lot of different tasks all at once. break it down, distribute into separate questions... perhaps one at a time. honestly, if you wanted to ask about PID, this question contains too much stuff to sift through to give an answer (besides, PID tuning is likely a math/engineering question, unless you really want to talk about implementing the math).",,
+",11245187,0,0,122130376,"that's a lot of different tasks all at once. break it down, distribute into separate questions... perhaps one at a time. honestly, if you wanted to ask about PID, this question contains too much stuff to sift through to give an answer (besides, PID tuning is likely a math/engineering question, unless you really want to talk about implementing the math).",line tracking,
 4075,69125009,ROS - problem adding ultrasonic data to range_sensor_layer,|ros|robotics|arduino-ultra-sonic|,"<p>I need some help with a problem I encountered while adding ultrasonic sensors to a robot (loosely based on Linorobot), already equipped with an RPlidar. Hw/Sw: Raspi3B w/ Ubuntu 16.04.6 LTS, ROS kinetic, a Teensy, 2 Nano.</p>
 <p>The robot was working fine with just the lidar, but I need to be able to detect correctly glass and some reflective surfaces, so I'm adding the ultrasonic sensors.
 The hardware and microcontroller (rosserial) parts seem to be working fine, I suspect it's an error from my part, maybe related to namespaces or transform frames... or maybe I'm missing something gargantuan. I checked and re-checked against online tutorials, examples and other questions similar to this one, but I couldn't identify the culprit.</p>
@@ -11459,7 +11475,7 @@ HOWEVER the microcontroller code could be passing the data, and using some inter
 <li>The URDF usually gives clear messages if something related to the transforms and related data is not working, once the real problems are solved, it's possible to see the cones and axes in Rviz (IF the unit of measure isn't too small!), so it's easy to correct orientation and position errors.</li>
 <li>Use <code>check_urdf</code> to verify the validity of the URDF file (<a href=""http://wiki.ros.org/urdf#Verification"" rel=""nofollow noreferrer"">http://wiki.ros.org/urdf#Verification</a>), and <code>urdf_to_graphiz</code> to have a visual representation with some more data, that could give some clues on malfunctions or errors (<a href=""http://wiki.ros.org/urdf#Visualization"" rel=""nofollow noreferrer"">http://wiki.ros.org/urdf#Visualization</a>). Also <code>rqt_graph</code> with <code>enable_statistics</code> set to &quot;true&quot; can give useful clues (<a href=""http://wiki.ros.org/rqt_graph"" rel=""nofollow noreferrer"">http://wiki.ros.org/rqt_graph</a>).</li>
 </ul>
-",16873199,0,0,122200468,"Yes, I updated the question, thanks!",,
+",16873199,0,0,122200468,"Yes, I updated the question, thanks!",sensors,
 4114,69425729,Why does my program makes my robot turn the power off?,|python|raspberry-pi|controls|robotics|pid-controller|,"<p>I'm trying to put together a programmed robot that can navigate the room by reading instructions off signs (such as bathroom-right). I'm using the AlphaBot2 kit and an RPI 3B+.</p>
 <p>the image processing part works well, but for some reason, the MOTION CONTROL doesn't work.
 I wrote a simple PID controller that &quot;feeds&quot; the motor, but as soon as motors start turning, the robot turns off.</p>
@@ -11595,8 +11611,8 @@ pwm = mot.updatePWM(dutyCycle)
 <li>Or Increase your main power supply and use some short of stabilization of power</li>
 </ul>
 <p>What power supply and power configuration are you using?</p>
-",14649310,1,5,122710213,is it possible that if ill turn off the VNC viewer and won't show any image will sort it out?,,
-4123,69498883,How to locate a urdf file using parser.AddModelFromFile(full_name); in Drake,|c++|robotics|drake|,"<pre><code>#include &quot;drake/geometry/scene_graph.h&quot;
+",14649310,1,5,122710213,is it possible that if ill turn off the VNC viewer and won't show any image will sort it out?,mc,
+4123,69498883,How to locate a urdf file using parser.AddModelFromFile(full_name), in Drake,|c++|robotics|drake|,"<pre><code>#include &quot;drake/geometry/scene_graph.h&quot;
 #include &quot;drake/multibody/parsing/parser.h&quot;
 #include &quot;drake/common/find_resource.h&quot;
 
@@ -11664,7 +11680,7 @@ target_link_libraries(&quot;${PROJECT_NAME}&quot;
 <p>The resource_path refers to the relative path within the Drake source repository, prepended with drake/.</p>
 </blockquote>
 <p>You have a urdf in an arbitrary location. In that case, just pass a filesystem path without calling <code>FindResource()</code> (or any of its variants). Whether it is an absolute or relative path will depend on where your executable ends up w.r.t. the urdf in your built/installed system.</p>
-",7686256,1,1,,,,
+",7686256,1,1,,NEW,
 4124,69553909,How can I get z position of hector_quadrotor in ROS?,|c++|simulation|ros|robotics|,"<p>I am trying to get z position of hector_quadrotor in simulation. I can get X and Y axis coordinates but I couldn't get Z coordinate. I tried to get it by using GPS but the values are not correct. So I want to get Z coordinate by using barometer or another sensor.</p>
 <p>Here the a part of pose_estimation_node.cpp (You can find full version on github source):</p>
 <pre><code>void PoseEstimationNode::gpsCallback(const sensor_msgs::NavSatFixConstPtr&amp; gps, const 
@@ -11750,7 +11766,7 @@ sensor_pose_yaw_ = -(m-&gt;getModel()-&gt;getTrueHeading(pose_estimation_-&gt;st
 </code></pre>
 ",10/13/2021 10:31,69557069,120,1,0,1,,16475993,,7/18/2021 19:32,8,69557069,"<p>To use a barometer you need to actually add that sensor to your robot. What you're looking at is only the callback meaning such messages are supported. If you want to add a new sensor to your robot I'd suggest looking at <a href=""http://gazebosim.org/tutorials/?tut=add_laser"" rel=""nofollow noreferrer"">this tutorial</a>.</p>
 <p>All that being said, if you're getting incorrect altitude values you need to go back and recheck your transforms because the localization built into hector should work fine.</p>
-",11245187,0,0,,,,
+",11245187,0,0,,,position,
 4141,69752391,Detecting an empty circular/rectangular on a surface using a pointcloud,|c++|point-cloud-library|point-clouds|robotics|realsense|,"<p>I am using the Intel Realsense L515 lidar to obtain a pointcloud. I need to detect an empty  area (no objects blocking it) on a surface (i.e. a table or a wall) so that a robotic arm has enough room to apply pressure to the surface at that point.</p>
 <p>So far I have segmented the pointcloud in PCL in order to find a plane, to first detect the surface.
 Afterwards I try segmenting for a 10-20cm circle anywhere in the area in order to attempt to find an empty space for the robot to operate.</p>
@@ -11826,7 +11842,7 @@ extract_c.setNegative(false);
 extract_c.filter(*cloud_c);
 std::cerr &lt;&lt; &quot;PointCloud representing the circle component: &quot; &lt;&lt; cloud_c-&gt;width * cloud_c-&gt;height &lt;&lt; &quot; data points.&quot; &lt;&lt; std::endl;
 </code></pre>
-",10/28/2021 10:25,,653,0,2,2,,17269511,,10/28/2021 9:56,7,,,,,,123422583,"Thank you, I will look into it. However, I expect I might need a way to compensate for the fact that the density of the points is higher closer to the camera than it is farther away from it perhaps, but I will see how impactful that is while testing. What is the parameter that specifies the size of the voxel? I can't seem to find that information in the documentation. Is it the resolution?",,
+",10/28/2021 10:25,,653,0,2,2,,17269511,,10/28/2021 9:56,7,,,,,,123422583,"Thank you, I will look into it. However, I expect I might need a way to compensate for the fact that the density of the points is higher closer to the camera than it is farther away from it perhaps, but I will see how impactful that is while testing. What is the parameter that specifies the size of the voxel? I can't seem to find that information in the documentation. Is it the resolution?",mp,
 4164,70197279,How to find robot TCP in image with CalibrateHandEye,|c++|opencv|camera-calibration|robotics|,"<p>I'm currently developing a programm for a robot with a camera attached to the end affector.
 The goal is to calculate where the robots TCP appears in the camera frame. I'm using opencv in c++.
 The robot is a UR5 from Universal Robots.</p>
@@ -12151,7 +12167,7 @@ int main(int argc, char *argv[])
 `
 </code></pre>
 ",12/2/2021 9:52,,647,2,0,0,0,17087746,,10/6/2021 8:57,10,70201334,"<p>you need to use solvepnp to get rvec and tvec for each image separately and then you will have a list of rvecs and tvecs. list length equals no of images. To get a similar list of rvec and tvec for Gripper_to_base transformation, you need to derive the R and T matrices based on robot dynamics which take rotation angle as input. Then for each pose you need to input the rotation angle data to R,T matrices to get rvec and tvec for each pose and make list of same length. Then you input them to calibrateHandeye function.</p>
-",12114977,0,9,,,,
+",12114977,0,9,,,Cameras,
 4180,70290926,How do wifi bulbs pair with the mobile,|wifi|robotics|atmega|smartphone|smart-device|,"<p>I have been working on making a commercial-equivalent smart WiFi bulb. I cannot understand how the bulb pairs with the app on smartphone and gains access to the Internet through my personal modem. The bulb cannot communicate through the personal WiFi before getting paired, as it doesn't have the credentials. I tried to experiment with my existing commercial bulb and while putting it in reset mode, noticed -</p>
 <ol>
 <li>There wasn't any WiFi (that could be the bulb's AP) visible in the available networks list of my PC. Well, I don't know if it was a hidden network.</li>
@@ -12167,7 +12183,7 @@ int main(int argc, char *argv[])
 <blockquote>
 <p>No need to get to each technical detail, I just want to know the process. I will ask later if I need the tech details.</p>
 </blockquote>
-",12/9/2021 13:40,,52,0,3,0,,17635924,,12/9/2021 12:53,2,,,,,,129267324,You should read this article → [How do I ask a good question?](https://stackoverflow.com/help/how-to-ask),,
+",12/9/2021 13:40,,52,0,3,0,,17635924,,12/9/2021 12:53,2,,,,,,129267324,You should read this article → [How do I ask a good question?](https://stackoverflow.com/help/how-to-ask),NEW,
 4202,70695409,how to go from pixel coordinates to angle off the optical axis (Object detection alignment),|raspberry-pi|camera|computer-vision|robotics|,"<p>I am making a robot that detects a ball and goes to it.</p>
 <p>Because I am doing the detection on a raspberry pi I thought that it will be better to work with images and not with real time detection.</p>
 <p>The robot rotates 45 degrees and take a photo. If the ball isn’t detected, it moves another 45 degrees till it detects the ball.</p>
@@ -12212,7 +12228,7 @@ alpha = atan(v_x) * 180/pi # degrees
 <p>For a point on the left edge (x=0), that would mean turning 19.5 degrees left.</p>
 <p>All of this assumes that the picture was not distorted by the lens. For small angles, this doesn't matter. Some cameras have special lenses that hardly distort at all. Some cameras, especially action cameras, intentionally have almost-fisheye lenses (meaning strong distortion).</p>
 <p>If you need to deal with lens distortion, that's another topic. There are common models for lens distortion that work with as few as 4 parameters. Both MATLAB and OpenCV come with calibration methods.</p>
-",2602877,1,12,124984300,"I need to make an algorithm that calculate the degrees the robot should turn to be aligned,Angle of View: 62.2 x 48.8 degrees,the resolution of the pic(1920x1080),and i know the x1,x2,y1,y2 of the label box.But i want the formula mainly.",,
+",2602877,1,12,124984300,"I need to make an algorithm that calculate the degrees the robot should turn to be aligned,Angle of View: 62.2 x 48.8 degrees,the resolution of the pic(1920x1080),and i know the x1,x2,y1,y2 of the label box.But i want the formula mainly.",orientation,
 4208,70837669,"How can I parse ""package://"" in a URDF file path?",|python|path|robotics|urdf|,"<p>I have a robot URDF that points to mesh files using &quot;package://&quot;.</p>
 <pre><code>  &lt;geometry&gt;
     &lt;mesh filename=&quot;package://a1_rw/meshes/hip.dae&quot; scale=&quot;1 1 1&quot;/&gt;
@@ -12316,12 +12332,12 @@ with tempfile.TemporaryDirectory() as tmpdirname:
 # Here we get out of tmpfile context manager, so the tmpdir and all its content is erased
 robot_urdf.show() # The robot urdf is still accessible
 </code></pre>
-",12256622,1,0,,,,
+",12256622,1,0,,,NEW,
 4210,70994989,Path Planning on a 3d point cloud,|point-clouds|robotics|motion-planning|,"<p>I have a 3d point cloud of a location on which I am trying to design a path planner for a mobile robot. Can anyone please guide me towards the right approach to take in solving the problem. For the point cloud, I have the coordinates of the obstacles on the map (their x,y,z positions). I am trying to solve the problem as a stand-alone general purpose planner for a mobile robot without using ROS.</p>
 <p>My current stumbling block lies in the theoretical aspect as well since the fact that the point cloud consists of just x,y,z points, how is a path planning algorithm like A* run on such types of data where you can't define a general grid like that for a 2d case with each grid cell as a node? I have the coordinates of the obstacles on the map (their x,y,z positions).</p>
 <p>Would greatly appreciate if anyone can provide me with some guidance on how to move forward.</p>
 ",2/5/2022 3:09,,435,1,0,0,,18085938,,2/1/2022 0:33,2,72390139,"<p>I am facing a similar problem. The first step should be calculating the normal vectors of the point cloud. Then, the path can be calculated based on the normal vector.</p>
-",18632004,0,1,,,,
+",18632004,0,1,,,mp,
 4223,71254308,"How can i find the position of ""boundary boxed"" object with lidar and camera?",|opencv|ros|robotics|gazebo-simu|pcl|,"<p>This question is related to my final project. In gazebo simulation environment, I am trying to detect obstacles' colors and calculate the distance between robot and obstacles. I am currently identifying their colors with the help of OpenCV methods (<a href=""https://i.stack.imgur.com/V0Pyz.png"" rel=""nofollow noreferrer"">object with boundary box</a>) but I don't know how can i calculate their distances between robot. I have my robot's position. I will not use stereo. I know the size of the obstacles. Waiting for your suggestions and ideas. Thank you!</p>
 <p>My robot's topics :</p>
 <ul>
@@ -12331,12 +12347,12 @@ robot_urdf.show() # The robot urdf is still accessible
 </ul>
 ",2/24/2022 15:24,71259367,556,1,2,1,,18010735,,1/23/2022 16:44,54,71259367,"<p>You can project the point cloud into image space, e.g., with OpenCV (as in <a href=""https://stackoverflow.com/questions/25244603/opencvs-projectpoints-function"">here</a>). That way, you can filter all points that are within the bounding box in the image space. Of course, projection errors because of differences between both sensors need to be addressed, e.g., by removing the lower and upper quartile of points regarding the distance to the LiDAR sensor. You can use the remaining points to estimate the distance, eventually.</p>
 <p>We have such a system running and it works just fine.</p>
-",5296179,0,0,125951364,"Sorry for insufficient information. I don't have the positions of the all obstacles. I am trying to find that. I just have my robot's position. I am not using stereo vision. I just want to fuse lidar and my camera.  Camera space is not calibrated Actually, i dont know what that it means. I know the size of the obstacles. I edited my question.",,
+",5296179,0,0,125951364,"Sorry for insufficient information. I don't have the positions of the all obstacles. I am trying to find that. I just have my robot's position. I am not using stereo vision. I just want to fuse lidar and my camera.  Camera space is not calibrated Actually, i dont know what that it means. I know the size of the obstacles. I edited my question.",NEW,
 4233,71397376,Why is the default value of WHOAMI register of MPU9250 is 0x71?,|microcontroller|robotics|mpu6050|,"<p>I'm reading the datasheet of MPU9250 and I find out the address of MPU6050 inside MPU9250 is b110100x. But when I see the description of WHOAMI register, it says the default value is 0x71. And I cannot figure out any relationship between b110100x and 0x71.</p>
 <p>Can anyone tell me what is going on? Thank you～</p>
 <p>BTW why does everyone put 0 in front of the address and say that the address of MPU9250 is 0x68? It seems more sense to put 0 on the LSB since that LSB represent read or write.</p>
 ",3/8/2022 15:19,,607,0,5,0,,15707867,,4/20/2021 15:56,17,,,,,,126226029,"@ThomasJager Yeah `0xD0` is what I mean! I just think it is really confusing to shift the address right to become `0x68`...
-Thank you for you explaining~~ I never thought that address and number will be indepent!",,
+Thank you for you explaining~~ I never thought that address and number will be indepent!",NEW,
 4281,71697482,Incorrect distance travelled using optical wheel encoder,|python|raspberry-pi|raspbian|robotics|encoder|,"<p>I started using a raspberry pi 3b+ about 2 months ago, so I'm fairly new. I'm working on a project, in which I have assembled a 4 wheeled small car, it has 4 DC motors, a 3b+, an L289D H bridge and an optical wheel encoder.</p>
 <p>I'm in my initial stages of the project where I am testing the kit, whether it travels the correct distance or not. Below is the code that I'm using to test the process:</p>
 <pre><code>import RPi.GPIO as GPIO
@@ -12435,7 +12451,7 @@ print(&quot;Distance&quot;, distance)
 GPIO.output(13, GPIO.LOW)
 GPIO.output(18, GPIO.LOW)
 </code></pre>
-",7803702,0,0,126710961,"Yes, you need to understand what the actual frequency of the optical encoder is. You should match the sampling by your code to slightly greater than twice that frequency.",,
+",7803702,0,0,126710961,"Yes, you need to understand what the actual frequency of the optical encoder is. You should match the sampling by your code to slightly greater than twice that frequency.",distance,
 4294,71757025,C script for guiding a line follower,|c|state-machine|robotics|,"<p>So for class I am trying to write a C script for a line follower robot. The robot has 3 sensors (ABC) which give logic 1 on black and logic 0 on white, A is on the left side, B in the middle and C on the right when looking straight down on the robot. It also has 2 motors, one on each side.</p>
 <p>The board I am using is an <a href=""https://eu.mouser.com/ProductDetail/Texas-Instruments/MSP-EXP430G2?qs=CLImetaeaXWH2pYG%252BA%252B4Vw%3D%3D"" rel=""nofollow noreferrer"">Texas Instruments MSP-EXP430G2</a> and I am using the ports P1.0 - P1.7.</p>
 <p>Now, I have literally 0 experience writing C scripts so all pointers are very much appreciated.</p>
@@ -12504,7 +12520,7 @@ break;
     break;
 </code></pre>
 <p>As I said, all pointers and suggestions are highly appreciated.</p>
-",4/5/2022 18:53,,250,0,2,0,,17988251,,1/20/2022 22:14,5,,,,,,126811174,"Then it would be good if you would highlight the exact problem you are having, and what is the actual question. The code you show at the end of the question, so what does it do if you run it on the actual robot?",,
+",4/5/2022 18:53,,250,0,2,0,,17988251,,1/20/2022 22:14,5,,,,,,126811174,"Then it would be good if you would highlight the exact problem you are having, and what is the actual question. The code you show at the end of the question, so what does it do if you run it on the actual robot?",line tracking,
 4308,71928676,"Cannot find module ""qfi"" for running JdeRobot drone_cat_mouse exercise from source",|python|ros|robotics|,"<p>I want to run JdeRobot drone_cat_mouse on my Ubuntu 20.04. I'm using ROS Noetic and has faithfully followed <a href=""https://github.com/JdeRobot/drones/blob/noetic-devel/installation20.md"" rel=""nofollow noreferrer"">these installation instructions</a>. Everything it told me to test was working properly.</p>
 <p>When I first ran roslaunch drone_cat_mouse.launch, there was an import error for teleopWidget and sensorsWidget which I fixed by using relative imports. Then I had an error <code>No module named qfi</code>.</p>
 <p><a href=""https://i.stack.imgur.com/RsOcr.png"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/RsOcr.png"" alt=""No module named qfi"" /></a></p>
@@ -12523,7 +12539,7 @@ break;
 <p><a href=""https://i.stack.imgur.com/zZlSf.png"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/zZlSf.png"" alt=""why"" /></a></p>
 <p>Forget it, I'm giving up on this dumpster fire of a program.</p>
 <p>Edit: I did another fresh install, followed the steps, noticed troubleshooting for qfi which required qmake, but same end result</p>
-",10618936,0,1,,,,
+",10618936,0,1,,,NEW,
 4367,73277615,"Stereo calibration, do extrinsics change if the lens changes?",|opencv|3d|robotics|stereo-3d|calibration|,"<p>I have a stereo camera setup. Typically I would calibrate the intrinsics of each camera, and then using this result calibrate the extrinsics, so the baseline between the cameras.</p>
 <p>What happens now if I change for example the focus or zoom on the lenses? Of course I will have to re-calibrate the intrinsics, but what about the extrinsics?</p>
 <p>My first thought would be no, the actual body of the camera didn't move. But on my second thought, doesn't the focal point within the camera change with the changed focus? And isn't the extrinsic calibration actually the calibration between the two focal points of the cameras?</p>
@@ -12531,7 +12547,7 @@ break;
 <p>Thanks for any help!</p>
 ",8/8/2022 12:07,,89,1,0,0,,6465752,"Zürich, Schweiz",6/14/2016 17:01,19,73277682,"<p>Yes you should.</p>
 <p>It's about the optical center of each camera. Different lenses put that in different places (but hopefully along the optical axis).</p>
-",2602877,0,2,,,,
+",2602877,0,2,,,Cameras,
 4372,73703077,ROS AttributeError: module 'moveit_commander' has no attribute 'MoveGroupCommander',|python|ros|robotics|,"<p><a href=""https://i.stack.imgur.com/Dlgex.png"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/Dlgex.png"" alt=""enter image description here"" /></a>I am using ROS and python to write a robot program. This program can run normally on ROS melodic, but it will raise <em><strong>AttributeError: module 'moveit_commander' has no attribute 'MoveGroupCommander'</strong></em> on noetic, may I ask this is ros Is there a reason for the version? Is there a way to end it?<a href=""https://i.stack.imgur.com/tI2hc.png"" rel=""nofollow noreferrer"">enter image description here</a></p>
 <p>this is my code</p>
 <pre><code>def pick1(self, forward, side, object, euler, nanko):
@@ -12677,11 +12693,11 @@ break;
 <pre><code>import moveit_commander
 </code></pre>
 <p>If that doesn't work it means you need to install the Noetic version of moveit via: <code>sudo apt install ros-noetic-moveit</code></p>
-",11245187,0,2,,,,
+",11245187,0,2,,,ros,
 4422,73980976,"Python Universal Robots UR-RTDE's API - Getting sporadic ""RTDEReceiveInterface Exception: End of file""",|python|api|exception|robotics|,"<p>Been using happily <a href=""https://pypi.org/project/ur-rtde/"" rel=""nofollow noreferrer"">ur-rtde</a> and lately started getting &quot;RTDEReceiveInterface Exception: End of file&quot; messages in different places of the code.</p>
 <p>It seems it happens only when the robot is at rest.</p>
 <p>Anyone sees this?</p>
-",10/6/2022 23:39,,345,0,0,1,,722453,,4/24/2011 8:34,185,,,,,,,,,
+",10/6/2022 23:39,,345,0,0,1,,722453,,4/24/2011 8:34,185,,,,,,,,NEW,
 4424,74063852,How to move a robot arm in a circle,|trigonometry|robotics|kinematics|,"<p>I have a 6 joint robot arm, and I want to move it in a circle. I want parameters to choose the radius, degrees, and resolution/quality of the circle.</p>
 <p>How do I do this?</p>
 <p><a href=""https://i.stack.imgur.com/YqbUA.png"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/YqbUA.png"" alt=""arm"" /></a></p>
@@ -12747,20 +12763,20 @@ However, if we use 17 points, we can see the coordinates are approaching a circu
 }
 </code></pre>
 <p>I recommend testing this code by creating a graph in Microsoft Excel to verify that the x y coordinates create a circle.</p>
-",15789222,0,0,,,,
+",15789222,0,0,,,hc,
 4429,74116961,Pepper (SoftBank Robotics): Set moveTo speed in Pepper robot via Python (no ROS),|robotics|pepper|nao-robot|slam|,"<p>I'm working on Pepper robot by SoftBank Robotics and I'm trying to write a Python script that dynamically manages the Pepper robot speed .
 I'm studying <a href=""http://doc.aldebaran.com/2-5/naoqi/motion/almotion.html"" rel=""nofollow noreferrer"">ALMotion</a> and <a href=""http://doc.aldebaran.com/2-5/naoqi/motion/alnavigation.html"" rel=""nofollow noreferrer"">ALNavigation</a> APIs, but I'm not able to find a solution.</p>
 <p>Do you have some ideas?</p>
 ",10/18/2022 20:14,74135983,188,1,0,0,,11858777,"Bari, BA, Italia",7/30/2019 15:58,36,74135983,"<p><a href=""http://doc.aldebaran.com/2-5/naoqi/motion/control-walk-api.html#almotionproxy-move1"" rel=""nofollow noreferrer"">ALMotion::move</a> and <a href=""http://doc.aldebaran.com/2-5/naoqi/motion/control-walk-api.html#almotionproxy-movetoward1"" rel=""nofollow noreferrer"">ALMotion::moveToward</a> contain velocity/speed as a normalized value from the interval &lt;0; 1&gt; (and &lt;-1; 0&gt; for the opposite direction).</p>
 <p>See e.g. the <a href=""https://gitlab.fi.muni.cz/nlp/dialog_coming"" rel=""nofollow noreferrer"">Come with me</a> app to see examples how Pepper's hand joint angles are transformed to its movement speed.</p>
-",10822884,2,0,,,,
+",10822884,2,0,,,api,
 4431,74133720,"How to understand ""pre"" in Preintegration of IMU?",|computer-vision|robotics|slam|,"<p>I see <em>preintegration</em> in IMU-fused SLAM literatures, which mention that <em>preintegration is useful in avoiding to recompute the IMU integration between two consecutive keyframes</em>.</p>
 <p>However, when I see some open-sourced SLAM code, e.g. OrbSLAM3, I haven't found anything special in preintegration because it just looks like an ordinary integration (with same time-intervals, same interpolation, same full caculation over multiple intervals), and I don't see an expected pre-calculated value that is reused time and time again.</p>
 <p>So my question, is <em>preintegration</em> just an alias of the integration of IMU, or else how to correctly understand &quot;<strong>pre</strong>&quot;?</p>
 ",10/20/2022 2:12,74188571,335,1,2,1,,14286161,Beijing,9/16/2020 7:53,27,74188571,"<p>Finally I've made clear of <em><strong>Preintegration</strong></em>.</p>
 <p>It is a misunderstanding to think of <em>Preintegration</em> as a pre-calculated value that is reusable in each process for calculating any new integration.</p>
 <p><strong>In fact</strong>, <em>Preintegration</em> actually means that people <strong>temporarily</strong> calculate integrations <strong>in a rough way</strong> for incoming any time instant (say, instant <em>0, 1, 2, ..., k-1</em>) and, at a key instant <em>k</em>, a bundle adjustment can be performed on the <em>pre-integrations</em> over time instants [<em>0, k</em>] <strong>without recomputing</strong> the integration on time instant <em>0, 1, 2, ..., k-1</em>.</p>
-",14286161,1,0,130889103,"@CrisLuengo These two sites are with potential value, thanks!",,
+",14286161,1,0,130889103,"@CrisLuengo These two sites are with potential value, thanks!",SLAM,
 4452,74301643,About accesing depth images using Python OpenCV,|python|opencv|ros|robotics|realsense|,"<p>I have a array called <code>depth_msg</code> which has a lot of numbers that represents the depth values of a image. When I convert them in <code>cv2</code> message format,</p>
 <p>I get this depth image,
 <a href=""https://i.stack.imgur.com/YXVU7.png"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/YXVU7.png"" alt=""enter image description here"" /></a></p>
@@ -12787,7 +12803,7 @@ def depth_clbck(depth_msg):
 <p>For segmentation, you can either manually segment out the peppers or using a image segmentation algorithm - this link shall help you get started:</p>
 <p><a href=""https://scikit-image.org/docs/stable/api/skimage.segmentation.html"" rel=""nofollow noreferrer"">https://scikit-image.org/docs/stable/api/skimage.segmentation.html</a></p>
 <p>Once a segmentation mask <em>mask</em> is obtained, <em>depth_array[mask&gt;0]</em> will fetch you the depth pixels.</p>
-",16744609,0,0,,,,
+",16744609,0,0,,,Vision,
 4455,74415334,KheperaIV Test File is more complicated than I expected,|c++|c|robotics|,"<p>I am working on an undergrad project involving the Khepera IV mobile robot, and as I'm reading the files that came with it, I came across this line that confuses me:</p>
 <pre><code>for (i=0;i&lt;5;i++) {
     usvalues[i] = (short)(Buffer[i*2] | Buffer[i*2+1]&lt;&lt;8);
@@ -12808,7 +12824,7 @@ for (i = 0; i &lt; 5; i++) {
   usvalues[i] = Buffer[i*2] | (unsigned)Buffer[i*2+1] &lt;&lt; 8;
 }
 </code></pre>
-",2410359,1,0,131368173,"Look at this list of operators : https://en.cppreference.com/w/cpp/language/operator_arithmetic. You will find `|` is bitwise or and `<<` is shift left. It is an efficient way to calculate 16 bit values from an 8bit buffer (little endian as Weather Vane said). The cast in C++ should be a static_cast<short> though not the ""C"" style cast (short) though.",,
+",2410359,1,0,131368173,"Look at this list of operators : https://en.cppreference.com/w/cpp/language/operator_arithmetic. You will find `|` is bitwise or and `<<` is shift left. It is an efficient way to calculate 16 bit values from an 8bit buffer (little endian as Weather Vane said). The cast in C++ should be a static_cast<short> though not the ""C"" style cast (short) though.",NEW,
 4458,74481393,Arduino mega with L298n and Motors with Encoders not registering encoders,|arduino|robotics|encoder|arduino-c++|motordriver|,"<p>I am trying to follow a tutorial from <a href=""https://www.youtube.com/watch?v=-PCuDnpgiew&amp;list=PLunhqkrRNRhYAffV8JDiFOatQXuU-NnxT&amp;index=9"" rel=""nofollow noreferrer"">youtube</a> on using ROS with Arduino to control motors, and I have connected my <a href=""https://rads.stackoverflow.com/amzn/click/com/B07BK1QL5T"" rel=""nofollow noreferrer"" rel=""nofollow noreferrer"">L298N</a> with the <a href=""https://rads.stackoverflow.com/amzn/click/com/B00ME3ZH7C"" rel=""nofollow noreferrer"" rel=""nofollow noreferrer"">battery</a> precisely as the video describes and have uploaded <a href=""https://github.com/joshnewans/ros_arduino_bridge"" rel=""nofollow noreferrer"">sketch</a> 1 with the supporting folder and it loads properly. The Arduino is powered properly via USB, but that connection is not shown in the diagram. When I type the &quot;e&quot; command, I get the proper response of &quot;0 0&quot; and when I do the &quot;o 255 255&quot; it says &quot;OK&quot; and drives properly but upon using &quot;e&quot; to recheck the encoders I am getting the same &quot;0 0&quot;. If anyone can spot something wrong with this, I would really appreciate the help in fixing it. Diagram and Code Below</p>
 <p><a href=""https://i.stack.imgur.com/XBk5v.png"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/XBk5v.png"" alt=""Diagram"" /></a></p>
 <p>Code:</p>
@@ -13260,7 +13276,7 @@ void resetEncoders() {
     right_enc_pos += ENC_STATES[(enc_last &amp; 0x0f)];
   }
 </code></pre>
-",20680526,0,0,,,,
+",20680526,0,0,,,wpi,
 4462,74667949,Robot movement measuring using matlab video processing,|matlab|image-processing|robotics|measurement|,"<p>I'm doing robot project - It need to measure subtle movements in XY direction, while driving in Z direction .
 So I was thinking of using a camera with MATLAB and blinking LED attached to a wall - that way using image subtraction I can identify the LED, and with weight matrix locate the center of the light.
 Now every period of time I can log the amount of pixels the center moved right-left or up-down directions and check the accuracy of the motion.</p>
@@ -13273,7 +13289,7 @@ Now every period of time I can log the amount of pixels the center moved right-l
 <p>note: the amount of motion can be proportional.</p>
 ",12/3/2022 15:11,,45,1,0,0,,10694333,world,11/23/2018 7:19,34,74668342,"<p>You might be able to improve the accuracy of the location of the led by applying some kind of peak interpolation.</p>
 <p>For the calibration: Matlab offers an app for camera calibration, maybe that helps you.</p>
-",17204618,0,0,,,,
+",17204618,0,0,,,position,
 4463,74683769,Microbit doesn't run flashed program when seated in Max:bot,|robotics|bbc-microbit|,"<p>My son bought a <a href=""https://www.pbtech.com/au/product/SBCDFR0005/DFRobot-STEM-Education-Boson-ROB0147-Maxbot-DIY-Pr"" rel=""nofollow noreferrer"">Max:bot DIY Programmable Robot Kit</a>, which uses a BBC Microbit.</p>
 <p><a href=""https://i.stack.imgur.com/2q5Jf.png"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/2q5Jf.png"" alt=""Max:bot"" /></a></p>
 <p>You can see above where the Microbit slots in.</p>
@@ -13303,7 +13319,7 @@ Now every period of time I can log the amount of pixels the center moved right-l
 <p>My assumption here is that Max:bit is using <code>P5</code> and <code>P11</code> and so it appears to the micro:bit that button A and button B are being held down when Max:bit is powered.</p>
 <p>Looking at the assembly guide it would appear that there are some LED strips that might be the culprit for this.</p>
 <p><a href=""https://i.stack.imgur.com/saMjI.png"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/saMjI.png"" alt=""enter image description here"" /></a></p>
-",7721752,1,0,131822110,Thank you @ukBaz I will investigate that angle.,,
+",7721752,1,0,131822110,Thank you @ukBaz I will investigate that angle.,wpi,
 4467,74726722,How to extract points that belong to a vertical plane from a point cloud using PCL?,|c++|point-cloud-library|robotics|lidar|ransac|,"<p>I want to write a program that takes a point cloud data and extract the set of points that belong to a vertical plane. The process mustn’t take more than 100 milliseconds. What is the best way to do this?</p>
 <p>I tried using RANSAC filter but, it's slow and also the result is not good.</p>
 <pre><code> pcl::SACSegmentation&lt;pcl::PointXYZ&gt; seg;
@@ -13317,7 +13333,7 @@ Now every period of time I can log the amount of pixels the center moved right-l
 With the latest PCL release (or master branch) you can also use the parallel RANSAC implementation by calling <code>seg.setNumberOfThreads(0)</code>.
 If this is still too slow, you can try to downsample the cloud before passing it to <code>SACSegmentation</code>, e.g. with <a href=""https://pointclouds.org/documentation/classpcl_1_1_random_sample.html"" rel=""nofollow noreferrer"">https://pointclouds.org/documentation/classpcl_1_1_random_sample.html</a></p>
 <p>If you only want vertical planes (that is, planes that are parallel to a specified axis), you should use <code>SACMODEL_PARALLEL_PLANE</code> instead of <code>SACMODEL_PLANE</code> and call <a href=""https://pointclouds.org/documentation/classpcl_1_1_s_a_c_segmentation.html#a23abc3e522ccb2b2846a6c9b0cf7b7d3"" rel=""nofollow noreferrer"">https://pointclouds.org/documentation/classpcl_1_1_s_a_c_segmentation.html#a23abc3e522ccb2b2846a6c9b0cf7b7d3</a> and <a href=""https://pointclouds.org/documentation/classpcl_1_1_s_a_c_segmentation.html#a7a2dc31039a1717f83ca281f6970eb18"" rel=""nofollow noreferrer"">https://pointclouds.org/documentation/classpcl_1_1_s_a_c_segmentation.html#a7a2dc31039a1717f83ca281f6970eb18</a></p>
-",6540043,0,0,131888874,"What do you mean by ""slow""? Have you measured the time it takes? What do you mean with ""the result is not good""? Please be more precise here so I can make a good suggestion. Which PCL version are you using? There are several speed improvements in the latest PCL versions, and also a parallel RANSAC implementation.",,
+",6540043,0,0,131888874,"What do you mean by ""slow""? Have you measured the time it takes? What do you mean with ""the result is not good""? Please be more precise here so I can make a good suggestion. Which PCL version are you using? There are several speed improvements in the latest PCL versions, and also a parallel RANSAC implementation.",gs,
 4481,75006535,How to calculate the angle between Quaternions,|python|ros|sensors|robotics|imu|,"<p>I have two IMU sensors giving me Euler angles. I convert them to Quaternion by following</p>
 <pre><code>quaternion_angle_1=tf.transformations.quaternion_from_euler(roll_1,pitch_1,yaw_1)
 quaternion_angle_2=tf.transformations.quaternion_from_euler(roll_2,pitch_2,yaw_2)
@@ -13326,7 +13342,7 @@ quaternion_angle_2=tf.transformations.quaternion_from_euler(roll_2,pitch_2,yaw_2
 ",1/4/2023 13:57,,436,2,1,1,,14447735,"Peshawar, Pakistan",10/14/2020 8:46,41,75009966,"<p>Sounds like you want the relative rotation between two quaternions. You could simple calculate the angle between the euler angles, then convert that to a quaternion. But if you need to do it strictly with quaternions <code>tf</code> allows you to do this directly:</p>
 <pre><code>relative_quat = quaternion_angle_1 * quaternion_angle_2.inverse()
 </code></pre>
-",11245187,0,0,132369553,Does this answer your question? [How to obtain the angle between two quaternions?](https://stackoverflow.com/questions/57063595/how-to-obtain-the-angle-between-two-quaternions),,
+",11245187,0,0,132369553,Does this answer your question? [How to obtain the angle between two quaternions?](https://stackoverflow.com/questions/57063595/how-to-obtain-the-angle-between-two-quaternions),orientation,
 4487,75081222,PID Control for a DC Motor : Reducing Settling Time,|robotics|pid-controller|,"<p>I want to control the velocity of a DC motor using PID.</p>
 <p>In conventional PID Control, we have
 u = kp * error + ki * integral_of_error + kd * derivative of error</p>
@@ -13340,13 +13356,13 @@ Does it achieve anything or would good tuning get the same results?</p>
 <p>In my case, the motor's behaviour should be relatively predictable. I don't expect the resistance to motion to vary drastically.</p>
 ",1/11/2023 10:00,,84,1,0,0,,13056186,,3/13/2020 9:46,5,75777431,"<p>Your additional term f(desired_velocity) is what we call feedforward gain. This is mostly used to achieve better tracking (smaller steady-state error), but it will also make the controller more robust.</p>
 <p>In your case, I would try to increase the proportional gain kp as much as possible. Doing so you'll increase the bandwidth of your controller, and so decrease its settling time. Make sure that your system remains controllable (hence stable), and that there is no oscillatory response. The latter happens often when we increase the bandwidth as it also increases noise at the same time.</p>
-",20272518,0,0,,,,
+",20272518,0,0,,,mp,
 4493,75192356,unable to get the messages from the mqtt topic to ros topic. ||Mqtt to Ros bridge,|python-3.x|mqtt|ros|robotics|ros2|,"<p>Issue: Trying to get mqtt messages from mqtt_topic to ros topic.
 I am trying to control my robot which is in ros environment from the outside server using mqtt protocol. I got connected with the outside server. But i didn't get the messages from the mqtt_topic</p>
 <p><img src=""https://i.stack.imgur.com/xcXPY.png"" alt=""enter image description here"" /></p>
 <p>I am currently using mqtt bridge package https://github.com/groove-x/mqtt_bridge
 Please help me to overcome this issue or please recommend some other mqtt ros bridge packages.</p>
-",1/21/2023 9:32,,182,0,4,0,,21054569,,1/21/2023 9:16,4,,,,,,132690590,Please show `demo.launch` and the code you use to verify that nothing is received or the `rostopic echo` call you use instead. Your screenshot is not overly useful (and should be text as hardillb says).,,
+",1/21/2023 9:32,,182,0,4,0,,21054569,,1/21/2023 9:16,4,,,,,,132690590,Please show `demo.launch` and the code you use to verify that nothing is received or the `rostopic echo` call you use instead. Your screenshot is not overly useful (and should be text as hardillb says).,ros,
 4502,75367988,"Java error ""OpenCV Assertion failed: (-215:Assertion failed) npoints >= 0 && (depth == CV_32F || depth == CV_32S)""",|java|opencv|image-processing|contour|robotics|,"<p>When I try to run this openCV code on an FTC robot:</p>
 <pre><code>        List&lt;MatOfPoint&gt; contours = new ArrayList&lt;&gt;();
         Imgproc.findContours(thresholded, contours, new Mat(), Imgproc.RETR_EXTERNAL, Imgproc.CHAIN_APPROX_SIMPLE);
@@ -13395,7 +13411,7 @@ for (MatOfPoint curContour : contours) {
     }
 }
 </code></pre>
-",4926757,1,0,,,,
+",4926757,1,0,,,vision,
 4522,75532778,Controller manager not available in ROS2,|ros|robotics|ros2|gazebo-simu|urdf|,"<p>Hi I have added control plugin in robot arm urdf then created launch file but when I run launch file gazebo and robot arm model open but I get an error like below. How can I solve this problem?</p>
 <pre><code>[robot_state_publisher-3] Parsing robot urdf xml string.
 [robot_state_publisher-3] Error:   Error document empty.
@@ -13429,7 +13445,7 @@ for (MatOfPoint curContour : contours) {
 <p><em><strong>SOLVED:</strong></em>
 The problem was ROS2 version and changing in launch file. It works with <strong>Ubuntu 22.04 Humble</strong> and you should install all control package such as joint_trajectory_controller, joint_state_broadcaster, controller_manager, joint-state-publisher-gui then edit your launch file.</p>
 ",2/22/2023 12:37,,2393,0,1,1,,18021550,,1/24/2022 20:42,25,,,,,,134548261,"Had the same issue. sudo apt-get install ros-humble-gazebo-ros2-control
-solved it for me.",,
+solved it for me.",li,
 4541,75700380,Welding IIWA arm to a Planar Joint,|python|robotics|drake|,"<p>Me and my friends are trying to obtain a mobile IIWA arm using PyDrake library. We are able to manually define a planar joint using two Prismatic joints and one Revolute joint. First, we were playing with a basic box to move around. However, when adding the IIWA arm, our program started to give the following error message:</p>
 <pre><code>Traceback (most recent call last):
   File &quot;planar_joint.py&quot;, line 107, in &lt;module&gt;
@@ -13555,7 +13571,7 @@ visualizer.PublishRecording()
             rotation: !Rpy { deg: [90, 0, 90]}
 </code></pre>
 <p>We tried to set the robot 1 unit to the left.</p>
-",3/10/2023 19:41,,100,0,3,1,,20705465,,12/6/2022 17:42,4,,,,,,133602815,"Adding 2 prismatic joints and 1 revolute joint before the iiwa_link_1 to the given iiwa7 sdf worked! I still do not understand the upper solution did not work, though.",,
+",3/10/2023 19:41,,100,0,3,1,,20705465,,12/6/2022 17:42,4,,,,,,133602815,"Adding 2 prismatic joints and 1 revolute joint before the iiwa_link_1 to the given iiwa7 sdf worked! I still do not understand the upper solution did not work, though.",hc,
 4559,75794882,Dynamically configure my simulation (matlab-simulink),|matlab|simulation|simulink|robotics|,"<p>I want to create 3 different controllers for the same system. I want to simulate them all in the same environment, and run each simulation with a different controller, or with 2 of the controllers and change mid simulation.</p>
 <p>What i want to achieve is the following (without necessarily the switch case block), where some logic would replace the constant block:</p>
 <p><a href=""https://i.stack.imgur.com/cs8FW.png"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/cs8FW.png"" alt=""enter image description here"" /></a></p>
@@ -13574,10 +13590,10 @@ visualizer.PublishRecording()
 <p>The command was:</p>
 <pre><code>Select_Controller = [0, 2;(3 - 1e-3) 2;3 1  ];;
 </code></pre>
-",17330440,0,0,,,,
+",17330440,0,0,,,NEW,
 4563,75940959,Bad Latency with v4l2_camera_node in ROS2,|raspberry-pi|ros|robotics|v4l2|,"<p>I am working on a project that provides a camera feed from a microcontroller running ROS2 to a Unity Scene. Currently I am using the v4l2 package and running the v4ls_camera_node to send the data to the Unity scene, however, I am getting terrible latency of about 12 sec. I am not great at working with image processing and was curious if anyone else has ran into this problem and knew of any solutions to try.</p>
 <p>I tried changing some of the parameters with no success.</p>
-",4/5/2023 14:55,,104,0,1,0,,21177078,,2/9/2023 3:28,4,,,,,,133958082,Please provide enough code so others can better understand or reproduce the problem.,,
+",4/5/2023 14:55,,104,0,1,0,,21177078,,2/9/2023 3:28,4,,,,,,133958082,Please provide enough code so others can better understand or reproduce the problem.,Cameras,
 4565,75962469,ORB_SLAM3 Camera Calibration file,|opencv|computer-vision|robotics|slam|,"<p>I'm trying to run a a fisheye camera video feed in Monocular ORB_SLAM3 to get a trajectory, but I'm having trouble configuring the proper calibration file for it.</p>
 <p><a href=""https://rpg.ifi.uzh.ch/fov.html"" rel=""nofollow noreferrer"">Fisheye Camera Intrinsicts and Image feed</a></p>
 <p>Camera Intrinsicts file</p>
@@ -13590,10 +13606,10 @@ visualizer.PublishRecording()
 <p>I tried usig the distortion parameters and both the camera types but there is something thats wrong, the negative focal length also gives an inverted trajectory but still completely inaccurate.</p>
 <p><a href=""https://i.stack.imgur.com/i29Nu.png"" rel=""nofollow noreferrer"">Inverted Trajectory</a></p>
 <p><a href=""https://i.stack.imgur.com/PKLC9.png"" rel=""nofollow noreferrer"">Inaccurate Trajectory</a></p>
-",4/7/2023 22:59,,519,0,0,0,,21592392,,4/7/2023 22:37,2,,,,,,,,,
+",4/7/2023 22:59,,519,0,0,0,,21592392,,4/7/2023 22:37,2,,,,,,,,Cameras,
 4566,75963064,How to calculate the most likely mobile robot position based on the distance to nearby objects (walls) which have a known position?,|orientation|robotics|least-squares|,"<p>I got the distance and angle to the robot from the  detected obstacles (walls) from 2D LiDAR while robot is moving. So now I would like to calculate the most likely robot  pose based on the distance and angle to nearby objects (walls) which have a known position. So if I use the least squares estimator I can get the position of the robot but then how to get the orientation?</p>
 <p>For example this gives me the position <a href=""https://www.th-luebeck.de/fileadmin/media_cosa/Dateien/Veroeffentlichungen/Sammlung/TR-2-2015-least-sqaures-with-ToA.pdf"" rel=""nofollow noreferrer"">robot position estimator using least square method</a> but then how to get the orientation? Any help?</p>
-",4/8/2023 2:40,,47,0,0,0,,10319366,Singapore,9/5/2018 9:27,109,,,,,,,,,
+",4/8/2023 2:40,,47,0,0,0,,10319366,Singapore,9/5/2018 9:27,109,,,,,,,,obstacles,
 4568,76017501,Roboclaw : [ERROR] : cmd: 59 failed crc_check,|raspberry-pi|ros|robotics|,"<p>I have a problem with my robot. Whenever I try to launch it, I keep getting an error message: [ERROR] cmd:59 failed crc_check (and sometimes [ERROR] cmd:49 failed crc_check).</p>
 <p>Although I can see the roboclaw_node in the rqt_graph, but I am unable to send any commands to the motors.
 I have a Roboclaw ST 2x45A with the correct configuration.
@@ -13694,7 +13710,7 @@ Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame base_
 
 
 </code></pre>
-",4/14/2023 17:10,,89,0,1,0,,21644642,,4/14/2023 16:54,2,,,,,,134096975,Please provide enough code so others can better understand or reproduce the problem.,,
+",4/14/2023 17:10,,89,0,1,0,,21644642,,4/14/2023 16:54,2,,,,,,134096975,Please provide enough code so others can better understand or reproduce the problem.,bf,
 4574,76058435,Trouble describing a robot's joint origin/axis using URDF and Pybullet,|python|robot|kinematics|pybullet|urdf|,"<p>I have created a complete URDF for my robot in PyBullet, but I'm having trouble getting the joints to rotate correctly. Specifically, when I try to move a joint, it doesn't rotate about the correct coordinate, and the link separates from the body of the robot.</p>
 <p>Initially, I kept the joint origin and axis at their default values in the URDF and did not move any joints, which resulted in the robot being in a correct and complete static orientation. However, when I try to make a joint move in pybullet, the joint does not rotate about the correct point, and the link separates from the parent body of the robot.</p>
 <p>I have already created reference axes for the servos in my SolidWorks files and attempted to enter this information into the URDF as the joint origin parameter. However, this approach has not resolved the issue.</p>
@@ -13891,7 +13907,7 @@ p.disconnect()
 &lt;/robot&gt;
 </code></pre>
 <p>I tried putting in various values for the joint origins in the URDF using various translations but none helped fix the issue. I have yet to attempt to change the joint axis parameter.</p>
-",4/19/2023 20:08,,220,0,0,0,,12873598,,2/10/2020 16:20,1,,,,,,,,,
+",4/19/2023 20:08,,220,0,0,0,,12873598,,2/10/2020 16:20,1,,,,,,,,hc,
 4578,76087052,Segmentation fault (core dumped) error when running Python script with pykinect_azure and MoveIt,|python|segmentation-fault|ros|kinect|robotics|,"<p>I'm running a Python script that uses <code>pykinect_azure</code> to track the position of the user's left wrist, and then tries to move a robot arm using the MoveIt library. However, when I run the script, I run into the following error:</p>
 <blockquote>
 <p>[ INFO] [1682280101.642647859]: Loading robot model 'panda'...
@@ -13968,7 +13984,7 @@ if __name__ == &quot;__main__&quot;:
     moveit_commander.roscpp_shutdown()
 </code></pre>
 <p>Any ideas on what could cause this? When I use the libraries individually the code runs just fine, but now when combining the two the error occurs. I've tries to use the debugger to narrow it down, but it never catches the error but instead just shuts down shortly after it started. Thanks for any answer!</p>
-",4/23/2023 20:12,,183,0,0,1,,16431723,,7/12/2021 12:48,23,,,,,,,,,
+",4/23/2023 20:12,,183,0,0,1,,16431723,,7/12/2021 12:48,23,,,,,,,,li,
 4582,76194249,How to display a grasps on a pointcloud using open3d (python),|python|point-clouds|robotics|open3d|grasp|,"<p>The main goal is to display the grasp received from a ur10 robot in a pointcoud using open3d. The open3d is used to depict an object as pointclouds and we want to show a grasp skeleton (the idea of grasp skeleton was taken from the s4g repository) around it.
 Currently, open3d shows us the pointcloud of the object but the grasp shown is at the wrong orientation.</p>
 <p>The ur10 gives us the following output regarding its pose:</p>
@@ -14048,7 +14064,7 @@ vis_list = vis_list + hand
 o3d.visualization.draw_geometries(vis_list)
 
 </code></pre>
-",5/7/2023 13:34,,74,0,0,0,,13295077,,4/12/2020 16:16,29,,,,,,,,,
+",5/7/2023 13:34,,74,0,0,0,,13295077,,4/12/2020 16:16,29,,,,,,,,orientation,
 4585,76226178,Self balancing robot - how to obtain the elapsed angle from gyroscopic data?,|python|raspberry-pi|robotics|mpu6050|,"<p>I am trying to complete my University project building and programming a self balancing robot in python (using RPi) but have hit a road block in my knowledge.</p>
 <p>From the MPU6050 I am able to obtain both acceleration and gyroscopic data, furthermore the angles from them (using atan2 function for accel angles and integrating dt for gyro angles). However I cannot think of a way to code this data so that in a loop of given time (dt) it will turn the change in angle (from gyro data) into the total elapsed angle.</p>
 <p>I need to be able to loop the program so that it will run for time (dt), store this data, run the program again but expect + or - the previous stored data.
@@ -14145,7 +14161,7 @@ time.sleep(DT)
 <p>there seems to be many similar self balancing robot projects but very few programmed in python that i can find
 Any help would be much appreciated.</p>
 <p>I have experimented with lists, for loops, while loops but cannot seem to obtain the required results.</p>
-",5/11/2023 9:35,,101,0,0,0,,21879238,,5/11/2023 9:08,2,,,,,,,,,
+",5/11/2023 9:35,,101,0,0,0,,21879238,,5/11/2023 9:08,2,,,,,,,,balance,
 4604,76354503,How to rotate servo when there is object detected?,|python|raspberry-pi|raspberry-pi4|robotics|,"<p>currently I'm working with object detection yolov8 on raspberry pi. My project is to detect these three objects (aluminum can, plastic bottle, glass bottle). I already trained the dataset and export as best.pt file.</p>
 <p>Now I got stuck on <strong>how to rotate servo when there is object detected</strong>. Here is my code.</p>
 <pre><code>from ultralytics import YOLO
@@ -14196,30 +14212,30 @@ if cv2.waitKey(1) &amp; 0xFF == ord(' '):
 cap.release()
 cv2.destroyAllWindows()
 </code></pre>
-",5/29/2023 3:23,,157,0,1,0,,21977022,,5/29/2023 3:15,2,,,,,,135665650,"It looks like you've got most things ready to go (including setting up the servo on pin 12).  It's unclear how the detected class(es) map to servo motion: e.g. what does the servo do when there are no detections ? what about multiple detections ? and for a single detection, which servo value should be selected for which class (e.g. -1, 0, 1 for alluminium, plastic, glass) ? (e.g. `servo.value = box.cls - 1.0 # rempap 0,1,2 classes to -1, 0, 1 servo values`)",,
+",5/29/2023 3:23,,157,0,1,0,,21977022,,5/29/2023 3:15,2,,,,,,135665650,"It looks like you've got most things ready to go (including setting up the servo on pin 12).  It's unclear how the detected class(es) map to servo motion: e.g. what does the servo do when there are no detections ? what about multiple detections ? and for a single detection, which servo value should be selected for which class (e.g. -1, 0, 1 for alluminium, plastic, glass) ? (e.g. `servo.value = box.cls - 1.0 # rempap 0,1,2 classes to -1, 0, 1 servo values`)",obstacles,
 4619,76481567,How could I expose rqt_graph to tcp port?,|python|c++|ros|robotics|ros2|,"<p>I wrote a project to control a vehicle with ros2. I access this vehicle through ssh and write code directly from there.</p>
 <p>Clearly, there is no GUI and I would like to expose the result of rqt_graph on a tcp port so I can see it. Is there any way?</p>
 <p>I've tried to use <a href=""https://github.com/dheera/rosboard/"" rel=""nofollow noreferrer"">Rosboard</a> but I didn't find anything to view graph like rqt_graph.</p>
-",6/15/2023 10:26,,37,0,0,0,,15496345,,3/27/2021 20:23,4,,,,,,,,,
+",6/15/2023 10:26,,37,0,0,0,,15496345,,3/27/2021 20:23,4,,,,,,,,Vision,
 4620,76482257,What algorithm should I use to find the quickest path between two points while avoiding obstacles?,|dynamic|path|shortest-path|robotics|motion-planning|,"<p>I have a start and end point and several obstacles (more or less depending on the situation). I also have a robot-like system that moves in a dynamic environnment. My job is to implement an algorithm that will allow my system to arrive to the end-point avoiding the obstacles. Has anyone worked on path/motion planning before and could give me some advice ?
 So far I've done a little bit of 'research' and I found that basically there are two groups of algorithms: serach-based and sampling-based. Apprently the sampling-based ones are more suitable for environments having multiple obstacles and they are also mostly used in robotics. Now testing they give a very strange trajectory, having many turns which is not at all what I want. On the other hand, search-based algorithms since they work with a grid, when we have more obstacles take a lot of memory. So, here is where I'm stuck. I was thinking of implementing RRT*, but I really don't like the path found even when I have many iterations.</p>
 <p>I looked up algorithms like A*,D*,D<em>Lite,RRT,RRT</em> and PRM.</p>
 ",6/15/2023 12:01,,69,1,0,0,,15090954,,1/27/2021 11:01,8,76870635,"<p>As you have mentioned, sampling-based methods are a lot more efficient in problems with very high-dimensional state space and you don't have to worry about grid size. The observation of strange and unsmooth paths returned by a sampling-based planner is common. Usually, people perform post-processing to fix this. You can perform shortcutting (see paper: <a href=""https://ieeexplore.ieee.org/document/5509683"" rel=""nofollow noreferrer"">https://ieeexplore.ieee.org/document/5509683</a>), or you can throw the found path into an optimization-based solver (e.g. trajectory optimization) as a good initial guess that takes into account path smoothness as well.</p>
-",12004417,1,0,,,,
+",12004417,1,0,,,mp,
 4622,76531265,"How to plan a trajectory having path in the form (x_i,y_i,theta_i), robot FK and Invers Kinematic and constraints?",|matlab|robotics|,"<p>I have the following information:
 1.Inital path for the robot from start state to goal state in the form (x_i,y_i,theta_i),
 2. Robot forward and inverse kinematics,
 3. Some constraints to be posed on the robot related to velocity and acceleration.</p>
 <p>I want to know how to utilize those known inputs to plan a trajectory then execute it by commanding robot to follow the produced trajectory.</p>
 <p>I have done many searches but I still find it confusing, some utilized smoothing algorithms, other used optimization method so on so forth.</p>
-",6/22/2023 11:07,,17,0,0,0,,18055837,,1/28/2022 8:13,8,,,,,,,,,
+",6/22/2023 11:07,,17,0,0,0,,18055837,,1/28/2022 8:13,8,,,,,,,,mp,
 4623,76626687,Formula derivation in the CHOMP: Gradient Optimization Techniques for Efficient Motion Planning article,|robotics|convex-optimization|motion-planning|,"<p>Has anyone read this article, i.e., <em>CHOMP: Gradient Optimization Techniques for Efficient Motion Planning</em> article?</p>
 <p>I'm confused about the derivation of equations 2-3, which is shown in the figure below.</p>
 <p>A detailed procedure is expected. Besides, which chapter of Convex Optimization (S. Boyd and L. Vandenberghe) does this derivation belong to？</p>
 <p>From which chapter of the book can I learn the derivation process?</p>
 <p>Pic:</p>
 <p><a href=""https://i.stack.imgur.com/rfKfT.png"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/rfKfT.png"" alt=""enter image description here"" /></a></p>
-",7/6/2023 7:58,,31,0,0,0,,19644538,,7/29/2022 1:56,26,,,,,,,,,
+",7/6/2023 7:58,,31,0,0,0,,19644538,,7/29/2022 1:56,26,,,,,,,,mp,
 4625,76698876,Issue while trying to controlling LEGO Spike Prime motors using Visual Studio Code,|python|error-handling|command-line|integration|robotics|,"<p>I'm using the LEGO SPIKE Prime extension for Visual Studio Code from the GitHub blog (<a href=""https://github.com/sanjayseshan/spikeprime-vscode"" rel=""nofollow noreferrer"">https://github.com/sanjayseshan/spikeprime-vscode</a>) to develop a project. However, I'm encountering a &quot;TypeError: argument of type 'NoneType' is not iterable&quot; error. I'm seeking assistance in resolving this issue.</p>
 <p>Project Description:
 I'm working on a project that involves controlling the LEGO SPIKE Prime robot using the extension for Visual Studio Code. The extension provides various features and functionalities for interacting with the LEGO SPIKE Prime hardware.</p>
@@ -14240,7 +14256,7 @@ The &quot;teste.py&quot; file exists in the specified directory.
 Request:
 I would appreciate any insights or suggestions on how to resolve this TypeError when using the LEGO SPIKE Prime extension for Visual Studio Code. If there are any specific configurations or additional steps that need to be taken to ensure the proper functionality of the extension and the &quot;spikejsonrpc.py&quot; script, please let me know.</p>
 <p>Thank you for your assistance!</p>
-",7/16/2023 14:51,,427,0,1,0,,22235563,,7/16/2023 12:43,1,,,,,,135223136,Please provide enough code so others can better understand or reproduce the problem.,,
+",7/16/2023 14:51,,427,0,1,0,,22235563,,7/16/2023 12:43,1,,,,,,135223136,Please provide enough code so others can better understand or reproduce the problem.,mc,
 4629,76714383,Mir 100 pause and continue via rest api,|python-3.x|rest|robotics|,"<p>I've been working with mir 100 and using Python to make rest API requests and now I'm trying to pause and unpause the robot via rest API, I'm not working in mir fleet, just one robot, I try to use the action post to make the request to pause the robot via Postman to make some tests, the robot status code was 201 (success) but the robot doesn't stops, someone know how I should make the request correctly?</p>
 <p>This is the JSON that I am using:</p>
 <pre><code>{
@@ -14283,7 +14299,7 @@ I would appreciate any insights or suggestions on how to resolve this TypeError 
 }
 </code></pre>
 <p>Play is state 3 and pause is 4.</p>
-",22690906,0,0,,,,
+",22690906,0,0,,,mc,
 4630,76714440,An error in building code in stm32 cube ide (make: error),|robotics|stm32f4discovery|stm32f4|stm32cubeide|,"<p>I'm trying to build code in stm32f401ccu6 blackpill but I keep getting this error :</p>
 <blockquote>
 <p>make: ***[Drivers/STM32F4xx_HAL_Driver/Src/subdir.mk:61: Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o] Error 1</p>
@@ -14314,7 +14330,7 @@ make: *** [Drivers/STM32F4xx_HAL_Driver/Src/subdir.mk:61: Drivers/STM32F4xx_HAL_
 </blockquote>
 <p>What does that error code mean and is there any applicable solution that I can use?</p>
 <p>I expected my code to built, but it turns out the error keeps coming and I don't know what to do.</p>
-",7/18/2023 15:34,,440,0,0,0,,20469939,,11/10/2022 15:19,4,,,,,,,,,
+",7/18/2023 15:34,,440,0,0,0,,20469939,,11/10/2022 15:19,4,,,,,,,,bf,
 4632,76756325,ModuleNotFoundError: No module named 'cv_bridge.boost.cv_bridge_boost',|python|ros|robotics|ros2|rosbag|,"<p>I have already installed <code>ros noetic</code> distribution and the <code>sudo apt-get install ros-noetic-cv-bridge</code> and <code>sudo apt-get install ros-noetic-cv-bridge</code> successfully. However, when I am trying to run the following code in pycharm, I am getting the following error:</p>
 <pre><code>import os
 import argparse
@@ -14359,7 +14375,7 @@ bag.close()
 ModuleNotFoundError: No module named 'cv_bridge.boost.cv_bridge_boost'
 </code></pre>
 <p>How can I resolve this issue?</p>
-",7/24/2023 16:17,,587,0,0,1,,6494707,,6/21/2016 14:33,543,,,,,,,,,
+",7/24/2023 16:17,,587,0,0,1,,6494707,,6/21/2016 14:33,543,,,,,,,,li,
 4644,76830384,How to transfer latest state between threads in rust without using a mutex,|multithreading|rust|real-time|robotics|rust-tokio|,"<p>I am working on a Rust project where I have two distinct threads that serve specific purposes. One is a real-time thread which interfaces directly with a piece of hardware and maintains strict timing requirements, while the other is a web server thread that provides an API for querying the current state of said hardware.</p>
 <p>I need a mechanism through which the web server thread can acquire the most recent state of the hardware from the real-time thread. The challenge here is to avoid the use of mutexes, as the real-time thread cannot afford to be blocked waiting for the mutex.</p>
 <p>Here are a few solutions I have considered and their corresponding challenges:</p>
@@ -14369,7 +14385,7 @@ ModuleNotFoundError: No module named 'cv_bridge.boost.cv_bridge_boost'
 <li><code>mpsc Channel</code>: If there are no web requests being made, the channel could fill up quickly, leading to wasted memory.</li>
 </ol>
 ",8/3/2023 17:32,,110,2,2,3,,13163184,Canada,3/31/2020 7:10,2,76830453,"<p>You can use the <a href=""https://docs.rs/arc-swap"" rel=""nofollow noreferrer""><code>arc-swap</code></a> crate, that provides the <a href=""https://docs.rs/arc-swap/latest/arc_swap/type.ArcSwap.html"" rel=""nofollow noreferrer""><code>ArcSwap</code></a> type (and related types): an <code>Arc</code> that can be replaced and loaded in a lock-free fashion.</p>
-",7884305,2,1,135452127,"@KevinReid It's a struct representing all the states aggregated from all parts of a robot, about 10 or so f32s and some booleans some enums",,
+",7884305,2,1,135452127,"@KevinReid It's a struct representing all the states aggregated from all parts of a robot, about 10 or so f32s and some booleans some enums",Multi-threading,
 4659,77046789,Very low accuracy and high loss with LSTM model,|python|deep-learning|lstm|recurrent-neural-network|robotics|,"<p>I try to learn the inverse kinematics of a robotic manipulator. To do that I have a simulator with which I acquired data.</p>
 <p>My dataset is composed of positions in X, Y and Z and actuator variables (6 of them). That represents around 310 000 rows. Therefore, the inputs of my NN are the positions (3 inputs) and the outputs the actuator variables (6 outputs). Just before (when my dataset were much simpler, 3 outputs only) I managed to obtain good results with a MLP. However, now that the dataset is much more complicated, I did not manage to obtain a similar result.</p>
 <p>I decided to explore a bit the option of RNN and particularly the LSTM. However, I still have some difficulties to obtain convenient results. In fact, at this moment I only achieve 0.17 of accuracy and 0.06 loss (a good value of loss would be 0.0001).</p>
@@ -14431,7 +14447,7 @@ loss, accuracy = model.evaluate(X_test_seq, Y_test_seq, verbose=0)
 print(&quot;Test accuracy:&quot;, accuracy)
 print(&quot;Test loss:&quot;, loss)
 </code></pre>
-",9/5/2023 17:59,,113,0,3,0,,22505446,,9/5/2023 17:38,3,,,,,,135839879,@Jeppe yes i’ve tried lots of different combination. From one LSTM layer with 10 neurons to 10 LSTM layers with 512 neurons. I also changed batch size and epochs but the results is still the same,,
+",9/5/2023 17:59,,113,0,3,0,,22505446,,9/5/2023 17:38,3,,,,,,135839879,@Jeppe yes i’ve tried lots of different combination. From one LSTM layer with 10 neurons to 10 LSTM layers with 512 neurons. I also changed batch size and epochs but the results is still the same,ik,
 4663,77101051,Integrating Raspberry Camera with ROS2,|camera|ubuntu-20.04|raspberry-pi4|robotics|ros2|,"<p>I am trying to integrate raspberrypi camera into my robotic project. I have tried modules 2 and 3.  same result. I'm using ROS-FOXY( ubuntu 20.04) and ROS HUMBLE(ubuntu 22).
 I installed  the driver using</p>
 <pre><code>sudo apt install libraspberrypi-bin v4l-utils ros-foxy-v4l2-camera ros-foxy-image-transport-plugins
@@ -14442,7 +14458,7 @@ I installed  the driver using</p>
 <pre><code>Cannot open device /dev/video0, exiting.
 </code></pre>
 <p>Anybody with a clue as to what is missing?</p>
-",9/13/2023 23:43,,311,0,0,0,,6351900,"Ontario, Canada",5/18/2016 15:31,40,,,,,,,,,
+",9/13/2023 23:43,,311,0,0,0,,6351900,"Ontario, Canada",5/18/2016 15:31,40,,,,,,,,wpi,
 4667,77147437,Smooth movement of Pick and drop robot with stepper motor,|c++|robotics|firmware|stepper|nucleo|,"<p>I am building a pick and drop robot which has 3 stepper motors. I am using NUCLEO-F746ZG microcontroller and C++ programming to control it.</p>
 <p>Now the problem is the arm moves with jerks in start and end (inertia) and I want to smooth the movement. For that I want to accelerate while the motor starts and decelerate when the motor stops. I tried different methods but none was working, the motor was moving in constant speed only. Kindly help me with this problem to make stepper motor move smoothly.</p>
 <pre class=""lang-c++ prettyprint-override""><code>#include &quot;stepperMotor.h&quot;
@@ -14743,7 +14759,7 @@ What you should have instead is a nested <code>if</code> inside that outermost l
 }
 </code></pre>
 <p>This code doesn't use acceleration and deceleration &quot;inbetween&quot; the steps, so that optimization is left up to you.</p>
-",2846138,1,2,136037236,Just as a side note - the usual way to calculate a smooth trajectory is to use a power of 5 polynomial function. It's easy to find polynomial coefficients for such a function with constraints that velocity and acceleration are 0 at the end points of the trajectory and maximum in the middle point.,,
+",2846138,1,2,136037236,Just as a side note - the usual way to calculate a smooth trajectory is to use a power of 5 polynomial function. It's easy to find polynomial coefficients for such a function with constraints that velocity and acceleration are 0 at the end points of the trajectory and maximum in the middle point.,mc,
 4679,77264719,Python to Control CoppeliaSim correct library (RegularAPI or LegacyApi),|python|simulator|robotics|,"<p>I want to use CoppeliaSim with Python. I have tried the sim.py module from the legacyApi. Take as an example min 2:05 of: <a href=""https://www.youtube.com/watch?v=TGT7KbP7Dfs"" rel=""nofollow noreferrer"">https://www.youtube.com/watch?v=TGT7KbP7Dfs</a>
 However, I cannot not find documentation of its methods and since it is legacy code I would rather move to a more modern implementation. I want to switch to the Regular API: <a href=""https://www.coppeliarobotics.com/helpFiles/"" rel=""nofollow noreferrer"">https://www.coppeliarobotics.com/helpFiles/</a>
 The methods are very well documented but I do not find how to import them. What import to I have to do? Do I have to do a pip install? Do I have to download any .py file?</p>
@@ -14751,7 +14767,7 @@ The methods are very well documented but I do not find how to import them. What 
 <li>Plan A: Use the Regular API. Tell me how to import it. The methods are well documented but I do not know where are those. If possible I would be prefer this approach.</li>
 <li>Plan B: Use the legacyApi. I already was able to find it and use it. But the methods are not documented.</li>
 </ol>
-",10/10/2023 9:56,,44,0,0,1,,22694257,,10/6/2023 8:42,4,,,,,,,,,
+",10/10/2023 9:56,,44,0,0,1,,22694257,,10/6/2023 8:42,4,,,,,,,,NEW,
 4682,77274713,Change color of CoppeliaSim shapes with Python,|python|colors|simulator|robotics|,"<p>I am using the CoppeliaSim Regular API with Python.</p>
 <p>To set a color to my primitive shapes I am using the method setShapeColor().
 To set a shape green I have the following code.</p>
@@ -14776,7 +14792,7 @@ The documentation only gives the names but they do not explain what is the purpo
 <li>Trying all the color components but the result was always the same</li>
 <li>For the transparency I tried: Using the transparency component, in the RGB instead of sending a list send a single value for the transparency, send a list with just 1 value, send a list with 4 values (RGB + transparency).</li>
 </ul>
-",10/11/2023 16:09,,73,0,1,0,,22694257,,10/6/2023 8:42,4,,,,,,136234841,It is a proprietary software. Why not ask the vendor? See [the official forum](https://forum.coppeliarobotics.com/).,,
+",10/11/2023 16:09,,73,0,1,0,,22694257,,10/6/2023 8:42,4,,,,,,136234841,It is a proprietary software. Why not ask the vendor? See [the official forum](https://forum.coppeliarobotics.com/).,vision,
 4685,77276377,I'm almost there? 4 DOF robot arm forward kinematics,|c#|quaternions|robotics|inverse-kinematics|,"<p>I started a project to learn the forward kinematics of a custom 4 DOF robot arm I made. Essentially, I wanted to learn the basics to apply them to learning inverse kinematics <em>fingers crossed</em>. I cannot seem to grasp the rotation axis. It will <em>click</em> in my brain once I overcome whatever mental block stops me.</p>
 <p>I set out to create a Joint class that would identify each joint and the rotation axis. Again, why can't my brain wrap my head around the rotation axis? Do you have any suggestions to overcome this mental blockage?</p>
 <pre><code>  public class Joint {
@@ -14884,13 +14900,13 @@ namespace InverseKinematicsMover {
 <pre><code>endEffectorPosition += (float)Joints[i].Length * Vector3.Transform(Vector3.UnitY, cumulativeRotation);
       }
 </code></pre>
-",22725238,0,0,136240769,"Welcome to Stackoverflow! I think your question can be better answered in the [StackExchange Robotics](https://robotics.stackexchange.com/), have you tried asking there?",,
+",22725238,0,0,136240769,"Welcome to Stackoverflow! I think your question can be better answered in the [StackExchange Robotics](https://robotics.stackexchange.com/), have you tried asking there?",Inverse-kinematics,
 4707,77461417,Switch between different ROS (Robot Operating System) versions,|ubuntu|simulation|ros|robotics|,"<p>As a ROS (Robot Operating System) developer, how is it possible to switch between ROS versions within my projects? Different Ubuntu OS needed to be installed?</p>
 <p>I have tried virtual machines and dual booting but I did not find that a good solution.</p>
 ",11/10/2023 16:14,,86,1,5,0,,22894370,,11/10/2023 15:56,1,77469197,"<p>One option is using the Ubuntu version that is compatible with both ROS1 and ROS2. Then, you can just switch ROS1&lt;-&gt;ROS2 when you are sourcing it.</p>
 <p>Another option is using docker, which is more recommended.</p>
 ",18268514,0,5,136594760,"Actually I do not get it, currently I am using Ubuntu 18 LTS with ROS1 Melodic, while there is Robot in the laboratory which is programmed on ROS1 Noetic. I do not know what to do? It seems, I need to upgrade my Ubuntu system to ver 20.04 LTS and change the programs coded in Melodic. Is n't it?
-(I am not familiar with docker to handle these problem.)",,
+(I am not familiar with docker to handle these problem.)",ros,
 4717,77601467,Position control in Mujoco,|simulation|robotics|mujoco|,"<p>Being new to Mujoco, I just created a dummy scene in mujoco for which I now try to control some of the objects in it. The scene contains a fixed table on which a movable book is places, which can be moved by controlling the actuated spatula frame:</p>
 <pre><code>xml = &quot;&quot;&quot;
 &lt;mujoco&gt;
@@ -14963,10 +14979,10 @@ with mujoco.viewer.launch_passive(model, data) as viewer:
 <p>The <a href=""https://mujoco.readthedocs.io/en/stable/XMLreference.html#actuator-position"" rel=""nofollow noreferrer"">defaults</a> are <code>kp=&quot;1&quot;</code> and <code>kv=&quot;0&quot;</code>. <code>kp</code> might be too small for your system.</p>
 <p>Similarly to how you would on a real robot, you should tune the gains on your position actuators so you get the responsiveness you want without introducing unwanted oscillations.</p>
 <p>Note that the kv parameter will essentially create a reference velocity of zero. If you want to track a reference velocity, as well as position, you could add extra velocity actuators to your model, and set the ctrl entries for those to your qDotref.</p>
-",155171,0,2,,,,
+",155171,0,2,,,mc,
 4720,77607266,Implementing Kalman Filter for Improved Measurement Accuracy in Autonomous Two-Wheeled Robot with Encoders,|pid|robotics|kalman-filter|encoder|,"<p>So i am a beginner in the field of robotics, and I have successfully created an autonomous two-wheeled robot equipped with two encoders. I've implemented a PI regulation on speed, and while the robot performs reasonably well, I still encounter some measurement errors. To enhance its performance, I'm considering the implementation of a Kalman filter.</p>
 <p>While I have a theoretical understanding of the Kalman filter, I'm a bit confused about the practical implementation. Should I apply a simple Kalman filter to each encoder independently to smooth the measurements, or is it more appropriate to use the filter on the x and y positions of the robot? . Any guidance on the best approach for implementing the Kalman filter in this context would be greatly appreciated.</p>
-",12/5/2023 15:12,,54,0,1,1,,23046277,,12/5/2023 14:46,0,,,,,,136829548,"At the end of the day, is the (x, y) position of the robot what you care about? If so, then it probably makes sense to have those be the states of the filter. Are there any other measurements that you get about the position of the vehicle? If the encoders is all that you have, a Kalman Filter probably won't help you all that much. The dynamics in the filter would be driven by the encoder, but there are no measurements to correct the state estimate, so uncertainty would just keep growing over time.",,
+",12/5/2023 15:12,,54,0,1,1,,23046277,,12/5/2023 14:46,0,,,,,,136829548,"At the end of the day, is the (x, y) position of the robot what you care about? If so, then it probably makes sense to have those be the states of the filter. Are there any other measurements that you get about the position of the vehicle? If the encoders is all that you have, a Kalman Filter probably won't help you all that much. The dynamics in the filter would be driven by the encoder, but there are no measurements to correct the state estimate, so uncertainty would just keep growing over time.",mp,
 4727,77649089,Scara Robot Inverse Kinematics,|c++|math|arduino|robotics|,"<p>I am working on a Scara Robot controlled by an Arduino and trying to figure out the inverse kinematics. I programmed a simple example sketch to test my function but it doesn't work because of a mathematical error. Can someone tell me what's wrong?</p>
 <pre><code>const int L1 = 202.25;
 const int L2 = 193.35;
@@ -15027,7 +15043,7 @@ void loop() {
 }
 </code></pre>
 <p>It may not be the best but it works.</p>
-",17977602,0,1,136894859,"the same goes for the angles `alfa,beta` and probably also coordiantes `x,y`... maybe `float` is enough as FPU is not a guarantee on arduino used MCUs ...",,
+",17977602,0,1,136894859,"the same goes for the angles `alfa,beta` and probably also coordiantes `x,y`... maybe `float` is enough as FPU is not a guarantee on arduino used MCUs ...",Inverse-kinematics,
 4740,77738665,Calculating IMU random walk using allan variance,|ros|robotics|calibration|imu|,"<p>I am trying to calculate accel and gyro noise and random walk for Intel realsense using <a href=""https://github.com/ori-drs/allan_variance_ros"" rel=""nofollow noreferrer"">allan variance</a>. I quickly generated imu csv in the format specified <a href=""https://github.com/ethz-asl/kalibr/wiki/bag-format"" rel=""nofollow noreferrer"">here</a> using custom CPP script for just 3 seconds. I wanted to check if it will work or not before recording 20 hours of IMU data.</p>
 <p>I created ros bag from csv by running:</p>
 <pre><code>rosrun kalibr kalibr_bagcreater --folder ./data/imu_data --output-bag ./data/newbag.bag
@@ -15092,7 +15108,7 @@ ValueError: array must not contain infs or NaNs
 </code></pre>
 <p>But as you can see it is giving error <code>array must not contain infs or NaNs</code>. Turns out there are some NaNs in allan_variance.csv file generated. What I am doing wrong here?</p>
 <p>I have uploaded all bags and csv file on drive <a href=""https://drive.google.com/drive/folders/15M2P3NHtgvJvRPZMNqd5uMvz1R0GN-0S?usp=sharing"" rel=""nofollow noreferrer"">here</a>.</p>
-",12/31/2023 8:56,,41,0,0,0,,6357916,,5/19/2016 19:14,480,,,,,,,,,
+",12/31/2023 8:56,,41,0,0,0,,6357916,,5/19/2016 19:14,480,,,,,,,,mc,
 4745,77829740,WPILIB (FRC) Gradlew Issue (Gradle builds fine but gradlew doesn't),|java|gradle|robotics|wpilib|,"<p>I recently installed wpilib on my windows laptop and start an project, but when I try to build the project using <code>gradlew</code> it doesnt work:</p>
 <p>Here is my <code>build.gradle</code>:</p>
 <pre><code>plugins {
@@ -15254,7 +15270,7 @@ Exception in thread &quot;main&quot; java.lang.ClassNotFoundException: org.gradl
 I have tried my code on github codespaces and my own linux (arch linux) but windows isn't working for me, i have reinstalled wpilib multiple times not sure why its doing this to me. I have tried using a vm of windows and it works it weird why my computer doesn't work.</p>
 ",1/17/2024 2:56,77843380,110,1,0,1,,15027302,,1/18/2021 3:40,5,77843380,"<p>The solution to this error was that you had to remove <code>.gradle</code> folder in your home directory <code>C:\Users\{username}\</code>. Now something must happened during my installation that caused this error to happen. Everything builds correctly now.</p>
 <p>NOTE: You have to reboot your computer before removing it because it won't let you remove unless you reboot.</p>
-",15027302,0,0,,,,
+",15027302,0,0,,,li,
 4751,77928392,How to Visualize the Safety_Lidar/Depth camera data on RViz from Docker Container,|ros|docker-swarm|robotics|docker-container|,"<p>I am currently collaborating with a mobile robot, as depicted in Image 1.</p>
 <p><a href=""https://i.stack.imgur.com/YlRKW.jpg"" rel=""nofollow noreferrer"">Image 1</a></p>
 <p>The robot is equipped with two sick_safety scanners, positioned at the front and rear. The data nodes/topics are publishing from a Docker container. To access the robot's PC, I utilize SSH by entering 'ssh username@ip.' Once inside the container, I can see the topic, and echoing the topic displays the raw text data.</p>
@@ -15269,11 +15285,10 @@ I configured the IP addresses of both the robot PC and my PC. The robot was conn
 <a href=""https://i.stack.imgur.com/Vo4Wi.jpg"" rel=""nofollow noreferrer"">Image 4</a></p>
 <p>Looking ahead, if I plan to integrate a RealSense camera with the robot, how can I visualize the camera data on rviz, whether on the robot's pc (GUI Tool) or my PC's?</p>
 <p>Thank you.</p>
-",2/2/2024 16:10,,28,0,0,0,,23337932,,2/2/2024 15:54,0,,,,,,,,,
+",2/2/2024 16:10,,28,0,0,0,,23337932,,2/2/2024 15:54,0,,,,,,,,Cameras,
 4778,78212426,Arduino ESP-01 doesn't works,|arduino|robotics|,"<p>A fatal esptool.py error occurred: Failed to connect to ESP8266: Timed out waiting for packet header</p>
 <p>I have this code and this components:
 <a href=""https://i.stack.imgur.com/i4Sf8.png"" rel=""nofollow noreferrer"">enter image description here</a><a href=""https://i.stack.imgur.com/scuB4.png"" rel=""nofollow noreferrer"">enter image description here</a></p>
 <p>I don't know what I should do any suggestions?</p>
 <p>I'm just trying to connect and upload this simple code to the esp via FTDI usb</p>
-",3/23/2024 20:44,,19,0,1,0,,23759528,,3/23/2024 20:39,1,,,,,,137888784,"If I'm asking it's because I haven't gotten the answer on Google, It's common sense.",,
-,,,,,,,,,,,,,,,,,,,,,,,,
+",3/23/2024 20:44,,19,0,1,0,,23759528,,3/23/2024 20:39,1,,,,,,137888784,"If I'm asking it's because I haven't gotten the answer on Google, It's common sense.",wpi,
