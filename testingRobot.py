@@ -357,6 +357,99 @@ def getFalsePositiveQuestions(codedRobot: pd.DataFrame, allRobot: pd.DataFrame):
     print(f"Number of false positive questions: {len(falsePositiveQuestions)}")
 
 
+def getSuccessStatusPercentagePerTheme(unsuccessfulQuestionsPerTheme: dict, ordinaryQuestionsPerTheme: dict, successfulQuestionsPerTheme: dict) -> dict:
+    """
+    Get the percentage of unsuccessful, ordinary, and successful questions per theme
+
+    Args:\n
+    unsuccessfulQuestionsPerTheme:
+            The number of unsuccessful questions per theme\n
+    ordinaryQuestionsPerTheme:
+            The number of ordinary questions per theme\n
+    successfulQuestionsPerTheme:
+            The number of successful questions per theme\n
+
+    Returns:
+        dict: a dictionary where the keys are the major themes and the values are the percentage of unsuccessful, ordinary, and successful questions per theme
+    """
+    successStatusPercentagePerTheme = {}
+    for theme in unsuccessfulQuestionsPerTheme.keys():
+        unsuccessfulPercentage = (unsuccessfulQuestionsPerTheme[theme] / (unsuccessfulQuestionsPerTheme[theme] + ordinaryQuestionsPerTheme[theme] + successfulQuestionsPerTheme[theme])) * 100
+        ordinaryPercentage = (ordinaryQuestionsPerTheme[theme] / (unsuccessfulQuestionsPerTheme[theme] + ordinaryQuestionsPerTheme[theme] + successfulQuestionsPerTheme[theme])) * 100
+        successfulPercentage = (successfulQuestionsPerTheme[theme] / (unsuccessfulQuestionsPerTheme[theme] + ordinaryQuestionsPerTheme[theme] + successfulQuestionsPerTheme[theme])) * 100
+        successStatusPercentagePerTheme[theme] = {'Unsuccessful': f"{unsuccessfulPercentage:.2f}%", 'Ordinary': f"{ordinaryPercentage:.2f}%", 'Successful': f"{successfulPercentage:.2f}%"}
+    return successStatusPercentagePerTheme
+
+def getUnsuccessfulQuestionsPerTheme(dataset: pd.DataFrame) -> dict:
+    """
+    Gets the number of unsuccessful questions per theme in the passed in data set
+
+    Args:\n
+    dataset:
+            The dataset to get the number of unsuccessful questions per theme from\n
+            It should have a column named 'AnswerCount' that contains the number of answers to the question\n
+            AND a column named 'code' that contains the MAJOR THEME LABEL\n
+            The dataset should NOT have any duplicate questions
+
+    Returns:
+        dict: a dictionary where the keys are the major themes and the values are the number of unsuccessful questions per theme
+    """
+    unsuccessfulQuestionsPerTheme = {}
+    for index, row in dataset.iterrows():
+        if row['AnswerCount'] == 0:
+            if row['code'] in unsuccessfulQuestionsPerTheme:
+                unsuccessfulQuestionsPerTheme[row['code']] += 1
+            else:
+                unsuccessfulQuestionsPerTheme[row['code']] = 1
+    return unsuccessfulQuestionsPerTheme
+
+def getOrdinaryQuestionsPerTheme(dataset: pd.DataFrame) -> dict:
+    """
+    Gets the number of ordinary questions per theme in the passed in data set
+
+    Args:\n
+    dataset:
+            The dataset to get the number of ordinary questions per theme from\n
+            It should have a column named 'AcceptedAnswerId' that contains the accepted answer id\n
+            AND a column named 'AnswerCount' that contains the number of answers to the question\n
+            AND a column named 'code' that contains the MAJOR THEME LABEL\n
+            The dataset should NOT have any duplicate questions
+
+    Returns:
+        dict: a dictionary where the keys are the major themes and the values are the number of ordinary questions per theme
+    """
+    ordinaryQuestionsPerTheme = {}
+    for index, row in dataset.iterrows():
+        if pd.isna(row['AcceptedAnswerId']) and row['AnswerCount'] > 0:
+            if row['code'] in ordinaryQuestionsPerTheme:
+                ordinaryQuestionsPerTheme[row['code']] += 1
+            else:
+                ordinaryQuestionsPerTheme[row['code']] = 1
+    return ordinaryQuestionsPerTheme
+
+def getSuccessfulQuestionsPerTheme(dataset: pd.DataFrame) -> dict:
+    """
+    Gets the number of successful questions per theme in the passed in data set
+
+    Args:\n
+    dataset:
+            The dataset to get the number of successful questions per theme from\n
+            It should have a column named 'AcceptedAnswerId' that contains the accepted answer id\n
+            AND a column named 'code' that contains the MAJOR THEME LABEL\n
+            The dataset should NOT have any duplicate questions
+
+    Returns:
+        dict: a dictionary where the keys are the major themes and the values are the number of successful questions per theme
+    """
+    successfulQuestionsPerTheme = {}
+    for index, row in dataset.iterrows():
+        if not pd.isna(row['AcceptedAnswerId']):
+            if row['code'] in successfulQuestionsPerTheme:
+                successfulQuestionsPerTheme[row['code']] += 1
+            else:
+                successfulQuestionsPerTheme[row['code']] = 1
+    return successfulQuestionsPerTheme
+
 
 def getSuccessStatusPercentage(unsuccessfulQuestions: int, ordinaryQuestions: int, successfulQuestions: int) -> dict:
     """
