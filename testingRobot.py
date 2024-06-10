@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 import openpyxl
 import time
 import math
+from datetime import datetime, timedelta
 
 
 def plotQuestionsByYear(dataRobot):
@@ -34,7 +35,12 @@ def process_row(row, question_ids_seen, year_count_dict):
     if question_id in question_ids_seen:
         pass
     else:
-        date_stamp = pd.to_datetime(question_creation_date, format="%m/%d/%Y %H:%M")
+        try:
+            date_stamp = pd.to_datetime(question_creation_date, format="%m/%d/%Y %H:%M")
+        except:
+            base_date = datetime(1899, 12, 30)
+            date_stamp = base_date + timedelta(days=float(question_creation_date))
+
         year = date_stamp.year
 
         if year in year_count_dict:
@@ -269,7 +275,7 @@ def getAllMajorThemeLabels(robotCodedData):
                               'Error': ['li', 'bf'],
                               'Timing': ['timing', 'multithreading', 'rg'],
                               'Incoming': ['cameras', 'vision', 'line tracking', 'sensors'],
-                              'Other' : ['gs', 'bp', 'repeat', 'decoupling', 'install', 'ra', 'ros', 'rn', 'dl', 'rl', 'dc', 'distance']}
+                              'Other' : ['fp', 'gs', 'bp', 'repeat', 'decoupling', 'install', 'ra', 'ros', 'rn', 'dl', 'rl', 'dc', 'distance']}
     
     # make sure all subThemes from Appendix A are in the dataset
     for theme in themesAndSubThemesDict.keys():
@@ -311,7 +317,7 @@ def randomXQuestions(numQuestions, allRobotDataSet: pd.DataFrame, previousRandom
 
     randomQuestions = copyAllRobotDataSet.sample(n=numQuestions)
 
-    with open('testingRobotRandomSTOPPP.csv', 'w', encoding="utf-8") as f:
+    with open('testingRobotRandomSTOPafsPP.csv', 'w', encoding="utf-8") as f:
         randomQuestions.to_csv(f, lineterminator='\n')
 
     print(f'Are questions from the new random questions unique from the previous random questions? {areQuestionsUnique(randomQuestions, previousRandomQuestions)}\n')
@@ -350,6 +356,315 @@ def getFalsePositiveQuestions(codedRobot: pd.DataFrame, allRobot: pd.DataFrame):
     
     print(f"Number of false positive questions: {len(falsePositiveQuestions)}")
 
+
+def generateCSVwithMajorThemes(robotDataSet: pd.DataFrame):
+    """
+    Generates a csv file with the major themes of the robot data set instead of the subthemes
+    It is the exact same as the input dataset but with the subthemes replaced with the major themes
+
+    Args:\n
+    robotDataSet:
+                The dataset to generate the csv file from\n
+                It should have a column named 'code' that contains the subthemes\n
+
+    Returns:
+        None
+    """
+    themesAndSubThemesDict = {'Specifications': ['api', 'hr', 'os', 'lu'], 
+                              'Remote': ['wireless', 'cpmr'],
+                              'Connections': ['internet', 'wpi', 'sc'],
+                              'Coordinates': ['position', 'orientation'],
+                              'Moving': ['mp', 'obstacles', 'mapping', 'SLAM'],
+                              'Actuator': ['ik', 'hc', 'wc', 'mc', 'balance'],
+                              'Programming': ['pointers', 'dt', 'overflow', 'list'],
+                              'Error': ['li', 'bf'],
+                              'Timing': ['timing', 'multithreading', 'rg'],
+                              'Incoming': ['cameras', 'vision', 'line tracking', 'sensors'],
+                              'Other' : ['gs', 'bp', 'repeat', 'decoupling', 'install', 'ra', 'ros', 'rn', 'dl', 'rl', 'dc', 'distance']}
+
+    robotDataSetCopy = robotDataSet.copy(deep=True)
+    robotDataSetCopy['code'] = robotDataSetCopy['code'].apply(lambda x: getMajorTheme(x, themesAndSubThemesDict))
+    
+    with open('Robot Random (H & S & D) - Coded (no fp) (major themes).csv', 'w', encoding="utf-8") as f:
+        robotDataSetCopy.to_csv(f, lineterminator='\n')
+
+def getMajorTheme(subtheme: str, themesAndSubThemesDict: dict) -> str:
+    for majorTheme, subThemes in themesAndSubThemesDict.items():
+        if subtheme in subThemes:
+            return majorTheme
+    return 'Unknown'
+
+
+def getSuccessStatusPercentagePerTheme(unsuccessfulQuestionsPerTheme: dict, ordinaryQuestionsPerTheme: dict, successfulQuestionsPerTheme: dict) -> dict:
+    """
+    Get the percentage of unsuccessful, ordinary, and successful questions per theme
+
+    Args:\n
+    unsuccessfulQuestionsPerTheme:
+            The number of unsuccessful questions per theme\n
+    ordinaryQuestionsPerTheme:
+            The number of ordinary questions per theme\n
+    successfulQuestionsPerTheme:
+            The number of successful questions per theme\n
+
+    Returns:
+        dict: a dictionary where the keys are the major themes and the values are the percentage of unsuccessful, ordinary, and successful questions per theme
+    """
+    successStatusPercentagePerTheme = {}
+    for theme in unsuccessfulQuestionsPerTheme.keys():
+        unsuccessfulPercentage = (unsuccessfulQuestionsPerTheme[theme] / (unsuccessfulQuestionsPerTheme[theme] + ordinaryQuestionsPerTheme[theme] + successfulQuestionsPerTheme[theme])) * 100
+        ordinaryPercentage = (ordinaryQuestionsPerTheme[theme] / (unsuccessfulQuestionsPerTheme[theme] + ordinaryQuestionsPerTheme[theme] + successfulQuestionsPerTheme[theme])) * 100
+        successfulPercentage = (successfulQuestionsPerTheme[theme] / (unsuccessfulQuestionsPerTheme[theme] + ordinaryQuestionsPerTheme[theme] + successfulQuestionsPerTheme[theme])) * 100
+        successStatusPercentagePerTheme[theme] = {'Unsuccessful': f"{unsuccessfulPercentage:.2f}%", 'Ordinary': f"{ordinaryPercentage:.2f}%", 'Successful': f"{successfulPercentage:.2f}%"}
+    return successStatusPercentagePerTheme
+
+
+def getUnsuccessfulQuestionsPerTheme(dataset: pd.DataFrame) -> dict:
+    """
+    Gets the number of unsuccessful questions per theme in the passed in data set
+
+    Args:\n
+    dataset:
+            The dataset to get the number of unsuccessful questions per theme from\n
+            It should have a column named 'AnswerCount' that contains the number of answers to the question\n
+            AND a column named 'code' that contains the MAJOR THEME LABEL\n
+            The dataset should NOT have any duplicate questions
+
+    Returns:
+        dict: a dictionary where the keys are the major themes and the values are the number of unsuccessful questions per theme
+    """
+    unsuccessfulQuestionsPerTheme = {}
+    for index, row in dataset.iterrows():
+        if row['AnswerCount'] == 0:
+            if row['code'] in unsuccessfulQuestionsPerTheme:
+                unsuccessfulQuestionsPerTheme[row['code']] += 1
+            else:
+                unsuccessfulQuestionsPerTheme[row['code']] = 1
+    return unsuccessfulQuestionsPerTheme
+
+def getOrdinaryQuestionsPerTheme(dataset: pd.DataFrame) -> dict:
+    """
+    Gets the number of ordinary questions per theme in the passed in data set
+
+    Args:\n
+    dataset:
+            The dataset to get the number of ordinary questions per theme from\n
+            It should have a column named 'AcceptedAnswerId' that contains the accepted answer id\n
+            AND a column named 'AnswerCount' that contains the number of answers to the question\n
+            AND a column named 'code' that contains the MAJOR THEME LABEL\n
+            The dataset should NOT have any duplicate questions
+
+    Returns:
+        dict: a dictionary where the keys are the major themes and the values are the number of ordinary questions per theme
+    """
+    ordinaryQuestionsPerTheme = {}
+    for index, row in dataset.iterrows():
+        if pd.isna(row['AcceptedAnswerId']) and row['AnswerCount'] > 0:
+            if row['code'] in ordinaryQuestionsPerTheme:
+                ordinaryQuestionsPerTheme[row['code']] += 1
+            else:
+                ordinaryQuestionsPerTheme[row['code']] = 1
+    return ordinaryQuestionsPerTheme
+
+def getSuccessfulQuestionsPerTheme(dataset: pd.DataFrame) -> dict:
+    """
+    Gets the number of successful questions per theme in the passed in data set
+
+    Args:\n
+    dataset:
+            The dataset to get the number of successful questions per theme from\n
+            It should have a column named 'AcceptedAnswerId' that contains the accepted answer id\n
+            AND a column named 'code' that contains the MAJOR THEME LABEL\n
+            The dataset should NOT have any duplicate questions
+
+    Returns:
+        dict: a dictionary where the keys are the major themes and the values are the number of successful questions per theme
+    """
+    successfulQuestionsPerTheme = {}
+    for index, row in dataset.iterrows():
+        if not pd.isna(row['AcceptedAnswerId']):
+            if row['code'] in successfulQuestionsPerTheme:
+                successfulQuestionsPerTheme[row['code']] += 1
+            else:
+                successfulQuestionsPerTheme[row['code']] = 1
+    return successfulQuestionsPerTheme
+
+
+def getSuccessStatusPercentage(unsuccessfulQuestions: int, ordinaryQuestions: int, successfulQuestions: int) -> dict:
+    """
+    Get the percentage of unsuccessful, ordinary, and successful questions
+
+    Args:\n
+    unsuccessfulQuestions:
+            The number of unsuccessful questions\n
+    ordinaryQuestions:
+            The number of ordinary questions\n
+    successfulQuestions:
+            The number of successful questions\n
+
+    Returns:
+        dict: a dictionary where the keys are the success status and the values are the percentage of that success status
+    """
+    totalQuestions = unsuccessfulQuestions + ordinaryQuestions + successfulQuestions
+    unsuccessfulPercentage = (unsuccessfulQuestions / totalQuestions) * 100
+    ordinaryPercentage = (ordinaryQuestions / totalQuestions) * 100
+    successfulPercentage = (successfulQuestions / totalQuestions) * 100
+    return {'Unsuccessful': f"{unsuccessfulPercentage:.2f}%", 'Ordinary': f"{ordinaryPercentage:.2f}%", 'Successful': f"{successfulPercentage:.2f}%"}
+
+def getUnsuccessfulQuestions(dataset: pd.DataFrame):
+    """
+    An unsuccessful question is when there is no answer to the question
+
+    Args:\n
+    dataset:
+            The dataset to get the number of unsuccessful questions from\n
+            It should have a column named 'AnswerCount' that contains the number of answers to the question\n
+            The dataset should NOT have any duplicate questions
+
+    Returns:
+        int: the number of unsuccessful questions
+    """
+    count = 0
+    for index, row in dataset.iterrows():
+        if row['AnswerCount'] == 0:
+            count += 1
+    return count
+
+def getOrdinaryQuestions(dataset: pd.DataFrame):
+    """
+    An ordinary question is when there is no accepted answer to the question BUT there are answer(s) to the question
+
+    Args:\n
+    dataset:
+            The dataset to get the number of ordinary questions from\n
+            It should have a column named 'AcceptedAnswerId' that contains the accepted answer id\n
+            AND a column named 'AnswerCount' that contains the number of answers to the question\n
+            The dataset should NOT have any duplicate questions
+
+    Returns:
+        int: the number of ordinary questions
+    """
+    count = 0
+    for index, row in dataset.iterrows():
+        if pd.isna(row['AcceptedAnswerId']) and row['AnswerCount'] > 0:
+            count += 1
+    return count
+
+def getNumSuccessfulQuestions(dataset: pd.DataFrame):
+    """
+    A successful question is when there is an accepted answer to the question
+
+    Args:\n
+    dataset: 
+            The dataset to get the number of successful questions from\n
+            It should have a column named 'AcceptedAnswerId' that contains the accepted answer id\n
+            The dataset should NOT have any duplicate questions 
+
+    Returns:
+        int: the number of successful questions
+    """
+    # TODO maybe also check tomake sure answercount >= 1 to make sure no accidents
+    return dataset['AcceptedAnswerId'].count()
+
+
+def getPercentageMajorThemes(majorThemes: dict) -> dict:
+    """
+    Get percentage of each major theme in the dataset (EXCLUDING FALSE POSITIVES)
+
+    Args:\n
+    majorThemes: 
+                The major themes to get the percentage of\n
+                It should be a dictionary where the keys are the major themes and the values are the number of times that major theme appears in the data set
+    
+    Returns:
+        dict: a dictionary where the keys are the major themes and the values are the percentage of that major theme in the data set
+    """
+    totalThemes = sum(majorThemes.values())
+    percentageMajorThemes = {}
+    for theme, count in majorThemes.items():
+        percentage = (count / totalThemes) * 100
+        percentageMajorThemes[theme] = f"{percentage:.2f}%"
+    return percentageMajorThemes
+
+def getNumMajorThemes(subThemes: dict):
+    """
+    Gets the number of major themes from the subthemes as defined in Appendix A (as below)
+        'Specifications': ['api', 'hr', 'os', 'lu'], 
+        'Remote': ['wireless', 'cpmr'],
+        'Connections': ['internet', 'wpi', 'sc'],
+        'Coordinates': ['position', 'orientation'],
+        'Moving': ['mp', 'obstacles', 'mapping', 'SLAM'],
+        'Actuator': ['ik', 'hc', 'wc', 'mc', 'balance'],
+        'Programming': ['pointers', 'dt', 'overflow', 'list'],
+        'Error': ['li', 'bf'],
+        'Timing': ['timing', 'multithreading', 'rg'],
+        'Incoming': ['cameras', 'vision', 'line tracking', 'sensors'],
+        'Other' : ['gs', 'bp', 'repeat', 'decoupling', 'install', 'ra', 'ros', 'rn', 'dl', 'rl', 'dc', 'distance']
+
+    Args:\n
+    subThemes: 
+                The subthemes to get the number of major themes from\n
+                It should be a dictionary where the keys are the indices of the subthemes and the values are the subthemes
+    
+    Returns:
+        dict: a dictionary where the keys are the major themes and the values are the number of times that major theme appears in the data set
+    """
+    majorThemes = {}
+    themesAndSubThemesDict = {'Specifications': ['api', 'hr', 'os', 'lu'], 
+                              'Remote': ['wireless', 'cpmr'],
+                              'Connections': ['internet', 'wpi', 'sc'],
+                              'Coordinates': ['position', 'orientation'],
+                              'Moving': ['mp', 'obstacles', 'mapping', 'SLAM'],
+                              'Actuator': ['ik', 'hc', 'wc', 'mc', 'balance'],
+                              'Programming': ['pointers', 'dt', 'overflow', 'list'],
+                              'Error': ['li', 'bf'],
+                              'Timing': ['timing', 'multithreading', 'rg'],
+                              'Incoming': ['cameras', 'vision', 'line tracking', 'sensors'],
+                              'Other' : ['gs', 'bp', 'repeat', 'decoupling', 'install', 'ra', 'ros', 'rn', 'dl', 'rl', 'dc', 'distance']}
+    for index, subTheme in subThemes.items():
+        found = False
+        for theme in themesAndSubThemesDict.keys():
+            if subTheme in themesAndSubThemesDict[theme]:
+                found = True
+                if theme in majorThemes:
+                    majorThemes[theme] += 1
+                else:
+                    majorThemes[theme] = 1
+                break
+    return majorThemes
+
+def getNumSubThemes(allRobotDataSet):
+    """
+    Gets the number of subthemes in the passed in data set
+    Subthemes are the 'code' column in the data set
+
+    Args:\n
+    allRobotDataSet: 
+                    The dataset to get the number of sub themes from\n
+                    It should have a column named 'code' that contains the sub themes
+
+    Returns:
+        dict: a dictionary where the keys are the sub themes and the values are the number of times that sub theme appears in the data set
+    """
+    subThemes = {}
+    for index, row in allRobotDataSet.iterrows():
+        # if pd.isna(row["code"]):
+        #     print(f"Cell for codes at index {index} (probably line {index + 2}) is empty")            
+        code = row["code"]
+        if code in subThemes:
+            subThemes[code] += 1
+        else:
+            subThemes[code] = 1
+    return subThemes
+
+def prettyPrintDict(dictionary):
+    # pretty pring the dictionary in alphabetical order
+    # for key in sorted(dictionary.keys()):
+    #     print(f"{key}: {dictionary[key]}")
+    for key, value in dictionary.items():
+        print(f"{key}: {value}")
+
+# TODO MAKE SURE GET THE NUM OF DIFF TYPES OF QUESTIONS FROM THE DATA SET WITH NOOOOO FALSE POSITIVES
 if __name__ == "__main__":
     start_time = time.time()
 
@@ -357,14 +672,46 @@ if __name__ == "__main__":
     allRobotDataSet = pd.read_csv("RobotDataSet.csv")
     allQuestionDataSet = pd.read_csv("AllQuestionDataCombined.csv")
     allAnswerDataSet = pd.read_csv("AllAnswerDataCombined.csv")
-    randomRobotWithCodesDataSet = pd.read_csv("RandomRobot - Coded.csv")
-    randomRobotAllDataSet = pd.read_csv("RandomRobot-Full.csv")
+    randomRobotWithCodesDataSet = pd.read_csv("Robot Random (H & S & D) - Coded (no fp).csv")
+    randomRobotAllDataSet = pd.read_csv("Robot Random (H & S & D) - Full Coded.csv")
+    robotMajorThemesDataSet = pd.read_csv("Robot Random (H & S & D) - Coded (no fp) (major themes).csv")
     
     # getFalsePositiveQuestions(randomRobotWithCodesDataSet, randomRobotAllDataSet)
 
     # getAllMajorThemeLabels(randomRobotWithCodesDataSet)
     # randomXQuestions(300, allRobotDataSet, randomRobotAllDataSet)
 
+    # randomXQuestions(50, allRobotDataSet, randomRobotAllDataSet)
+
+    # getAllMajorThemeLabels(randomRobotAllDataSet)
+
+    prettyPrintDict(getSuccessStatusPercentage(getUnsuccessfulQuestions(randomRobotWithCodesDataSet), getOrdinaryQuestions(randomRobotWithCodesDataSet), getNumSuccessfulQuestions(randomRobotWithCodesDataSet)))
+    prettyPrintDict(getSuccessStatusPercentagePerTheme(getUnsuccessfulQuestionsPerTheme(robotMajorThemesDataSet), getOrdinaryQuestionsPerTheme(robotMajorThemesDataSet), getSuccessfulQuestionsPerTheme(robotMajorThemesDataSet)))
+
+    # numSubThemes = getNumSubThemes(randomRobotAllDataSet)
+    # numMajorThemes = getNumMajorThemes(numSubThemes)
+    # percentageMajorThemes = getPercentageMajorThemes(numMajorThemes)
+    # prettyPrintDict(numSubThemes)
+    # prettyPrintDict(numMajorThemes)
+    # prettyPrintDict(percentageMajorThemes)
+    # For SOME REASON I DONT KNOW WHY, the above code does not print the same thing a below, use below
+    # prettyPrintDict(getNumSubThemes(randomRobotAllDataSet))
+    # prettyPrintDict(getNumMajorThemes(getAllSubThemeLabels(randomRobotAllDataSet)))
+    # prettyPrintDict(getPercentageMajorThemes(getNumMajorThemes(getAllSubThemeLabels(randomRobotAllDataSet))))
+
+    # generateCSVwithMajorThemes(randomRobotWithCodesDataSet)
+
+    # print(f"Number of unsuccessful questions: {getUnsuccessfulQuestions(randomRobotWithCodesDataSet)}")
+    # print(f"Number of ordinary questions: {getOrdinaryQuestions(randomRobotWithCodesDataSet)}")
+    # print(f"Number of successful questions: {getNumSuccessfulQuestions(randomRobotWithCodesDataSet)}")
+
     # calculatePopularity(allRobotDataSet, allQuestionDataSet, allAnswerDataSet, randomRobotWithCodesDataSet, randomRobotAllDataSet)
+    # getAllMajorThemeLabels(randomRobotWithCodesDataSet)
+    # plotQuestionsByYear(randomRobotWithCodesDataSet)
+
+    # getAllMajorThemeLabels(randomRobotAllDataSet)
+
+    # calculatePopularity(allRobotDataSet, allQuestionDataSet, allAnswerDataSet, randomRobotWithCodesDataSet, randomRobotAllDataSet)
+    # plotQuestionsByYear(randomRobotWithCodesDataSet)
     # plotQuestionsByYear(allRobotDataSet)
     print(f"--- {time.time() - start_time:.2f} seconds ---")
