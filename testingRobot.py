@@ -357,6 +357,44 @@ def getFalsePositiveQuestions(codedRobot: pd.DataFrame, allRobot: pd.DataFrame):
     print(f"Number of false positive questions: {len(falsePositiveQuestions)}")
 
 
+def generateCSVwithMajorThemes(robotDataSet: pd.DataFrame):
+    """
+    Generates a csv file with the major themes of the robot data set instead of the subthemes
+    It is the exact same as the input dataset but with the subthemes replaced with the major themes
+
+    Args:\n
+    robotDataSet:
+                The dataset to generate the csv file from\n
+                It should have a column named 'code' that contains the subthemes\n
+
+    Returns:
+        None
+    """
+    themesAndSubThemesDict = {'Specifications': ['api', 'hr', 'os', 'lu'], 
+                              'Remote': ['wireless', 'cpmr'],
+                              'Connections': ['internet', 'wpi', 'sc'],
+                              'Coordinates': ['position', 'orientation'],
+                              'Moving': ['mp', 'obstacles', 'mapping', 'SLAM'],
+                              'Actuator': ['ik', 'hc', 'wc', 'mc', 'balance'],
+                              'Programming': ['pointers', 'dt', 'overflow', 'list'],
+                              'Error': ['li', 'bf'],
+                              'Timing': ['timing', 'multithreading', 'rg'],
+                              'Incoming': ['cameras', 'vision', 'line tracking', 'sensors'],
+                              'Other' : ['gs', 'bp', 'repeat', 'decoupling', 'install', 'ra', 'ros', 'rn', 'dl', 'rl', 'dc', 'distance']}
+
+    robotDataSetCopy = robotDataSet.copy(deep=True)
+    robotDataSetCopy['code'] = robotDataSetCopy['code'].apply(lambda x: getMajorTheme(x, themesAndSubThemesDict))
+    
+    with open('Robot Random (H & S & D) - Coded (no fp) (major themes).csv', 'w', encoding="utf-8") as f:
+        robotDataSetCopy.to_csv(f, lineterminator='\n')
+
+def getMajorTheme(subtheme: str, themesAndSubThemesDict: dict) -> str:
+    for majorTheme, subThemes in themesAndSubThemesDict.items():
+        if subtheme in subThemes:
+            return majorTheme
+    return 'Unknown'
+
+
 def getSuccessStatusPercentagePerTheme(unsuccessfulQuestionsPerTheme: dict, ordinaryQuestionsPerTheme: dict, successfulQuestionsPerTheme: dict) -> dict:
     """
     Get the percentage of unsuccessful, ordinary, and successful questions per theme
