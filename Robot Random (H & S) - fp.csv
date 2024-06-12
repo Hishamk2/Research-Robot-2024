@@ -1,0 +1,2753 @@
+,questionId,questionTitle,Tags,questionBody,questionCreationDate,AcceptedAnswerId,questionViewCount,AnswerCount,CommentCount,questionScore,questionFavoriteCount,questionUserId,questionUserLocation,questionUserCreationDate,questionUserViews,answerId,answerBody,answerUserId,answerScore,answerCommentCount,commentId,commentText,code
+269,1085351,An algorithm for a drawing and painting robot - any tips?,|image-processing|artificial-intelligence|computer-vision|robotics|,"<p>Algorithm for a drawing and painting robot -</p>
+
+<p>Hello </p>
+
+<p>I want to write a piece of software which analyses an image, and then produces an image which captures what a human eye perceives in the original image, using a minimum of bezier path objects of varying of colour and opacity. </p>
+
+<p>Unlike the recent twitter super compression contest <em>(<a href=""https://stackoverflow.com/questions/891643/twitter-image-encoding-challenge"">see: stackoverflow.com/questions/891643/twitter-image-encoding-challenge</a>)</em>, my goal is not to create a replica which is faithful to the image, but instead to replicate the human experience of looking at the image.</p>
+
+<p>As an example, if the original image shows a red balloon in the top left corner, and the reproduction has something that looks like a red balloon in the top left corner then I will have achieved my goal, even if the balloon in the reproduction is not quite in the same position and not quite the same size or colour.</p>
+
+<p>When I say ""as perceived by a human"", I mean this in a very limited sense.  i am not attempting to analyse the meaning of an image, I don't need to know what an image is of, i am only interested in the key visual features a human eye would notice, to the extent that this can be automated by an algorithm which has no capacity to conceptualise what it is actually observing.</p>
+
+<p>Why this unusual criteria of human perception over photographic accuracy?</p>
+
+<p>This software would be used to drive a drawing and painting robot, which will be collaborating with a human artist <em>(<a href=""http://video.google.com/videosearch?q=mr%20squiggle"" rel=""nofollow noreferrer"">see: video.google.com/videosearch?q=mr%20squiggle</a>)</em>.</p>
+
+<p>Rather than treating marks made by the human which are not photographically perfect as necessarily being mistakes, The algorithm should seek to incorporate what is already on the canvas into the final image.</p>
+
+<p>So relative brightness, hue, saturation, size and position are much more important than being photographically identical to the original. The maintaining the topology of the features, block of colour, gradients, convex and concave curve will be more important the exact size shape and colour of those features</p>
+
+<p>Still with me?</p>
+
+<p>My problem is that I suffering a little from the ""when you have a hammer everything looks like a nail"" syndrome. To me it seems the way to do this is using a genetic algorithm with something like the comparison of wavelet transforms <em>(see: <a href=""http://grail.cs.washington.edu/projects/query/"" rel=""nofollow noreferrer"">grail.cs.washington.edu/projects/query/</a>)</em> used by retrievr <em>(see: <a href=""http://labs.systemone.at/retrievr/"" rel=""nofollow noreferrer"">labs.systemone.at/retrievr/</a>)</em> to select fit solutions.</p>
+
+<p>But the main reason I see this as the answer, is that these are these are the techniques I know, there are probably much more elegant solutions using techniques I don't now anything about.</p>
+
+<p>It would be especially interesting to take into account the ways the human vision system analyses an image, so perhaps special attention needs to be paid to straight lines, and angles, high contrast borders and large blocks of similar colours.</p>
+
+<p>Do you have any suggestions for things I should read on vision, image algorithms, genetic algorithms or similar projects?</p>
+
+<p>Thank you</p>
+
+<p>Mat</p>
+
+<p><i>PS. Some of the spelling above may appear wrong to you and your spellcheck. It's just international spelling variations which may differ from the standard in your country: e.g. Australian standard: colour vs American standard: color </i></p>
+",7/6/2009 3:56,1126601,1972,5,1,9,0,133507,,7/6/2009 3:36,190,1085373,"<p>That's quite a big task. You might be interested in image vectorizing (don't know what it's called officially), which is used to take in rasterized images (such as pictures you take with a camera) and outputs a set of bezier lines (i think) that approximate the image you put in. Since good algorithms often output very high quality (read: complex) line sets you'd also be interested in simplification algorithms which can help enormously. </p>
+",117069,1,1,56553786,"For the benefit of new users I want to point out that this question would not be allowed to exist if posted today. It is very broad, asks for general recommendations, and doesn't have a definite answer. It likely still exists for historical purposes so don't use this as a template for a good question",fp
+422,1775840,coachable players for RoboCup Soccer Simulator 2d v14,|simulation|robotics|robocup|,"<p>I am doing a work similar to <a href=""http://ieeexplore.ieee.org/xpl/freeabs_all.jsp?arnumber=4133817"" rel=""nofollow noreferrer"">this one</a> but the coachable players i found <a href=""http://rcsscoachable.sourceforge.net/"" rel=""nofollow noreferrer"">online</a> are 3 years old and don't work with the latest version of the <a href=""http://sserver.sourceforge.net/"" rel=""nofollow noreferrer"">soccer server</a>.</p>
+
+<p>does anyone know any alternatives? or have any sugestions?<br>
+thanks</p>
+",11/21/2009 15:51,7661969,416,1,0,2,,86845,"Porto, Portugal",4/3/2009 18:19,768,7661969,"<p>What you want is a framework for implementing agents that implement the CLang (not the LLVM stuff) language, used by the coach to communicate with the agents using the virtual environment (like it was talking to the players in a soccer field).</p>
+
+<p>The most complete frameworks that I know are Dainamite and agent2d. Take a look at then and see if they implement all the features that you need.</p>
+
+<p><a href=""http://www.dainamite.de/"" rel=""nofollow"">http://www.dainamite.de/</a></p>
+
+<p><a href=""http://pt.sourceforge.jp/projects/rctools/releases/"" rel=""nofollow"">http://pt.sourceforge.jp/projects/rctools/releases/</a></p>
+
+<p>Good luck!</p>
+",2238005,1,0,,,fp
+469,2490067,"Microsoft Robotics Studio, simple simulation",|robotics|robotics-studio|,"<p>I am soon to start with Microsoft Robotics Studio. </p>
+
+<p>My question is to all the gurus of MSRS, <strong>Can simple simulation (as obstacle avoidance and wall following) be done without any hardware ?</strong> </p>
+
+<p>Does MSRS have 3-dimensional as well as 2-dimensional rendering? As of now I do not have any hardware and I am only interested in simulation, when I have the robot hardware I may try to interface it! </p>
+
+<p>Sorry for a silly question, I am a MSRS noob, but have previous robotics h/w and s/w experience.</p>
+
+<p>Other than MSRS and Player Project (Player/Stage/Gazebo) is there any other Software to simulate robots, effectively ?</p>
+",3/22/2010 4:46,2503995,1508,2,0,2,0,280945,"New Delhi, India",2/25/2010 5:52,524,2503995,"<p>MSRS tackles several key areas. One of them is simulation. The 3D engine is based on the AGeia Physics engine and can simulate not only your robot and its sensors, but a somewhat complex environment.</p>
+
+<p>The demo I saw had a Pioneer with a SICK lidar running around a cluttered appartment living room, with tables, chairs and etc.</p>
+
+<p>The idea is that your code doesn't even need to know if it's running on the simulator or the real robot.</p>
+
+<p><b>Edit:</b><br/>
+A few links as requested:<br />
+Start here: <a href=""http://msdn.microsoft.com/en-us/library/dd939184.aspx"" rel=""nofollow noreferrer"">http://msdn.microsoft.com/en-us/library/dd939184.aspx</a>
+<a href=""http://i.msdn.microsoft.com/Dd939184.image001(en-us,MSDN.10).jpg"" rel=""nofollow noreferrer"">alt text http://i.msdn.microsoft.com/Dd939184.image001(en-us,MSDN.10).jpg</a></p>
+
+<p>Then go here: <a href=""http://msdn.microsoft.com/en-us/library/dd939190.aspx"" rel=""nofollow noreferrer"">http://msdn.microsoft.com/en-us/library/dd939190.aspx</a>
+<a href=""http://i.msdn.microsoft.com/Dd939190.image008(en-us,MSDN.10).jpg"" rel=""nofollow noreferrer"">alt text http://i.msdn.microsoft.com/Dd939190.image008(en-us,MSDN.10).jpg</a></p>
+
+<p>Then take a look at some more samples: <a href=""http://msdn.microsoft.com/en-us/library/cc998497.aspx"" rel=""nofollow noreferrer"">http://msdn.microsoft.com/en-us/library/cc998497.aspx</a>
+<a href=""http://i.msdn.microsoft.com/Cc998496.Sumo1(en-us,MSDN.10).jpg"" rel=""nofollow noreferrer"">alt text http://i.msdn.microsoft.com/Cc998496.Sumo1(en-us,MSDN.10).jpg</a></p>
+",229081,3,7,,,fp
+588,3029978,"How to use CCR, DSS, VPL (aka Microsoft Robotics Development Studio) outside robotics?",|robotics|ccr|robotics-studio|,"<p>How to use CCR, DSS, VPL (aka Microsoft Robotics Development Studio) outside robotics?</p>
+
+<p>I am looking for guidance in this field. I have tried all the examples and find the framework intriguing.</p>
+
+<p>Can anyone post other uses and examples, outside robotics?</p>
+
+<p>PS. I am looking for someone to explain some of the more complex stuff to me. I have questions regarding different implementations. If anyone is interested, i am willing to pay for a one to one talk (consulting) on the advanced topics. You can reach me via email, same name as here.</p>
+",6/12/2010 20:24,3629649,1179,4,0,5,,293856,,3/15/2010 9:42,528,3073397,"<p>I've seen couple of channel9 videos where they demo using CCR outside robotics. I do not know the roots of CCR, but since the core product developers- George and Satnam Singh have backgrounds in XNA and related technologies, they  understand the problem which CCR addresses very well. Besides there are lots of research papers which I've seen outside the robotics world which people have used CCR for. I'm implementing some web services outside the robotics domain in MRDS's dsshost and CCR and will upload them shortly</p>
+",143373,1,0,,,fp
+611,3077380,AI Behavior Decision making,|artificial-intelligence|machine-learning|simulation|physics|robotics|,"<p>I am running a physics simulation and applying a set of movement instructions to a simulated skeleton. I have a multiple sets of instructions for the skeleton consisting of force application to legs, arms, torso etc. and duration of force applied to their respective bone. Each set of instructions (behavior) is developed by testing its effectiveness performing the desired behavior, and then modifying the behavior with a genetic algorithm with other similar behaviors, and testing it again. The skeleton will have an array behaviors in its set list.</p>
+
+<p>I have fitness functions which test for stability, speed, minimization of entropy and force on joints. The problem is that any given behavior will work for a specific context. One behavior works on flat ground, another works if there is a bump in front of the right foot, another if it's in front of the left, and so on. So the fitness of each behavior varies based on the context. Picking a behavior simply on its previous fitness level won't work because that fitness score doesn't apply to this context.</p>
+
+<p>My question is, how do I program to have the skeleton pick the best behavior for the context? Such as picking the best walking behavior for a randomized bumpy terrain.</p>
+",6/19/2010 21:55,,577,5,4,4,0,364282,"Houston, TX",6/11/2010 7:01,137,3077466,"<p>You're using a genetic algorithm to modify the behavior, so that must mean you have devised a fitness function for each combination of factors.  Is that your question?</p>
+
+<p>If yes, the answer depends on what metrics you use to define best walking behavior:</p>
+
+<ol>
+<li>Maximize stability</li>
+<li>Maximize speed</li>
+<li>Minimize forces on joints</li>
+<li>Minimize energy or entropy production </li>
+</ol>
+
+<p>Or do you just try a bunch of parameters, record the values, and then let the genetic algorithm drive you to the best solution?</p>
+
+<p>If each behavior works well in one context and not another, I'd try quantifying how to sense and interpolate between contexts and blend the strategies to see if that would help.</p>
+",37213,0,1,3154152,"My skeleton is omniscient of what is happening inside the simulation within a range (a 20m sphere). Anything that is in that sphere, it knows about. I need that to translate into picking the correct parts of it's body to move so that it can walk without falling over.",fp
+804,3928909,Drive Sequence for Sanyo B00224 Stepper Motor,|microcontroller|arduino|robotics|motordriver|,"<p>I was given a Sanyo #B00224 4 wire stepper motor, and for the life of me cannot determine the drive sequence, e.g. what order to power the coils and in which direction. As far as I can tell it is a bi polar stepper motor and should be drive-able with:</p>
+
+<pre><code>  Winding 1a 1100110011001100110011001
+  Winding 1b 0011001100110011001100110
+  Winding 2a 0110011001100110011001100
+  Winding 2b 1001100110011001100110011
+</code></pre>
+
+<p>or:</p>
+
+<pre><code>  Winding 1a 1000100010001000100010001
+  Winding 1b 0010001000100010001000100
+  Winding 2a 0100010001000100010001000
+  Winding 2b 0001000100010001000100010
+</code></pre>
+
+<p>Where 1 is power and 0 is ground.</p>
+
+<p>I am really just looking for a datasheet on this motor or any information you might have.</p>
+
+<p>Thanks!</p>
+",10/13/2010 23:36,3938164,897,1,0,0,,460137,"Burlington, VT",9/28/2010 3:19,23,3938164,"<p>Since it's such a cheap stepper motor, you probably won't be able to get a datasheet on it.</p>
+
+<p>Most 4-wire stepper motors are bipolar, so that's a good assumption. I think that this would make the drive pattern the first one.</p>
+
+<p>You may find that if you are using an Arduino, it just cannot provide the power that you need to make those motors turn.  You may need to use some sort of external motor driver (H-bridge).  I believe that the Arduino motor shield has this functionality built in.  I would try a higher voltage than 5 for some immediate troubleshooting (9 or 12V).  One of the online stores has this motor listed as a 12Vdc stepper, so that's probably the problem.</p>
+
+<p><a href=""http://www.allelectronics.com/make-a-store/item/SMT-125/4-WIRE-STEPPER-MOTOR-W/GEARS/1.html"" rel=""nofollow"">http://www.allelectronics.com/make-a-store/item/SMT-125/4-WIRE-STEPPER-MOTOR-W/GEARS/1.html</a></p>
+
+<p>If you are still having trouble identifying the wires, you can ohm them out with a multimeter to determine the pairs.  To find forward and reverse polarity, you should be able to swap the pairs until the motor correctly drives.</p>
+",460065,0,2,,,fp
+845,4173306,Can I implement potential field/depth first method for obstacle avoidance using boost graph?,|c++|boost|robotics|boost-graph|,"<p>I implemented an obstacle avoidance algorithm in Matlab which assigns every node in a graph a potential and tries to descend this potential (the goal of the pathplanning is in the global minimum). Now there might appear local minima, so the (global) planning needs a way to get out of these. I used the strategy to have a list of open nodes which are reachable from the already visited nodes. I visit the open node which has the smallest potential next. </p>
+
+<p>I want to implement this in C++ and I am wondering if Boost Graph has such algorithms already. If not - is there any benefit from using this library if I have to write the algorithm myself and I will also have to create my own graph class because the graph is too big to be stored as adjacency list/edge list in memory.</p>
+
+<p>Any advice appreciated!</p>
+",11/13/2010 15:41,4200132,1226,2,0,4,,292233,Germany,3/12/2010 9:25,560,4179508,"<p>To my mind, <code>boost::graph</code> is really awesome for implementing new algorithms, because it provides various data holders, adaptors and commonly used stuff (which can obviously be used as parts of the newly constructed algorithms).</p>
+
+<p><em>Last ones are also customizable due to usage of visitors and other smart patterns.</em></p>
+
+<p>Actually, <code>boost::graph</code> may take some time to get used to, but in my opinion it's really worth it.</p>
+",346332,1,0,,,fp
+908,4479885,"Light weight, behavior driven multi-agent robot simulator?",|development-environment|simulation|environment|robotics|,"<p>Looking for a robot simulator that's multi-agent, light weight, behavior driven, and scriptible, visual runtime -- it's likely 2D too. There is no requirement for the logic to be output to the real world. Aside from behaviors related to sensor/motor combos - it'd be nice if it was possible to code sensor to respond to color/size/speed/etc (prey/predator/mating) and have events that happen as a result contact (death/birth/energy-gain).</p>
+
+<p>So, far I've looked at the following, none of which have semi-complex behavior assignment, rendering and reporting:</p>
+
+<p><strong>BugWorks:</strong> multi-agent, behavior driven, light weight, visual runtime -- but not scriptible as far as I'm able to tell; meaning you can use a GUI, and save it, but their no code output to edit directly. One thing that is nice is there's a reproduce function; although the implementation is odd, it produces one robot per click (it's not based on robot interaction) and appears to take an average of all the attributes of all robots presents; better than no function though. <a href=""http://www.informatics.sussex.ac.uk/users/christ/bugworks/"" rel=""nofollow"">More info</a></p>
+
+<p><strong>Guido van Robot:</strong> not multi-agent, but it's got it's own simple scripting language for the robot and environment, with a debugger built in. <a href=""http://gvr.sourceforge.net/"" rel=""nofollow"">More Info</a></p>
+
+<p><strong>Algodoo:</strong> It's got  2D Physics, point-n-click interface, but very heavy on the graphic card, so I have tested it out much. <a href=""http://www.algodoo.com"" rel=""nofollow"">More info</a></p>
+
+<p>Any suggestions?</p>
+",12/18/2010 20:01,5028010,367,2,0,2,0,471255,,10/10/2010 0:40,375,4482384,"<p>You can give <a href=""http://garlicsim.org"" rel=""nofollow"">GarlicSim</a> a try. It's a generic simulations framework (good for multi-agent simulation among others,) so it might not provide the specific tools you need for robot simulation, but it will make it relatively easy for you to build them.</p>
+",76701,1,3,,,fp
+1015,5287575,"Modelling a robotic arm motion in 3D, ideas?",|python|modeling|robotics|inverse-kinematics|,"<p>I hope you don't mind if I ask for a bit of advice regarding modelling robotic systems. I've recently become rather interested in using inverse kinematics (IK) to control a 5 dof robotic manipulator. I have a solid foundation in IK but what I'm having trouble with is a way to visualize how the manipulator moves with respect to joint angles.</p>
+<p>I've looked into using 3D toolkits (such as Blender, Panda3D, vPython) to create a 3d model of the arm, but I'm not sure if I should be looking something with physics support. I'm also not sure how well I can model motion with these packages. Anyone have any suggestions? What I'm NOT looking for is a full blown robotic simulator like Microsoft's Robotic Studio, I'd like to start with the basics and learn how everything works first, ie code the IK in Python, then visualize the motion in 3D. I'm very familiar with Python, so something that interfaces with Python would be preferable.</p>
+",3/13/2011 5:06,5287605,3335,3,0,2,0,,,,,5287605,"<p>Well the great thing about Blender is that its API is actually in python!</p>
+<p>In addition, it supports inverse kinematics (IK) quite well in addition to many other modeling tools.</p>
+<p><a href=""http://www.blendercookie.com/"" rel=""nofollow noreferrer"">Blender Cookie</a> is a great resource.</p>
+<p><a href=""http://www.blendercookie.com/2011/02/07/creating_fk_ik_rig/"" rel=""nofollow noreferrer"">Here is a tutorial on making IK rigs in Blender.</a></p>
+<p>Blenders python api is documented quite extensively, and it even has an interactive python shell built right in so that you can see the effects of your script as you go along.</p>
+<p>The physics engine that blender uses is the popular bullet physics engine, which has been used in many commercial games as well as a few feature films (2012 among them).</p>
+",272231,2,1,,,fp
+1101,5507790,Best 3D library to model robotic motion,|python|opengl|robotics|modeling|,"<p>A short while I asked for suggestions on choosing a Python-compatible 3D graphics library for robotic motion modelling (using inverse kinematics in Python). After doing a bit of research and redefining my objectives I hope I can ask once again for a bit of assistance.</p>
+
+<p>At the time I thought Blender was the best option - but now I'm having doubts. One key objective I have is the ability integrate the model into a custom GUI (wxPython). Seems like this might be rather difficult (and I'm unsure of the performance requirements). </p>
+
+<p>I think I'm now leaning more towards OpenGL (PyOpenGL + wxglcanvas), but I'm still struggling to to determine if it's the right tool for the job. I'm more of a CAD person, so I have trouble envisioning how to draw complex objects in the API and create motion. I read I could design the object in, say Blender, then import it into OpenGL somehow, but I'm unsure of the process? And how difficult is manipulating motion of objects? For example, if I create a joint between two links, and I move one link, would the other link move dynamically according to the first, or would I need to program each link's movement independently?</p>
+
+<p>Have I missed any obvious tools? I'm not looking for complete robotic modelling packages, I would like to start from scratch so I can incorporate it into my own program. For for learning more than anything. So far I've already looked into vPython, Pyglet, Panda3D, Ogre, and several professional CAD packages. </p>
+
+<p>Thanks</p>
+",3/31/2011 23:54,,3114,2,0,3,0,,,,,5508425,"<p>There is a similar project going on that implements a <a href=""http://code.google.com/p/robotics-toolbox-python/"" rel=""nofollow"">robotic toolbox</a> for matlab and python, it has ""Rudimentary 3D graphics"", but you can always interface it with blender with a well knit <a href=""http://en.wikibooks.org/wiki/Blender_3D%3a_Noob_to_Pro/Advanced_Tutorials/Python_Scripting/Introduction"" rel=""nofollow"">script</a>, it will be less work than reinventing the wheel</p>
+",681215,2,1,,,fp
+1260,7980785,Unit-testing code with unpredictable external dependencies,|java|junit|robotics|,"<p>I am involved with a project which must, among other things, controlling various laboratory instruments (robots, readers, etc...)</p>
+
+<p>Most of these instruments are controlled either through DCOM-based drivers, the serial port, or by launching proprietary programs with various arguments. Some of these programs or drivers include simulation mode, some don't. Obviously, my development computer cannot be connected to all of the instruments, and while I can fire up virtual machines for the instruments whose drivers include a simulation mode, some stuff cannot be tested without the actual instrument.</p>
+
+<p>Now, my own code is mostly not about the actual operations on the instruments, but about starting operations, making sure everything is fine, and synchronising between the lot of them. It is written in Java, using various libraries to interface with the instruments and their drivers.</p>
+
+<p>I want to write unit tests for the various instrument control modules. However, because the instruments can fail in many ways (some of which are documented, some of which aren't), because the code depends on these partially random outputs, I am a bit lost regarding how to write unit tests for these parts of my code. I have considered the following solutions:</p>
+
+<ul>
+<li>only test with actual instruments connected, possibly the most accurate method, but it is not practical at all (insert plate in reader, run unit test, remove plate, run unit test, etc...), not to mention potentially dangerous,</li>
+<li>use a mock object to simulate the part that actually communicates with the thing; while this one is definitely easier to implement (and run), it may not be able to reproduce the full range of potential failures (as mentioned above, a lot is undocumented, which can sometimes cause bad surprises)</li>
+</ul>
+
+<p>While I am currently thinking of going with the latter, am I missing something? Is there a better way to do this?</p>
+",11/2/2011 13:03,7980991,543,3,0,6,0,313432,France,4/10/2010 11:04,34,7980840,"<p>If you're using mocks then you can substitute different mocks to perform differently. That is, your tests will be consistent. That's valuable since running tests against a randomly performing system is not going to give you a sense of security. Each run can/will execute a different code path.</p>
+
+<p>Since you don't know all the failure scenarios in advance, I think there are two (non-exclusive) scenarios:</p>
+
+<ol>
+<li>Capture the details of those failures as you see them and encode further tests in your mocks to replicate these. Consequently your logging needs to be sound, to capture the failure details. As time goes on, your test set will expand to encompass and regression test these scenarios.</li>
+<li>Your interfaces to these system may be able to capture all errors, but present them in a finite subset of errors. e.g. categorise all errors into (say) connection errors, timeouts etc. That way you restrict your scenarios to a small set of failures. I don't know if this is practical for your application, unfortunately.</li>
+</ol>
+",12960,4,0,,,fp
+1343,9894559,having trouble with winavr gcc in eclipse c/c++,|c++|c|eclipse|robotics|winavr|,"<p>I am using eclipse c/c++ when i create a c project then it does not shows winavr gcc in the toolchain list but i have installed WinAVR-20100110 in c drive and my eclipse is also in the same directory.
+it shows cygwin,solarize,linux,macosx,mingw gcc</p>
+",3/27/2012 17:27,9895161,484,1,0,0,,,,,,9895161,"<p>Eclipse does not look for AVR toolchain by default, even if it is in path (you did add it there?). You need to create an cross GCC project, then tell it the prefix of your toolchain (avr- i guess). When you select ""New C project"" select Cross GCC in Toolchains listbox, then in next step enter the prefix, set path to toolchain (if not in path), etc. For this you need to install ""GCC Cross Compiler Support"". You do this from Help -> Install new software -> Mobile and Device development. You will probably also want at least GDB hardware debugging. </p>
+
+<p>You can also try special <a href=""http://avr-eclipse.sourceforge.net/wiki/index.php/The_AVR_Eclipse_Plugin"" rel=""nofollow"">eclipse plug-in for AVR</a>.</p>
+",395851,0,0,,,fp
+1414,11725274,Computing a matrix which transforms a quadrangle to another quadrangle in 2D,|matlab|computer-vision|robotics|numerical-methods|projective-geometry|,"<p>In the figure below the goal is to compute the homography matrix H which transforms the points a1 a2 a3 a4 to their counterparts b1 b2 b3 b4. 
+That is:</p>
+
+<pre><code>[b1 b2 b3 b4] = H * [a1 a2 a3 a4]
+</code></pre>
+
+<p>What way would you suggest to be the best way to calculate H(3x3). a1...b4  are points in 2D which are represented in homogeneous coordinate systems ( that is [a1_x a1_y 1]', ...).
+<strong>EDIT</strong>:
+For these types of problems we use SVD, So i would like to see how this can be simply done in Matlab.</p>
+
+<p><strong>EDIT</strong>:</p>
+
+<p>Here is how I <strong>initially</strong> tried to solve it using svd (H=Q/P) in Maltlab. Cosider the following code for the given example</p>
+
+<pre><code>px=[0 1 1 0];  % a square
+py=[1 1 0 0];
+
+qx=[18 18 80 80];    % a random quadrangle
+qy=[-20 20 60 -60];
+if (DEBUG)
+  fill(px,py,'r');
+  fill(qx,qy,'r');
+end
+
+Q=[qx;qy;ones(size(qx))];
+P=[px;py;ones(size(px))];
+H=Q/P;
+H*P-Q
+answer:
+   -0.0000         0         0         0         0
+  -20.0000   20.0000  -20.0000   20.0000    0.0000
+   -0.0000         0         0         0   -0.0000
+</code></pre>
+
+<p>I am expecting the answer to be a <strong>null matrix</strong> but it is not!... and that's why I asked this question in StackOverflow.
+Now, we all know it is a <strong>projective transformation</strong> not obviously Euclidean. However, it is good to know if in general care calculating such matrix using only 4 points is possible.</p>
+
+<p><img src=""https://i.stack.imgur.com/ZvaZK.png"" alt=""matrix computation""></p>
+",7/30/2012 16:07,11731236,5275,5,6,6,0,699559,,4/9/2011 1:47,978,11726686,"<p>You can use the <a href=""http://en.wikipedia.org/wiki/Direct_linear_transformation"" rel=""nofollow"">DLT algorithm</a> for this purpose.  There are MATLAB routines available for doing that in <a href=""http://www.csse.uwa.edu.au/~pk/research/matlabfns/"" rel=""nofollow"">Peter Kovesi's homepage</a>.</p>
+",128966,1,0,15558765,"in Matlab simply H=B/A where B=[b1 b2 b3 b4], A=[a1 a2 a3 a4]",fp
+1621,14437630,hardware emulation,|hardware|driver|robot|device-emulation|,"<p>I need to write controlling software for a very specialized and fairly complex industrial robot. I'm not allowed to access the actual robot before testing the final software, because it has to work all the time. It would be necessary to somehow emulate the robot, so I can develop my code. I have drivers for the robot, and some manuals but since it is a complex stuff, I would prefer not to build a simulator from scratch.</p>
+
+<p>What I'm looking for is a software where I just load the device drivers and based on them, the hardware can be simulated, with all of its capabilities.</p>
+
+<p>Does something like that exists out there or am I on a completely wrong track?</p>
+
+<p>PS. No, I don't have very good programming skills, but I'm ready to learn :)</p>
+
+<p>Thanks in advance!</p>
+",1/21/2013 11:27,,247,1,2,2,0,1996854,,1/21/2013 11:17,3,15869712,"<p>Normally Robot manufacturers supply simulation / emulation software.
+Eg. </p>
+
+<ul>
+<li>Nachi robotics haveAX/FD on desk,  </li>
+<li>Adept robots have Adept Ace(<a href=""http://www.adept.com/products/software/pc/adept-ace/general"" rel=""nofollow"">http://www.adept.com/products/software/pc/adept-ace/general</a>) </li>
+<li>Kuka haveKUKA SIM</li>
+<li>.... and so on</li>
+</ul>
+
+<p>In these programs you can create robot programs, simulate robot movement and interface with all Inputs and outputs. You can also import programs already running on the robot and alter/debug them offline</p>
+
+<p>I believe that creating a simulation/emulation of the entire robot would be a ginormous amount of work, especially if you don't have a lot of experience with programming.</p>
+",1944249,1,0,20101767,"Can you get some data traces, that is, what's being sent to the robot and its responses? That could help as you could build your simulator and test it to some degree with that data.",fp
+1682,15498360,"Algorithm, tool or technique to represent 3D probability density functions on space",|algorithm|data-structures|computer-vision|probability|robotics|,"<p>I'm working on a project with computer vision (opencv 2.4 on c++). On this project I'm trying to detect certain features to build a map (an internal representation) of the world around. </p>
+
+<p>The information I have available is the camera pose (6D vector with 3 position and 3 angular values), calibration values (focal length, distortion, etc) and the features detected on the object being tracked (this features are basically the contour of the object but it doesn't really matter)</p>
+
+<p>Since the camera pose, the position of the features and other variables are subject to errors, I want to model the object as a 3D probability density function (with the probability of finding the ""object"" on a given 3D point on space, this is important since each contour has a probability associated of how likely it is that it is an actually object-contour instead of a noise-contour(bear with me)). </p>
+
+<p><strong>Example</strong>:
+If the object were a <strong>sphere</strong>, I would detect a <strong>circle</strong> (contour). Since I know the camera pose, but have no depth information, the internal representation of that object should be a fuzzy <strong>cylinder</strong> (or a cone, if the camera's perspective is included but it's not relevant). If new information is available (new images from a different location) a new contour would be detected, with it's own <em>fuzzy cylinder</em> merged with previous data. Now we should have a region where the probability of finding the object is greater in some areas and weaker somewhere else. As new information is available, the model should converge to the original object shape.</p>
+
+<p>I hope the idea is clear now.</p>
+
+<p>This model should be able to:</p>
+
+<ul>
+<li>Grow dynamically if needed.</li>
+<li>Update efficiently as new observations are made (updating the probability inside making stronger the areas observed multiple times and weaker otherwise). Ideally the system should be able to update in real time.</li>
+</ul>
+
+<p><strong>Now the question:</strong>
+How can I do to computationally represent this kind of <em>fuzzy</em> information in such a way that I can perform these tasks on it?</p>
+
+<p>Any suitable algorithm, data structure, c++ library or tool would help.</p>
+",3/19/2013 11:34,,678,1,5,3,0,575085,,1/14/2011 0:46,396,15547493,"<p>I'll answer with the computer vision equivalent of Monty Python: ""<a href=""http://en.wikipedia.org/wiki/Simultaneous_localization_and_mapping"" rel=""nofollow"">SLAM</a>, SLAM, SLAM, SLAM!"": :-)  I'd suggest starting with Sebastian Thrun's tome. </p>
+
+<p>However, there's older older work on the Bayesian side of active computer vision that's directly relevant to your question of geometry estimation, e.g. Whaite and Ferrie's seminal IEEE paper on uncertainty modeling (Waithe, P. and Ferrie, F. (1991). From uncertainty to visual exploration. IEEE Transactions on Pattern Analysis and Machine Intelligence, 13(10):1038–1049.). For a more general (and perhaps mathematically neater) view on this subject, see also <a href=""http://www.cs.toronto.edu/~mackay/thesis.pdf"" rel=""nofollow"">chapter 4 of D.J.C. MacKay's Ph.D. thesis</a>. </p>
+",1435240,1,0,21945930,"It's not clear exactly what configurations we need to be capable of representing, in part because it's not clear exactly what modification operations are allowed.  The simplest general-purpose approach would be to simply use a 3D array of floating-point values to represent the probabilities that each voxel is present.  Some kinds of updates would be faster if you also keep a separate floating point value that stores the sum of all elements in the array, and define `p(x, y, z) = array(x, y, z) / sum`.  (This would also let you store all numbers as integers instead of FP.)",fp
+1701,15730886,How to normalize fitness scores?,|java|neural-network|genetic-algorithm|robotics|,"<p>I'm evolving a population of neural networks and I've been struggling with normalizing fitness scores (to values in range 0 to 1), so that the number on its own is most meaningful. The issue is that agents are tested under different conditions - they participate in different games, and for each game a different fitness function is used. Fitness functions look more or less like this:</p>
+
+<pre><code>agentsFitness[indiv][0] += Util.mean(speed) * (games[0].getConstant(0) - Math.sqrt((Math.abs((speed[LEFT] - speed[RIGHT]))) * (games[0].getConstant(1) - Util.normalize(0, 4000, maxIRActivation))));
+</code></pre>
+
+<p>but each one will take different inputs. I can easily normalize numbers for each of them separately because I can estimate the maxima and minima of the input. Some of them will be in range of (-30,000, 360,000) and some (0, 900).</p>
+
+<p>Part that I find difficult is that the agents may be tested on two, three or more games at the same time, so their fitness score will be a sum of the scores on all of the games. Additionally, new games can be introduced/evolved. Hard-coding normalization's min and max is not suitable here.</p>
+
+<p>If I try to use very large max and min, I end up with a scores in a range (0.40, 0.45) for the games that have smaller input values which hides the underlying diversity of the scores.</p>
+
+<p>Any suggestions on how these fitness scores could be normalized will be greatly appreciated.</p>
+",3/31/2013 15:15,15738248,2001,2,0,2,,1770971,"Bay Area, CA, United States",10/24/2012 10:52,730,15730998,"<p>You could use the standard normalized scores:
+For each population (in this case each input collection) you can calculate the score of an individual by subtracting the population mean from it, and then dividing it by their standard deviation.</p>
+
+<p>This does not leave you with numbers between 0 and 1 but does allow you to compare two populations with each other</p>
+",2062285,0,0,,,fp
+1798,18162880,How to correctly compute direct kinematics for a delta robot?,|java|math|computational-geometry|robotics|kinematics|,"<p>I'm trying to put together a simple simulation for a delta robot and I'd like to use forward kinematics (direct kinematics) to compute the end effector's position in space by passing 3 angles.</p>
+
+<p>I've started with the <a href=""http://forums.trossenrobotics.com/tutorials/introduction-129/delta-robot-kinematics-3276/"" rel=""noreferrer"">Trossen Robotics Forum Delta Robot Tutorial</a> and I can understand most of the math, but not all. I'm lost at the last part in forward kinematics, when trying to compute the point where the 3 sphere's intersect. I've looked at spherical coordinates in general but couldn't work out the two angles used to find to rotate towards (to E(x,y,z)). I see they're solving the equation of a sphere, but that's where I get lost.</p>
+
+<p><img src=""https://i.stack.imgur.com/dhZ9o.png"" alt=""delta robot direct kinematics""></p>
+
+<p><img src=""https://i.stack.imgur.com/VXSNG.png"" alt=""delta robot direct kinematics""></p>
+
+<p><img src=""https://i.stack.imgur.com/P2L7Y.png"" alt=""delta robot direct kinematics""></p>
+
+<p>A delta robot is a parallel robot (meaning the base and the end effector(head) always stay parallel). The base and end effector are equilateral triangles and the legs are (typically) placed at the middle of the triangle's sides. </p>
+
+<p>The side of the base of the delta robot is marked <code>f</code>.
+The side of the effector of the delta robot is marked <code>e</code>.
+The upper part of the leg is marked <code>rf</code> and the lower side <code>re</code>.</p>
+
+<p>The origin(O) is at the centre of the base triangle.
+The servo motors are at the middle of the base triangle's sides (F1,F2,F3).
+The joints are marked J1,J2,J3. The lower legs join the end effector at points E1,E2,E3
+and E is the centre of the end effector triangle.</p>
+
+<p>I can easily compute points F1,F2,F3 and J1,J2,J3.
+It's E1,E2,E3 I'm having issues with. From the explanations,
+I understand that point J1 gets translate inwards a bit (by half the end effector's median)
+to J1' and it becomes the centre of a sphere with radius <code>re</code> (lower leg length).
+Doing this for all joints will result in 3 spheres intersecting in the same place: E(x,y,z). By solving the sphere equation we find E(x,y,z).</p>
+
+<p>There is also a formula explained:</p>
+
+<p><img src=""https://i.stack.imgur.com/aceZj.png"" alt=""dk equation 1""></p>
+
+<p><img src=""https://i.stack.imgur.com/rpIhH.png"" alt=""dk equation 2"">
+but this is where I get lost. My math skills aren't great.
+Could someone please explain those in a simpler manner, 
+for the less math savvy of us ?</p>
+
+<p>I've also used the sample code provided which (if you have a WebGL enabled 
+browser) you can run <a href=""http://studio.sketchpad.cc/NvZk3mGPWx"" rel=""noreferrer"">here</a>. Click and drag to rotate the scene. To control the three angles use q/Q, w/W,e/E to decrease/increase angles.</p>
+
+<p>Full code listing:</p>
+
+<pre><code>//Rhino measurements in cm
+final float e = 21;//end effector side
+final float f = 60.33;//base side
+final float rf = 67.5;//upper leg length - radius of upper sphere
+final float re = 95;//lower leg length - redius of lower sphere (with offset will join in E(x,y,z))
+
+final float sqrt3 = sqrt(3.0);
+final float sin120 = sqrt3/2.0;   
+final float cos120 = -0.5;        
+final float tan60 = sqrt3;
+final float sin30 = 0.5;
+final float tan30 = 1/sqrt3;
+final float a120 = TWO_PI/3;
+final float a60 = TWO_PI/6;
+
+//bounds
+final float minX = -200;
+final float maxX = 200;
+final float minY = -200;
+final float maxY = 200;
+final float minZ = -200;
+final float maxZ = -10;
+final float maxT = 54;
+final float minT = -21;
+
+float xp = 0;
+float yp = 0;
+float zp =-45;
+float t1 = 0;//theta
+float t2 = 0;
+float t3 = 0;
+
+float prevX;
+float prevY;
+float prevZ;
+float prevT1;
+float prevT2;
+float prevT3;
+
+boolean validPosition;
+//cheap arcball
+PVector offset,cameraRotation = new PVector(),cameraTargetRotation = new PVector();
+
+void setup() {
+  size(900,600,P3D);
+}
+
+void draw() {
+  background(192);
+  pushMatrix();
+  translate(width * .5,height * .5,300);
+  //rotateY(map(mouseX,0,width,-PI,PI));
+
+  if (mousePressed &amp;&amp; (mouseX &gt; 300)){
+    cameraTargetRotation.x += -float(mouseY-pmouseY);
+    cameraTargetRotation.y +=  float(mouseX-pmouseX);
+  }
+  rotateX(radians(cameraRotation.x -= (cameraRotation.x - cameraTargetRotation.x) * .35));
+  rotateY(radians(cameraRotation.y -= (cameraRotation.y - cameraTargetRotation.y) * .35));
+
+  stroke(0);
+  et(f,color(255));
+  drawPoint(new PVector(),2,color(255,0,255));
+  float[] t = new float[]{t1,t2,t3};
+  for(int i = 0 ; i &lt; 3; i++){
+    float a = HALF_PI+(radians(120)*i);
+    float r1 = f / 1.25 * tan(radians(30));
+    float r2 = e / 1.25 * tan(radians(30));
+    PVector F = new PVector(cos(a) * r1,sin(a) * r1,0);
+    PVector E = new PVector(cos(a) * r2,sin(a) * r2,0);
+    E.add(xp,yp,zp);
+    //J = F * rxMat
+    PMatrix3D m = new PMatrix3D();
+    m.translate(F.x,F.y,F.z);
+    m.rotateZ(a);
+    m.rotateY(radians(t[i]));
+    m.translate(rf,0,0);
+
+    PVector J = new PVector();
+    m.mult(new PVector(),J);
+    line(F.x,F.y,F.z,J.x,J.y,J.z);
+    line(E.x,E.y,E.z,J.x,J.y,J.z);
+    drawPoint(F,2,color(255,0,0));
+    drawPoint(J,2,color(255,255,0));
+    drawPoint(E,2,color(0,255,0));
+    //println(dist(F.x,F.y,F.z,J.x,J.y,J.z)+""\t""+rf);
+    println(dist(E.x,E.y,E.z,J.x,J.y,J.z)+""\t""+re);//length should not change
+  }
+  pushMatrix();
+    translate(xp,yp,zp);
+    drawPoint(new PVector(),2,color(0,255,255));
+    et(e,color(255));
+    popMatrix();
+  popMatrix(); 
+}
+void drawPoint(PVector p,float s,color c){
+  pushMatrix();
+    translate(p.x,p.y,p.z);
+    fill(c);
+    box(s);
+  popMatrix();
+}
+void et(float r,color c){//draw equilateral triangle, r is radius ( median), c is colour
+  pushMatrix();
+  rotateZ(-HALF_PI);
+  fill(c);
+  beginShape();
+  for(int i = 0 ; i &lt; 3; i++)
+    vertex(cos(a120*i) * r,sin(a120*i) * r,0);
+  endShape(CLOSE);
+  popMatrix();
+}
+void keyPressed(){
+  float amt = 3;
+  if(key == 'q') t1 -= amt;
+  if(key == 'Q') t1 += amt;
+  if(key == 'w') t2 -= amt;
+  if(key == 'W') t2 += amt;
+  if(key == 'e') t3 -= amt;
+  if(key == 'E') t3 += amt;
+  t1 = constrain(t1,minT,maxT);
+  t2 = constrain(t2,minT,maxT);
+  t3 = constrain(t3,minT,maxT);
+  dk();
+}
+
+void ik() {
+  if (xp &lt; minX) { xp = minX; }
+  if (xp &gt; maxX) { xp = maxX; }
+  if (yp &lt; minX) { yp = minX; }
+  if (yp &gt; maxX) { yp = maxX; }
+  if (zp &lt; minZ) { zp = minZ; }
+  if (zp &gt; maxZ) { zp = maxZ; }
+
+  validPosition = true;
+  //set the first angle
+  float theta1 = rotateYZ(xp, yp, zp);
+  if (theta1 != 999) {
+    float theta2 = rotateYZ(xp*cos120 + yp*sin120, yp*cos120-xp*sin120, zp);  // rotate coords to +120 deg
+    if (theta2 != 999) {
+      float theta3 = rotateYZ(xp*cos120 - yp*sin120, yp*cos120+xp*sin120, zp);  // rotate coords to -120 deg
+      if (theta3 != 999) {
+        //we succeeded - point exists
+        if (theta1 &lt;= maxT &amp;&amp; theta2 &lt;= maxT &amp;&amp; theta3 &lt;= maxT &amp;&amp; theta1 &gt;= minT &amp;&amp; theta2 &gt;= minT &amp;&amp; theta3 &gt;= minT ) { //bounds check
+          t1 = theta1;
+          t2 = theta2;
+          t3 = theta3;
+        } else {
+          validPosition = false;
+        }
+
+      } else {
+        validPosition = false;
+      }
+    } else {
+      validPosition = false;
+    }
+  } else {
+    validPosition = false;
+  }
+
+  //uh oh, we failed, revert to our last known good positions
+  if ( !validPosition ) {
+    xp = prevX;
+    yp = prevY;
+    zp = prevZ;
+  }
+
+}
+
+void dk() {
+  validPosition = true;
+
+  float t = (f-e)*tan30/2;
+  float dtr = PI/(float)180.0;
+
+  float theta1 = dtr*t1;
+  float theta2 = dtr*t2;
+  float theta3 = dtr*t3;
+
+  float y1 = -(t + rf*cos(theta1));
+  float z1 = -rf*sin(theta1);
+
+  float y2 = (t + rf*cos(theta2))*sin30;
+  float x2 = y2*tan60;
+  float z2 = -rf*sin(theta2);
+
+  float y3 = (t + rf*cos(theta3))*sin30;
+  float x3 = -y3*tan60;
+  float z3 = -rf*sin(theta3);
+
+  float dnm = (y2-y1)*x3-(y3-y1)*x2;
+
+  float w1 = y1*y1 + z1*z1;
+  float w2 = x2*x2 + y2*y2 + z2*z2;
+  float w3 = x3*x3 + y3*y3 + z3*z3;
+
+  // x = (a1*z + b1)/dnm
+  float a1 = (z2-z1)*(y3-y1)-(z3-z1)*(y2-y1);
+  float b1 = -((w2-w1)*(y3-y1)-(w3-w1)*(y2-y1))/2.0;
+
+  // y = (a2*z + b2)/dnm;
+  float a2 = -(z2-z1)*x3+(z3-z1)*x2;
+  float b2 = ((w2-w1)*x3 - (w3-w1)*x2)/2.0;
+
+  // a*z^2 + b*z + c = 0
+  float a = a1*a1 + a2*a2 + dnm*dnm;
+  float b = 2*(a1*b1 + a2*(b2-y1*dnm) - z1*dnm*dnm);
+  float c = (b2-y1*dnm)*(b2-y1*dnm) + b1*b1 + dnm*dnm*(z1*z1 - re*re);
+
+  // discriminant
+  float d = b*b - (float)4.0*a*c;
+  if (d &lt; 0) { validPosition = false; }
+
+  zp = -(float)0.5*(b+sqrt(d))/a;
+  xp = (a1*zp + b1)/dnm;
+  yp = (a2*zp + b2)/dnm;
+
+  if (xp &gt;= minX &amp;&amp; xp &lt;= maxX&amp;&amp; yp &gt;= minX &amp;&amp; yp &lt;= maxX &amp;&amp; zp &gt;= minZ &amp; zp &lt;= maxZ) {  //bounds check
+  } else {
+    validPosition = false;
+  }
+
+  if ( !validPosition ) {    
+    xp = prevX;
+    yp = prevY;
+    zp = prevZ;
+    t1 = prevT1;
+    t2 = prevT2;
+    t3 = prevT3;  
+  }
+
+}
+
+void  storePrev() {
+  prevX = xp;
+  prevY = yp;
+  prevZ = zp;
+  prevT1 = t1;
+  prevT2 = t2;
+  prevT3 = t3;
+}
+
+float rotateYZ(float x0, float y0, float z0) {
+  float y1 = -0.5 * 0.57735 * f; // f/2 * tg 30
+  y0 -= 0.5 * 0.57735    * e;    // shift center to edge
+  // z = a + b*y
+  float a = (x0*x0 + y0*y0 + z0*z0 +rf*rf - re*re - y1*y1)/(2*z0);
+  float b = (y1-y0)/z0;
+  // discriminant
+  float d = -(a+b*y1)*(a+b*y1)+rf*(b*b*rf+rf); 
+  if (d &lt; 0) return 999; // non-existing point
+  float yj = (y1 - a*b - sqrt(d))/(b*b + 1); // choosing outer point
+  float zj = a + b*yj;
+  return 180.0*atan(-zj/(y1 - yj))/PI + ((yj&gt;y1)?180.0:0.0);
+} 
+</code></pre>
+
+<p>The problem is, when visualizing, the lower part changes length (as you can see in the printed message0 and it shouldn't, which further adds to my confusion.</p>
+
+<p>I've used the supplied C code in Java/Processing, but the programming language is least important.</p>
+
+<p><strong>[Edit by spektre]</strong></p>
+
+<p>I just had to add this picture (for didactic reasons).</p>
+
+<ul>
+<li>the lined nonsense is not the best way for grasping the kinematics abilities</li>
+<li>as I understand the base with the motors is on this image on the upper triangle plane</li>
+<li>and the tool is on the bottom triangle plane</li>
+</ul>
+
+<p><img src=""https://i.stack.imgur.com/lDMXm.png"" alt=""delta robot""></p>
+",8/10/2013 14:32,,16289,1,2,8,0,89766,"London, United Kingdom",4/11/2009 14:07,12545,21018861,"<p>I would do it as follows (algebraic representation of graphic solution): </p>
+
+<ol>
+<li>compute F1,F2,F3; </li>
+<li><p>solve system</p>
+
+<pre><code>// spheres from Ji to Ei ... parallelograms (use lower Z half sphere)
+(x1-J1.x)^2 + (y1-J1.y)^2 +(z1-J1.z)^2 = re^2 
+(x2-J2.x)^2 + (y2-J2.y)^2 +(z2-J2.z)^2 = re^2
+(x3-J3.x)^2 + (y3-J3.y)^2 +(z3-J3.z)^2 = re^2
+// Ei lies on the sphere
+E1=(x1,y1,z1)
+E2=(x2,y2,z2)
+E3=(x3,y3,z3)
+// Ei is parallel to Fi ... coordinate system must be adjusted 
+// so base triangles are parallel with XY-plane
+z1=z2
+z1=z3
+z2=z3
+// distance between any Ei Ej must be always q
+// else it is invalid position (kinematics get stuck or even damage)
+|E1-E2|=q
+|E1-E3|=q
+|E2-E3|=q
+// midpoint is just average of Ei
+E=(E1+E2+E3)/3
+</code></pre>
+
+<ul>
+<li>where q is the joint distance |Ei-E| which is constant</li>
+</ul></li>
+</ol>
+
+<p><strong>[Notes]</strong></p>
+
+<p>Do not solve it manually</p>
+
+<ul>
+<li>use derive or something to obtain algebraic solution</li>
+<li>and use only valid solution</li>
+<li>its quadratic system so there will be most likely more solutions so you have to check for the correct one</li>
+</ul>
+
+<p>Just a silly question why don't you solve inverse kinematics</p>
+
+<ul>
+<li>it is most likely what you need (if you just don't do a visualization only)</li>
+<li>and also is a bit simpler in this case</li>
+</ul>
+
+<p>Also when you use just direct kinematics</p>
+
+<ul>
+<li>I am not entirely convinced that you should drive all 3 joints</li>
+<li>most likely drive just 2 of them</li>
+<li>and compute the 3.th so the kinematics stay in valid position</li>
+</ul>
+
+<p>[Edit1]</p>
+
+<p>There is one simplification that just appear to me:</p>
+
+<ol>
+<li>Ti = translate Ji towards the Z axis by q (parallel to XY plane)</li>
+<li><p>now if you just need to find intersection of 3 spheres from Ti</p>
+
+<ul>
+<li>this point is E</li>
+</ul></li>
+<li><p>so Ei is now simple translation of E (inverse from the Ji translation)</p></li>
+</ol>
+
+<p>PS. I hope you know how to compute angles when you have all the points ...</p>
+",2521214,1,1,26632855,"After you plug (7) and (8) into (1), you get a quadratic equation, you simply need to solve it using `z=(-b+-sqrt(b^2-4*a*c))/(2*a)` where `a` is the coefficient of `z^2`, `b` of `z` and `c` is the free coefficient, then plug `z` into (7) and (8) to get `x` and `y`. I think the length changes because not any set of angles is viable i.e. in real life you cannot change one angle without changing the other two correspondingly.",fp
+1808,18210709,Unable to run new .cfg on PlayerStage,|c|ubuntu-12.04|robotics|player-stage|,"<p>I have successfully installed Player/Stage on Ubuntu 12.04 using this blog:
+<a href=""http://www.cnblogs.com/kevinGuo/archive/2012/05/03/2480077.html"" rel=""nofollow"">http://www.cnblogs.com/kevinGuo/archive/2012/05/03/2480077.html</a></p>
+
+<p><code>player simple.cfg</code> is working fine and is showing the desired results as shown in the above mentioned blog.</p>
+
+<p>Then, I was trying to run empty.cfg after creating empty.cfg and empty.world as explained in this tutorial:
+<a href=""http://www-users.cs.york.ac.uk/jowen/player/playerstage-tutorial-manual.pdf"" rel=""nofollow"">http://www-users.cs.york.ac.uk/jowen/player/playerstage-tutorial-manual.pdf</a></p>
+
+<p>But, it is showing this error:</p>
+
+<pre><code>cs246@cs246:~/src/Stage-3.2.2-Source/worlds$ player empty.cfg 
+Registering driver
+Player v.3.0.2
+
+* Part of the Player/Stage/Gazebo Project [http://playerstage.sourceforge.net].
+* Copyright (C) 2000 - 2009 Brian Gerkey, Richard Vaughan, Andrew Howard,
+* Nate Koenig, and contributors. Released under the GNU General Public License.
+* Player comes with ABSOLUTELY NO WARRANTY.  This is free software, and you
+* are welcome to redistribute it under certain conditions; see COPYING
+* for details.
+
+error   : Failed to load plugin libstageplugin.
+error   : libtool reports error: file not found
+error   : plugin search path: /home/cs246/src/Stage-3.2.2-Source/worlds:.:/usr/local/lib/
+error   : failed to load plugin: libstageplugin
+error   : failed to parse config file empty.cfg driver blocks
+</code></pre>
+
+<p>Can anyone help me in resolving it.</p>
+",8/13/2013 13:39,,140,0,0,1,,2668817,,8/9/2013 18:03,58,,,,,,,,fp
+1865,20167162,Which robotic simulation tool fits my need,|visualization|simulation|robotics|avatar|,"<p>Im trying to analyze which software products out there, that could fit into a product idea. </p>
+
+<ul>
+<li>I want a robotic simulation tool, that can show a model of a
+selfdrawn robot. </li>
+<li>It shall be possible to control the selfdrawn robot    through a
+programming interface. C,java,c++.. or maybe multiple or a selfdescribed
+programming interface.</li>
+<li>In order to make this product easy to use, the programming interface
+should be simple for the user and the execution of the code on the
+drawn model aswell.</li>
+<li>It has to run on windows.</li>
+</ul>
+
+<p>Eather im looking for a tool that can do all these things, or im looking for a tool that is easy to change/extend for the wanted look and feel. </p>
+
+<p>Plaese help if you have some good tips within this subject.</p>
+",11/23/2013 19:58,20863603,105,1,0,0,,3025756,,11/23/2013 19:37,6,20863603,"<p>It depends on what you want to do.  </p>
+
+<p>""ROS"" is a good simulation environment and it can provide your robot with simulated sensor data from the simulation.  So for example you place a wall in the simulation and your robot can get maybe laser scanner or ultrasound distance from the wall.   Of cousre you'd have to write the model for the sensor but ROS can provide updates to the wall to sensor distance an as the robot drives around.</p>
+
+<p>ROS is neat because it can run on multiple computers and passes data between nodes.  Some no=des can be simulations some can be inside real robot hardware.</p>
+
+<p>If your ""robot"" is less sophisticated and really is just a remote control object your user directly controls then look at a game environment.  ""jmonkey"" is one and can animate game characters in a ""world"" you build.   If your robot can be represented by a video game character money would work.  It runs and every platform from Windows to Android.</p>
+
+<p>Both are big software systems with learning curves.</p>
+
+<p>BTW anything will run on Windows in the have VMware installed ;-)</p>
+",3150208,1,0,,,fp
+1891,21044101,How to entegrate existing .m file into the simulink .mdl file,|matlab|model|simulink|robotics|,"<p>I'm using robotic toolbox by Peter Corke in Matlab .  I have .m file for puma560 robot (it is for robot trajectory. The robot follows given path). When I try to use  for ex.  ""sl_ctorque""  simulink file which is in robotic toolbox(it is about computed torque method) , I couldn't entegrate my .m file into the simulink file. My .m file is given below. So if anyone know how to do this idea, I'd appreciate it. Thanks!</p>
+
+<pre><code>clear;clc; 
+mdl_puma560    %to create puma robot
+
+for type=1:3  % main for loop. It turns 3 times. At first, it sets the path
+    %           to x-y plane and draw the robot, at second for y-z plane
+    %           and then for x-z plane
+
+  if type==1 
+
+% The path of robot for x-y plane    
+path=[0 0 1;0 0 0;0 2 0 ;0.5 1 0 ;1 2 0;1 0 0;1.5 0 1;1.5 0 0;
+      1.5 2 0;2.2 2 0;2.5 1.6 0;2.5 0.4 0;2.2 0 0;1.5 0 0;0 0 1];
+
+
+ elseif type==2   
+
+% Same thing as first part    
+path=[-0.5 0 0;0 0 0;0 0 1;0 -0.5 0.5;0 -1 1;0 -1 0;-0.5 -1.2 0;0 -1.2 0;
+    0 -1.2 1;0 -1.7 1;0 -2 0.7;0 -2 0.3;0 -1.7 0;0 -1.2 0];
+
+
+ elseif type==3
+
+ % Same thing as first and second part     
+path=[0 -0.5 0;0 0 0;0 0 1;0.5 0 0.5;1 0 1;1 0 0;1.3 -0.5 0;1.3 0 0;
+    1.3 0 1;1.7 0 1;2 0 0.7;2 0 0.3;1.7 0 0;1.3 0 0];
+
+
+  end
+
+
+
+% I created a trajectory
+
+p=mstraj(path, [15 15 15], [], [1 0 1], 0.02 , 0.2);
+
+% [15 15 15] means the maximum speed in x,y,z directions.
+% [1 0 1] means the initial coordinates
+% 0.02 means acceleration time
+% 0.2 means smoothness of robot
+
+
+numrows(p)*0.2;    % 200 ms sample interval
+Tp=transl(0.1*p);  % Scale factor of robot
+Tp=homtrans( transl(0.4,0,0),Tp);  % Origin of the letter
+q=p560.ikine6s(Tp);   % The inverse kinematic
+
+
+for i=1:length(q)
+% q matrix has 280 rows and 6 columns. So this for loop turns 280 times
+% At every turns , it plots one part of movement. q(1,:), q(2,:), ...  
+
+    p560.plot(q(i,:))
+
+
+end
+
+end
+</code></pre>
+",1/10/2014 12:12,21045432,1209,1,3,2,,3177900,,1/9/2014 14:14,14,21045432,"<p>You need to write your m file as a function and then use the <strong>MATLAB Function Block</strong>.
+The MATLAB Function block allows you to add MATLAB® functions to Simulink® models for deployment to desktop and embedded processors. This capability is useful for coding algorithms that are better stated in the textual language of the MATLAB software than in the graphical language of the Simulink product. </p>
+
+<p><img src=""https://i.stack.imgur.com/iwoAA.png"" alt=""enter image description here""></p>
+
+<p>Then you can open the block as paste your function:</p>
+
+<p><img src=""https://i.stack.imgur.com/fjGtl.png"" alt=""enter image description here""></p>
+
+<p>to see an example check out <a href=""http://www.mathworks.com/help/simulink/ug/creating-an-example-model-that-uses-a-matlab-function-block.html"" rel=""nofollow noreferrer"">this page</a>.</p>
+",1926629,1,0,31642350,"the way it was asked, it sounded as it was specific to the robotics toolbox. See NKN's answer for integrate MATLAB functions in Simulink.",fp
+1895,21061463,Entegrating existing .mfile to the .mdl simulink,|matlab|simulink|robotics|,"<p>I convert my .m file above as a function like below ,  my input is nothing and my output is q. But I have a problem. When I put my created function block to the simulink and connect to the display screen , matlab gives me some errors like;</p>
+
+<p>*<strong>Try and catch are not supported for code generation.
+Function 'tb_optparse.m' (#80.5667.6083), line 157, column 25:
+""try""
+Launch diagnostic report.*</strong></p>
+
+<p><em><strong>Function call failed.
+Function 'MATLAB Function' (#94.848.897), line 37, column 3:
+""mstraj(path, [15 15 15], [], [1 0 1], 0.02 , 0.2)""
+Launch diagnostic report.</em></strong></p>
+
+<p><strong>Errors occurred during parsing of MATLAB function 'MATLAB Function'(#93)</strong> </p>
+
+<p>How can I fix these errors? Thanks</p>
+
+<pre><code>function output = fcn()
+
+
+%mdl_puma560    %to create puma robot
+
+for type=1:3  % main for loop. It turns 3 times. At first, it sets the path
+    %           to x-y plane and draw the robot, at second for y-z plane
+    %           and then for x-z plane
+
+  if type==1 
+
+% The path of robot for x-y plane    
+path=[0 0 1;0 0 0;0 2 0 ;0.5 1 0 ;1 2 0;1 0 0;1.5 0 1;1.5 0 0;
+      1.5 2 0;2.2 2 0;2.5 1.6 0;2.5 0.4 0;2.2 0 0;1.5 0 0;0 0 1];
+
+
+ elseif type==2   
+
+% Same thing as first part    
+path=[-0.5 0 0;0 0 0;0 0 1;0 -0.5 0.5;0 -1 1;0 -1 0;-0.5 -1.2 0;0 -1.2 0;
+    0 -1.2 1;0 -1.7 1;0 -2 0.7;0 -2 0.3;0 -1.7 0;0 -1.2 0];
+
+
+ elseif type==3
+
+ % Same thing as first and second part     
+path=[0 -0.5 0;0 0 0;0 0 1;0.5 0 0.5;1 0 1;1 0 0;1.3 -0.5 0;1.3 0 0;
+    1.3 0 1;1.7 0 1;2 0 0.7;2 0 0.3;1.7 0 0;1.3 0 0];
+
+
+  end
+
+
+
+% I created a trajectory
+
+p=mstraj(path, [15 15 15], [], [1 0 1], 0.02 , 0.2);
+
+% [15 15 15] means the maximum speed in x,y,z directions.
+% [1 0 1] means the initial coordinates
+% 0.02 means acceleration time
+% 0.2 means smoothness of robot
+
+
+numrows(p)*0.2;    % 200 ms sample interval
+Tp=transl(0.1*p);  % Scale factor of robot
+Tp=homtrans( transl(0.4,0,0),Tp);  % Origin of the letter
+q=p560.ikine6s(Tp) ;  % The inverse kinematic
+
+
+% for i=1:length(q)
+% %q matrix has 280 rows and 6 columns. So this for loop turns 280 times
+% % At every turns , it plots one part of movement. q(1,:), q(2,:), ...  
+% 
+%     p560.plot(q(i,:))
+% 
+% end
+
+end
+
+output=q;
+</code></pre>
+",1/11/2014 11:02,,322,1,0,-1,,3177900,,1/9/2014 14:14,14,21065743,"<p>Well as the error message says, it looks like your function <code>mstraj</code> is calling <code>try/catch</code> which isn't supported for code generation (MATLAB functions in Simulink are first converted to C code when you run the model).</p>
+
+<p>Have a look at <a href=""http://www.mathworks.co.uk/help/simulink/ug/calling-matlab-functions.html"" rel=""nofollow"">Call MATLAB Functions</a> in the documentation for ways to work around this using <code>coder.extrinsic</code>. Extrinsic functions return data of type <code>mxArray</code> so you will need to convert it to whatever the data type of <code>p</code> (see <strong>Converting mxArrays to Known Types</strong> in the documentation page above).</p>
+
+<p>In you case, it would probably look something like:</p>
+
+<pre><code>function output = fcn()
+
+coder.extrinsic('mstraj');
+
+% etc...
+
+p = 0; % Define p as a scalar of type double (change to required data type if not appropriate)
+p=mstraj(path, [15 15 15], [], [1 0 1], 0.02 , 0.2);
+
+% etc...
+</code></pre>
+",2257388,0,0,,,fp
+1899,21178005,Find all polygons formed by intersections of lines,|geometry|computational-geometry|robotics|maze|,"<p>I have a maze described by walls as line segments (no given order). Given a point, I need to determine whether its inside the maze or no. Everything is in the Cartezian plane(no discretization).</p>
+
+<hr>
+
+<p>My idea is to transform the problem as follows:</p>
+
+<p>Given some line segments in the plane, find all polygons with vertices in the endpoints of the given segments and with sides lying on the segments (you can see in the image below that you can't assume the sides will form a subset of segments).</p>
+
+<p>And then just check: if a point is only inside one polygon, then its inside of the maze, otherwise no.</p>
+
+<hr>
+
+<p>The solution I have in mind would be: hash endpoints and line intersections, and then look for loops.</p>
+
+<p>Any other suggestions?
+Thanks!</p>
+
+<p>(ignore the colors in the image)
+<img src=""https://i.stack.imgur.com/vml8K.png"" alt=""enter image description here""></p>
+",1/17/2014 4:36,,435,1,0,0,,1993650,"Cambridge, USA",1/19/2013 21:46,92,21181588,"<p>It is enough to find boundary (outer) polygon. That can be done by finding one point on the boundary and than traversing from that point by segments in one direction. If there are more possibilities to go than choose 'outer' one. Algorithm can be described:</p>
+
+<pre><code>find boundary point
+find first direction to go and go to that point
+while current point is different than fist one
+  find next direction to go
+  go to next point
+</code></pre>
+
+<p>First point can be find as point with highest Y coordinate, if there are more like that than one with lowest X among them. We can call it upper-left point.</p>
+
+<p>First direction to go: first point is connected to other points and that points have &lt;= Y coordinate, what means that connection segments are below first point. Choose right-most of them.</p>
+
+<p>Next direction to go: current point is reached by some (incoming) segment, next segment to go is furthest away in positive direction from incoming one, what is same as first segment in clock-wise direction from incoming segment.</p>
+",494076,0,2,,,fp
+1915,21744642,Is there any Arduino Virtual Simulator for Desktop PC?,|serial-port|arduino|virtual|robotics|,"<p>If I dont have any <a href=""http://arduino.cc/en/Main/ArduinoBoardUno"" rel=""nofollow"">arduino</a> device, is it possible to simulate code virtually in my Desktop PC?
+That means I want test my code.</p>
+",2/13/2014 3:32,21752931,4761,1,0,0,,797196,Bangladesh,6/14/2011 7:31,114,21752931,"<p>there is <a href=""http://web.simuino.com/"" rel=""nofollow"">simuino</a> this is free
+and <a href=""http://www.virtualbreadboard.com/"" rel=""nofollow"">Virtual Breadbord</a> paid</p>
+",616100,0,0,,,fp
+1995,24158126,Factors to find weight painting formula for Auto-Rigging,|algorithm|opengl|animation|artificial-intelligence|robotics|,"<p>I'm trying to re-implement Auto-rigging for human skeletons. (similar to Blender and Mixamo's)</p>
+
+<p>For each vertex in the human skin, I've to find the joints that affect this vertex. (I could do this.)</p>
+
+<p>Now I've to find how much each joint should affect this vertex. (assigning weights for each vertex)</p>
+
+<p>The human skin can be represented by an array of traingles each containing 3 vertices and the joints can be represented by array of vertices.</p>
+
+<p>Note that each vertex can be affected by n number of joints(n>=1) which means no vertex should remain un-weighted.</p>
+
+<p>I can manage to construct a connected graph of the skin. I don't know how to assign weights for each vertex from this graph. Help/Suggestions?</p>
+",6/11/2014 8:29,,397,1,4,3,0,,,,,24352306,"<p>This may explain your case. The algorithm is too big. For me it explains the things well. Have a look </p>
+
+<p><a href=""http://people.csail.mit.edu/ibaran/papers/2007-SIGGRAPH-Pinocchio.pdf"" rel=""nofollow"">http://people.csail.mit.edu/ibaran/papers/2007-SIGGRAPH-Pinocchio.pdf</a></p>
+",3219193,0,1,37283598,"I still think it's too big. Just my opinion, though, perhaps someone else will find the time and will to answer you.",fp
+2294,31620428,Software to model mechanical linkages,|simulation|robotics|kinematics|,"<p>I recently got interested in Theo Jensen's strandbeest, (If you haven't seen them before look them up! Such incredible engineering.) and I want to mess around with the design he has for his strandbeests' legs. However doing straight forward kinematics is waaay over my head for something like this.</p>
+
+<p>Here's what I'm trying to model:
+<a href=""https://upload.wikimedia.org/wikipedia/commons/6/61/Strandbeest-Walking-Animation.gif"" rel=""nofollow"">https://upload.wikimedia.org/wikipedia/commons/6/61/Strandbeest-Walking-Animation.gif</a>
+(Can't link directly because I don't have enough reputation :/)</p>
+
+<p>All I really need to know is the path of the 'foot', so something visual isn't necessary.</p>
+
+<p>The final goal is to be able to apply an evolutionary algorithm to it and see if I come up with the same linkage lengths as Theo did, or maybe improve them somehow, so if I there was some software that allowed scripts to be run, that'd be ideal.</p>
+
+<p>Sorry if the question is kind of vague, I'm not all that sure what I'm looking for. Even if there is some maths/engineering topic that would make this easier I'd love to learn.</p>
+
+<p>Thanks!
+-Oisin.</p>
+",7/24/2015 21:58,31620610,676,1,0,1,,2254882,,4/7/2013 15:55,10,31620610,"<p>Well, I searched for Physics Engine, and found a promising result.</p>
+
+<p><strong>Open Dynamics Engine</strong> seems to be an open source physics engine that could fit your needs.</p>
+
+<blockquote>
+  <p>The Open Dynamics Engine (ODE) is a free, industrial quality library for simulating articulated rigid body dynamics. Proven applications include simulating ground vehicles, legged creatures, and moving objects in VR environments. It is fast, flexible and robust, and has built-in collision detection.</p>
+</blockquote>
+
+<p>Source: <a href=""http://ode-wiki.org/wiki/index.php?title=Manual:_Introduction"" rel=""nofollow"">Wiki Introduction</a></p>
+
+<p>There site is <a href=""http://ode.org/"" rel=""nofollow"">ode.org</a>, and it looks like you should be able to evaluate it from there. ""[S]imulating rigid body dynamics"" is what you want, right? From what I understand, it ought to fit the bill. C++ is probably a reasonable language to attempt this in. I presume you have previous programming experience? This is not what I would consider a beginner's project.</p>
+
+<p>When you get to the evolution, search for Genetic Algorithms. They're frequently used for optimization, and could help you out considerably. Another thing to consider is what you're actually optimizing for (lowest wind speed to function, fasted movement, etc).</p>
+",4430622,1,2,,,fp
+2508,36960242,How does this piece of code verify a checksum?,|java|checksum|robotics|,"<p><strong>Context:</strong>
+My teacher ported the Darwin-OP Framework from C++ to Java, allowing students like me to use it without having to master C++. Darwin has two controllers: the main controller runs Linux and runs the java code, and has a serial connection with the sub controller (a microcontroller) that controls all the sensors/servo's/transducers etc.</p>
+
+<p>Darwin uses a motion.bin file in which it stores a list of 256 pages. Each page is 512 (8 * 64) bytes, and consists of 7 steps (64 bytes each) plus a page header (also 64 bytes). Each steps contains positions (a value between 0-4095) for the servo to take. So for Darwin to move his arm, he goes through (&lt;7) amount of steps until he finishes the final step.</p>
+
+<p>Inside the page header there is a checksum of 1 byte. The Java code contains two methods in which the checksum is calculated and verified:</p>
+
+<pre><code>private static boolean VerifyChecksum(PAGE page) {
+    byte checksum = (byte)0x00;
+    byte[] pagebytes = page.GetBytes();
+    for (int i = 0; i &lt; pagebytes.length; i++) {
+        checksum += pagebytes[i];
+    }
+    if (checksum != (byte)0xFF) {
+        return false;
+    }
+    return true;
+}
+
+private static void SetChecksum(PAGE page) {
+    byte checksum = (byte)0x00;
+    byte[] pagebytes = page.GetBytes();
+    page.header.checksum = (byte)0x00;
+    for (int i = 0; i &lt; pagebytes.length; i++) {
+        checksum += pagebytes[i];
+    }
+    page.header.checksum = (byte)((byte)0xFF - checksum);
+} 
+</code></pre>
+
+<p><strong>Main question:</strong> Can someone explain how the checksum is verified? I don't understand why it checks <code>checksum != (byte)0xFF</code>. Why not just compare the calculated <code>checksum</code> to <code>page.header.checksum</code>? </p>
+
+<p><strong>Bonus question:</strong> Why check the file integrity in the first place? Would it be that common for a page inside a .bin file to become corrupted? </p>
+",4/30/2016 21:04,36960381,1199,2,0,1,,1534664,,7/18/2012 11:46,824,36960381,"<p>To compute the checksum, you perform an XOR of all the bytes in the file, then return 0xFF minus that value.<br>
+The file passed in to the checksum method is the final file with 0x00 in the checksum position.</p>
+
+<pre><code>sum = 0xFF - XOR(file)
+</code></pre>
+
+<p>For binary, addition is the same as XOR, hence the line <code>checksum += pagebytes[i];</code></p>
+
+<p>Your professor's verification method, will XOR the entire file. Which is to say, the original argument to the checksum method, and an additional byte which is the output of the checksum method.</p>
+
+<p>So the expected result is then:</p>
+
+<pre><code>XOR(file, sum)
+= XOR(file) + sum
+= XOR(file) + 0xFF - XOR(file)
+= 0xFF
+</code></pre>
+",103959,2,3,,,fp
+2561,39203597,How to order one dimensional matrices base on values,|matlab|matrix|geometry|coordinate-systems|robotics|,"<p>I want to determine a point in space by geometry and I have math computations that gives me several theta values. After evaluating the theta values, I could get N 1 x 3 dimension matrix where N is the number of theta evaluated. Since I have my targeted point, I only need to decide which of the matrices is closest to the target with adequate focus on the three coordinates (x,y,z).
+Take a view of the analysis in the figure below:</p>
+
+<p><a href=""https://i.stack.imgur.com/elRC7.png"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/elRC7.png"" alt=""Fig 1""></a>
+<br><sup><em>Fig 1: Determining Closest Point with all points having minimal error</em></sup></p>
+
+<p>It can easily be seen that the third matrix is closest using <code>sum(abs(Matrix[x,y,z])).</code> However, if the method is applied on another figure given below, obviously, the result is wrong. </p>
+
+<p><a href=""https://i.stack.imgur.com/SVfq5.png"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/SVfq5.png"" alt=""Fig 2""></a>
+<br><sup><em>Fig 2: One Point has closest values with 2-axes of the reference point</em></sup></p>
+
+<p>Looking at point B, it is closer to the reference point on y-,z- axes but just that it strayed greatly on x-axis.</p>
+
+<p>So how can I evaluate the matrices and select the closest one to point of reference and adequate emphasis will be on error differences in all coordinates (x,y,z)?</p>
+",8/29/2016 10:05,39809301,61,1,1,1,,6766411,,8/28/2016 7:34,13,39809301,"<p>If your results is in terms of (x,y,z), why don't evaluate the euclidean distance of each matrix you have obtained from the reference point?</p>
+
+<p>Sort of matlab code:</p>
+
+<pre><code>Ref_point = [48.98, 20.56, -1.44];
+Curr_point = [x,y,z];
+Xd = (x-Ref_point(1))^2 ;
+Yd = (y-Ref_point(2))^2 ;
+Zd = (z-Ref_point(3))^2 ;
+distance = sqrt(Xd + Yd + Zd);
+%find the minimum distance
+</code></pre>
+",6564973,0,0,65765849,"I don't think an ordering is really what you need.  I think what you're really asking about is ""spatial indexing"" (https://en.wikipedia.org/wiki/Spatial_database#Spatial_index).  For example: https://en.wikipedia.org/wiki/R-tree.",fp
+2567,39688964,Robots moving boxes,|c#|robot|,"<p>This is an exam question I couldn't solve and I need to solve it because I can face it in my next exam again ( and it decides whether you get a D or an A).
+<br>
+<br><b>The problem:</b><br><br></p>
+<blockquote>
+<p>&quot;Two robots R1 and R2 carry boxes around a factory. R1 can carry 1 or 3 or 5 boxes at once, whereas R2 can carry 2 or 4 boxes at once. If there are 34 boxes, write a C# program that finds every movement combination of robot R1 and R2 carrying all the boxes. The movements occur in such a way that one robot may move after the other one (R1 gets the boxes, carries them in the required destination, and then R2 can go next). Also show which combination allows carrying all the boxes with minimal movement.</p>
+<p>Possible combination: (R1=5,R2=4), (R1=3,R2=4), (R1=3,R2=2), (R1=3,R2=2), (R1=3,R2=2), (R1=1,R2=2)&quot;</p>
+</blockquote>
+<p>The problem is that <b>I don't even know where to start</b>. I wrote some possible combinations hoping that I might get a clue to start somewhere. I tried a program, but it didn't work (printed the numbers of boxes until the number of boxes after being taken from the robots was not negative: boxes-(r1+r2)&gt;=0, which is one specific case out of every possible combination)</p>
+<p>I found a program from an older student who sent me the following windows form code:<br></p>
+<pre><code>            private void button1_Click(object sender, EventArgs e)
+    {
+        int Min = 34;
+        string stMin = &quot;&quot;;
+        for(int i1=0;i1&lt;=34;i1++)
+            for (int i2 = 0; i2 &lt;= 34; i2++)
+                for (int i3 = 0; i3 &lt;= 34; i3++)
+                    for (int j1 = 0; j1 &lt;= 34; j1++)
+                        for (int j2 = 0; j2 &lt;= 34; j2++)
+                            for (int j3 = 0; j3 &lt;= 34; j3++)
+                            {
+                                if (i1 * 3 + i2 * 4 + i3 * 5 + j1 * 1 + j2 * 2 + j3 * 3 == 34 &amp;&amp; i1 &gt; 0 &amp;&amp; i2 &gt; 0 &amp;&amp; i3 &gt; 0 &amp;&amp; j1 &gt; 0 &amp;&amp; j2 &gt; 0 &amp;&amp; j3 &gt; 0 &amp;&amp; (i1 + i2 + i3 == j1 + j2 + j3))
+                                {
+                                    if(i1+i2+i3+j1+j2+j3&lt;Min)
+                                    {
+                                        Min = i1 + i2 + i3 + j1 + j2 + j3;
+                                        stMin = &quot;R1 =&gt;&quot; + i1 + &quot; x 3, &quot; + i2 + &quot; x 4 &quot; + i3 + &quot; x 5 &quot; + &quot;R2 =&gt;&quot; + j1
+                                            + &quot; x 1 &quot; + j2 + &quot; x 2 &quot; + j3 + &quot; x 3 &quot;; 
+                                    }
+                                    string st = &quot;R1 =&gt;&quot; + i1 + &quot; x 3, &quot; + i2 + &quot; x 4 &quot; + i3 + &quot; x 5 &quot; + &quot;R2 =&gt;&quot; + j1
+                                            + &quot; x 1 &quot; + j2 + &quot; x 2 &quot; + j3 + &quot; x 3 &quot;;
+                                    listBox1.Items.Add(st);
+                                }
+                                listBox1.Items.Add(&quot;==========Min=========&quot;);
+                                listBox1.Items.Add(stMin);
+                            }
+    }
+</code></pre>
+<p>I analyzed it for 3 days but I don't know how this code works. Asked him for explanation but he says it's not his code, doesn't remember where he got it nor knows if it even works.
+I also asked friends and colleagues but no one knows how to solve it.</p>
+<p>I would appreciate if someone could give me an idea or a piece of code to start with the solution (writing the full code would be great, and no I won't copy paste it into my exam, I will look up to understand every step of the code).
+<br>Side info: I am a novice programmer. My professor taugh us basic stuff like reading input from users, using loops and creating classes. My self-learning didn't reach such a complex problem, so please explain your solution as deep and specific as possible.</p>
+<p>Thank you in advance</p>
+",9/25/2016 16:05,39804790,575,1,10,0,0,5749161,,1/5/2016 18:47,11,39804790,"<p>Well, since you are still curious let's solve the probem.</p>
+
+<p>It is a classic one and as usual the first thing is to be very clear about the conditions:</p>
+
+<ul>
+<li><p>The are these possible combination: (R1=5,R2=4), (R1=3,R2=4), (R1=3,R2=2), (R1=3,R2=2), (R1=3,R2=2), (R1=1,R2=2)</p></li>
+<li><p>The starting box count is 34</p></li>
+</ul>
+
+<p>This implies that we are <strong>done</strong> when all boxes are gone and also that we are on an <strong>invalid</strong> combination of moves if we have 1 or 2 boxes left, since these can't be moved by any of our combinations.</p>
+
+<p>Let's next create a nice data structure to hold the allowed combinations so we can use it in a loop; let's call those <em>'full moves'</em>:</p>
+
+<pre><code>Dictionary&lt;string, int&gt; fullMoves = new Dictionary&lt;string, int&gt;();
+</code></pre>
+
+<p>We will store the moves as strings and will also store the total count of boxes moved by each combination..</p>
+
+<p>Next we need to fill the data structure:</p>
+
+<pre><code>for (int i = 1; i &lt;= 5; i += 2)
+    for (int j = 2; j &lt;= 4; j += 2)
+        fullMoves.Add(i + ""-"" + j + ""  "", i + j);
+</code></pre>
+
+<p>Test this with the debugger to see that is works!</p>
+
+<p>Now let's get down to business: We need a function to do the real work.</p>
+
+<p>As I have explained in my comments this is a typical problem for a <strong>recursive</strong> solution. All the choices create a tree of paths to take (i.e. sequences of full moves) and trees (almost) always call for a recursive aproach. It will call itself over and over again, passing out the current state of affairs until is is done, i.e. has reached a 'halting condition'.</p>
+
+<p>The abstract goal is this:</p>
+
+<ul>
+<li>test the situation, and if it is 
+
+<ul>
+<li>invalid, discard it</li>
+<li>finished, add to a list of solutions</li>
+<li>not done: do work (add new options) and repeat for all current paths</li>
+</ul></li>
+</ul>
+
+<p>Here is a piece of code that does just that. It passes on both a list of current paths and of correct solutions found so far. Also the new path and the count of boxes still left. </p>
+
+<pre><code>void moveBoxes(int count, string curMove, List&lt;string&gt; curMoveList, List&lt;string&gt; solutions)
+{
+    // test for halting conditions:
+    // 1) count == 0: we're done with this solution
+    if (count == 0)
+    {
+        solutions.Add(curMove);
+        return;
+    }
+    // 2) less than three boxes: invalid solution:
+    else if (count &lt; 3)
+    {
+        curMoveList.Remove(curMove);
+        return;
+    }
+    // keep moving..:
+    foreach (string cm in curMoveList)
+        foreach (string k in fullMoves.Keys)
+        {
+            int bc = count - fullMoves[k];
+            moveBoxes( bc, curMove + k,  curMoveList, solutions );
+        }
+}
+</code></pre>
+
+<p>You can see that is is rather short. This is one feature often found in recursive solution. Another is that it takes a little practice to wrap your head around. Look <a href=""https://stackoverflow.com/questions/30272291/how-can-i-read-listview-column-headers-and-their-values/30272730?s=2|0.2044#30272730"">here for a simpler example</a>, which collects <code>TextBoxes</code> from nested containers in a form! </p>
+
+<p>Let's put it to the test! Here is a testbed that runs the code for a number of box numbers and writes out to the console  how many solutions you get for each starting number. The solution for the last starting number (34) is also written out to a <code>TextBox</code>.</p>
+
+<pre><code>List&lt;string&gt; solutions = new List&lt;string&gt;();
+List&lt;string&gt; curMoveList = new List&lt;string&gt;();
+for (int ccc = 10; ccc &lt;= 34; ccc++)
+{
+    solutions = new List&lt;string&gt;();
+    curMoveList = new List&lt;string&gt;(); 
+
+    int count = ccc;
+    curMoveList.Add("""");
+
+    moveBoxes(count, """", curMoveList, solutions);
+
+    Console.WriteLine(ccc + "" boxes can be moved in "" + solutions.Count + "" ways.\r\n"");
+}
+StringBuilder sb = new StringBuilder();
+foreach (string s in solutions) sb.Append(s.Length / 5 + "" moves:  "" + s + ""\r\n"");
+textBox1.Text = sb.ToString();
+</code></pre>
+
+<p>Here is the console output:</p>
+
+<blockquote>
+  <p>10 boxes can be moved in 8 ways.<br> 11 boxes can be moved in 6
+  ways.<br> 12 boxes can be moved in 11 ways.<br> 13 boxes can be moved
+  in 18 ways.<br> 14 boxes can be moved in 16 ways.<br> 15 boxes can be
+  moved in 36 ways.<br> 16 boxes can be moved in 36 ways.<br> 17 boxes
+  can be moved in 58 ways.<br> 18 boxes can be moved in 86 ways.<br> 19
+  boxes can be moved in 98 ways.<br> 20 boxes can be moved in 172
+  ways.<br> 21 boxes can be moved in 201 ways.<br> 22 boxes can be moved
+  in 304 ways.<br> 23 boxes can be moved in 432 ways.<br> 24 boxes can
+  be moved in 549 ways.<br> 25 boxes can be moved in 856 ways.<br> 26
+  boxes can be moved in 1088 ways.<br> 27 boxes can be moved in 1587
+  ways.<br> 28 boxes can be moved in 2220 ways.<br> 29 boxes can be
+  moved in 2966 ways.<br> 30 boxes can be moved in 4364 ways.<br> 31
+  boxes can be moved in 5798 ways.<br> 32 boxes can be moved in 8284
+  ways.<br> 33 boxes can be moved in 11529 ways.<br> 34 boxes can be
+  moved in 15760 ways.<br></p>
+</blockquote>
+
+<p>Maje sure to collect the output in a <code>Stringbuilder</code>; creating <code>15k</code> strings is expensive and adding them directly to a <code>TextBox</code> take a <strong>real long</strong> time..</p>
+
+<p><strong>Bonus* questions:</strong> </p>
+
+<ul>
+<li>Why do I divide by 5 at the end ?-)</li>
+<li>Why is the number of solutions <strong>not</strong> always increasing ?-)</li>
+</ul>
+",3152130,2,6,66679497,"Yes. More hints: you know that there are 6 full moves. You can combine them in a string. You need a List<string> next. . For each recursion the recursive function passes on the curren t list and the current count of remaining boxes. And it branches out be adding 6 more string, expanding the current one by each of the 6 full moves. it termnates when less than 3 boxes are left. 0 or 1 os ok, 2 is an illegal result, which must be deleted. finally count the lengths of the list strings. for easier coding put the six moves with a name and their box count into a Dictionary<string, int>..",fp
+2579,39719865,ROS custom message and numpy arrays,|numpy|ros|robotics|,"<p>I want custom message to contain numpy arrays(I mean creation of .msg file and compiling it).
+As tutorial said we have to use <code>numpy_msg(type)</code> wrapper to be able to send numpy arrays. But is it possible to include it into my own .msg file?</p>
+",9/27/2016 8:33,39743101,2345,1,0,0,,2157254,,3/11/2013 14:43,178,39743101,"<p>The message file doesn't change, you still use the ROS-style arrays (e.g., <code>float32[]</code>).</p>
+<p>The <code>numpy_msg</code> wrapper just enables your publisher and subscribers to directly use numpy objects instead of having to do the conversion yourself.</p>
+<p>Make sure to watch out for these warnings:</p>
+<blockquote>
+<p>all of your array data must be initialized as numpy arrays</p>
+<p>every numerical array in the Message must be initialized with a numpy array of the correct data type.</p>
+</blockquote>
+",256798,1,0,,,fp
+2669,42251596,Analytic calculation of Jacobian derivative(second order kinematic differentials),|c++|robotics|,"<p>I need to calculate the time derivative of the Jacobian. I want to do it analytical, I cannot calculate it numerical. I calculate <code>J_i</code> with the scheme in respect of the Denavit-Hartenberg Parameters
+<code>J_i = [z_(i-1) 0]^T</code> if it is an linear-axis etc.</p>
+
+<p>I know need a simple method to come from this <code>J</code> to <code>dJ/dt</code>. Has anyone any experience with that problem? There is a formula with derivates <code>J_i</code>, but in this formula I do not know what the parameters define, but maybe someone knows what they are:</p>
+
+<p>linear axis:</p>
+
+<pre><code>J_i = [(w_(i-1) x z_(i-1))  0]^T
+rotation axis:
+J_i = [(w_(i-1) x z_(i-1)) x r_(i-1) + z_(i-1) x ( v_(i,n9 + w_(i-1) x r_(i-1))  (w_(i-1) x z_(i-1))]^T
+</code></pre>
+
+<p>Here <code>r_i-1</code> is the distance to the TCP. I don t know what <code>w_i-1</code> and <code>v_i,n</code> is. Any help or any different suggestion?</p>
+
+<p>Thank you guys </p>
+",2/15/2017 14:06,,108,0,2,0,,7357997,,12/30/2016 13:07,8,,,,,,71662335,It sounds like a question more suitable for http://math.stackexchange.com/,fp
+2724,42510907,Generate trajectories for 3 agents/robots with same tangent in specific point - MATLAB,|matlab|simulink|robotics|,"<p>I want to simulate the movements of 3 robots/agents in space and I would like to generate 3 different trajectories which have one constraint: in a certain time T the all the trajectories must have the same tangent.</p>
+<p>I want something like in the following picture:
+<a href=""https://i.stack.imgur.com/kBG1q.png"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/kBG1q.png"" alt=""enter image description here"" /></a></p>
+<p>I need to do it through MATLAB and/or SIMULINK.</p>
+",2/28/2017 14:08,,158,2,0,0,,2761849,,9/9/2013 14:54,630,42513113,"<p>I do not know if this is enough for what I need or not but I probably figured out something.</p>
+
+<p>What I did is to fit a polynomial to some points and constraining the derivative of the polynomial in a certain point to be equal to 0. </p>
+
+<p>I used the following function:
+<a href=""http://www.mathworks.com/matlabcentral/fileexchange/54207-polyfix-x-y-n-xfix-yfix-xder-dydx-"" rel=""nofollow noreferrer"">http://www.mathworks.com/matlabcentral/fileexchange/54207-polyfix-x-y-n-xfix-yfix-xder-dydx-</a></p>
+
+<p>It is pretty easy, but it saved me some work.</p>
+
+<p>And, if you try the following: </p>
+
+<pre><code>% point you want your functions to pass
+p1 = [1 1];
+p2 = [1 3];
+% First function
+x1 = linspace(0,4);
+y1 = linspace(0,4);  
+p = polyfix(x1,y1,degreePoly,p1(1),p1(2),[1],[0]);
+% p = [-0.0767    0.8290   -1.4277    1.6755];
+figure
+plot(x1,polyval(p,x1))
+xlim([0 3])
+ylim([0 3])
+grid on
+hold on
+
+% Second function
+x2 = linspace(0,4);  
+y2 = linspace(0,4);  
+p = polyfix(x2,y2,degreePoly,[1],[3],[1],[0])
+% p = [0.4984   -2.7132    3.9312    1.2836];
+plot(x2,polyval(p,x2))
+xlim([0 3])
+ylim([0 3])
+grid on
+</code></pre>
+
+<p>If you don't have the polyfix function and you don't want to download it you can try the same code commenting the polyfix lines:</p>
+
+<pre><code>  p = polyfix(x1,y1,degreePoly,p1(1),p1(2),[1],[0]);
+  p = polyfix(x2,y2,degreePoly,p2(1),p2(1),[1],[0]);
+</code></pre>
+
+<p>And uncommenting the lines:</p>
+
+<pre><code>  % p = [-0.0767    0.8290   -1.4277    1.6755];
+  % p = [0.4984   -2.7132    3.9312    1.2836];
+</code></pre>
+
+<p>You will get this:</p>
+
+<p><a href=""https://i.stack.imgur.com/rm3dd.jpg"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/rm3dd.jpg"" alt=""enter image description here""></a></p>
+
+<p>Now I will use this polynomial as a position (x,y) over time of my robots and I think I should be done. The x of the polynomial will be also the time, in this way I am sure that the robots will arrive in the 0-derivative point at the same time. </p>
+
+<p>What do you think? Does it make sense?
+Thanks again.</p>
+",2761849,0,0,,,fp
+2809,44874441,How to convert a rotation matrix to axis angle form?,|matlab|robotics|rotational-matrices|,"<pre><code>theta=acos((trace(R)-1)/2);
+if trace(R)==3
+    vec = [0 0 0];
+    axang=[0 0 0 0];
+    vec(1)=R(3,2)-R(2,3);
+    vec(2)=R(1,3)-R(3,1);
+    vec(3)=R(2,1)-R(1,2);
+    vec=(1/(2*sin(theta)))*vec;       
+    axang = [vec, theta];
+elseif trace(R)==-1
+    vec=[0 0 0;0 0 0];
+    axang=[0 0 0 0;0 0 0 0];
+    X=[0 0];
+    Y=[0 0];
+    Z=[0 0];
+    Y(1)=sqrt((R(2,2)+1)/2);
+    Y(2)=-Y(1);
+    X(1)=R(2,1)/(2*Y(1));
+    X(2)=R(2,1)/(2*Y(2));
+    Z(1)=R(2,3)/(2*Y(1));
+    Z(2)=R(2,3)/(2*Y(2));
+    vec(1,:)=[X(1) Y(1) Z(1)];
+    vec(2,:)=[X(2) Y(2) Z(2)];
+    axang(1,:)=[vec(1,:), theta];
+    axang(2,:)=[vec(2,:), theta];
+else 
+    vec = [0 0 0];
+    axang=[0 0 0 0];
+    vec(1)=R(3,2)-R(2,3);
+    vec(2)=R(1,3)-R(3,1);
+    vec(3)=R(2,1)-R(1,2);
+    vec=(1/(2*sin(theta)))*vec;       
+    axang = [vec, theta];
+end
+</code></pre>
+
+<p>So this was my code but it didn't work when the rotation matrix is </p>
+
+<pre><code>R = [-1 0  0;
+     0  -1 0;
+     0  0  1]
+</code></pre>
+
+<p>What is wrong with the code ? <code>axang</code> is a vector that stores axis in the first three positions and the angle in the last position.</p>
+",7/2/2017 19:28,,1987,3,2,1,0,8245200,"Kolkata, West Bengal, India",7/2/2017 18:59,19,44874714,"<p>It seems to me that you are looking for a conversion of a rotation matrix to quaternions, which is a built-in feature of Matlab if you installed the Robotics System Toolbox, i.e. <a href=""https://mathworks.com/help/robotics/ref/rotm2quat.html"" rel=""nofollow noreferrer""><code>rotm2quat</code>:</a></p>
+
+<pre><code>axang = rotm2quat(R)
+</code></pre>
+
+<p>Note that the output format is slightly different as <a href=""https://mathworks.com/help/robotics/ref/rotm2quat.html#bun2_xa-5"" rel=""nofollow noreferrer"">documented by Matlab</a>:</p>
+
+<blockquote>
+  <p>Unit quaternion, returned as an n-by-4 matrix containing n
+  quaternions. Each quaternion, one per row, is of the form q = [w x y
+  z], with w as the scalar number.</p>
+</blockquote>
+
+<p>Therefore you may need to swap the columns as follows:</p>
+
+<pre><code>axang = axang(:, [2 3 4 1]);
+</code></pre>
+",7621674,2,0,76729193,Aah. @SardarUsama thanks. New to stack overflow. Fixed my problem anyway. I was dividing by 0 in one case. You ended up helping me when you said 'Provide the relation between rotation matrix and axis angle form'. Thanks anyway.,fp
+2838,45709339,How to specify a column name and data item in Blueprism?,|c#|sql|vbscript|automation|robotics|,"<p>I'm using Blueprism to work with SQL queries and in my query, the column name is referenced like this <code>[columnName]</code> which is the right way and data items are referenced this way <code>[dataItem]</code>. </p>
+
+<p>For example, ""SELECT * FROM table WHERE <code>[columnName] = [dataItem]</code>"" </p>
+
+<p>The problem with the above is that the BluePrism reads both as columns and outputs an error saying dataItem is not a column name. How do I reference a data item in a query? Blueprism uses C#/VB Script.</p>
+",8/16/2017 9:03,45710964,997,1,0,2,,4633221,,3/4/2015 17:07,25,45710964,"<p>I figured out what the problem was. I had to append the sql query and the variable. </p>
+
+<p><code>""SELECT * FROM [Customer Details] WHERE [Name] ='"" &amp; [Test] &amp;  ""' ""</code></p>
+",4633221,0,0,,,fp
+2883,45944714,LED stripe should follow a person,|python|ros|led|robot|,"<p>I got a LED stripe connected with a RasPi3. The stripe should be installed at an automated guided vehicle as the human maschine interface. I would like to program the stripe so that there are ""eyes"" on it (e.g. <em>3 LED pixel on -- 5 LED pixel off -- 3 LED pixel on</em>), which follow automatically a person who is standing in front of it.</p>
+
+<p>Actually i have the methods:</p>
+
+<p><em>""set_eye_position(msg)""</em> which is able to set the LED pixel on an interval from -99 (completely left) to +99 (completely right) as input parameter (msg) and </p>
+
+<p><em>""set_eyes_to_coord(msg)""</em> which get two input parameters: The x and y coordinates of the person who is standing next to the vehicle. My approach is to set a coordinate system in the middle of the robot (see <a href=""https://i.stack.imgur.com/5KdZ8.jpg"" rel=""nofollow noreferrer"">Picture</a>)</p>
+
+<p><strong>The reason for my question is, if there is an opportunity to calculate the exact position of the LED pixel at given input parameters (x,y)?</strong></p>
+
+<p>I'm writing with Python and I'm quite a newbee in programming, so I would really appreciate if I get some ideas how to realize my issue.</p>
+
+<p>Thanks in advance</p>
+
+<hr>
+
+<p>EDIT:</p>
+
+<p>Assuming the approach from bendl <a href=""https://i.stack.imgur.com/7Ye4H.jpg"" rel=""nofollow noreferrer"">THIS</a> is the new setup, right? I do not really know what to do with the variables boe_left, boe_right and boe_dist. But maybe I'm just too dumb to understand it.</p>
+",8/29/2017 17:09,,83,1,4,-1,,8533129,Germany,8/29/2017 14:19,15,45945573,"<p>Here's something to get you started off:</p>
+
+<pre><code>def pixels_on(x, y):
+    assert y &gt; 0                                # person must be in front of robot
+    boe_left, boe_right = -10, 10               # x location of back of eye left, back of eye right
+    boe_dist = - 3                              # distance to back of eye
+
+    m_left =  (x - boe_left) / (y - boe_dist)   # slope from back of left eye to person
+    m_right =  (x - boe_right) / (y - boe_dist) # slope from back of right eye to person
+
+    c_left = boe_left - m_left * boe_dist       # center of front of left eye
+    c_right = boe_right - m_right * boe_dist    # center of front of right eye
+
+    return list(map(int, [c_left - 1, c_left, c_left + 1, c_right - 1, c_right, c_right + 1]))
+</code></pre>
+
+<p>This works by drawing a line between an fixed point you can think of as the imaginary back of the robot's eye and the person. The point where this line intersects the LED strip is the point that the eye should be centered. This solution makes the (naive) assumption that there is one LED per unit distance, so you'll have to make some changes, but we can't do EVERYTHING for you ;)</p>
+",5090081,0,2,79080390,"Being 'dumb' and 'new to programming' are two very different things. Don't start thinking you're dumb because someone with years of experience is better at something than yourself. I would also struggle with the code I gave you back when I was a newbie. That being said, have you solved your problem, or do you need more guidance?",fp
+2893,46136105,Getting a point in the local frame of a simulated robot,|robotics|game-development|coordinate-transformation|kinematics|homogenous-transformation|,"<p>This is for a robot simulation that I'm currently working on. 
+If you look at the diagram provided, you'll see two co-ordinate frames. <strong>Frame A</strong>, <strong>Frame B</strong>; and you will find a point <em>p</em>. </p>
+
+<p>Co-ordinate frame <strong>A</strong> is the world-frame, and frame <strong>B</strong> is the local frame for my robot (where the <em>x</em>-axis is the heading-direction of the robot, as per convention). The robot is able to rotate and drive around in the world.</p>
+
+<p>My goal here is to find the point <em>p</em>, expressed in terms of frame <strong>A</strong>, and re-express it in terms of the frame <strong>B</strong>. </p>
+
+<p><a href=""https://i.stack.imgur.com/UjSz6.png"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/UjSz6.png"" alt=""My set-up""></a></p>
+
+<p>The standard equation that I would use to implement this would be as follows: </p>
+
+<pre><code>point_in_frameB_x = point_in_frameA_x * cos(theta) - point_in_frameA_y * sin(theta) + t_x
+point_in_frameB_y = point_in_frameA_x * sin(theta) + point_in_frameA_y * cos(theta) + t_y
+</code></pre>
+
+<p>Where <code>t_x</code> and <code>t_y</code> make up the translation transformation of frame <strong>B</strong> to frame <strong>A</strong>. </p>
+
+<p>However, there are some complications here that prevent me from getting my desired results:</p>
+
+<p>Since the robot can rotate around (with its default pose being with a heading direction north--and this has a rotation of 0 radians), I don't know how I would define <code>t_x</code> and <code>t_y</code> in the above code. Because if the robot has a heading direction (i.e. x-axis) parallel to the y-axis of frame <strong>A</strong>, the translation vector would be different from the situation where the robot has a heading direction parallel to the x-axis of frame <strong>A</strong>.</p>
+
+<p><em>You would notice that the transformation from frame <strong>A</strong> to frame <strong>B</strong> isn't straightforward. I'm using this convention simply because I'm implementing this simulator which uses this convention for its image-frame.</em></p>
+
+<p>Any help would be greatly appreciated. Thanks in advance.</p>
+",9/9/2017 23:53,,96,1,0,0,,848423,,7/17/2011 6:05,122,46173021,"<p>Follow <a href=""https://en.wikipedia.org/wiki/Right-hand_rule"" rel=""nofollow noreferrer"">right hand rule</a> for assigning coordinate frames. In your picture axes of either frame A or frame B must be changed. </p>
+
+<p><a href=""https://i.stack.imgur.com/xd1WU.jpg"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/xd1WU.jpg"" alt=""enter image description here""></a></p>
+",1595504,0,2,,,fp
+2936,46906286,Is the C language supported as a V-REP script,|simulation|robotics|,"<p>I am quite new to V-rep and while I'm reading the documentation, in the section Regular API, all the provided script functions are written for both Lua and C, but officially, Lua is the supported language for scripting.</p>
+
+<p>My question is, can I write the scripts in C ?</p>
+",10/24/2017 9:02,,32,1,0,0,,1483023,,6/26/2012 14:11,42,49824463,"<p>No, the only thing you can do is to use the remote API to write an external C++ program that handles the simulation.</p>
+",9106031,1,0,,,fp
+2945,47126874,JavaScript Liquid Handling Robot,|javascript|robotics|,"<p>I have the following code  (Using <a href=""https://www.w3schools.com/js/"" rel=""nofollow noreferrer"">https://www.w3schools.com/js/</a>  Because i don't know how else to test it)</p>
+
+<pre><code>&lt;p id=""demo""&gt;&lt;/p&gt;
+
+&lt;script&gt;
+
+var a,b,c,d,e,text = """",x,y;
+a = 25
+b = Math.floor( a / 8 )
+c = a - ( b * 8)
+if (c == 0)
+c = 8;
+d = Math.ceil ( a / 8 )
+e = 8
+for (y = 1; y &lt;= d; y++) {
+    for (x = 1; x &lt;= e; x++) {
+    text += ""&lt;br&gt;"" + x + "","" + y;
+    }
+}
+document.getElementById(""demo"").innerHTML = text;
+&lt;/script&gt;
+</code></pre>
+
+<p>I was hoping that when <strong>var a</strong> (user input) was set to any number between 1 and 96 it would give all the coordinates from 1,1 to that number of well (on a 96 well plate A1 to H12. </p>
+
+<p>eg. var a = 25 would give 1,1 2,1 3,1 4,1 5,1 6,1 7,1 8,1 1,2 2,2 3,2 4,2 5,2 6,2 7,2 8,2 1,3 2,3 3,3 4,3 5,3 6,3 7,3 8,3 1,4 and stop. Instead it finishes off the rest of the column 2,4 3,4 4,4 5,4 6,4 7,4 8,4 and then stops.</p>
+
+<p>How do I get it to stop in the right place??</p>
+
+<p>Thank you</p>
+",11/5/2017 21:34,47126962,55,1,0,-1,,5008663,,6/14/2015 15:48,9,47126962,"<p>This should works, hope it helps!</p>
+
+<p><div class=""snippet"" data-lang=""js"" data-hide=""false"" data-console=""true"" data-babel=""false"">
+
+<div class=""snippet-code"">
+
+<pre class=""snippet-code-js lang-js prettyprint-override""><code>var text = """", start = 8, end = 25;
+
+
+
+for (var i = start; i &lt; end; i++) {
+
+    text += ""&lt;br&gt;"" + ((i % 8) + 1) + "","" + (Math.floor(i / 8) + 1)
+
+}
+
+
+
+document.getElementById(""demo"").innerHTML = text;</code></pre>
+
+<pre class=""snippet-code-html lang-html prettyprint-override""><code>&lt;p id=""demo""&gt;&lt;/p&gt;</code></pre>
+
+</div>
+
+</div>
+
+</p>
+",8888888,0,4,,,fp
+2946,47127628,Is Parse in JavaScript possible?,|javascript|robotics|,"<p>I have tried searching and haven't been able to see anything that can parse in JavaScript.</p>
+
+<p>It would only have to parse a .txt (tab delimited) file with the following:</p>
+
+<p>L123____Donald____Duck____247.09</p>
+
+<p>S234____Mickey____Mouse___356.09</p>
+
+<p>F456____Daffy_____Duck____1650.36</p>
+
+<p>N876____Minnie____Mouse___60.45</p>
+
+<p>It would have to pull out the number, first initial of first name, first initial of second name and then the number at the end (concentration). The first 3 L123, D and D could all be given a var, but the concentration number would have to get a separate one as I have to do some funky calculations and the assign it function in a liquid handling robot.</p>
+
+<p>Any help on this gratefully received, even if it's only partial as I like to try and work things out ( sometimes ;-) )</p>
+
+<p>I use this to test things at the moment because I don't know what else to use: <a href=""https://www.w3schools.com/js/"" rel=""nofollow noreferrer"">https://www.w3schools.com/js/</a></p>
+
+<p>Thank you</p>
+",11/5/2017 23:09,,48,1,4,0,,5008663,,6/14/2015 15:48,9,47127643,"<pre><code>var input = /* your data */;
+var table = input.split(""\n"").map(line =&gt; line.split(""\t"")); // here's your table
+</code></pre>
+",283863,2,0,81205433,"Yep, parsing usually involves regular expressions",fp
+3172,51385737,ROS Human-Robot mapping (Baxter),|ros|virtual-reality|robotics|,"<p>I'm having some difficulties understanding the concept of teleoperation in ROS so hoping someone can clear some things up.</p>
+
+<p>I am trying to control a Baxter robot (in simulation) using a HTC Vive device. I have a node (publisher) which successfully extracts PoseStamped data (containing pose data in reference to the lighthouse base stations) from the controllers and publishes this on separate topics for right and left controllers.</p>
+
+<p>So now I wish to create the subscribers which receive the pose data from controllers and converts it to a pose for the robot. What I'm confused about is the mapping... after reading documentation regarding Baxter and robotics transformation, I don't really understand how to map human poses to Baxter.</p>
+
+<p>I know I need to use IK services which essentially calculate the co-ordinates required to achieve a pose (given the desired location of the end effector). But it isn't as simple as just plugging in the PoseStamped data from the node publishing controller data to the ik_service right?</p>
+
+<p>Like a human and robot anatomy is quite different so I'm not sure if I'm missing a vital step in this.</p>
+
+<p>Seeing other people's example codes of trying to do the same thing, I see that some people have created a 'base'/'human' pose which hard codes co-ordinates for the limbs to mimic a human. Is this essentially what I need?</p>
+
+<p>Sorry if my question is quite broad but I've been having trouble finding an explanation that I understand... Any insight is very much appreciated!</p>
+",7/17/2018 15:57,,223,1,1,1,,9051647,,12/4/2017 15:14,16,51389138,"<p>You might find my former student's work on <a href=""https://www.youtube.com/watch?v=zZtOlOuqEdw&amp;index=24&amp;list=LLMmUzvvz7M1JUoho1NzrRiA"" rel=""nofollow noreferrer"">motion mapping using a kinect sensor with a pr2</a> informative.  It shows two methods:</p>
+
+<ol>
+<li><p>Direct joint angle mapping  (eg if the human has the arm in a right angle then the robot should also have the arm in a right angle).</p></li>
+<li><p>An IK method that controls the robot's end effector based on the human's hand position.</p></li>
+</ol>
+
+<blockquote>
+  <p>I know I need to use IK services which essentially calculate the
+  co-ordinates required to achieve a pose (given the desired location of
+  the end effector). But it isn't as simple as just plugging in the
+  PoseStamped data from the node publishing controller data to the
+  ik_service right?</p>
+</blockquote>
+
+<p>Yes, indeed, this is a fairly involved process!  In both cases, we took advantage of the kinects api to access the human's joint angle values and the position of the hand.  You can read about how Microsoft research implemented the human skeleton tracking algorithm here:</p>
+
+<p><a href=""https://www.microsoft.com/en-us/research/publication/real-time-human-pose-recognition-in-parts-from-a-single-depth-image/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2F%3Fid%3D145347"" rel=""nofollow noreferrer"">https://www.microsoft.com/en-us/research/publication/real-time-human-pose-recognition-in-parts-from-a-single-depth-image/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2F%3Fid%3D145347</a></p>
+
+<p>I am not familiar with the Vive device. You should see if it offers a similar api for accessing skeleton tracking information since reverse engineering Microsoft's algorithm will be challenging.  </p>
+",1556335,1,4,89754780,"If you can render a common reference frame for both the data coming from your VR setup and the real robot, then whatever poses you get from VR can be sent for control on the robot via an appropriate transformation. This assumes you have a task space controller for the robot. Then you can totally avoid any configuration mapping between humans and Baxter because it all operates in a common operational (task) space.",fp
+3173,51448305,Should samples from np.random.normal sum to zero?,|python|numpy|statistics|robotics|normal-distribution|,"<p>I am working on the motion model of a robot. In every time step, the robot's motion is measured, then I sample the normal distribution with the measurement as the mean and a small sigma value for covariance in order to simulate noise. This noisy motion is then added to the robot's previous state estimate.</p>
+
+<p>But when I keep the robot still, these noisy measurements seem to accumulate and the robot ""thinks it's moving.""</p>
+
+<p>Shouldn't these random samples not accumulate, but sum to zero?</p>
+
+<p>In other words, would you expect the following to be true:</p>
+
+<pre><code>0 ~ np.sum([np.random.normal(0, 0.1) for _ in range(1000)])
+</code></pre>
+
+<p>I have tried writing out the above in an explicit loop and seeding the random number generator with a different number before taking every sample, but the sums still deviate far from zero.</p>
+
+<p>Is this simply a limitation of random number generators, or am I misunderstanding the fact(?) that many samples from the normal distribution should sum to zero?</p>
+",7/20/2018 18:16,51448556,561,1,4,1,,10011845,,6/29/2018 16:02,10,51448556,"<p>The short answer to your question is no. Be careful not to conflate the sum of an array of independent random variables and the mean of those independent random variables.</p>
+
+<p>Per the article that @Hongyu Wang referenced in his comment, let's verify the following:</p>
+
+<p>""If X and Y are independent random variables that are normally distributed, then their sum is also normally distributed.""</p>
+
+<p>Effectively, this is what you have done. You have created an array of independent random variables and taken their sum, which in turn, should be normally distributed.</p>
+
+<p>I have slightly modified your code to demonstrate:</p>
+
+<pre><code>import random, numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+x = [np.sum([np.random.normal(0,0.1) for _ in range(1000)]) for _ in range(1000)]
+
+sns.distplot(x)
+plt.show()
+</code></pre>
+
+<p>Which yields: <a href=""https://i.stack.imgur.com/lKvQX.png"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/lKvQX.png"" alt=""enter image description here""></a></p>
+
+<p>You can verify that your normal distribution is correctly distributed about a mean of <code>0</code>, by doing:</p>
+
+<pre><code>np.mean([np.random.normal(0, 0.1) for _ in range(1000)])
+</code></pre>
+",8146556,1,0,89867187,"No. https://en.wikipedia.org/wiki/Sum_of_normally_distributed_random_variables, notice the std increases",fp
+3182,51877976,Troubles to move turtlebot_gazebo,|c++|geometry|ros|robotics|,"<p>I started a small project where I wanted to move the turtlebot in gazebo. I launched: roslaunch turtlebot_gazebo turtlebot_world.launch</p>
+
+<p>I wrote a code to move it:</p>
+
+<pre><code>#include ""ros/ros.h"" 
+#include ""geometry_msgs/TwistWithCovariance.h"" 
+#include ""nav_msgs/Odometry.h"" 
+#include ""gazebo_msgs/LinkState.h"" 
+#include ""geometry_msgs/Twist.h""
+
+int main(int argc, char **argv){
+
+ros::init(argc,argv,""move"");
+ros::NodeHandle n;
+ros::Publisher move_pub = n.advertise&lt;geometry_msgs::Twist&gt;(""moving"",1000);
+ros::Rate loop_rate(10);
+
+geometry_msgs::Twist msg;
+while(ros::ok()){
+    msg.linear.x = 0.0;
+    msg.linear.y = 0.0;
+    msg.linear.z = 20.0;
+    move_pub.publish(msg);
+
+    ros::spinOnce();
+
+    loop_rate.sleep();
+
+    }
+
+}
+</code></pre>
+
+<p>This doesn't work. As you can see i included other msgs and tried it with them but I got the same result. I also tried to find the node turtlebot_teleop_keyboard to find out how it is done by inputs. But i couldn't find the path to it. So what do I have to do to move it? And how can I find the path to the node?</p>
+",8/16/2018 13:14,,1129,2,0,0,,,,,,51894060,"<p>For Turtlebot, you have topics to publish linear velocities - x, y and z and also angular velocities - x, y and z. What you need to understand is what each of these physically mean.</p>
+
+<p><strong>Linear velocity in x will make it move forward.</strong></p>
+
+<p><strong>Angular velocity in z will make it turn about itself.</strong></p>
+
+<p>Other parameters don't do anything.
+So, in your code, using the above 2 parameters will move the bot. Rest of the parameters won't affect the bot in any way.</p>
+",7615877,0,0,,,fp
+3230,53311457,Is best first search optimal and complete?,|artificial-intelligence|path-finding|robotics|heuristics|best-first-search|,"<p>I have some doubts regarding best first search algorithm. The pseudocode that I have is the following:
+<a href=""https://i.stack.imgur.com/OgPtS.png"" rel=""noreferrer"">best first search pseudocode</a></p>
+
+<p>First doubt: is it complete? I have read that it is not because it can enter in a dead end, but I don't know when can happen, because if the algorithm chooses a node that has not more neighbours it does not get stucked in it because this node is remove from the open list and in the next iteration the following node of the open list is treated and the search continues.</p>
+
+<p>Second doubt: is it optimal? I thought that if it is visiting the nodes closer to the goal along the search process, then the solution would be the shortest, but it is not in that way and I do not know the reason for that and therefore, the reason that makes this algorithm not optimal.</p>
+
+<p>The heuristic I was using is the straight line distance between two points.</p>
+
+<p>Thanks for your help!!</p>
+",11/15/2018 2:12,,11896,2,0,6,,5604964,Spain,11/25/2015 15:53,43,53321809,"<p>In general case best first search algorithm is complete as in worst case scenario it will search the whole space (worst option). Now, it should be also optimal - given the heuristic function is admissible - meaning it does not overestimate the cost of the path from any of the nodes to goal. (It also needs to be consistent - that means that it adheres to triangle inequality, if it is not then the algorithm would not be complete - as it could enter a cycle)</p>
+
+<p>Checking your algorithm I do not see how the heuristic function is calculated. Also I do not see there is calculated the cost of the path to get to the particular node.
+So, it needs to calculate the actual cost of the path to reach a particular node and then it needs to add a heuristics estimate of the cost of the path from the node towards goal.</p>
+
+<p>The formula is <code>f(n)=g(n)+h(n)</code> where g(n) is the cost of the path to reach the node and h(n) is the heuristics estimating the cost of the cheapest path from n to the goal. </p>
+
+<p>Check the implementation of <a href=""https://en.wikipedia.org/wiki/A*_search_algorithm"" rel=""nofollow noreferrer"">A* algorithm</a> which is an example of best first search on path planning.</p>
+
+<p><strong>TLDR</strong> In best first search, you need to calculate the cost of a node as a sum of the cost of the path to get to that node and the heuristic function that estimate the cost of the path from that node to the goal. If the heuristic function will be admissible and consistent the algorithm will be optimal and complete.</p>
+",6779656,3,2,,,fp
+3373,55772405,How to store local Sub Program names in an array and call them in a loop iterating over said Array in KUKA Robotic Language,|robotics|kuka-krl|,"<p>The problem:<br/>
+The main structure of the code the way I want it to be-<br/></p>
+
+<pre><code>Def main()
+
+decl int i
+decl char arr[3]
+INI
+
+PTP HOME ...
+arr[1]='w()'
+arr[2]='e()'
+arr[3]='l()'
+
+for i=1 to 3
+ arr[i]
+endfor
+
+END
+
+def w()
+PTP P1 ...
+END
+
+def e()
+PTP P2 ...
+END
+
+def l()
+PTP P3 ...
+END
+</code></pre>
+
+<p>Now, as you can see, what i want to do is, have names of SubPrograms stored in an array, and basically call them one by one in a loop. (I could write the SubPrograms one by one and just remove the loop altogether,  but after calling every program i have to give a command, and i'm looking for a way where i don't have to write that command everytime, which can be done by using a loop)<br/>
+<br/>
+The problem is I can't figure out how to store names of the Subprgrams in an array as the above code gives a syntax error. <br/>
+If there is a different way altogether of calling functions in a loop, I'd be happy to hear about it. else, I'd appreciate the help here.<br/>
+<br/>
+Thanks :)</p>
+",4/20/2019 10:05,55870474,300,2,0,1,,9663758,,4/18/2018 10:37,21,55870474,"<p>You could implement a switch/case inside your for loop to mimic array indexing.</p>
+
+<pre><code>Def main()
+
+   decl int i
+   decl char arr[3]
+   INI
+
+   PTP HOME ...
+
+   for i=1 to 3
+       switch i
+          case 1
+             w()
+          case 2
+             e()
+          default
+             l()
+       endswitch
+   endfor
+
+END
+
+def w()
+   PTP P1 ...
+END
+
+def e()
+   PTP P2 ...
+END
+
+def l()
+   PTP P3 ...
+END
+</code></pre>
+",8882513,0,1,,,fp
+3388,55999981,Distance between two Aruco Markers in Python?,|python|opencv|computer-vision|robotics|aruco|,"<p>I am trying to calculate the distance between two Aruco markers in Python. I have code that can calculate the pose of one marker but I am not sure how to move from there. Is there anyone that has done something similar or can point me in the right direction?</p>
+
+<p>Thank you!</p>
+",5/6/2019 6:40,56002391,1667,1,0,2,0,11457959,,5/6/2019 6:36,7,56002391,"<p>You can find the distance between the markers by calculating the distance between the corners of the detected markers. 
+The following will give you the corners and the co-ordinates of that corner.</p>
+
+<pre><code>corners, ids, rejectedImgPoints = aruco.detectMarkers(gray, aruco_dict, parameters=arucoParameters)
+x1 = int (corners[0][0][0][0]) 
+y1 = int (corners[0][0][0][1])
+</code></pre>
+
+<p>Similarly you can find the co-ordinates of the corner of the other marker (x2,y2).</p>
+
+<pre><code>import math  
+def calculateDistance(x1,y1,x2,y2):  
+     dist = math.sqrt((x2 - x1)**2 + (y2 - y1)**2)  
+     return dist  
+print calculateDistance(x1, y1, x2, y2)
+</code></pre>
+
+<p>This code will give the distance between the two corners</p>
+",10151093,2,2,,,fp
+3394,56488829,Looking for solution how to exit the loop at the right place,|c#|robotics|,"<p>Okay guys so first I want to find three freePositions, one is sortedSystem.BooleanCellSystem[row][column] and than go back and change the row, my question is where I should put {break;} So I can Have 3 freePosition with different row. Thank you :) </p>
+
+<pre><code>public void FindingFreeCells(SortingSystem sortedSystem, int number)
+{
+  int freePositions = 0;
+  double tempCoef = 0;
+
+  for (int row = 0; row &lt; sortedSystem.BooleanCellSystem.Length; row++)
+  {
+    for (int column = 0; column &lt; sortedSystem.BooleanCellSystem[row].Length; column++)
+    {
+      if (sortedSystem.BooleanCellSystem[row][column] != true)
+      {
+        for (int n = column; n &lt; number; n++)
+        {
+          if (sortedSystem.BooleanCellSystem[row][column] == true)
+          {
+            break;
+          }
+          for (int k = 1; k &lt; 3; k++)
+          {
+            if (sortedSystem.BooleanCellSystem[row][column + k] != true)
+            {
+              tempCoef += 5;
+            }
+          }
+          if (n == number - 1)
+          {
+            freePositions++;
+            AvailableCell temp = new AvailableCell();
+            temp.FirstRow = row;
+            temp.FirstColumn = column;
+            temp.CellsRequired = number;
+            temp.PriorityCoeff = row + column + tempCoef;
+            AvailableCellsList.Add(temp);
+          }
+        }
+      }               
+    }
+  }
+}
+</code></pre>
+",6/7/2019 6:11,,60,0,9,0,,,,,,,,,,,99567430,"Can you help with the implementation of that structure, how it should looks.",fp
+3417,56883538,Simulink model 'to workspace' output,|matlab|simulink|robotics|pid-controller|,"<p>I am trying to control motor torque and am using a workspace variable in Simulink and want to output similar variable to workspace.</p>
+
+<p>I have size(T_u)=[3, 91] whereas the output I am getting from the simulation has size [91, 90]</p>
+
+<p>I am unable to understand why this is so.</p>
+
+<p>Code that I am using:</p>
+
+<pre><code>load('Motor_Param.mat')
+
+t = 1:0.1:10;
+T_o = [0.05*(10-t);0.04*(10-t);0.03*(10-t)];
+T_d = zeros(size(T_o));
+T_e = (T_d - T_o);
+C_PD = pid(100,0,10,100);
+T_u = zeros(size(T_e));
+for k=1:size(T_e,1)
+    T_u(k,:) = lsim(C_PD,T_e(k,:),t);
+%T_u(1,:)= -45.0450000000000    -44.5444552724092   -44.0439110892737   -43.5433674500493   -43.0428243541925   -42.5422818011600   -42.0417397904094   -41.5411983213986   -41.0406573935862   -40.5401170064312   -40.0395771593933   -39.5390378519326   -39.0384990835098   -38.5379608535861   -38.0374231616233   -37.5368860070837   -37.0363493894301   -36.5358133081260   -36.0352777626353   -35.5347427524223   -35.0342082769522   -34.5336743356904   -34.0331409281029   -33.5326080536564   -33.0320757118181   -32.5315439020554   -32.0310126238368   -31.5304818766308   -31.0299516599067   -30.5294219731343   -30.0288928157839   -29.5283641873264   -29.0278360872332   -28.5273085149760   -28.0267814700274   -27.5262549518604   -27.0257289599483   -26.5252034937652   -26.0246785527857   -25.5241541364848   -25.0236302443380   -24.5231068758215   -24.0225840304120   -23.5220617075865   -23.0215399068228   -22.5210186275990   -22.0204978693939   -21.5199776316868   -21.0194579139572   -20.5189387156857   -20.0184200363529   -19.5179018754402   -19.0173842324294   -18.5168671068029   -18.0163504980435   -17.5158344056347   -17.0153188290603   -16.5148037678048   -16.0142892213531   -15.5137751891906   -15.0132616708034   -14.5127486656779   -14.0122361733011   -13.5117241931606   -13.0112127247442   -12.5107017675407   -12.0101913210389   -11.5096813847285   -11.0091719580996   -10.5086630406426   -10.0081546318487   -9.50764673120954   -9.00713933821711   -8.50663245236405   -8.00612607314350   -7.50562020004906   -7.00511483257487   -6.50460997021554   -6.00410561246623   -5.50360175882257   -5.00309840878072   -4.50259556183731   -4.00209321748951   -3.50159137523496   -3.00109003457184   -2.50058919499879   -2.00008885601498   -1.49958901712007   -0.999089677814209  -0.498590837598075  0.00190750402718064
+
+    a = sim('Motor_Control','SimulationMode','normal');
+    out = a.get('T_l')
+end
+</code></pre>
+
+<p>Link to .mat and .slx files is: <a href=""https://drive.google.com/open?id=1kGeA4Cmt8mEeM3ku_C4NtXclVlHsssuw"" rel=""nofollow noreferrer"">https://drive.google.com/open?id=1kGeA4Cmt8mEeM3ku_C4NtXclVlHsssuw</a></p>
+",7/4/2019 8:19,,2931,2,3,0,,11713385,,6/28/2019 11:48,15,56884632,"<p>If you set the <code>Save format</code> in the <code>To Workspace</code> block to <code>Timeseries</code> the output will have the dimensions of the signal times the number of timesteps.</p>
+
+<p>In your case I activated the option <code>Display-&gt;Signals &amp; Ports-&gt;Signal dimensions</code> and the signal dimensions in your model look like this:</p>
+
+<p><a href=""https://i.stack.imgur.com/byFbb.png"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/byFbb.png"" alt=""Signal dimensions in Simulink model""></a></p>
+
+<p>So the signal that you output to the workspace has the size <code>90</code>. Now if I print <code>size(out.Data)</code> I get </p>
+
+<pre><code>ans = 138  90
+</code></pre>
+
+<p>where 90 is the signal dimension and 138 is the number of timesteps in your Simulink model.</p>
+
+<p>You could now use the last row of the data (which has the length 90) and add it to your array.</p>
+",3562088,0,1,100314942,"Hi @Capri as I don't have the Control System Toolbox installed, could you provide the arrays `C_PI`, `T_u` and `T_l` for `k=1`?",fp
+3527,57940967,"In Peter Corke‘s Robot Book, the same Function `rpy2r()` yields different results?",|matlab|robotics|,"<p><img src=""https://i.stack.imgur.com/hdCFF.png"" alt=""enter image description here""></p>
+
+<p>but matlab result:</p>
+
+<pre><code>&gt;&gt; R2=rpy2r(0.1,0.2,0.3)
+
+R2 =
+
+    0.9363   -0.2751    0.2184
+    0.2896    0.9564   -0.0370
+   -0.1987    0.0978    0.9752
+
+&gt;&gt; [theta,v]=tr2angvec(R)
+
+theta =
+
+    0.3655
+
+
+v =
+
+    0.1886    0.5834    0.7900
+
+&gt;&gt; [v,lambda]=eig(R)
+
+v =
+
+   0.6944 + 0.0000i   0.6944 + 0.0000i   0.1886 + 0.0000i
+  -0.0792 - 0.5688i  -0.0792 + 0.5688i   0.5834 + 0.0000i
+  -0.1073 + 0.4200i  -0.1073 - 0.4200i   0.7900 + 0.0000i
+
+
+lambda =
+
+   0.9339 + 0.3574i   0.0000 + 0.0000i   0.0000 + 0.0000i
+   0.0000 + 0.0000i   0.9339 - 0.3574i   0.0000 + 0.0000i
+   0.0000 + 0.0000i   0.0000 + 0.0000i   1.0000 + 0.0000i
+</code></pre>
+
+<p>As the pic shows, the same function gives different outputs, has any one else found the same issue?</p>
+",9/15/2019 3:41,,179,1,0,0,,12056753,,9/12/2019 6:45,2,57948106,"<p>I can't read Chinese, but apparently the function <code>tr2angvec</code>only returns one rotation angle and its corresponding vector. Matlab's <code>eig</code> returns the full matrix of eigenvectors and a diagonal matrix with eigenvalues. </p>
+
+<p>Because of this, the last column given by <code>eig</code> is the vector provided by <code>tr2angvec</code>.  Note that <code>theta=0.3655</code> while the real eigenvalue is one (because rotations do not change length). Then notice that the real part of the imaginary eigenvalues is <code>0.9339</code>, and that <code>acos(0.9339)=0.365626358 rad</code>. </p>
+
+<p>Then recall that the imaginary eigenvalues of a rotation matrix are <code>cos(theta) + i sin(theta)</code> and <code>cos(theta) - i sin(theta)</code>.</p>
+",3007075,0,1,,,fp
+3531,58100832,How is it possible for the RPA bot to look constantly in a folder if there is a new File?,|robotics|blueprism|rpa|,"<p>This file is stored in ""Microsoft Azure Storage Explorer"". It should be added to the queue.</p>
+
+<p>It is not sure when the file is added, because it is created by an other application, that has nothing to do with rpa.</p>
+",9/25/2019 14:32,,457,1,2,-1,,12040775,,9/9/2019 9:25,32,58115548,"<p>Well, you have action ""Utility - File Management: File exist?"", and you have action ""Utility - General:Sleep"". If you combine these two, then you'll have the answer.</p>
+",5779258,3,1,102617719,"I mean, how this works. How can I tell blueprism: ""please look constantly if there is a new file. If there is a new file, conduct process XY"".",fp
+3621,59447623,Webots - Open multiple windows side by side,|robotics|webots|,"<p>I'd like to edit my proto files and my project files side by side in two different windows (I've a big screen / monitor). However seems like I can only create a ""New world"" which will open in the same window, and there is no ""Window"" menu either. Is it possible to have multiple webots world windows simultaneously open?</p>
+
+<p><a href=""https://i.stack.imgur.com/5dZjM.png"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/5dZjM.png"" alt=""enter image description here""></a></p>
+
+<p>Thank you!</p>
+
+<p>P.S. I use macOS.</p>
+",12/22/2019 19:55,59450666,123,1,0,2,,1210650,"Seattle, WA, USA",2/15/2012 6:49,483,59450666,"<p>It's not possible to open several world files simultaneously in Webots. However, you can open several instances of Webots with different world files. But within the same instance of Webots you can edit as many PROTO files as you like. You should simply open them from the <code>File</code> menu, <code>Open Text File...</code>.</p>
+",810268,1,1,,,fp
+3654,60536927,TRPO - RL: I need to get a 8DOF robot arm to move to a specified point. I need to implement the TRPO RL code using OpenAI gym with Gazebo environment?,|reinforcement-learning|robotics|openai-gym|gazebo-simu|,"<p>TRPO - RL: I need to get a 8DOF robot arm to move a specified point. I need to implement the TRPO RL code using OpenAI gym. I already have the gazebo environement. But I am unsure of how to write the code for the reward functons and the algorithm for the joint space motion. Please help. </p>
+",3/5/2020 1:18,,89,1,0,0,,1690356,,9/22/2012 5:05,16,60573165,"<h3>Reward</h3>
+
+<p>Gazebo should be able to tell you the position of the end-effector link from which we can calculate the <strong>progress made towards a specified point after each step</strong> (i.e. positive if moving towards the goal, negative if away, and 0 otherwise).
+This alone should encourage the end-effector towards the goal.</p>
+
+<p>You may want to confirm that the system is able to learn with just this basic reward first before considering other criterions such as smoothness (avoid jerking motions), handedness (positioning the elbows on the left/right) etc.
+These are significantly harder to specify and will have to be hand-designed according to your needs, possibly based on the joint states and/or some other derivatives that are available in your environment.</p>
+
+<h3>Motion</h3>
+
+<p>This will largely depend on your stack.
+I am adding this part in just as a passing comment, but for instance, if you are using ROS as your middleware, then you can easily integrate <a href=""https://moveit.ros.org/documentation/faqs/"" rel=""nofollow noreferrer"">Move-It</a> to handle all the movement for you.</p>
+",9147640,0,0,,,fp
+3655,60586230,Issues in spying a windows application utilizing BluePrism,|windows|robotics|blueprism|,"<p>I am facing the below issue while working on BluePrism, the issue relates to spying elements from a windows application called ""Cashier"", the application is written in VB, I provided the .exe file for it and the application launched properly, however, I can't properly spy the individual rows in the table shown in the attached picture. I can only spy the box as a whole, and no information is retrieved.
+<a href=""https://i.stack.imgur.com/2Dm4S.jpg"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/2Dm4S.jpg"" alt=""Windows Application Spying issue""></a></p>
+",3/8/2020 9:43,,91,1,2,-1,,10403857,,9/23/2018 12:59,20,60705350,"<p>possible the application spawns the elements in a new process? perhaps check the task manager once and make sure another process hasn't spawned to show the results in?</p>
+",4026969,-1,0,107302964,"yes, I did with no luck. @esqew",fp
+3675,60927654,How to control Turtlebot3 in Gazebo using a web interface?,|html|ros|robot|gazebo-simu|,"<p>If I have a simulated Turtlebot3 robot in Gazebo, how could I link it and control its movement using a self-made HTML/Bootstrap web interface (website?) I have tried many tutorials but none of them have worked (may be because they are all from a few years ago). Would appreciate any recent links or tutorials!</p>
+",3/30/2020 9:33,,1019,2,0,0,,13151812,,3/30/2020 9:29,8,60936765,"<p>This is not something I have done before, but with a quick search I found some useful information.</p>
+
+<p>You need to use <a href=""http://wiki.ros.org/rosbridge_suite?distro=melodic"" rel=""nofollow noreferrer""><code>rosbridge_suite</code></a> and in specific <a href=""http://wiki.ros.org/rosbridge_server"" rel=""nofollow noreferrer""><code>rosbridge_server</code></a>. The latter provides a low-latency bidirectional communication layer between a web browser and servers. This allows a website to talk to ROS using the rosbridge protocol.</p>
+
+<p>Therefore, you need to have this suite installed and then what you can do is to use it to publish a <code>Twist</code> message from the website (based on the website UI controls) to Turtlebot's command topic.</p>
+
+<p>Don't think of Gazebo in this equation. Gazebo is the simulator and is using under-the-hood ROS topics and services to simulate the robot. What you really need to focus on is how to make your website talk with ROS and publish a Twist message to the appropriate ROS topic.</p>
+
+<p>I also found a JavaScript library from ROS called <a href=""http://wiki.ros.org/roslibjs"" rel=""nofollow noreferrer""><code>roslibjs</code></a> that implements the <code>rosbridge</code> protocol specification. You can, therefore, use JavaScript to communicate with ROS and publish robot velocities to the TurtleBot.</p>
+
+<p>An example excerpt from <a href=""http://wiki.ros.org/roslibjs/Tutorials/BasicRosFunctionality"" rel=""nofollow noreferrer"">this</a> tutorial (not tested):</p>
+
+<pre><code>&lt;script type=""text/javascript"" type=""text/javascript""&gt;
+  var cmdVel = new ROSLIB.Topic({
+    ros : ros,
+    name : '/cmd_vel',
+    messageType : 'geometry_msgs/Twist'
+  });
+
+  var twist = new ROSLIB.Message({
+    linear : {
+      x : 0.1,
+      y : 0.2,
+      z : 0.3
+    },
+    angular : {
+      x : -0.1,
+      y : -0.2,
+      z : -0.3
+    }
+  });
+
+  cmdVel.publish(twist);
+&lt;/script&gt;
+</code></pre>
+
+<p>As you can see above the JavaScript code creates an instance of the Twist message with the linear and angular robot velocities and then publishes this message to ROS's <code>/cmd_vel</code> topic. What you need to do is to integrate this into your website, make the velocities in this code to be dynamic based on the website UI controls and start the <code>rosbridge</code> server.</p>
+",4946896,0,0,,,fp
+3704,61709336,C programming for Robotics,|c|robotics|webots|,"<p>I have a robotic car in Webots simulation that needs to stop at a place whenever I press a key on keyboard. So if I press 1, it should stop at coordinate X = 140 and coordinate Z = 50. On this code, the speed goes up and down with UP and DOWN arrow. I may have to insert if statement under case 1 but don't know how to implement. The robot constantly runs on a line and should only stop or act when prompted with a keyboard command. The code given below is just a snippet, I can provide the full code if necessary. I'm a novice just starting a course on C.</p>
+
+<pre><code>// GPS
+WbDeviceTag gps;
+double gps_coords[3] = {0.0, 0.0, 0.0};
+double gps_speed = 0.0;
+
+// misc variables
+double speed = 0.0;
+double steering_angle = 0.0;
+int manual_steering = 0;
+bool autodrive = true;
+
+void print_help() {
+  printf(""You can drive this car!\n"");
+  printf(""Select the 3D window and then use the cursor keys to:\n"");
+  printf(""
+/
+- steer\n"");
+  printf(""[UP]/[DOWN] - accelerate/slow down\n"");
+}
+
+void set_autodrive(bool onoff) {
+  if (autodrive == onoff)
+    return;
+  autodrive = onoff;
+  switch (autodrive) {
+    case false:
+      printf(""switching to manual drive...\n"");
+      printf(""hit [A] to return to auto-drive.\n"");
+      break;
+    case true:
+      if (has_camera)
+        printf(""switching to auto-drive...\n"");
+      else
+        printf(""impossible to switch auto-drive on without camera...\n"");
+      break;
+  }
+}
+
+
+void check_keyboard() {
+  int key = wb_keyboard_get_key();
+  switch (key) {
+    case WB_KEYBOARD_UP:
+      set_speed(speed + 5.0);
+      break;
+    case WB_KEYBOARD_DOWN:
+      set_speed(speed - 5.0);
+      break;
+    case WB_KEYBOARD_RIGHT:
+      change_manual_steer_angle(+1);
+      break;
+    case WB_KEYBOARD_LEFT:
+      change_manual_steer_angle(-1);
+      break;
+    case 'A':
+      set_autodrive(true);
+      break;
+    case '1':
+      if (gps_coords[X] == ""104.9"" &amp;&amp; gps_coords[Z] == ""48.9"") {
+      set_speed(speed - speed);
+  }
+     break;
+}
+</code></pre>
+",5/10/2020 8:48,,351,0,2,0,,3237985,United Kingdom,1/26/2014 17:09,13,,,,,,109154005,"You can't put `if (gps_coords[X] == ""104.9"" && gps_coords[Z] == ""48.9"") { set_speed(speed - speed); }` inside the keyboard handler because it will only check that wen you press the number.  You need to have the keyboard handler set a flag and then in your main do `if (one_pressed == true && gps_coords[X] == ""104.9"" && gps_coords[Z] == ""48.9"") { set_speed(speed - speed); }`",fp
+3880,64070085,Question about relationship between wb_motor_set_position and wb_robot_step,|c|robotics|webots|,"<p>I'm really new to Webots and a novice at programming. I'm currently trying to drive a robot with rotational motors along a known path using a controller in C language. I'm mainly using the wb_motor_set_position function. However, the amount the robot actually travels in the simulation seems to depend on the position I set in this function, as well as the time step. I am currently running a while loop, setting wb_robot_step(TIME_STEP) and then using wb_motor_set_position. I've been reading the documentation on these, but it still doesn't seem to click to me. Does anyone know how these two functions are dependent/related to each other and how I could maybe determine the distance the robot would go with these (without using a position sensor first) - instead of my current just plug and chug method...? Thank you!</p>
+",9/25/2020 19:07,,261,0,3,0,,14342141,,9/25/2020 18:59,4,,,,,,113298552,"Rather than only describe your code, post it here.",fp
+3917,64689816,Line following and obstacle avoidance with ePuck [Webots],|python|python-3.x|robotics|webots|,"<p>So I'm trying to program a very simple collision avoidance behavior by following the line using ground and distance sensors of E-puck robot. The robot program was written in Python and the simulation is running on <a href=""https://www.cyberbotics.com/#cyberbotics"" rel=""nofollow noreferrer"">Webots</a>. The robot should go forwards following the line until an obstacle is detected by the front distance sensors, and then to turn towards the obstacle-free direction and then get back to the line. Something like <a href=""https://www.youtube.com/watch?v=jM_hqbmrdQ8"" rel=""nofollow noreferrer"">that</a>. So I'm trying to reproduce the same behaviour but when the robot aproaches to an obstacle it stucks and doesn't try to avoid it. When I remove either line following part of code or obstacle avoidance part the appropriate result is working but simultaneously they don't functioning. I've seen some codes written in C but I'm not familiar with C programming language. Please don't send me to see the tutorials, since I already followed them. My code:</p>
+<pre><code>&quot;&quot;&quot;line_following_behavior controller.&quot;&quot;&quot;
+
+
+from controller import Robot, DistanceSensor, Motor
+import numpy as np
+
+#-------------------------------------------------------
+# Initialize variables
+
+TIME_STEP = 64
+MAX_SPEED = 6.28
+
+speed = 1 * MAX_SPEED
+
+# create the Robot instance.
+robot = Robot()
+
+# get the time step of the current world.
+timestep = int(robot.getBasicTimeStep())   # [ms]
+
+# states
+states = ['forward', 'turn_right', 'turn_left']
+current_state = states[0]
+
+# counter: used to maintain an active state for a number of cycles
+counter = 0
+counter_max = 5
+
+#-------------------------------------------------------
+# Initialize devices
+
+# distance sensors
+ps = []
+psNames = ['ps0', 'ps1', 'ps2', 'ps3', 'ps4', 'ps5', 'ps6', 'ps7']
+for i in range(8):
+    ps.append(robot.getDistanceSensor(psNames[i]))
+    ps[i].enable(timestep)
+
+# ground sensors
+gs = []
+gsNames = ['gs0', 'gs1', 'gs2']
+for i in range(3):
+    gs.append(robot.getDistanceSensor(gsNames[i]))
+    gs[i].enable(timestep)
+
+
+# motors    
+leftMotor = robot.getMotor('left wheel motor')
+rightMotor = robot.getMotor('right wheel motor')
+leftMotor.setPosition(float('inf'))
+rightMotor.setPosition(float('inf'))
+leftMotor.setVelocity(0.0)
+rightMotor.setVelocity(0.0)
+
+
+#-------------------------------------------------------
+# Main loop:
+# - perform simulation steps until Webots is stopping the controller
+while robot.step(timestep) != -1:
+    # Update sensor readings
+    psValues = []
+    for i in range(8):
+        psValues.append(ps[i].getValue())
+
+    gsValues = []
+    for i in range(3):
+        gsValues.append(gs[i].getValue())
+
+    # detect obstacles
+    right_obstacle = psValues[0] &gt; 80.0 or psValues[1] &gt; 80.0 or psValues[2] &gt; 80.0
+    left_obstacle = psValues[5] &gt; 80.0 or psValues[6] &gt; 80.0 or psValues[7] &gt; 80.0
+
+    # initialize motor speeds at 50% of MAX_SPEED.
+    leftSpeed  = speed
+    rightSpeed = speed
+    # modify speeds according to obstacles
+    if left_obstacle:
+        # turn right
+        leftSpeed  = speed
+        rightSpeed = -speed
+    elif right_obstacle:
+        # turn left
+        leftSpeed  = -speed
+        rightSpeed = speed
+    
+    
+
+    # Process sensor data
+    line_right = gsValues[0] &gt; 600
+    line_left = gsValues[2] &gt; 600
+
+    # Implement the line-following state machine
+    if current_state == 'forward':
+        # Action for the current state
+        leftSpeed = speed
+        rightSpeed = speed
+        # update current state if necessary
+        if line_right and not line_left:
+            current_state = 'turn_right'
+            counter = 0
+        elif line_left and not line_right:
+            current_state = 'turn_left'
+            counter = 0
+            
+    if current_state == 'turn_right':
+        # Action for the current state
+        leftSpeed = 0.8 * speed
+        rightSpeed = 0.4 * speed
+        # update current state if necessary
+        if counter == counter_max:
+            current_state = 'forward'
+
+    if current_state == 'turn_left':
+        # Action for the current state
+        leftSpeed = 0.4 * speed
+        rightSpeed = 0.8 * speed
+        # update current state if necessary
+        if counter == counter_max:
+            current_state = 'forward'        
+
+    # increment counter
+    counter += 1
+    
+    #print('Counter: '+ str(counter), gsValues[0], gsValues[1], gsValues[2])
+    print('Counter: '+ str(counter) + '. Current state: ' + current_state)
+
+    # Update reference velocities for the motors
+    leftMotor.setVelocity(leftSpeed)
+    rightMotor.setVelocity(rightSpeed)
+</code></pre>
+",11/5/2020 1:09,,2287,0,0,0,,11059311,,2/13/2019 23:42,21,,,,,,,,fp
+3948,65693285,How to load urdf.xacro in Pybullet?,|python|visualization|robotics|pybullet|,"<p>Usually in Pybullet we can do:</p>
+<pre><code>robot = p.loadURDF(os.path.join(urdfRootPath, &quot;robot.urdf&quot;),useFixedBase=True)
+</code></pre>
+<p>to load a URDF. Is it possible to load a urdf.xacro file directly?</p>
+",1/12/2021 22:56,,1736,1,0,0,0,7106915,,11/2/2016 21:05,288,68579422,"<p>I think you can load <code>.xacro</code> files directly using <code>loadURDF</code> function. Just like a bunch of examples showed <a href=""https://www.programcreek.com/python/example/122126/pybullet.loadURDF"" rel=""nofollow noreferrer"">here</a>.</p>
+",8256101,0,0,,,fp
+4123,69498883,How to locate a urdf file using parser.AddModelFromFile(full_name), in Drake,|c++|robotics|drake|,"<pre><code>#include &quot;drake/geometry/scene_graph.h&quot;
+#include &quot;drake/multibody/parsing/parser.h&quot;
+#include &quot;drake/common/find_resource.h&quot;
+
+int main(void) {
+// Building a floating-base plant
+    drake::multibody::MultibodyPlant&lt;double&gt; plant_{0.0};
+    drake::geometry::SceneGraph&lt;double&gt; scene_graph;
+    std::string full_name = drake::FindResourceOrThrow(
+        &quot;model/model.urdf&quot;);
+    drake::multibody::Parser parser(&amp;plant_, &amp;scene_graph);
+    parser.AddModelFromFile(full_name);
+    plant_.Finalize();
+    return 1;
+}
+</code></pre>
+<p>The above code give me the following error:</p>
+<pre><code>terminate called after throwing an instance of 'std::runtime_error'
+  what():  Drake resource_path 'model/model.urdf' does not start with drake/.
+Aborted (core dumped)
+</code></pre>
+<p>My Directory layout is:</p>
+<ul>
+<li>Project Folder
+<ul>
+<li>model
+<ul>
+<li>urdf</li>
+</ul>
+</li>
+<li>src
+<ul>
+<li>main.cpp</li>
+<li>CmakeLists.txt</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>my src CmakeLists.txt is:</p>
+<pre><code>cmake_minimum_required(VERSION 3.16.3)
+
+list(APPEND CMAKE_MODULE_PATH &quot;${CMAKE_SOURCE_DIR}&quot;)
+message(&quot;CMAKE Directory : &quot; ${PROJECT_SOURCE_DIR})
+
+project(IK VERSION 1.0)
+
+# specify the C++ standard
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+find_package (Eigen3 3.3 REQUIRED NO_MODULE)
+find_package(drake CONFIG REQUIRED)
+
+# specify the main source file
+set(SOURCE main.cpp)
+add_executable(${PROJECT_NAME} ${SOURCE})
+
+target_link_libraries(&quot;${PROJECT_NAME}&quot; 
+    Eigen3::Eigen
+    drake::drake}
+</code></pre>
+<p>Essentially, my objective is to use a custom urdf and build a model and use it for the inverse kinematics class.</p>
+",10/8/2021 16:15,69499161,176,1,0,0,,15412613,,3/17/2021 5:33,10,69499161,"<p>I think you have a very easy problem to resolve. You're currently using <code>drake::FindResourceOrThrow()</code>. If you look at <a href=""https://drake.mit.edu/doxygen_cxx/namespacedrake.html#a535bb41fc091d96d7de06b87e68c9afb"" rel=""nofollow noreferrer"">its documentation</a>, you'll note:</p>
+<blockquote>
+<p>The resource_path refers to the relative path within the Drake source repository, prepended with drake/.</p>
+</blockquote>
+<p>You have a urdf in an arbitrary location. In that case, just pass a filesystem path without calling <code>FindResource()</code> (or any of its variants). Whether it is an absolute or relative path will depend on where your executable ends up w.r.t. the urdf in your built/installed system.</p>
+",7686256,1,1,,fp
+4180,70290926,How do wifi bulbs pair with the mobile,|wifi|robotics|atmega|smartphone|smart-device|,"<p>I have been working on making a commercial-equivalent smart WiFi bulb. I cannot understand how the bulb pairs with the app on smartphone and gains access to the Internet through my personal modem. The bulb cannot communicate through the personal WiFi before getting paired, as it doesn't have the credentials. I tried to experiment with my existing commercial bulb and while putting it in reset mode, noticed -</p>
+<ol>
+<li>There wasn't any WiFi (that could be the bulb's AP) visible in the available networks list of my PC. Well, I don't know if it was a hidden network.</li>
+<li>There wasn't any Bluetooth device visible in the list that could possibly be the bulb.</li>
+</ol>
+<p>So I want to know how the bulb communicates with the app -</p>
+<ol>
+<li>Does it act as AP (Access Point) and the app connects to it and gives it the credentials.</li>
+<li>Else, does the bulb use any other type of communication to pair with the app.</li>
+<li>Or, does it somehow just get to the smartphone and it all &quot;mysteriously&quot; works.</li>
+</ol>
+<p>I would be happy if someone could explain the process to me. Also, the app scans for the available devices whenever I want to pair to a new device. Then, I can select the desired device and pair it. So, please also explain (if possible) how the scanning works.</p>
+<blockquote>
+<p>No need to get to each technical detail, I just want to know the process. I will ask later if I need the tech details.</p>
+</blockquote>
+",12/9/2021 13:40,,52,0,3,0,,17635924,,12/9/2021 12:53,2,,,,,,129267324,You should read this article → [How do I ask a good question?](https://stackoverflow.com/help/how-to-ask),fp
+4208,70837669,"How can I parse ""package://"" in a URDF file path?",|python|path|robotics|urdf|,"<p>I have a robot URDF that points to mesh files using &quot;package://&quot;.</p>
+<pre><code>  &lt;geometry&gt;
+    &lt;mesh filename=&quot;package://a1_rw/meshes/hip.dae&quot; scale=&quot;1 1 1&quot;/&gt;
+  &lt;/geometry&gt;
+</code></pre>
+<p>I would like to use urdfpy to parse this URDF. However, it is unable to interpret the meaning of &quot;package://&quot;.</p>
+<pre><code>import os
+from urdfpy import URDF
+
+a1_rw = {
+    &quot;model&quot;: &quot;a1&quot;,
+    &quot;csvpath&quot;: &quot;a1_rw/urdf/a1_rw.csv&quot;,
+    &quot;urdfpath&quot;: &quot;a1_rw/urdf/a1_rw.urdf&quot;
+}
+
+model = a1_rw
+curdir = os.getcwd()
+path_parent = os.path.dirname(curdir)
+print(&quot;path parent = &quot;, path_parent)
+model_path = model[&quot;urdfpath&quot;]
+robot = URDF.load(os.path.join(path_parent, model_path))
+</code></pre>
+<p>Here is the error message:</p>
+<pre><code>$ python3.8 calc_parallax.py
+path parent =  /home/ben/Documents/git_workspace/a1_test
+Traceback (most recent call last):
+  File &quot;calc_parallax.py&quot;, line 18, in &lt;module&gt;
+    robot = URDF.load(os.path.join(path_parent, model_path))
+  File &quot;/home/ben/.local/lib/python3.8/site-packages/urdfpy/urdf.py&quot;, line 3729, in load
+    return URDF._from_xml(node, path)
+  File &quot;/home/ben/.local/lib/python3.8/site-packages/urdfpy/urdf.py&quot;, line 3926, in _from_xml
+    kwargs = cls._parse(node, path)
+  File &quot;/home/ben/.local/lib/python3.8/site-packages/urdfpy/urdf.py&quot;, line 161, in _parse
+    kwargs.update(cls._parse_simple_elements(node, path))
+  File &quot;/home/ben/.local/lib/python3.8/site-packages/urdfpy/urdf.py&quot;, line 137, in _parse_simple_elements
+    v = [t._from_xml(n, path) for n in vs]
+  File &quot;/home/ben/.local/lib/python3.8/site-packages/urdfpy/urdf.py&quot;, line 137, in &lt;listcomp&gt;
+    v = [t._from_xml(n, path) for n in vs]
+  File &quot;/home/ben/.local/lib/python3.8/site-packages/urdfpy/urdf.py&quot;, line 181, in _from_xml
+    return cls(**cls._parse(node, path))
+  File &quot;/home/ben/.local/lib/python3.8/site-packages/urdfpy/urdf.py&quot;, line 161, in _parse
+    kwargs.update(cls._parse_simple_elements(node, path))
+  File &quot;/home/ben/.local/lib/python3.8/site-packages/urdfpy/urdf.py&quot;, line 137, in _parse_simple_elements
+    v = [t._from_xml(n, path) for n in vs]
+  File &quot;/home/ben/.local/lib/python3.8/site-packages/urdfpy/urdf.py&quot;, line 137, in &lt;listcomp&gt;
+    v = [t._from_xml(n, path) for n in vs]
+  File &quot;/home/ben/.local/lib/python3.8/site-packages/urdfpy/urdf.py&quot;, line 1146, in _from_xml
+    kwargs = cls._parse(node, path)
+  File &quot;/home/ben/.local/lib/python3.8/site-packages/urdfpy/urdf.py&quot;, line 161, in _parse
+    kwargs.update(cls._parse_simple_elements(node, path))
+  File &quot;/home/ben/.local/lib/python3.8/site-packages/urdfpy/urdf.py&quot;, line 127, in _parse_simple_elements
+    v = t._from_xml(v, path)
+  File &quot;/home/ben/.local/lib/python3.8/site-packages/urdfpy/urdf.py&quot;, line 181, in _from_xml
+    return cls(**cls._parse(node, path))
+  File &quot;/home/ben/.local/lib/python3.8/site-packages/urdfpy/urdf.py&quot;, line 161, in _parse
+    kwargs.update(cls._parse_simple_elements(node, path))
+  File &quot;/home/ben/.local/lib/python3.8/site-packages/urdfpy/urdf.py&quot;, line 127, in _parse_simple_elements
+    v = t._from_xml(v, path)
+  File &quot;/home/ben/.local/lib/python3.8/site-packages/urdfpy/urdf.py&quot;, line 581, in _from_xml
+    meshes = load_meshes(fn)
+  File &quot;/home/ben/.local/lib/python3.8/site-packages/urdfpy/utils.py&quot;, line 225, in load_meshes
+    meshes = trimesh.load(filename)
+  File &quot;/home/ben/.local/lib/python3.8/site-packages/trimesh/exchange/load.py&quot;, line 111, in load
+    ) = parse_file_args(file_obj=file_obj,
+  File &quot;/home/ben/.local/lib/python3.8/site-packages/trimesh/exchange/load.py&quot;, line 623, in parse_file_args
+    raise ValueError('string is not a file: {}'.format(file_obj))
+ValueError: string is not a file: /home/ben/Documents/git_workspace/a1_test/a1_rw/urdf/package://a1_rw/meshes/trunk.dae
+</code></pre>
+<p>Is there any way to get urdfpy (or another urdf parser) to parse this correctly?</p>
+",1/24/2022 17:06,75057263,1265,1,0,5,,9922981,"Boston, MA",6/11/2018 2:44,9,75057263,"<p>The behavior you're observing is expected. The documentation for <a href=""https://urdfpy.readthedocs.io/en/latest/generated/urdfpy.URDF.html#urdfpy.URDF.load"" rel=""nofollow noreferrer""><code>urdfpy.URDF.load()</code></a> specifically states:</p>
+<blockquote>
+<p>Any paths in the URDF should be specified as relative paths to the <code>.urdf</code> file instead of as ROS resources.</p>
+</blockquote>
+<p>If you want to keep using the same library, the only way to sort this out is to replace the strings in the <code>.urdf</code> file. To do so I suggest using a <a href=""https://docs.python.org/3/library/tempfile.html"" rel=""nofollow noreferrer"">temporary file</a> so that it is automatically discarded once you've loaded your URDF and doesn't actually impact your original urdf.</p>
+<pre class=""lang-py prettyprint-override""><code>from pathlib import Path
+from urdfpy import URDF
+import tempfile
+
+# URDF file (pathlib is a little nicer but not mandatory)
+urdf_file_path = Path(&quot;path/to/my/file.urdf&quot;)
+
+# Define how you replace your string. Adjust it so it fits your file organization
+ros_url_prefix = &quot;package://&quot;
+abs_path_prefix = &quot;/path/to/my/meshes/folder&quot;
+
+# Start with openning a temp dir (context manger makes it easy to handle)
+with tempfile.TemporaryDirectory() as tmpdirname:
+  
+    # Where your tmpfile will be
+    tmp_file_path = Path(tmpdirname)/urdf_file_path.name
+
+    # Write each line in fout replacing the ros url prefix with abs path
+    with open(urdf_file_path, 'r') as fin:
+        with open(tmp_file_path, 'w') as fout:
+            for line in fin:
+                fout.write(line.replace(ros_url_prefix, abs_path_prefix))
+
+    # Load the urdf from the corrected tmp file
+    robot_urdf = load(tmp_file_path)
+
+# Here we get out of tmpfile context manager, so the tmpdir and all its content is erased
+robot_urdf.show() # The robot urdf is still accessible
+</code></pre>
+",12256622,1,0,,,fp
+4223,71254308,"How can i find the position of ""boundary boxed"" object with lidar and camera?",|opencv|ros|robotics|gazebo-simu|pcl|,"<p>This question is related to my final project. In gazebo simulation environment, I am trying to detect obstacles' colors and calculate the distance between robot and obstacles. I am currently identifying their colors with the help of OpenCV methods (<a href=""https://i.stack.imgur.com/V0Pyz.png"" rel=""nofollow noreferrer"">object with boundary box</a>) but I don't know how can i calculate their distances between robot. I have my robot's position. I will not use stereo. I know the size of the obstacles. Waiting for your suggestions and ideas. Thank you!</p>
+<p>My robot's topics :</p>
+<ul>
+<li>cameras/camera/camera_info <em>(Type: sensor_msgs/CameraInfo)</em></li>
+<li>cameras/camera/image_raw <em>(Type: sensor_msgs/Image)</em></li>
+<li>sensors/lidars/points <em>(Type: sensor_msgs/PointCloud2)</em></li>
+</ul>
+",2/24/2022 15:24,71259367,556,1,2,1,,18010735,,1/23/2022 16:44,54,71259367,"<p>You can project the point cloud into image space, e.g., with OpenCV (as in <a href=""https://stackoverflow.com/questions/25244603/opencvs-projectpoints-function"">here</a>). That way, you can filter all points that are within the bounding box in the image space. Of course, projection errors because of differences between both sensors need to be addressed, e.g., by removing the lower and upper quartile of points regarding the distance to the LiDAR sensor. You can use the remaining points to estimate the distance, eventually.</p>
+<p>We have such a system running and it works just fine.</p>
+",5296179,0,0,125951364,"Sorry for insufficient information. I don't have the positions of the all obstacles. I am trying to find that. I just have my robot's position. I am not using stereo vision. I just want to fuse lidar and my camera.  Camera space is not calibrated Actually, i dont know what that it means. I know the size of the obstacles. I edited my question.",fp
+4233,71397376,Why is the default value of WHOAMI register of MPU9250 is 0x71?,|microcontroller|robotics|mpu6050|,"<p>I'm reading the datasheet of MPU9250 and I find out the address of MPU6050 inside MPU9250 is b110100x. But when I see the description of WHOAMI register, it says the default value is 0x71. And I cannot figure out any relationship between b110100x and 0x71.</p>
+<p>Can anyone tell me what is going on? Thank you～</p>
+<p>BTW why does everyone put 0 in front of the address and say that the address of MPU9250 is 0x68? It seems more sense to put 0 on the LSB since that LSB represent read or write.</p>
+",3/8/2022 15:19,,607,0,5,0,,15707867,,4/20/2021 15:56,17,,,,,,126226029,"@ThomasJager Yeah `0xD0` is what I mean! I just think it is really confusing to shift the address right to become `0x68`...
+Thank you for you explaining~~ I never thought that address and number will be indepent!",fp
+4559,75794882,Dynamically configure my simulation (matlab-simulink),|matlab|simulation|simulink|robotics|,"<p>I want to create 3 different controllers for the same system. I want to simulate them all in the same environment, and run each simulation with a different controller, or with 2 of the controllers and change mid simulation.</p>
+<p>What i want to achieve is the following (without necessarily the switch case block), where some logic would replace the constant block:</p>
+<p><a href=""https://i.stack.imgur.com/cs8FW.png"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/cs8FW.png"" alt=""enter image description here"" /></a></p>
+<p>I tried using a <a href=""https://www.mathworks.com/help/simulink/slref/switchcase.html"" rel=""nofollow noreferrer"">switch case block</a>, however, my simulation fails because the sample time of the switch case block is different from the sample times in other components (derivatives for continuous PID, discrete PID, filters for continuous PID).</p>
+<p>How can configure my simulation dynamically to use different controllers ( differenct blocks)?</p>
+",3/20/2023 20:09,75802149,145,1,0,0,,17330440,,11/4/2021 17:58,16,75802149,"<p>What i ended up doing is the following:</p>
+<p><strong>1:</strong> I used a <a href=""https://www.mathworks.com/help/simulink/slref/multiportswitch.html"" rel=""nofollow noreferrer"">multiport switch</a>. The switch doesn't rely on sampling time, so there are no conflicts between PID sampling times and controller switching.</p>
+<p><strong>2:</strong> I have a timeseries signal to activate the controller i want. The multiport switch accepts a integer signal, and it fails otherwise. To achieve that, the timeseries signal is constructed with the following method:</p>
+<pre><code>Select_Controller = [0, 2;Tchange - Tsampling 2;Tchange 1  ];;
+</code></pre>
+<p>and then this signal is passed from a ZOH block with sampling rate <code>Tsampling</code>. Thus the signal is always an integer value.</p>
+<p>This is the simulink diagram:
+<a href=""https://i.stack.imgur.com/Uaen2.png"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/Uaen2.png"" alt=""enter image description here"" /></a></p>
+<p>which results on those signals:
+<a href=""https://i.stack.imgur.com/fKVhx.png"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/fKVhx.png"" alt=""enter image description here"" /></a></p>
+<p>The command was:</p>
+<pre><code>Select_Controller = [0, 2;(3 - 1e-3) 2;3 1  ];;
+</code></pre>
+",17330440,0,0,,,fp
+4659,77046789,Very low accuracy and high loss with LSTM model,|python|deep-learning|lstm|recurrent-neural-network|robotics|,"<p>I try to learn the inverse kinematics of a robotic manipulator. To do that I have a simulator with which I acquired data.</p>
+<p>My dataset is composed of positions in X, Y and Z and actuator variables (6 of them). That represents around 310 000 rows. Therefore, the inputs of my NN are the positions (3 inputs) and the outputs the actuator variables (6 outputs). Just before (when my dataset were much simpler, 3 outputs only) I managed to obtain good results with a MLP. However, now that the dataset is much more complicated, I did not manage to obtain a similar result.</p>
+<p>I decided to explore a bit the option of RNN and particularly the LSTM. However, I still have some difficulties to obtain convenient results. In fact, at this moment I only achieve 0.17 of accuracy and 0.06 loss (a good value of loss would be 0.0001).</p>
+<p>Here is my code :</p>
+<pre><code>import numpy as np
+import tensorflow as tf
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import MinMaxScaler
+import matplotlib.pyplot as plt
+
+# Chargement des données
+data = np.genfromtxt('/dataprocess.csv', delimiter=',')
+scaler = MinMaxScaler()
+data[1:,[7,8,9,10,11,12,13,14,15]] = scaler.fit_transform(data[1:,[7,8,9,10,11,12,13,14,15]])
+
+# Diviser les données en ensembles d'entraînement et de test
+trainset, testset = train_test_split(data[1:, [7,8,9,10,11,12,13,14,15]], test_size=0.2, random_state=0)
+
+
+# Préparation des données en séquences
+seq_length = 10  # Longueur de la séquence
+X_train_seq = [trainset[i:i+seq_length, [6, 7, 8]] for i in range(len(trainset) - seq_length)]
+Y_train_seq = [trainset[i+seq_length, [0, 1, 2, 3, 4, 5]] for i in range(len(trainset) - seq_length)]
+X_test_seq = [testset[i:i+seq_length, [6, 7, 8]] for i in range(len(testset) - seq_length)]
+Y_test_seq = [testset[i+seq_length, [0, 1, 2, 3, 4, 5]] for i in range(len(testset) - seq_length)]
+
+X_train_seq = np.array(X_train_seq)
+Y_train_seq = np.array(Y_train_seq)
+X_test_seq = np.array(X_test_seq)
+Y_test_seq = np.array(Y_test_seq)
+
+print(&quot;X train seq shape : &quot;, np.array(X_train_seq).shape)
+
+# Création du modèle RNN avec tf.keras.Model
+# input_layer = tf.keras.layers.Input(shape=(3,))  # Entrée : x, y, z
+input_layer = tf.keras.layers.Input(shape=(seq_length, 3))  # Entrée : séquence de x, y, z
+rnn_layer = tf.keras.layers.LSTM(256, activation='relu', return_sequences=True)(input_layer)  # Couche SimpleRNN
+hidden_layer2 = tf.keras.layers.LSTM(256, activation='relu', return_sequences=True)(rnn_layer)  # Couche intermédiaire
+hidden_layer3 = tf.keras.layers.LSTM(256, activation='relu', return_sequences=True)(hidden_layer2)  # Couche intermédiaire
+hidden_layer4 = tf.keras.layers.LSTM(256, activation='relu', return_sequences=True)(hidden_layer3)  # Couche intermédiaire
+hidden_layer5 = tf.keras.layers.LSTM(256, activation='relu', return_sequences=True)(hidden_layer4)  # Couche intermédiaire
+hidden_layer6 = tf.keras.layers.LSTM(256, activation='relu', return_sequences=True)(hidden_layer5)  # Couche intermédiaire
+output_layer = tf.keras.layers.Dense(6)(hidden_layer6)  # 6 sorties pour les variables d'actionnement
+
+
+
+model = tf.keras.Model(inputs=input_layer, outputs=output_layer)
+
+# Compilation du modèle
+model.compile(optimizer='adam', loss='mse', metrics=['accuracy'])
+
+# Entraînement du modèle
+History = model.fit(X_train_seq, Y_train_seq, validation_data=(X_test_seq, Y_test_seq), epochs=100, batch_size=512, verbose=2)
+# History = model.fit(X_train, Y_train, validation_data=(X_test, Y_test), epochs=500, batch_size=1024, verbose=2)
+
+# Évaluation du modèle sur les données de test
+loss, accuracy = model.evaluate(X_test_seq, Y_test_seq, verbose=0)
+# loss, accuracy = model.evaluate(X_test, Y_test, verbose=0)
+print(&quot;Test accuracy:&quot;, accuracy)
+print(&quot;Test loss:&quot;, loss)
+</code></pre>
+",9/5/2023 17:59,,113,0,3,0,,22505446,,9/5/2023 17:38,3,,,,,,135839879,@Jeppe yes i’ve tried lots of different combination. From one LSTM layer with 10 neurons to 10 LSTM layers with 512 neurons. I also changed batch size and epochs but the results is still the same,fp
+4679,77264719,Python to Control CoppeliaSim correct library (RegularAPI or LegacyApi),|python|simulator|robotics|,"<p>I want to use CoppeliaSim with Python. I have tried the sim.py module from the legacyApi. Take as an example min 2:05 of: <a href=""https://www.youtube.com/watch?v=TGT7KbP7Dfs"" rel=""nofollow noreferrer"">https://www.youtube.com/watch?v=TGT7KbP7Dfs</a>
+However, I cannot not find documentation of its methods and since it is legacy code I would rather move to a more modern implementation. I want to switch to the Regular API: <a href=""https://www.coppeliarobotics.com/helpFiles/"" rel=""nofollow noreferrer"">https://www.coppeliarobotics.com/helpFiles/</a>
+The methods are very well documented but I do not find how to import them. What import to I have to do? Do I have to do a pip install? Do I have to download any .py file?</p>
+<ol>
+<li>Plan A: Use the Regular API. Tell me how to import it. The methods are well documented but I do not know where are those. If possible I would be prefer this approach.</li>
+<li>Plan B: Use the legacyApi. I already was able to find it and use it. But the methods are not documented.</li>
+</ol>
+",10/10/2023 9:56,,44,0,0,1,,22694257,,10/6/2023 8:42,4,,,,,,,,fp
+3240,53420274,scanning the area with rotating turtlebot 2,|ros|robotics|,"<p>I'm working on a project with ROS using gzebo simulator and turtlebot 2.
+I'm trying to make my robot navigate himself into a clear path.
+my robot moves only forward, and my idea was to rotate it 360 degrees and get readings from his laser scan, and then get back to the angle that had a reading
+that represents a clear path.</p>
+
+<p>I'm having trouble thinking about a right implementation though and would like to get some reviews about my idea and any suggestions that could help.</p>
+
+<p>Thanks!</p>
+",43425.86806,,163,1,0,0,,9837518,,43243.97222,89,53619530,"<p>What is the problem exactly?</p>
+
+<ul>
+<li>detecting the clear path after the rotation?</li>
+<li>Rotating to it and driving into it?</li>
+<li>Something else?</li>
+</ul>
+
+<p>Is there a reason why you can not use the global &amp; local planner of ROS and simple calculate a goal for them after the rotation?</p>
+
+<p>Or you mean your robot can only drive straight and rotate in place? No driving curves?</p>
+
+<p>Than take the global plan and check for each cell after the start, if it is reachable in  a straight line without hitting an obstacle. If not, drive to the previous reachable cell rotate there and start anew.</p>
+",10698523,0,0,,,fp
+1936,22893179,"compute pitch, roll and yaw movement of an object in Matlab",|matlab|matrix|rotation|simulator|robotics|,"<p>I am currently working, with Matlab, on a 3D simulator whose aim is to move an object (currently it's just a  simple circle) in space (using plot3). </p>
+
+<p>Although it's easy to compute a trajectory without any rotation of my object, I do not manage to rotate my object around its own axis. Indeed, I have computed the 3 well-known rotation matrix but it (of course) rotate  my object (represented by a set of points) around the axis of my figure (in the ""world"" system).</p>
+
+<p>For example, the center of inertia of my object (currently the center of my circle) is I whose coordinates are (Xi,Yi,Zi). Thus, I suppose that I need to define an additional system for my object to be able to rotate my object about these 3 new axis composing such a system...</p>
+
+<p>I would like something like:</p>
+
+<p><code>[X2,Y2,Z2]=Mat*[X1,Y1,Z1]</code> where <code>[X1,Y1,Z1]</code> is the coordinates of a point of my object before the rotation, <code>[X2,Y2,Z2]</code> the coordinates after the rotation and Mat the matrix I am looking for. Of course, the center of inertia must be unchanged whichever the rotation (yaw and/or pitch or/and roll)</p>
+
+<p>However I have no idea about the way to compute such a matrix. The link below summarizes my wish.</p>
+
+<p><a href=""http://hpics.li/0639a11"" rel=""nofollow"">Drawing of my problem</a></p>
+",41735.46389,,840,0,6,0,,3503312,,41735.43125,29,,,,,,34937761,then you'll have to keep track of the relative rotation of the object to the world coordinate system.,fp
+4290,71741810,how do i fix Simbad requires Java 3D error message,|java|executable-jar|robotics|java-3d|,"<p>Hello I am starting with simbad and I installed Simbad1.4 and java3d1.5 but when i try to open simbad an error message occurs and it writes Simbad requires Java 3D
+I have Windows 10</p>
+",44655.75208,,44,0,4,0,,13511000,"Athens, Ελλάδα",43961.46944,6,,,,,,126784716,take the [tour] read [ask] and post a [mcve],fp
+998,5090168,Binary Image Corner Detection,|c++|python|algorithm|image-processing|robotics|,"<p>I have a matrix that represents a binary image (1 for each cell that represents ""black"" pixels and 0 for ""white"" ones). The black pixels represent the figures (shape and fill) of the image and the white ones the background. What I want to do is to detect the corners of the figures represented in the matrix.</p>
+
+<p>2 examples:</p>
+
+<hr />
+
+<p><img src=""https://i.stack.imgur.com/vqvGW.png"" alt=""enter image description here""></p>
+
+<hr />
+
+<p>Any idea or algorithm for this?</p>
+
+<p>Thanks in advance.</p>
+",40597.47083,,1969,2,6,1,0,277927,"Caracas, Venezuela",40230.12153,118,5090400,"<p>Try the <a href=""http://opencv.willowgarage.com/wiki/"" rel=""nofollow"">opencv libraries</a>, they have <a href=""http://opencv.willowgarage.com/documentation/python/index.html"" rel=""nofollow"">python bindings</a> and a lot of algorithms to do corner detection.</p>
+
+<p>my2c</p>
+",135549,5,1,5707640,And what exactly are the corners? The bounding box? Something else?,fp
+4144,69822488,"Given a Grid, find which Blocks are occupied by a circular object of radius R",|geometry|grid|language-agnostic|robotics|,"<p>As you can guess from the title, I am trying to solve the following problem.</p>
+<p><strong>Given a grid of size NxN and a circular object O of radius R with centre C at (x_c, y_c), find which Blocks are occupied by O.</strong></p>
+<p>An example is shown in the figure below:</p>
+<p><a href=""https://i.stack.imgur.com/OmnF6.png"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/OmnF6.png"" alt=""enter image description here"" /></a></p>
+<p>In that example, I expect the output to be [1,2,5,6].</p>
+<p>I would be very grateful if anyone has a suggestion or resources.</p>
+",44503.39583,,203,2,0,0,,8018957,"Rome, Metropolitan City of Rome, Italy",42871.42292,3,69852719,"<p>I used Python3 and OpenCv  but it can be done in any language.</p>
+<p>Source:</p>
+<pre><code>import cv2
+import numpy as np
+import math
+
+def drawgrid(im,xv,yv,cx,cy,r):
+    #params: image,grid_width,grid_height,circle_x,circle_y,circle_radius
+    cellcoords = set() #i use set for unique values 
+    h,w,d = im.shape
+
+    #cell width,height
+    cew = int(w/xv)
+    ceh = int(h/yv)
+
+    #center of circle falls in this cells's coords 
+    nx = int(cx / cew )
+    ny = int(cy / ceh )
+    cellcoords.add((nx,ny))
+
+
+    for deg in range(0,360,1):
+        cirx = cx+math.cos(deg)*r
+        ciry = cy+math.sin(deg)*r
+
+        #find cell coords of the circumference point 
+        nx = int(cirx / cew )
+        ny = int(ciry / ceh )
+        cellcoords.add((nx,ny))
+
+
+
+
+    #grid,circle colors
+    red = (0,0,255)
+    green = (0,255,0)
+
+    #drawing red lines
+    for ix in range(xv):
+        lp1 = (cew * ix , 0)
+        lp2 = (cew * ix , h)
+        cv2.line(im,lp1,lp2,red,1)
+
+    for iy in range(yv):
+        lp1 = (0 , ceh * iy)
+        lp2 = (w , ceh * iy)
+        cv2.line(im,lp1,lp2,red,1)
+
+    #drawing green circle
+    cpoint = (int(cx),int(cy))
+    cv2.circle(im,cpoint,r,green)
+
+    print(&quot;cells coords:&quot;,cellcoords)
+
+
+imw=500
+imh=500
+
+im  = np.ndarray((imh,imw,3),dtype=&quot;uint8&quot;)
+drawgrid(im,9,5, 187,156 ,50)
+
+
+cv2.imshow(&quot;grid&quot;,im)
+cv2.waitKey(0)
+</code></pre>
+<p>output: cells coords: {(3, 2), (3, 1), (2, 1), (2, 2), (4, 1)}</p>
+<pre><code>cells coords are zero based x,y. 
+So ...
+
+1° cell top left is at (0,0) 
+2° cell  is at (1,0) 
+3° cell  is at (2,0) 
+
+1° cell of 2° row is at (0,1) 
+2° cell of 2° row is at (1,1) 
+3° cell of 2° row is at (2,1) 
+and so on ...
+
+Getting cell number from cell coordinates might be fun for you
+</code></pre>
+<p><a href=""https://i.stack.imgur.com/JaGHW.png"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/JaGHW.png"" alt=""enter image description here"" /></a></p>
+",10638652,-2,3,,,fp
+4676,77233058,Is it possible to simulate Nasa's R2 robot on ROS Noetic?,|simulation|ros|robotics|gazebo-simu|rospy|,"<p>Steps I followed:</p>
+<p>Step 1: Installed controllers and other things using</p>
+<pre><code>sudo apt-get install ros-noetic-ros-control ros-noetic-gazebo-ros-control ros-noetic-joint-state-controller ros-noetic-effort-controllers ros-noetic-joint-trajectory-controller ros-noetic-moveit* ros-noetic-octomap* ros-noetic-object-recognition-*
+</code></pre>
+<p>Step 2:I tried cloning this repository but it is missing:</p>
+<pre><code>git clone -b noetic-devel https://bitbucket.org/nasa_ros_pkg/nasa_r2_simulator.git
+</code></pre>
+",45203.88958,,33,0,0,0,,17986015,,44581.66667,2,,,,,,,,fp
+847,4174193,Are there any UAV simulation environments?,|simulation|robotics|,"<p>I'd like to play around with computer vision and AI techniques without having to spend money on hardware right away.  If there aren't any robotics simulation environments that model flight physics, could someone recommend the fastest/easiest way to make one? I don't want to make one from scratch, of course, but maybe it's  possible to easily ""glue"" some existing apps together?</p>
+",40495.79653,,1664,4,2,3,0,359121,,40334.40972,16,4174220,"<p>A couple of ideas: First, I know Microsoft have discontinued their Flight Simulator, but it has an API and by all accounts the community surrounding it continues to thrive. That might be worth investigating.
+Secondly, What about writing a quick little ""simulator"" that uses either Bing Maps 3D or Google Earth? Richard Brunditt (http://rbrundritt.wordpress.com/ ) wrote a simulator for Bing Maps 3D so that might be worth investigating.</p>
+
+<p>Finally once you think you have something reasonably good, and if you have a lot of open space, you could try a model aircraft... </p>
+",481927,0,1,4509434,What sort of scale are you talking about? The first versions of the  simulation environment for BAE replica's vision system were very simple physics - the only way to turn was an instant roll to 5G - but if you are wanting to do something like this http://www.sparkfun.com/commerce//news.php?id=460 then then you need quite a good model,fp
+4183,70309419,Plotting a surface for a robot reach bubble in Python,|python|matplotlib|plot|robotics|kinematics|,"<p>I'm trying to simulate a robot reach bubble. The goal would be to export it into a CAD file and visualize the possible workspace. My approach was to plot all potential endpoints using forward kinematics for the robot, considering linkage lengths and joint limits. This may be a brute-force way to generate the endpoints (Rx, Ry, Rz), but it comes out to be very accurate (at least for 2D examples). <a href=""https://i.stack.imgur.com/g3cP7.jpg"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/g3cP7.jpg"" alt=""This image shows the provided workspace for an IRB robot and my results when plotting the points in 2D"" /></a>
+I can display a three-dimensional figure of the bubble as a scatterplot; however, to export it into a CAD file, I need to mesh it first, which requires converting it into a surface, as I understand. This is the part I'm having trouble with.</p>
+<p>Using matplotlib's ax.surface_plot(Rx, Ry, Rz) I receive an error stating that Rz must be a 2-dimensional value. I fiddled with np.meshgrid() and np.mgrid() functions but have been unable to create a simple surface of the bubble. What can I do to convert this scatterplot into a surface? Is there another approach that I'm missing?</p>
+<p>Another thing that dawned on me is that I'd likely want to remove some of the intermediate points inside the reach bubble. Ideally, the surface would be composed of the outer ends and the hollow points from the center radius.</p>
+<p>Below is a code that results in 1D arrays:</p>
+<pre><code># Reach bubble 3D
+import NumPy as np
+import matplotlib.pyplot as plt
+
+# Initialize figure and label axes
+fig = plt.figure()
+ax = plt.axes(projection='3d')
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+ax.set_zlabel('z')
+
+dr = np.pi/180 # Degree to radian multiple
+pi = np.pi
+
+# Define important robot dimensions and axis limits for IRB 1100
+z0 = 0.327  # Fixed height from base to A1
+link1 = 0.28
+link2 = 0.3
+
+a1 = np.linspace(0, 2*pi, 8)           # Angle limits for axes
+a2 = np.linspace(-115*dr, 113*dr, 12)
+a3 = np.linspace(-205*dr, 55*dr, 12)       
+
+Rx = []
+Ry = []
+Rz = []
+
+for i1 in a1:
+    for i2 in a2:
+        for i3 in a3:
+                
+            r = link1*np.sin(i2) + link2*np.sin(pi/2+i2+i3)
+            Rx.append(r*np.cos(i1))
+            Ry.append(r*np.sin(i1))   
+            Rz.append(z0 + link1*np.cos(i2) + link2*np.cos(pi/2+i2+i3))      
+        
+# Plot reach points
+ax.scatter(Rx, Ry, Rz, c='r', marker='o', alpha = 0.2)
+plt.show()
+</code></pre>
+<p>Below is a code that results in 3D arrays but doesn't use for loops:</p>
+<pre><code># 3D Reach bubble for robot
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Initialize figure and label axes
+fig = plt.figure()
+ax = plt.axes(projection='3d')
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+ax.set_zlabel('z')
+
+pi = np.pi
+dr = pi/180 # Degree to radian multiple
+
+# Define important robot dimensions and axis limits for GP8
+z0 = 0.327  # Fixed height from base to A1
+link1 = 0.28
+link2 = 0.3
+link3 = 0.064
+
+a1, a2, a3 = np.mgrid[0:2*pi:15j, -115*dr:113*dr:13j, -205*dr:55*dr:17j]
+         
+r = link1*np.sin(a2) + link2*np.sin(pi/2+a2+a3)
+Rx = r*np.cos(a1) 
+Ry = r*np.sin(a1)      
+Rz = z0 + link1*np.cos(a2) + link2*np.cos(pi/2+a2+a3)
+        
+# Plot reach points
+ax.plot_surface(Rx, Ry, Rz, color = 'Red', alpha = 0.2)
+ax.scatter(Rx, Ry, Rz, c='r', marker='o', alpha = 0.2)
+</code></pre>
+",44540.80278,,357,0,2,0,,17646880,,44540.73125,1,,,,,,124299624,[This](https://stackoverflow.com/questions/56545819/is-there-a-way-to-export-an-stl-file-from-a-matplotlib-surface-plot) might help. It suggest triangulating your data before saving it to a .stl file with [numpy-stl](https://github.com/WoLpH/numpy-stl). You could also use `plot_trisurf` to plot a Delaunay triangulation of your data (see [here](https://stackoverflow.com/questions/17367558/plot-a-3d-surface-from-x-y-z-scatter-data-in-python)),fp
+542,2764278,Potential field method : Real Robots,|robotics|,"<p>Potential field method is a very popular simulation for Robot Navigation. However, has anyone implemented Potential field method on real robots ? Any reference or any claim of using the method in real robots ?.</p>
+",40302.41181,2799660,3399,5,1,5,0,280945,"New Delhi, India",40234.24444,524,2799660,"<p>I have done potential field based path planning before, but abandoned it in favour of more appropriate approaches to my problem. It works adequately for environments where you have accurate localization, and accurate sensor readings, but much less so in real world environments (its not a particulary great solution even in terms of speed and path quality, even in simulation). Considering that there are now a lot of good SLAM implementations available either free or low cost, I wouldnt bother reimplementing unless you have very specific problems with reuse. For MRDS (what i work in) there is Karto Robotics, ROS has a SLAM implementation, and there are several open-source implementations only a google search away.</p>
+
+<p>If you want a good overview of different approaches to path planning, then you might want to grab a copy of ""introduction to Autonomous Mobile Robots"" by Segwart et al. Its a pretty good book, and the path planning section gives a nice overview of the different strategies around.</p>
+",336871,5,3,2856533,"Guys, I am overjoyed at the response, thanks to everyone who replied.",fp
+3889,64320886,Turtlebot rotates and sways like mad with Ros# on Unity3D,|unity-game-engine|ros|robotics|,"<p>I was trying to move Turtlebot in Unity3D following the tutorial: <a href=""https://github.com/siemens/ros-sharp/wiki/User_App_ROS_UnitySimulationExample"" rel=""nofollow noreferrer"">https://github.com/siemens/ros-sharp/wiki/User_App_ROS_UnitySimulationExample</a>.</p>
+<p>All steps suggested by the tutorial and its video were done and double checked. The only difference was that I was running both ROS and Unity on a Linux device (Ubuntu 16.08). However, Unity could connect to localhost just fine and rviz could pick up the image published by Unity. So I do not think this should be the problem.</p>
+<p>After launching the Ros node and starting simulation in Unity, the turtlebot just started to sway like a drunk:</p>
+<p><a href=""https://i.stack.imgur.com/KxiCE.png"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/KxiCE.png"" alt=""enter image description here"" /></a></p>
+<p>I feel like this might be an Unity issue. Does anyone had similar problems before? Any help is appreciated.</p>
+",44116.64861,,303,1,1,0,,14436770,,44116.63681,3,67571987,"<p>Take a look at the following:
+<a href=""https://github.com/siemens/ros-sharp/issues/333"" rel=""nofollow noreferrer"">https://github.com/siemens/ros-sharp/issues/333</a></p>
+<p>As it states, if you Enable the &quot;IsKinetic&quot; option for your ROSConnector, turtlebot works as expected.</p>
+",8259546,0,0,113777355,"Please [edit] to add meaningful code and a problem description here. Posting a [Minimal, Complete, Verifiable Example](https://stackoverflow.com/help/mcve) that demonstrates your problem would help you get better answers. Thanks!",fp
