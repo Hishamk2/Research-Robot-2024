@@ -1,0 +1,1659 @@
+,questionId,questionTitle,Tags,questionBody,questionCreationDate,AcceptedAnswerId,questionViewCount,AnswerCount,CommentCount,questionScore,questionFavoriteCount,questionUserId,questionUserLocation,questionUserCreationDate,questionUserViews,answerId,answerBody,answerUserId,answerScore,answerCommentCount,commentId,commentText,code
+2631,41599283,Translation from Camera Coordinates System to Robotic-Arm Coordinates System,|python|opencv|coordinates|robotics|coordinate-transformation|,"<p>I am new in robotics and I am working on a project where I need to pass the coordinates from the camera to the robot.</p>
+
+<p>So the <strong>robot</strong> is just an arm, it is then stable in a <strong>fixed position</strong>. I do not even need the 'z' axis because the board or the table where everything is going on have always the same 'z' coordinates.</p>
+
+<p>The <strong>webcam</strong> as well is always in a <strong>fixed position</strong>, it is not part of the robot and it does not move.</p>
+
+<p>The <strong>problem</strong> I am having is in the conversion from 2D camera coordinates to a 3D robotic arm coordinates (2D is enough because as stated before the 'z' axis is not needed as is always in a fixed position).</p>
+
+<p>I'd like to know from you guys, which one is the <strong>best approach</strong> to face this kind of problems so I can start to research.</p>
+
+<p>I've found lot of information on the web but I am getting a lot of confusion, I would really appreciate if someone could address me to the right way. </p>
+
+<p>I don't know if this information are useful but I am using OpenCV3.2 with Python</p>
+
+<p>Thank you in advance</p>
+",1/11/2017 19:34,,1631,1,3,0,,5577396,"Rome, Metropolitan City of Rome, Italy",11/18/2015 15:45,102,41604196,"<p>Define your 2D coordinate on the board, create a mapping from the image coordinate (2D) to the 2D board, and also create a mapping from the board to robot coordinate (3D). Usually, robot controller has a function to define your own coordinate (the board).</p>
+",1637710,0,0,70421380,2D coordinates are 3D with z = 0. Then you can be interested in a [forward 3d transfomation matrix](https://studywolf.wordpress.com/2013/08/21/robot-control-forward-transformation-matrices/),hc
+4772,78120537,Drawing a circle in a 3D enviroment using a 3DOF arm,|arduino|robotics|,"<p>I am a second year robotics student and have been giving a task to draw a circle in a 3D enviroment so far I haven't had the best results I used the 2D equation for a circle in the X and Z axis and at the moment I have set the Y axis to 0 and somehow the Y axis is moving.</p>
+<pre><code>#include &lt;Servo.h&gt;
+
+Servo motor1;
+Servo motor2;
+Servo motor3;
+
+//add variables for lengths - l1, l2 and l3;
+float l1 = 105;
+float l2 = 150;
+float l3 = 150;
+
+float radToDeg = (180 / 3.14);
+
+void ik(float x, float y, float z) {
+
+  // accounts for the vertical displacement along Z
+  z = z - l1;
+
+  float theta1, theta2, theta3;
+
+  //calculate the angle of the base joint using just the x and y value
+  // Add solution for Theta 1 (base)
+  theta1 = atan2(y, x);
+
+  // Calculate distance from the base to the end effector projection in the xy-plane
+  // Add solution for the d variable
+  float d = sqrt(sq(x) + sq(y));
+
+  //  float a = d / 2;
+  //
+  //  // Calculate theta2 (shoulder)
+  //  // Add solution for Theta 2
+  //  float angle1 = acos(a/ l2);
+  //  float angle2 = acos(x/ d);
+  //  theta2 = angle1 + angle2;
+  //
+  //  // Add solution for Theta3 (arm)
+  //  theta3 = 2*((3.14*1.5)-angle1);
+
+  // Calculate theta3
+  theta3 = acos((sq(d) + sq(z) - sq(l2) - sq(l3)) / (2 * l2 * l3));
+  // Calculate theta2
+  float b = atan2(l3 * sin(theta3), l2 + l3 * cos(theta3));
+  theta2 = atan2(-z, d) - b;
+
+  theta1 = theta1 * radToDeg;
+  theta2 = theta2 * radToDeg;
+  theta3 = theta3 * radToDeg;
+  theta2 = theta2 + 90;
+
+  theta3 = 180 - theta3;
+  Serial.print(theta1); Serial.print(&quot;   &quot;);
+  Serial.print(theta2); Serial.print(&quot;   &quot;);
+  Serial.print(theta3); Serial.print(&quot;   &quot;);
+  Serial.println();
+
+  //plug theta values into the motor write function
+  motorWrite(theta1, theta2, theta3);
+}
+
+void motorWrite(float t1, float t2, float t3) {
+  //offset the angles to go from -90 and 90 to be between 0 and 180 instead
+  t1 += 90;
+  t2 += 90;
+  motor1.write(t1);
+  motor2.write(t2);
+  motor3.write((90 + t3 - t2)); // make link 3 dependent on theta 2
+}
+
+void setup() {
+  motor1.attach(2);
+  motor2.attach(3);
+  motor3.attach(4);
+}
+
+void loop() {
+  ik(sin(millis()/100) * 200, 0, cos(millis()/100) * 200);
+}
+</code></pre>
+<p>Here is the code feel free to change it or do anything to it.</p>
+<p>PSA I have asked my lectures and they are okay with me uploading this and asking questions as it is a good learning experience. YOU ARE NOT DOING MY HOMEWORK.</p>
+<p>I tried the code above and this is a video of what has happend.
+Here is a youtube link to what is happening at the moment:
+<a href=""https://youtube.com/shorts/uRWFePCdgaA?feature=share"" rel=""nofollow noreferrer"">https://youtube.com/shorts/uRWFePCdgaA?feature=share</a></p>
+",3/7/2024 10:25,,13,0,1,0,,23551898,,3/7/2024 10:04,0,,,,,,137740697,"Please clarify your specific problem or provide additional details to highlight exactly what you need. As it's currently written, it's hard to tell exactly what you're asking.",mc
+3642,60347644,Getting Robot to Point to Correct Direction,|python|opencv|arduino|path-finding|robotics|,"<p>I am commanding a robot from a base station with radio. Base station takes location/orientation information from an overhead camera using the AR tag on the robot (with openCV). Moreover, base calculates the path robot should take to reach the target from location information (A* with each grid being 30 by 30 pixels in camera). My robot can only turn left/right (on its central point) and go forward/backward. Robot includes an Arduino Uno with two Lego NXT motors.</p>
+
+<p>I use the following code to get robot to point at right direction. However, when the robot gets close to the angle that it is supposed to travel to, instead of stopping an going forward it tries to fix its orientation infinitely.</p>
+
+<pre><code>    def correctOrientation(self, rx: int, ry: int):
+        #returns direction robot needs to point.
+        direction = self.getDirection((self.sx, self.sy), (rx, ry))
+        #method to stop robot.
+        self.comms.stop()
+
+        anglediff = (self.angle - direction + 180 + 360) % 360 - 180
+
+        while not (abs(anglediff) &lt; 15):
+            #Decides which way to turn.
+            if self.isTurnLeft(self.angle, direction):
+                self.comms.turnLeft()
+            else:
+                self.comms.turnRight()
+            #Put sleeps because there is a delay in camera feed. Allows it to get the location right
+            time.sleep(0.3)
+            self.comms.stop()
+            #Updates position
+            self.getPos()
+            time.sleep(1)
+            #Calculates orientation of robot and updates it
+            self.angle = self.calcOrientation()
+            anglediff = (self.angle - direction + 180 + 360) % 360 - 180
+            print(anglediff)
+            time.sleep(1)
+
+</code></pre>
+
+<p>My helper function that are used. I calculate orientation of robot by using two points known on the robot and drawing a line in between those two point. Hence, line becomes parallel with th orientation.</p>
+
+<pre><code>    def isTurnLeft(self, angle, touchAngle):
+        diff = touchAngle - angle
+        if diff &lt; 0:
+            diff += 360
+        if diff &lt; 180:
+           return False
+        else:
+            return True
+
+    def calcOrientation(self) -&gt; float:
+        return self.getDirection(self.marker[0], self.marker[3])
+
+    def getDirection(self, source: Tuple[int], target: Tuple[int]) -&gt; float :
+        return (math.degrees(math.atan2(target[1] - source[1], target[0] - source[0]))+360)%360
+</code></pre>
+
+<p>I can't figure out if my code is problematic in logic. If so what can I do about it? If code is fine and the problem is the delay/setup of the system, what are the other ways I can control the robot?</p>
+
+<p>Thank you for the help.</p>
+",2/21/2020 23:50,60365777,456,1,4,1,0,3970582,,8/23/2014 11:24,28,60365777,"<p>Solved the problem by changing the image library for AR tag recognition. We were using 2 tags for one robot. It is significantly slower and fail prone to detect two tags. Updated it to only have one tag. Moreover, switched from angle based calculations to vector based which is way simpler to understand.</p>
+",3970582,2,0,106753274,"Does it move back and forth to try and fix it's location? If so, then maybe it's overshooting the 15 degrees difference. Try sleeping a shorter time of rotation. Better still: make the rotation time dependent of the anglediff. Larger anglediff, rotate longer.",orientation
+4368,73519254,How to activate motors with python3,|python|automation|raspberry-pi|robotics|,"<p>I am thinking of a way to pack my bag for work in the morning, but I'm trying to automate it with python3, raspberry pi and motors, but I don't know how to program something to make them work. Does anyone know how to do this? I think it might include circuitpython.</p>
+<p>Thanks for your time,
+Gomenburu</p>
+",8/28/2022 13:51,73594428,38,1,2,0,,17985160,,1/20/2022 14:16,10,73594428,"<p>I figured out the answer. It is explained <a href=""https://www.tomshardware.com/how-to/dc-motors-raspberry-pi-pico"" rel=""nofollow noreferrer"">here</a>. It uses a Raspberry Pi Pico and MicroPython to activate the motors.</p>
+",17985160,0,0,129828224,"Ok, thanks. I might try this with motors instead then, because I heard that is easier",mc
+3647,60448037,Sending ROS messages through a cv2 python script,|python|ros|opencv|robotics|markers|,"<p>I am trying to implement a robotic solution, where the user will click on a point through a camera feed of an area and the mobile 4 wheel robot will path its way to that location.
+I have created the part of translating video pixel coordinates to ground coordinates through the use of the homograph transformation and would like to implement the part of sending the ground coordinates to RViz.
+The part of calculating the ground coordinates is shown bellow:</p>
+
+<pre><code>global h
+font = cv2.FONT_HERSHEY_SIMPLEX #Loading neccessary fonts
+
+with open(""save.h"", ""rb"") as f:
+    h = load(f)
+
+
+print ""Homographic matrix loaded successfully.""
+
+def draw_circle2(event,x,y,flags,param):
+    global h,mouseX,mouseY, num_of_points, complete,np_coord_on_screen,np_coord_on_ground, myImage, emptyFrame, coord_on_screen, coord_on_ground
+
+    if event == cv2.EVENT_LBUTTONDBLCLK:
+
+        a = np.array([[x, y]], dtype='float32')
+        a = np.array([a])
+        pointOut = cv2.perspectiveTransform(a, h) #Calculation of new point location
+
+        loc_pointOut = tuple(pointOut)
+
+        pointOut=(loc_pointOut[0][0][0],loc_pointOut[0][0][1]) #Point on ground
+
+        print ""Current Location: ""+str(pointOut)
+        cv2.imshow('Video',emptyFrame) #Showing emptyFrame
+        cv2.circle(myImage,(x,y),4,(255,0,0),-1) #Draw a circle on myImage
+        cv2.putText(myImage,(str((round(pointOut[0],2)))+"",""+str(round(pointOut[1],2))), (x-5,y-15),font, 0.4,(0,255,0)) #Draw the text
+        cv2.imshow('Video',myImage) #Showing resulting myImage
+
+        myImage = emptyFrame.copy()
+
+
+
+# Initial code 
+# Showing first frame on screen
+raw_input(""Press any key..."")
+clear_all()
+cv2.namedWindow('Video') #Naming the window to use.
+cv2.setMouseCallback('Video',draw_circle2) #Set mouse callBack function.
+ret, frame = cap.read() #Get image from camera
+if (ret): #If frame has image, show the image on screen
+    global myImage, emptyFrame
+    myImage = frame.copy()
+    emptyFrame = frame.copy()
+    cv2.imshow('Video',myImage) # Show the image on screen
+
+
+
+while True:  # making a loop
+
+    if cv2.waitKey(1) &amp; 0xFF == ord('q'):
+        break
+    if (cv2.waitKey(1) &amp; 0xFF == ord('c')):
+        #Deleting points from image
+
+        cv2.imshow('Video',emptyFrame) #Show the image again, deleting all graphical overlays like text and shapes
+        coord_on_screen = []        #Resetting coordinate lists
+        coord_on_ground=[]          #Resetting coordinate lists
+    if (cv2.waitKey(1) &amp; 0xFF == ord('s')):
+        cap.release()
+        cv2.destroyAllWindows()
+        init()
+
+
+# When everything done, release the capture
+cap.release()
+cv2.destroyAllWindows()
+</code></pre>
+
+<p>So, pointOut is the point on the ground (example: (2,4) m)
+I need some directions on how to implement the creation of a node and the transmission of the pointOut Marker message to a ROS topic in my code.</p>
+
+<p>My configuration is ROS Kinetic Kame, Python 2.7 </p>
+",2/28/2020 8:43,,182,0,4,0,,12969878,,2/26/2020 23:42,10,,,,,,106950925,"I have tried your suggestion and it turns out it is correct.
+It seems it was very simple after all. For some reason though, the first time I tried I got several errors making me believe it couldn't be achieved in such a simple manner.",wireless
+4112,69371534,What PointCloud library would be the best to start working with for a beginner?,|computer-vision|point-clouds|robotics|,"<p>I am looking to learn to work with a pointcloud library. As a beginner, what would be the best library to use? I have heard about PCL, CGAL, PDAL etc. but am not sure which one to use. My main interests are at the intersection of classical computer vision, deep learning and robotics. I am using a Windows machine without a GPU (I know that using a Linux Machine with a GPU would be ideal, but at the moment, this is what I have). Also, I have moderate but not expert experience with C++.</p>
+",9/29/2021 6:41,,251,0,2,1,,14897937,"Princeton, NJ, USA",12/27/2020 20:17,37,,,,,,122962978,"Each of them is great. Like every tool, it depends on what you need and with what. For difficult level, PDAL -> PCL -> CGAL. PDAL is probably the easiest but is fewer C++. PCL compare to the other 2 is limited (More you can do with PDAL or CGAL) but don't get me wrong is still a great tool. I would say CGAL is the most advanced but has also a higher starting point and is harder to use than the other two.",api
+2398,33271330,How to make a robot to play a video game by Python in Mac OSX?,|python|python-2.7|python-3.x|machine-learning|robotics|,"<p>I am doing research on machine learning, and want to apply an algorithm to training a robot to play a video game. I may want to use Python to implement the agent(controller) so I need a way to take screen shots of the game from python, and send keyboard events from python to the game. My OS is Mac OS X 10.10.</p>
+
+<p>I am new to Python. Is it possible for Python to do so? If so, how to do it?
+Thanks. </p>
+",10/22/2015 0:09,,345,1,2,-3,,2261693,,4/9/2013 12:32,60,33271897,"<p>I'm not an expert in this field but I think you can look at some of the heuristic search algorithms like Genetic Algorithm (GA).</p>
+
+<p><a href=""https://en.wikipedia.org/wiki/Genetic_algorithm"" rel=""nofollow"">https://en.wikipedia.org/wiki/Genetic_algorithm</a></p>
+
+<p>Also, every games are different for instance the super mario vs chess game. I'm not sure what game you are after but GA has been successfully implemented to play Super Mario smartly. </p>
+
+<p>I think for a start you can develop an AI to play the game first, then meantime collect some data for analytics so that it can play better the next time? Again, I dont know what kind of game you are after so it is  difficult for me to contribute ideas to help you.</p>
+",4014291,0,0,54344177,I think your in a bit over your head. try learning a little more about python first. And try looking at other program source code to learn how to make the robot play your game.,gs
+2136,27412408,How to move a robot a certain distance and still manage sensors?,|c++|arduino|robotics|,"<p>I have a robot with encoder feedback, and i want to use functions that move a robot a certain distance and turn it a certain angle, so for example:</p>
+
+<pre><code>void loop(){
+
+  if (Obstacle==false){  // if no obstacles
+
+      forward(1000);  // move forward 1000 mm
+      backward(1000); // move backward 1000 mm
+
+      //...  
+  }
+}
+</code></pre>
+
+<p>Forward Function:</p>
+
+<pre><code>void forward(int distance){  // distance in mm
+
+   int desiredRotationNumber= round(distance/circumference) ; 
+
+   int desiredTicks = encoderResolution * desiredRotationNumber;
+
+   if (counter &lt; desiredTicks) // variable counter counts the pulses from the encoder
+   {  
+       analogWrite(motor,255);
+   } 
+   else 
+   {
+       analogWrite (motor,0); 
+   }
+
+}
+</code></pre>
+
+<p>The problem is that if i use the condition ""if"" my forward function will execute only once and then the program jumps to the next function, but if i use the ""while loop"" my move functions will execute correctly but i won't be able to manage sensors or anything.  </p>
+",12/10/2014 22:56,27412489,1627,1,0,0,,2729596,,8/29/2013 14:09,28,27412489,"<p>What you probably want is to cut your moves in increments, and check the sensors in between each of these increments:</p>
+
+<pre><code>while (distance &gt; 0 &amp;&amp; !Obstacle){
+    forward(step);
+    distance-=step;
+    check_sensors();
+}
+</code></pre>
+
+<p>With multithreading, you could make those operations (moving and sensing) work asynchronously, and use some kind of event posting to warn each thread of a change. Here we're simulating that functionality by interwinding the tasks (you could also look into coroutines for a similar, yet much more effective idea).</p>
+",1769720,2,2,,,sensors
+2137,27432813,How to make a robot navigate a maze?,|python|robotics|maze|robot|myro|,"<p>I'm using the Myro library with the Python language.  I've had some weird results.</p>
+
+<p>My idea was to call the getObstacle sensors.  </p>
+
+<pre><code>left = getObstacle(0)
+center = getObstacle(1)
+right = getObstacle(2)
+</code></pre>
+
+<p>I want the robot to move forward as long as the center obstacle sensor is less than or equal to 4500.</p>
+
+<p>If the right obstacle sensor on the robot has a higher reading than the left obstacle sensor, I want it to turn left.</p>
+
+<p>Otherwise turn right.</p>
+
+<p>Here are my attempts on youtube</p>
+
+<p><a href=""https://www.youtube.com/watch?v=U5_sppAMe_8"" rel=""nofollow"">Attempt 1</a></p>
+
+<p><a href=""https://www.youtube.com/watch?v=h1pWAmf_7xA&amp;feature=youtu.be"" rel=""nofollow"">Attempt 2</a></p>
+
+<p>I'm going to submit 3 different variations of my code</p>
+
+<pre><code>def main():
+    setIRPower(135)
+    while True:
+        left = getObstacle(0)
+        center = getObstacle(1)
+        right = getObstacle(2)
+        # 2 feet per 1 second at 1 speed
+        if (center &lt;= 4500):
+            forward(0.5, 0.2)   
+            wait(0.4)   
+        elif (right &gt; left):
+            turnLeft(1, .45) 
+        else:
+            turnRight(1, .45)
+
+
+
+def main():
+    setIRPower(135)
+    while True:
+        left = getObstacle(0)
+        center = getObstacle(1)
+        right = getObstacle(2)
+        # 2 feet per 1 second at 1 speed
+        if (center &lt;= 4500):
+            forward(0.5, 0.2)   
+            wait(0.3)   
+
+        elif(right &gt; center and left):
+            turnLeft(1, .45) 
+        elif(left &gt; center and right):
+            turnRight(1, .45)
+</code></pre>
+
+<p>The latest one I'm working with</p>
+
+<pre><code>def main():
+    setForwardness(1)
+    setIRPower(135)
+    while True: 
+        left = getObstacle(0)
+        center = getObstacle(1)
+        right = getObstacle(2)
+        if (center &lt;= 5000 and left &lt;= 5000 and right &lt;= 5000):
+            forward(0.5, 0.2)
+            wait(.3)
+        elif(right&gt;left):
+            turnLeft(1, 0.45)
+        else:
+            turnRight(1, 0.45)
+</code></pre>
+
+<p>Is there any way I can improve my code? I want it to turn left and right at the correct times. </p>
+
+<p>Should I be using different logic altogether?  Any help would be appreciated. </p>
+",12/11/2014 21:35,,1471,0,3,2,,3577397,,4/27/2014 2:15,141,,,,,,43306882,"lol.. I just realized I said ""Are you kidding me?!""  In the first vid.  I'm a tad frustrated lol :P  This type of programming is like pulling teeth for me, and I'm fairly new to both programming and python in general.",mp
+4139,69676420,Detect when 2 buttons are being pushed simultaneously without reacting to when the first button is pushed,|c++|robotics|,"<p>I'm programming a robot's controller logic. On the controller there is 2 buttons. There is 3 different actions tied to 2 buttons, one occurs when only the first button is being pushed, the second when only the second is pushed, and the third when both are being pushed.</p>
+<p>Normally when the user means to hit both buttons they would hit one after another. This has the consequence of executing a incorrect action.</p>
+<p>Here is part of the code.</p>
+<pre class=""lang-cpp prettyprint-override""><code>while (true)
+{
+    conveyor_mtr.setVelocity(22, pct);
+
+    if (Controller1.ButtonL2.pressing() &amp;&amp; Controller1.ButtonL1.pressing())
+    {
+      conveyor_mtr.spin(fwd); // action 1
+    }
+    else if (Controller1.ButtonL2.pressing())
+    {
+      backGoalLift.setAngle(3); // action 2
+    }
+    
+    else if (Controller1.ButtonL1.pressing())
+    {
+      backGoalLift.setAngle(55); // action 3
+    }
+    else
+    {
+      conveyor_mtr.stop(hold);
+    }
+    task::sleep(20); //ms
+}
+</code></pre>
+",10/22/2021 11:51,69676660,600,1,2,1,,12650035,,1/4/2020 2:01,19,69676660,"<p>You could use a short timer, which is restarted every time a button press is triggered. Every time the timer expires, you check all currently pressed buttons. Of course, you will need to select a good timer duration to make it possible to press two buttons &quot;simultaneously&quot; while keeping your application feel responsive.</p>
+<p>You can implement a simple timer using a counter in your loop. However, at some point you will be happier with an event based architecture.</p>
+",17219185,1,0,123158313,"The term you're looking for is ""debouncing""",wireless
+3284,54385059,Open-loop or Closed-loop (reactive) Path planning?,|robotics|planning|mpc|,"<p>When we do path planning for collision avoidance, we can realize it open-loop or closed-loop.
+The open-loop method is to use an inherent simplified model, say, Bicycle model, for example, and propagate the system forward with an optimal input by designing a controller (MPC, or others). However, the states of the simplified model may surely diverge from the real ones due to modelling error as time goes by, hence we need to re-initialize the states of the path planner with the real system states (obtained via measurement or estimation). In this way, we have closed-loop planning. The question is that what frequency of this kind of re-initialization occurs? High re-initialization frequency makes the planning more accurate, but in the mean-time, it may cause zigzag sew-shape reference for the lower-level controller.   </p>
+",1/27/2019 4:21,54447882,755,1,0,0,,9438864,,3/3/2018 16:26,35,54447882,"<p>The answer to this is very system dependent. You are correct in saying that the open loop system is non-realizable. Planning/control is usually done in two stages.</p>
+
+<p>1) Trajectory Generation: This is usually done predictivly or in open loop (the P in MPC). Depending on the ability of the lower level control, this need not be done too frequently. For example, if trajectory execution deviates from your planned beyond some threshold (or beyond stability guarantees) you would then have to re-plan.</p>
+
+<p>2) Trajectory following/execution: Given an nominal trajectory (including nominal open loop controls), a lower level controller attempts to follow this as closely as possible. This would include a stabilizing controller such as LQR or something similar. </p>
+
+<p>The key to understanding what ""too fast"" is for re-planning is how much your system drifts over time and what kind of safety guarantees you want to produce. For example, if you allow for a 5cm buffer around obstacles in your open loop plan then an appropriate time to re-plan would be when the robot deviates from the trajectory (in R3 for example) by some threshold less than 5cm. If you re-plan any later than that, you cannot guarantee that your robot will not collide with the static obstacles in the environment. </p>
+
+<p>Clearly, this is driven by the accuracy of your model as well as how good a job your low level control does in following that trajectory. Ideally, if your model is reasonably accurate and if your low level control is very good, then no re-planning is necessary (assuming a static environment). </p>
+",3194808,1,1,,,obstacles
+3240,53420274,scanning the area with rotating turtlebot 2,|ros|robotics|,"<p>I'm working on a project with ROS using gzebo simulator and turtlebot 2.
+I'm trying to make my robot navigate himself into a clear path.
+my robot moves only forward, and my idea was to rotate it 360 degrees and get readings from his laser scan, and then get back to the angle that had a reading
+that represents a clear path.</p>
+
+<p>I'm having trouble thinking about a right implementation though and would like to get some reviews about my idea and any suggestions that could help.</p>
+
+<p>Thanks!</p>
+",11/21/2018 20:50,,163,1,0,0,,9837518,,5/23/2018 23:20,89,53619530,"<p>What is the problem exactly?</p>
+
+<ul>
+<li>detecting the clear path after the rotation?</li>
+<li>Rotating to it and driving into it?</li>
+<li>Something else?</li>
+</ul>
+
+<p>Is there a reason why you can not use the global &amp; local planner of ROS and simple calculate a goal for them after the rotation?</p>
+
+<p>Or you mean your robot can only drive straight and rotate in place? No driving curves?</p>
+
+<p>Than take the global plan and check for each cell after the start, if it is reachable in  a straight line without hitting an obstacle. If not, drive to the previous reachable cell rotate there and start anew.</p>
+",10698523,0,0,,,fp
+1936,22893179,"compute pitch, roll and yaw movement of an object in Matlab",|matlab|matrix|rotation|simulator|robotics|,"<p>I am currently working, with Matlab, on a 3D simulator whose aim is to move an object (currently it's just a  simple circle) in space (using plot3). </p>
+
+<p>Although it's easy to compute a trajectory without any rotation of my object, I do not manage to rotate my object around its own axis. Indeed, I have computed the 3 well-known rotation matrix but it (of course) rotate  my object (represented by a set of points) around the axis of my figure (in the ""world"" system).</p>
+
+<p>For example, the center of inertia of my object (currently the center of my circle) is I whose coordinates are (Xi,Yi,Zi). Thus, I suppose that I need to define an additional system for my object to be able to rotate my object about these 3 new axis composing such a system...</p>
+
+<p>I would like something like:</p>
+
+<p><code>[X2,Y2,Z2]=Mat*[X1,Y1,Z1]</code> where <code>[X1,Y1,Z1]</code> is the coordinates of a point of my object before the rotation, <code>[X2,Y2,Z2]</code> the coordinates after the rotation and Mat the matrix I am looking for. Of course, the center of inertia must be unchanged whichever the rotation (yaw and/or pitch or/and roll)</p>
+
+<p>However I have no idea about the way to compute such a matrix. The link below summarizes my wish.</p>
+
+<p><a href=""http://hpics.li/0639a11"" rel=""nofollow"">Drawing of my problem</a></p>
+",4/6/2014 11:08,,840,0,6,0,,3503312,,4/6/2014 10:21,29,,,,,,34937761,then you'll have to keep track of the relative rotation of the object to the world coordinate system.,fp
+4290,71741810,how do i fix Simbad requires Java 3D error message,|java|executable-jar|robotics|java-3d|,"<p>Hello I am starting with simbad and I installed Simbad1.4 and java3d1.5 but when i try to open simbad an error message occurs and it writes Simbad requires Java 3D
+I have Windows 10</p>
+",4/4/2022 18:03,,44,0,4,0,,13511000,"Athens, Ελλάδα",5/10/2020 11:16,6,,,,,,126784716,take the [tour] read [ask] and post a [mcve],fp
+2882,45941162,How would one connect an SQL db securely to an external client?,|python|database|web|iot|robotics|,"<p>I'm attempting to connect a database, located on a web server, to a robot but I do not know how to connect the database to the robot. I would like the robot to run SELECT and UPDATE queries from the robot. The other issue is that I do not intend on using C-languages or Java; I plan on using python in the main control system.</p>
+
+<p>I do know:
+PHP
+VBScript
+Batch
+Python</p>
+
+<p>If anyone knows how to connect the DB to a bot it would be a great help.</p>
+",8/29/2017 14:02,,353,1,0,-1,,8517235,,8/25/2017 14:55,7,45941312,"<p>So basically how to connect to an SQL DB in python? I'm working on a virtual bot right now doing the same thing. Look into the module , SQL-connector!<br> <a href=""http://www.mysqltutorial.org/python-connecting-mysql-databases/"" rel=""nofollow noreferrer"">http://www.mysqltutorial.org/python-connecting-mysql-databases/</a><br>
+You would start with creating a config.ini with your credentials<br></p>
+
+<pre><code>[mysql]
+host = localhost
+database = python_mysql
+user = root
+password =
+</code></pre>
+
+<p>Read Config.ini and return a dictionary<br></p>
+
+<pre><code>from configparser import ConfigParser 
+def read_db_config(filename='config.ini', section='mysql'):
+    """""" Read database configuration file and return a dictionary object
+    :param filename: name of the configuration file
+    :param section: section of database configuration
+    :return: a dictionary of database parameters
+    """"""
+    # create parser and read ini configuration file
+    parser = ConfigParser()
+    parser.read(filename)
+
+    # get section, default to mysql
+    db = {}
+    if parser.has_section(section):
+        items = parser.items(section)
+        for item in items:
+            db[item[0]] = item[1]
+    else:
+        raise Exception('{0} not found in the {1} file'.format(section, filename))
+
+    return db
+</code></pre>
+
+<p>and connect to MYSQL database<br></p>
+
+<pre><code>from mysql.connector import MySQLConnection, Error
+from python_mysql_dbconfig import read_db_config
+
+
+def connect():
+    """""" Connect to MySQL database """"""
+
+    db_config = read_db_config()
+
+    try:
+        print('Connecting to MySQL database...')
+        conn = MySQLConnection(**db_config)
+
+        if conn.is_connected():
+            print('connection established.')
+        else:
+            print('connection failed.')
+
+    except Error as error:
+        print(error)
+
+    finally:
+        conn.close()
+        print('Connection closed.')
+
+
+if __name__ == '__main__':
+    connect()
+</code></pre>
+
+<p>and update statement would look like the following<br></p>
+
+<pre><code>def update_book(book_id, title):
+    # read database configuration
+    db_config = read_db_config()
+
+    # prepare query and data
+    query = """""" UPDATE books
+                SET title = %s
+                WHERE id = %s """"""
+
+    data = (title, book_id)
+
+    try:
+        conn = MySQLConnection(**db_config)
+
+        # update book title
+        cursor = conn.cursor()
+        cursor.execute(query, data)
+
+        # accept the changes
+        conn.commit()
+
+    except Error as error:
+        print(error)
+
+    finally:
+        cursor.close()
+        conn.close()
+
+
+if __name__ == '__main__':
+    update_book(37, 'The Giant on the Hill *** TEST ***')
+</code></pre>
+",4965901,0,1,,,wireless
+4784,78227765,I want to use 3.10 python to take input from leap motion sensor. Is there any useful module or library for this purpose?,|python-3.x|arduino|sensors|robotics|leap-motion|,"<p>I have been trying to use python for using leap motion sensor. But i am getting the libraries but they are outdated not compatible with the latest python. Is there any python library or arduino library for this purpose?</p>
+<p>I want libraries to get input from leap motion sensor and control my soft robot through it.</p>
+",3/26/2024 19:35,,16,0,0,-1,,23824099,,3/26/2024 19:26,0,,,,,,,,api
+998,5090168,Binary Image Corner Detection,|c++|python|algorithm|image-processing|robotics|,"<p>I have a matrix that represents a binary image (1 for each cell that represents ""black"" pixels and 0 for ""white"" ones). The black pixels represent the figures (shape and fill) of the image and the white ones the background. What I want to do is to detect the corners of the figures represented in the matrix.</p>
+
+<p>2 examples:</p>
+
+<hr />
+
+<p><img src=""https://i.stack.imgur.com/vqvGW.png"" alt=""enter image description here""></p>
+
+<hr />
+
+<p>Any idea or algorithm for this?</p>
+
+<p>Thanks in advance.</p>
+",2/23/2011 11:18,,1969,2,6,1,0,277927,"Caracas, Venezuela",2/21/2010 2:55,118,5090400,"<p>Try the <a href=""http://opencv.willowgarage.com/wiki/"" rel=""nofollow"">opencv libraries</a>, they have <a href=""http://opencv.willowgarage.com/documentation/python/index.html"" rel=""nofollow"">python bindings</a> and a lot of algorithms to do corner detection.</p>
+
+<p>my2c</p>
+",135549,5,1,5707640,And what exactly are the corners? The bounding box? Something else?,fp
+3933,65313003,Differentiable Signed Distance Function for Isosceles Triangle (Field of View),|math|optimization|graphics|computer-vision|robotics|,"<p>I'm trying to find a signed distance function (SDF) for a simple 2D isoscele triangle, which represents the Field of View of a robot / camera. Ideally the SDF is also differentiable.</p>
+<p>So far I have tried the basic 2D SDF commonly found in shaders, but this is not applicable to my problem, as it involves calculation of non-differentiable functions.</p>
+<p>Particularly I'm looking for the following (compare <a href=""https://goldberg.berkeley.edu/pubs/Patil-ICRA2014-BSP-Sensing-Discontinuity-final.pdf"" rel=""nofollow noreferrer"">https://goldberg.berkeley.edu/pubs/Patil-ICRA2014-BSP-Sensing-Discontinuity-final.pdf</a>):</p>
+<p><a href=""https://i.stack.imgur.com/i8Q9c.png"" rel=""nofollow noreferrer"">SDF</a></p>
+<blockquote>
+<p>Relationship between measurements and signed distance to valid sensing region: (a) The expected position p^xt of the robot or object lies outside the field of view Π (shown in yellow) of a sensor, corresponding to a positive signed distance, where no measurements are obtained. The normal vector n indicates the direction of closest approach.</p>
+</blockquote>
+<p>Does anyone have any pointers on how to compute this?</p>
+",12/15/2020 20:12,,140,0,0,2,,14832680,,12/15/2020 20:00,2,,,,,,,,vision
+2628,41556912,How to publish a `geometry_msgs/PoseArray` from the command line?,|ros|robotics|,"<p>Can anybody give me an example of geometry_msgs/PoseArray message using rostopic pub? I keep on getting errors when i try and interpret the syntax from the ROS documentation, a solid example would be really helpful.</p>
+",1/9/2017 21:05,,5211,1,3,2,,6669999,"Cumbria, United Kingdom",8/3/2016 0:19,58,41590025,"<p>Do you mean something like this:</p>
+
+<pre><code>rostopic pub /my_topic geometry_msgs/PoseArray ""{header: {frame_id: 'base_frame'}, poses: [{position: {x: 1.0, y: 0.0, z: 0.0}, orientation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}}, {position: {x: 1.1, y: 0.0, z: 0.0}, orientation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}}]}""
+</code></pre>
+
+<p>This will publish a <code>PoseArray</code> message containing two poses to the topic <code>my_topic</code>. Furthermore, if you are using bash I believe you can auto-complete the message by hitting tab. </p>
+",4788274,1,0,70354829,Clearly you know nothing about ROS. This is not a debugging question. Why don't you pipe down and look for verification points on another thread?,li
+2379,32941468,horizontal acceleration measurement in self-balancing 2-wheel vehicles?,|robotics|kalman-filter|inertial-navigation|,"<p>it's now the standard practices to fuse the measurements from accelerometers and gyro through Kalman filter, for applications like self-balancing 2-wheel carts:   for example: <a href=""http://www.mouser.com/applications/sensor_solutions_mems/"" rel=""nofollow"">http://www.mouser.com/applications/sensor_solutions_mems/</a></p>
+
+<p>accelerometer gives a reading of the tilt angle through arctan(a_x/a_y).  it's very confusing to use the term ""acceleration"" here, since what it really means is the projection of gravity along the devices axis (though I understand that , physically, gravity is really just acceleration ).  </p>
+
+<p>here is the big problem: when the cart is trying to move, the motor drives the cart and creates a non-trivial acceleration in horizontal direction, this would make the a_x no longer a just projection of gravity along the device x-axis. in fact it would make the measured tilt angle appear larger. how is this handled? I guess given the maturity of Segway, there must be some existing ways to handle it.  anybody has some pointers?</p>
+
+<p>thanks
+Yang</p>
+",10/5/2015 4:51,32950746,93,1,0,0,,933882,,9/8/2011 1:38,203,32950746,"<p>You are absolutely right. You can estimate pitch and roll angles using projection of gravity vector. You can obtain gravity vector by utilizing motionless accelerometer, but if accelerometer moves, then it measures gravity + linear component of acceleration and the main problem here is to sequester gravity component from linear accelerations. The best way to do it is to pass the accelerometer signal through Low-Pass filter.
+Please refer to 
+<a href=""http://www.kircherelectronics.com/blog/index.php/11-android/sensors/8-low-pass-filter-the-basics"" rel=""nofollow"">Low-Pass Filter: The Basics</a> or 
+<a href=""http://Android%20Accelerometer:%20Low-Pass%20Filter%20Estimated%20Linear%20Acceleration"" rel=""nofollow"">Android Accelerometer: Low-Pass Filter Estimated Linear Acceleration</a>
+ to learn more about Low-Pass filter.</p>
+
+<p><a href=""http://www.codeproject.com/Articles/729759/Android-Sensor-Fusion-Tutorial"" rel=""nofollow"">Sensor fusion algorithm</a> should be interesting for you as well.</p>
+",3642042,0,0,,,mc
+4144,69822488,"Given a Grid, find which Blocks are occupied by a circular object of radius R",|geometry|grid|language-agnostic|robotics|,"<p>As you can guess from the title, I am trying to solve the following problem.</p>
+<p><strong>Given a grid of size NxN and a circular object O of radius R with centre C at (x_c, y_c), find which Blocks are occupied by O.</strong></p>
+<p>An example is shown in the figure below:</p>
+<p><a href=""https://i.stack.imgur.com/OmnF6.png"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/OmnF6.png"" alt=""enter image description here"" /></a></p>
+<p>In that example, I expect the output to be [1,2,5,6].</p>
+<p>I would be very grateful if anyone has a suggestion or resources.</p>
+",11/3/2021 9:30,,203,2,0,0,,8018957,"Rome, Metropolitan City of Rome, Italy",5/16/2017 10:09,3,69852719,"<p>I used Python3 and OpenCv  but it can be done in any language.</p>
+<p>Source:</p>
+<pre><code>import cv2
+import numpy as np
+import math
+
+def drawgrid(im,xv,yv,cx,cy,r):
+    #params: image,grid_width,grid_height,circle_x,circle_y,circle_radius
+    cellcoords = set() #i use set for unique values 
+    h,w,d = im.shape
+
+    #cell width,height
+    cew = int(w/xv)
+    ceh = int(h/yv)
+
+    #center of circle falls in this cells's coords 
+    nx = int(cx / cew )
+    ny = int(cy / ceh )
+    cellcoords.add((nx,ny))
+
+
+    for deg in range(0,360,1):
+        cirx = cx+math.cos(deg)*r
+        ciry = cy+math.sin(deg)*r
+
+        #find cell coords of the circumference point 
+        nx = int(cirx / cew )
+        ny = int(ciry / ceh )
+        cellcoords.add((nx,ny))
+
+
+
+
+    #grid,circle colors
+    red = (0,0,255)
+    green = (0,255,0)
+
+    #drawing red lines
+    for ix in range(xv):
+        lp1 = (cew * ix , 0)
+        lp2 = (cew * ix , h)
+        cv2.line(im,lp1,lp2,red,1)
+
+    for iy in range(yv):
+        lp1 = (0 , ceh * iy)
+        lp2 = (w , ceh * iy)
+        cv2.line(im,lp1,lp2,red,1)
+
+    #drawing green circle
+    cpoint = (int(cx),int(cy))
+    cv2.circle(im,cpoint,r,green)
+
+    print(&quot;cells coords:&quot;,cellcoords)
+
+
+imw=500
+imh=500
+
+im  = np.ndarray((imh,imw,3),dtype=&quot;uint8&quot;)
+drawgrid(im,9,5, 187,156 ,50)
+
+
+cv2.imshow(&quot;grid&quot;,im)
+cv2.waitKey(0)
+</code></pre>
+<p>output: cells coords: {(3, 2), (3, 1), (2, 1), (2, 2), (4, 1)}</p>
+<pre><code>cells coords are zero based x,y. 
+So ...
+
+1° cell top left is at (0,0) 
+2° cell  is at (1,0) 
+3° cell  is at (2,0) 
+
+1° cell of 2° row is at (0,1) 
+2° cell of 2° row is at (1,1) 
+3° cell of 2° row is at (2,1) 
+and so on ...
+
+Getting cell number from cell coordinates might be fun for you
+</code></pre>
+<p><a href=""https://i.stack.imgur.com/JaGHW.png"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/JaGHW.png"" alt=""enter image description here"" /></a></p>
+",10638652,-2,3,,,fp
+1625,14512520,"Making a half-elliptical path in MATLAB from three input points through 3D space, to be fed into Visual Studio and ultimately a robotic arm",|matlab|math|geometry|robotics|coordinate-systems|,"<p>First, a little bit about my set up: I have a robotic arm into which points and movement patterns can be programmed into. The goal is to get it to move in certain ways based on the inputs that we put into it.</p>
+
+<p>On the same table as the robotic arm is another arm that moves under human power and can sense where it is in space. The two arms share a coordinate system already, but I am having trouble with a particular calcuation that is giving me a headache.</p>
+
+<p>The current goal is specifically to take three points with the sensing arm and then translate that into a half-ellipse arc that travels through the three of them. This arc should start at the first point, reach apex at the second, and finish on the third, traveling through all three dimensions to do so if necessary. The three points feed through Visual Studio, then are put into MATLAB and turned into an array of 99 xyz coordinates.</p>
+
+<p>We have every step working except for the MATLAB function. The points are nowhere near the actual coordinates, though the relationship between them seems okay. Can anyone tell me what is wrong with the code? </p>
+
+<p>Here is what we have so far:</p>
+
+<pre><code>function P = getEllipticalPath(h0,hl,hr)
+%define center of ellipse
+center = (hl+hr)/2;
+
+%want everything centered at (0,0,0)
+h0 = h0 - center;
+hl = hl - center;
+hr = hr - center;
+
+%xz plane direction between h0 and center
+d = [h0(1),0,0]/49;
+
+%now get the major/minor axis of the ellipse
+%minor axis(along z axis)
+a = h0(3);
+b = hr(2);%arbitrary with hr
+
+%set increment of orbit
+incr = (pi)/99;
+
+%by symmetry, only need to compute first half of orbit
+%allocation
+Pf = zeros(99,3);
+for i=1:99
+    if(i &lt; 50)
+       newpt = [0, b*cos(i*incr), a*sin(i*incr)] + (i*d);
+    else 
+        newpt = [0, b*cos(i*incr), a*sin(i*incr)] + (99 - i)*d;
+    end 
+
+    Pf(i,:) = [newpt(1), newpt(2), newpt(3)];
+end
+P = addOffset(Pf,-h0);
+
+end
+
+%simply adds a fixed translational offset to the given list of vectors
+%(n*3 matrix). Assumes a matrix that is longer than 3.
+
+function P = addOffset(points,offset)
+newpoints = zeros(length(points),3);
+for i=1:length(points);
+
+    newpoints(i,:) = points(i,:) + offset;
+end
+P = newpoints;
+end
+</code></pre>
+
+<p>EDIT: Forgot input-output information; here is an example:</p>
+
+<p>Input:</p>
+
+<pre><code>&gt;&gt; h0 = [-10.06   14.17   0.53 ]
+
+h0 =
+
+  -10.0600   14.1700    0.5300
+
+&gt;&gt; hl = [-45.49   7.87   1.07 ]
+
+hl =
+
+  -45.4900    7.8700    1.0700
+
+&gt;&gt; hr = [-4.52   -20.73   1.02 ]
+
+hr =
+
+   -4.5200  -20.7300    1.0200
+
+&gt;&gt; P = getEllipticalPath(h0,hl,hr)
+</code></pre>
+
+<p>Output:</p>
+
+<p><img src=""https://i.stack.imgur.com/f8Unw.png"" alt=""This is very different from ecpectations. We would expect it to start on hl, move in increments through h0 and end on hr, but instead we get this.""></p>
+",1/24/2013 23:07,,377,1,5,4,,2009238,,1/24/2013 22:43,6,14512847,"<p>I think you complicated things for yourself with all the offsetting and stuff. I think what you want to do is this:</p>
+
+<ul>
+<li><p>Get the center vertex C of the ellipse as (hl+hr)/2</p></li>
+<li><p>Get the major axis vector B as (center-hl)</p></li>
+<li><p>Get the minor axis vector A as (h0-center)</p></li>
+<li><p>Get the angular delta float INCR as (pi)/99</p></li>
+<li><p>Now you can calculate each vertex in PF from i = 1 to 99 as <code>center *(vertex)* + B*cos(i*incr) *(vector)* + A*sin(i*incr) *(vector)*</code></p></li>
+</ul>
+
+<p>Basically you're starting at the center, moving towards hr or hl according to the cos of the angle, and moving towards h0 as the sin of the angle, using those vectors to control how far and in which direction you move.</p>
+",497106,0,0,20231773,"Can you give us some sample input, expected and actual output, please?",position
+423,1811366,"Infinite timeouts or ""fail fast"" in custom network protocol?",|network-protocols|robotics|peripherals|,"<p>Consider custom network protocol. This custom protocol could be used to control robotic peripherals over LAN from central .NET based workstation. (If it is important, the robot is busy moving fabs in chip production environment).</p>
+
+<ul>
+<li>there are only 2 parties in conversation: .NET station and robotic peripheral board</li>
+<li>the robotic side can only receive requests and send responses</li>
+<li>the .NET side can only initiate requests and receive responses</li>
+<li>there always should be exactly one response per request</li>
+<li>the consequent requests can follow immediately one after another without waiting for response, but never exceed the fixed limit of simultaneously served requests (for example 5)</li>
+</ul>
+
+<p>I had exhaustive discussion with my friend (who owns the design, I have discussed the thing as a bystander) about all nice details and ideas. At the end of discussion we had strong disagreement about missing timeouts. My friend's argument is that software on both sides should wait indefinitely. My argument was that timeouts are always needed by any network protocol. We simply could never agree. </p>
+
+<p>One of my reasoning is that in case of any failure you should ""fail fast"" whatever cost, because if failure already occurred anyway, cost of recovery continues to grow proportionally to time spent to receive an info about failure. Say after 1 minute on LAN you definitely should stop waiting and just invoke some alarm.</p>
+
+<p>But his argument was that recovery should include exactly the repairing of what failed (in this case recovery of network connection) and even if it takes to spend hours to figure out that network was lost and fixed, the software should just continue transparently running, immediately after reconnecting the LAN cables.</p>
+
+<p>I would never seriously think about timeless protocols, until this discussion. </p>
+
+<p><strong>Which side of argument is right ? The ""fail fast"" or ""never fail"" ?</strong></p>
+
+<p>Edit: Example of failure is loss of communication, normally detected by TCP layer. This part was also discussed. In case of TCP layer returning error, the higher custom protocol layer will retry sends and there is no argument about it. The question is: for how long to allow the lower level to keep trying ?</p>
+
+<p>Edit for accepted answer:
+Answer is more complex than 2 choices: ""<em>The most common approach is never give up connection until actual attempt to send fails with solid confirmation that connection is long lost. To calculate that connection is long lost use heartbeats, but keep age of loss for this confirmation only, not for immediate alarm</em>"".</p>
+
+<p>Example: When having telnet session, you can keep your terminal up forever and you never know if in between hitting Enter there were failures detectable by lower level routines.</p>
+",11/28/2009 2:40,1811461,305,2,0,2,0,,,,,1811431,"<p>In the scenario where ...</p>
+
+<ul>
+<li>Controller has sent a request</li>
+<li>Robot hasn't received the request</li>
+<li>Network fails</li>
+</ul>
+
+<p>... then the request has been sent, but has been lost and will never arrive.</p>
+
+<p>Therefore, when the network is restored, the controller must resend the request: the controller cannot simply wait forever for the response.</p>
+",49942,1,2,,,wireless
+4747,77869639,Example of using TRAC_IK library to move the Fetch robot arm (without using MoveIt),|python|ros|robot|moveit|,"<p>I am having trouble using the TRAC_IK solver to move Fetch robot arm without using MoveIt.
+Previously I used MoveIt, which has all the examples and code I need to run. However, I found out that TRAC_IK is more accurate with Fetch robot.</p>
+<p>Does anyone have any example of using TRAC_IK in moving the arm? Also, how to publish the joint states directly to the robot?</p>
+<p>I have this code here, but it doesn't work.</p>
+<pre><code>#!/usr/bin/env python
+
+import rospy
+from trac_ik_python.trac_ik import IK
+from sensor_msgs.msg import JointState
+
+def calculate_joint_angles(ik_solver, pose):
+    # Assuming the pose is [x, y, z, qx, qy, qz, qw]
+    x, y, z, qx, qy, qz, qw = pose
+    seed_state = [0] * ik_solver.number_of_joints
+    return ik_solver.get_ik(seed_state, x, y, z, qx, qy, qz, qw)
+
+if __name__ == '__main__':
+    rospy.init_node(&quot;simple_disco&quot;)
+
+    base_link = &quot;base_link&quot;
+    end_link = &quot;wrist_roll_joint&quot;
+    ik_solver = IK(base_link, end_link)
+
+    # Publisher for joint states
+    pub = rospy.Publisher('/joint_states', JointState, queue_size=10)
+
+    joint_names = [&quot;torso_lift_joint&quot;, &quot;shoulder_pan_joint&quot;,
+                   &quot;shoulder_lift_joint&quot;, &quot;upperarm_roll_joint&quot;,
+                   &quot;elbow_flex_joint&quot;, &quot;forearm_roll_joint&quot;,
+                   &quot;wrist_flex_joint&quot;, &quot;wrist_roll_joint&quot;]
+
+    # Define your end-effector poses here
+    # These need to be defined as [x, y, z, qx, qy, qz, qw]
+    disco_poses = [[0.5, 0.5, 0.5, 0, 0, 0, 1],
+                   [0.5, 1, 0.5, 0, 0, 0, 1],
+                   [0.5, 0.5, 0.5, 0, 0, 0, 1],
+                   [0.5, 1, 0.5, 0, 0, 0, 1]]  # Define your poses here
+
+    rate = rospy.Rate(1)  # Adjust the rate as needed
+
+    for pose in disco_poses:
+        if rospy.is_shutdown():
+            break
+
+        joint_angles = calculate_joint_angles(ik_solver, pose)
+
+        if joint_angles:
+            joint_state = JointState()
+            joint_state.header.stamp = rospy.Time.now()
+            # joint_state.name = ik_solver.joint_names
+            joint_state.name = joint_names
+            joint_state.position = joint_angles
+
+            pub.publish(joint_state)
+            rospy.loginfo(&quot;Moving to pose&quot;)
+        else:
+            rospy.logerr(&quot;No IK solution found for the given pose&quot;)
+
+        rate.sleep()
+
+    rospy.loginfo(&quot;Disco sequence complete&quot;)
+
+</code></pre>
+",1/23/2024 22:37,,16,0,0,0,,9596491,,4/4/2018 11:40,1,,,,,,,,hc
+540,2761748,Rotation Matrix calculates by column not by row,|matlab|matrix|rotation|linear-algebra|robotics|,"<p>I have a class called forest and a property called fixedPositions that stores 100 points (x,y) and they are stored 250x2 (rows x columns) in MatLab.  When I select 'fixedPositions', I can click scatter and it will plot the points.  </p>
+
+<p>Now, I want to rotate the plotted points and I have a rotation matrix that will allow me to do that.</p>
+
+<p>The below code should work:</p>
+
+<p>theta = obj.heading * pi/180;
+apparent = [cos(theta)  -sin(theta) ; sin(theta)  cos(theta)] * obj.fixedPositions;</p>
+
+<p>But it wont.  I get this error.</p>
+
+<p>??? Error using ==> mtimes
+Inner matrix dimensions must agree.</p>
+
+<p>Error in ==> landmarks>landmarks.get.apparentPositions at 22
+            apparent = [cos(theta)  -sin(theta) ; sin(theta)  cos(theta)] * obj.fixedPositions;</p>
+
+<p>When I alter forest.fixedPositions to store the variables 2x250 instead of 250x2, the above code will work, but it wont plot.  I'm going to be plotting fixedPositions constantly in a simulation, so I'd prefer to leave it as it, and make the rotation work instead.</p>
+
+<p>Any ideas?</p>
+
+<p>Also, fixed positions, is the position of the xy points as if you were looking straight ahead.  i.e. heading = 0.  heading is set to 45, meaning I want to rotate points clockwise 45 degrees.  </p>
+
+<p>Here is my code:</p>
+
+<pre><code>classdef landmarks
+  properties
+    fixedPositions   %# positions in a fixed coordinate system. [x, y]
+    heading = 45;     %# direction in which the robot is facing
+  end
+  properties (Dependent)
+    apparentPositions
+  end
+  methods
+    function obj = landmarks(numberOfTrees)
+        %# randomly generates numberOfTrees amount of x,y coordinates and set 
+        %the array or matrix (not sure which) to fixedPositions
+        obj.fixedPositions = 100 * rand([numberOfTrees,2]) .* sign(rand([numberOfTrees,2]) - 0.5);
+    end
+    function apparent = get.apparentPositions(obj)
+        %# rotate obj.positions using obj.facing to generate the output
+        theta = obj.heading * pi/180;
+        apparent = [cos(theta)  -sin(theta) ; sin(theta)  cos(theta)] * obj.fixedPositions;
+    end
+  end
+end
+</code></pre>
+
+<p>P.S. If you change one line to this: obj.fixedPositions = 100 * rand([2,numberOfTrees]) .* sign(rand([2,numberOfTrees]) - 0.5);</p>
+
+<p>Everything will work fine... it just wont plot. </p>
+
+<p>ans = obj.fixedPositions; ans';  will flip it to what I need to plot, but there has to be a way to avoid this? </p>
+",5/3/2010 22:54,2761889,1441,2,0,2,0,327502,"Cambridge, MA",4/28/2010 5:27,207,2761889,"<p>I think you want to transpose the matrix before and after multiplying by the rotation. If the matrix is real numbers, you can do:</p>
+
+<pre><code>apparent = ([cos(theta)  -sin(theta) ; sin(theta)  cos(theta)] * (obj.fixedPositions)')';
+</code></pre>
+",93910,3,1,,,orientation
+3288,54652810,is there any method to create mapping for nao robot by python?,|python|robot|nao-robot|choregraphe|,"<p>I connect the Nao robot to my Python shell with <code>naoqi</code>, it works for some codes, now I want to do mapping for a room by Python, how can I do it without ROS, I do not have any idea.</p>
+",2/12/2019 14:53,,128,1,0,-2,,11002744,,2/1/2019 19:06,9,54664981,"<p>Have a look at <a href=""http://doc.aldebaran.com/2-5/naoqi/motion/alnavigation.html"" rel=""nofollow noreferrer"">ALNavigation</a> it offers the method <a href=""http://doc.aldebaran.com/2-5/naoqi/motion/exploration-api.html?highlight=exploration#ALNavigationProxy::explore__float"" rel=""nofollow noreferrer"">explore</a>.</p>
+
+<p>You can find Python script code examples for exploring and localizing <a href=""http://doc.aldebaran.com/2-5/naoqi/motion/exploration-api.html#code-samples"" rel=""nofollow noreferrer"">here</a>.</p>
+",3049394,0,0,,,mapping
+4676,77233058,Is it possible to simulate Nasa's R2 robot on ROS Noetic?,|simulation|ros|robotics|gazebo-simu|rospy|,"<p>Steps I followed:</p>
+<p>Step 1: Installed controllers and other things using</p>
+<pre><code>sudo apt-get install ros-noetic-ros-control ros-noetic-gazebo-ros-control ros-noetic-joint-state-controller ros-noetic-effort-controllers ros-noetic-joint-trajectory-controller ros-noetic-moveit* ros-noetic-octomap* ros-noetic-object-recognition-*
+</code></pre>
+<p>Step 2:I tried cloning this repository but it is missing:</p>
+<pre><code>git clone -b noetic-devel https://bitbucket.org/nasa_ros_pkg/nasa_r2_simulator.git
+</code></pre>
+",10/4/2023 21:21,,33,0,0,0,,17986015,,1/20/2022 16:00,2,,,,,,,,fp
+745,3372168,Where to begin with programming for robotics?,|java|.net|c|microcontroller|robotics|,"<p>Ok so i've been interested in robotics for a while and had a project in mind. Building a small remote controlled vehicle-robot/ unmanned vehicle-robot. Hopefully with the ability to read in data from sensory devices(gps,thermometer etc) and write the data to some kind of device. The idea(s) had been on the backburner for a while until i just read the following <a href=""http://www.engadget.com/2010/07/29/ask-engadget-best-robot-platform-for-under-400/#comments"" rel=""noreferrer"">article</a>.</p>
+
+<p>So my question is this. Where should I begin. I have absolutely no experience in this at all other than a few google searches and my project idea. I would like to play around with programming the micro controller boards. I know some java .net languages and some C.</p>
+
+<p>Any help on where to begin? </p>
+
+<p>How do you design the robot, what steps do you go through from start to finish.</p>
+
+<p>Thanks.</p>
+",7/30/2010 13:59,,33582,10,2,33,0,406777,,7/30/2010 13:50,110,3372193,"<p>Microsoft have <a href=""http://www.microsoft.com/robotics/"" rel=""nofollow noreferrer"">Robotocs Developer Studio</a>.</p>
+",208062,2,0,3504370,There's some crucial information missing: 1) what's your budget? 2) are you more interested in the low-level or high-level aspects of making a robot (e.g. building and programming your own motor drivers vs doing high-level stuff like [SLAM](http://en.wikipedia.org/wiki/Simultaneous_localization_and_mapping))? 3) in what shape are your electronics skills?,gs
+3221,52939173,RosAria node doesn’t receive messages,|message|ros|robot|,"<h1>Resources</h1>
+<p>Macbook Air with Ubuntu virtual machine via VMWare<br>
+Pioneer3 AT robot<br>
+ROS<br>
+RosAria</p>
+<h1>Context</h1>
+<p>I have at least most of the setup for Ros+RosAria already working:</p>
+<ol>
+<li>The master ROS node running on a laptop at <code>192.168.1.112</code> via <code>roscore</code></li>
+<li>The RosAria node running on the robot’s built-in computer at <code>192.168.1.108</code> via <code>rosrun rosaria RosAria</code>, the port set accordingly to access the robot's motors and sensors via <code>rosparam set...</code>, <code>ROS_MASTER_URI=192.168.1.112:11311</code>, and <code>ROS_IP=192.168.1.112</code>.</li>
+<li>Another terminal window on the laptop running <code>rostopic pub /RosAria/cmd_vel geometry_msgs/Twist “linear:... angular:...”</code></li>
+</ol>
+<p>The RosAria node running on the robot confirms it’s able to connect to the master, and if I run the command <code>rostopic list</code> on the laptop I can see <code>/RosAria/cmd_vel</code> as one of the available topics.</p>
+<p>In the terminal window where I try to publish to <code>/RosAria/cmd_vel</code> I’m told that the message is sending but the robot shows no signs of having received it, neither console message nor movement of the wheels.</p>
+<p>However, if I quit the RosAria node on the robot and restart it while leaving the <code>rostopic pub</code> command running on my laptop, the robot registers the message once upon startup, moves accordingly for a bit, and then does nothing.</p>
+<p>I’ve also tried to <code>rostopic echo</code> other topics like battery state, motors status and pose, but I don’t receive any messages from the robot.</p>
+<p>I already tried changing the parameters <code>/RosAria/TicksMM</code> and <code>/RosAria/RevCount</code> according to <a href=""https://answers.ros.org/question/91466/how-to-move-pioneer-3-at-with-rosaria/"" rel=""nofollow noreferrer"">this case</a>.</p>
+<h1>Question</h1>
+<p><em>Why is the Pioneer robot with RosAria running not receiving the <code>cmd_vel</code> commands from my client if it’s apparently able to communicate with the master node successfully?</em></p>
+<h1>Disclaimer</h1>
+<p>The project I was working on where this problem came up isn’t using the same equipment anymore, so now this question is not so urgent for me. I’m also not able to test proposed solutions in the near future since I no longer have access to that Pioneer robot. However, I’ll keep this topic unanswered in case someone else encounters this problem too.</p>
+",10/22/2018 23:49,,355,1,0,0,,10200417,,8/8/2018 23:45,31,52973552,"<p>You need To Set ROS_IP On Robot side too to let the ROS System Knows What IP To Use as It's Network Interface</p>
+
+<p>I myself Set This Environments Inside <code>.bashrc</code> Like This:</p>
+
+<p><code>export ROS_IP=192.168.1.108</code></p>
+
+<p>and then source <code>.bashrc</code>.</p>
+
+<p>I think You can use <code>rosparam</code> Too  But  I never tested.</p>
+",7350738,0,2,,,internet
+847,4174193,Are there any UAV simulation environments?,|simulation|robotics|,"<p>I'd like to play around with computer vision and AI techniques without having to spend money on hardware right away.  If there aren't any robotics simulation environments that model flight physics, could someone recommend the fastest/easiest way to make one? I don't want to make one from scratch, of course, but maybe it's  possible to easily ""glue"" some existing apps together?</p>
+",11/13/2010 19:07,,1664,4,2,3,0,359121,,6/5/2010 9:50,16,4174220,"<p>A couple of ideas: First, I know Microsoft have discontinued their Flight Simulator, but it has an API and by all accounts the community surrounding it continues to thrive. That might be worth investigating.
+Secondly, What about writing a quick little ""simulator"" that uses either Bing Maps 3D or Google Earth? Richard Brunditt (http://rbrundritt.wordpress.com/ ) wrote a simulator for Bing Maps 3D so that might be worth investigating.</p>
+
+<p>Finally once you think you have something reasonably good, and if you have a lot of open space, you could try a model aircraft... </p>
+",481927,0,1,4509434,What sort of scale are you talking about? The first versions of the  simulation environment for BAE replica's vision system were very simple physics - the only way to turn was an instant roll to 5G - but if you are wanting to do something like this http://www.sparkfun.com/commerce//news.php?id=460 then then you need quite a good model,fp
+2402,33411393,Ratio of wheel diameter and wheel to wheel distance has any effect on alignment and desired heading of vehicle?,|algorithm|automation|robotics|encoder|,"<p>I am Using encoder to get the distance traveled and heading angle of vehicle. At turn it does not give precise angle, vehicle is turning with. In my algorithm i am using accumulation of all angle to find the total angle with respect to world(X-O-Y). </p>
+
+<p>Does it have anything to do with Ratio of wheel diameter and wheel to wheel distance? </p>
+
+<p>This question was raised in my mind because same algorithm worked with another hardware which has different dimension(diameter of wheel and wheel to wheel distance)and it did return precise turning angle too.</p>
+
+<p>Will appreciate if some valuable suggestion is offered. </p>
+",10/29/2015 10:14,,608,1,1,0,,3431551,"Bangalore, India",3/18/2014 4:27,43,33423016,"<p>The angle of a robot is dependent on the specific hardware, such as wheel size, encoder size, and vehicle width. Maybe you were lucky with the the other robot that the change in wheel diameter and wheel to wheel distance canceled each other out so the equations were the same, but normally you will not be so lucky</p>
+
+<p><a href=""https://i.stack.imgur.com/aZgIf.png"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/aZgIf.png"" alt=""![enter image description here""></a></p>
+
+<p>Assuming you have a two wheeled robot the same readings on two different setups can yield different results. In my simple illustration I have the axle of a two wheeled robot both bots have the same <code>wheel_diameter</code> and use the same rotary encoders. One bot has distance <code>R1</code> between the wheels the other has distance <code>R2</code> suppose both robots keep a wheel stationary and the other wheel moves 5 clicks forward on the wheel encoder (and both bots use the same encoder and same size wheel). Using the simple equation for circumference of a semi-circle we can find the distance the wheels moved. </p>
+
+<p><code>dist_trav = (pi * wheel_diameter) * (#ticks / total ticks on encoder)</code> </p>
+
+<p>Of course since one wheel is stationary, the bot is actually pivoting on another semicircle. We can calculate the new angle using </p>
+
+<p><code>circumference = 2*pi*dist_between_wheels</code> dist_between_wheels is the radius of our circle </p>
+
+<p><code>angle = % of circumference traveled * units = (dist_trav / circumference) * 360</code> we use 360 so the angle is in degrees, but you could use radians if desired</p>
+
+<p>you will see that even in this example where the robots are identical except for the distance between the wheels the same number of ticks will mean very different angles. If <code>r2=2*r1</code> we can see that <code>dist_trav</code> is the same for both bots (since the wheels are the same diameter) but when we figure out the angles we get</p>
+
+<p><strong>black bot</strong></p>
+
+<p><code>angle_black = (dist_traveled / 2*pi*R1) * 360</code></p>
+
+<p><strong>red bot</strong></p>
+
+<pre><code>angle_black = (dist_traveled / 2*pi*2*R1 ) * 360
+            = (dist_traveled / 4*pi  *R1 ) * 360
+</code></pre>
+
+<p>so for the same movement of the wheels the red bot will only have 1/2 the angle change as the black bot did. This is just a toy example, but you can easily see how different diameters of wheels and distance between them can make a huge difference.</p>
+",2705382,1,2,54615610,"I'm not saying this is offtopic, but I think you might find a better StackExchange site for this question. Such as [Robotics SE](http://robotics.stackexchange.com/help/on-topic).",orientation
+4183,70309419,Plotting a surface for a robot reach bubble in Python,|python|matplotlib|plot|robotics|kinematics|,"<p>I'm trying to simulate a robot reach bubble. The goal would be to export it into a CAD file and visualize the possible workspace. My approach was to plot all potential endpoints using forward kinematics for the robot, considering linkage lengths and joint limits. This may be a brute-force way to generate the endpoints (Rx, Ry, Rz), but it comes out to be very accurate (at least for 2D examples). <a href=""https://i.stack.imgur.com/g3cP7.jpg"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/g3cP7.jpg"" alt=""This image shows the provided workspace for an IRB robot and my results when plotting the points in 2D"" /></a>
+I can display a three-dimensional figure of the bubble as a scatterplot; however, to export it into a CAD file, I need to mesh it first, which requires converting it into a surface, as I understand. This is the part I'm having trouble with.</p>
+<p>Using matplotlib's ax.surface_plot(Rx, Ry, Rz) I receive an error stating that Rz must be a 2-dimensional value. I fiddled with np.meshgrid() and np.mgrid() functions but have been unable to create a simple surface of the bubble. What can I do to convert this scatterplot into a surface? Is there another approach that I'm missing?</p>
+<p>Another thing that dawned on me is that I'd likely want to remove some of the intermediate points inside the reach bubble. Ideally, the surface would be composed of the outer ends and the hollow points from the center radius.</p>
+<p>Below is a code that results in 1D arrays:</p>
+<pre><code># Reach bubble 3D
+import NumPy as np
+import matplotlib.pyplot as plt
+
+# Initialize figure and label axes
+fig = plt.figure()
+ax = plt.axes(projection='3d')
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+ax.set_zlabel('z')
+
+dr = np.pi/180 # Degree to radian multiple
+pi = np.pi
+
+# Define important robot dimensions and axis limits for IRB 1100
+z0 = 0.327  # Fixed height from base to A1
+link1 = 0.28
+link2 = 0.3
+
+a1 = np.linspace(0, 2*pi, 8)           # Angle limits for axes
+a2 = np.linspace(-115*dr, 113*dr, 12)
+a3 = np.linspace(-205*dr, 55*dr, 12)       
+
+Rx = []
+Ry = []
+Rz = []
+
+for i1 in a1:
+    for i2 in a2:
+        for i3 in a3:
+                
+            r = link1*np.sin(i2) + link2*np.sin(pi/2+i2+i3)
+            Rx.append(r*np.cos(i1))
+            Ry.append(r*np.sin(i1))   
+            Rz.append(z0 + link1*np.cos(i2) + link2*np.cos(pi/2+i2+i3))      
+        
+# Plot reach points
+ax.scatter(Rx, Ry, Rz, c='r', marker='o', alpha = 0.2)
+plt.show()
+</code></pre>
+<p>Below is a code that results in 3D arrays but doesn't use for loops:</p>
+<pre><code># 3D Reach bubble for robot
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Initialize figure and label axes
+fig = plt.figure()
+ax = plt.axes(projection='3d')
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+ax.set_zlabel('z')
+
+pi = np.pi
+dr = pi/180 # Degree to radian multiple
+
+# Define important robot dimensions and axis limits for GP8
+z0 = 0.327  # Fixed height from base to A1
+link1 = 0.28
+link2 = 0.3
+link3 = 0.064
+
+a1, a2, a3 = np.mgrid[0:2*pi:15j, -115*dr:113*dr:13j, -205*dr:55*dr:17j]
+         
+r = link1*np.sin(a2) + link2*np.sin(pi/2+a2+a3)
+Rx = r*np.cos(a1) 
+Ry = r*np.sin(a1)      
+Rz = z0 + link1*np.cos(a2) + link2*np.cos(pi/2+a2+a3)
+        
+# Plot reach points
+ax.plot_surface(Rx, Ry, Rz, color = 'Red', alpha = 0.2)
+ax.scatter(Rx, Ry, Rz, c='r', marker='o', alpha = 0.2)
+</code></pre>
+",12/10/2021 19:16,,357,0,2,0,,17646880,,12/10/2021 17:33,1,,,,,,124299624,[This](https://stackoverflow.com/questions/56545819/is-there-a-way-to-export-an-stl-file-from-a-matplotlib-surface-plot) might help. It suggest triangulating your data before saving it to a .stl file with [numpy-stl](https://github.com/WoLpH/numpy-stl). You could also use `plot_trisurf` to plot a Delaunay triangulation of your data (see [here](https://stackoverflow.com/questions/17367558/plot-a-3d-surface-from-x-y-z-scatter-data-in-python)),fp
+1400,11058724,C++ Inverse Kinematic Algorithm / library which includes method for IK when position of several nodes in chain known,|c++|graphics|computational-geometry|robotics|inverse-kinematics|,"<p>I am looking for ideally a c++ library / code (but if not at least an algorithm) that solves the IK problem for a given chain of n nodes, of which estimates for the position of k nodes (where k &lt; n) in the chain are known.</p>
+
+<p>Any help much appreciated. </p>
+",6/15/2012 21:59,,1867,1,2,5,0,1106578,,12/19/2011 19:15,156,11058846,"<p>This is possible using an iterative IK algorithm, such as Cyclic Coordinate Decent.</p>
+",131345,1,0,27618481,"btw. for iteration algorithms you just need matrix arithmetics (i usually uses for IKs transformation matrices 4x4) needed operations are matrix*matrix, matrix*vector inverse matrix. for more detailed information google some OpenGL robotic arm demo/tutorial you will get there everything you need",ik
+1809,18215873,How to represent N E S W orientation in OOP?,|oop|logic|orientation|robotics|,"<p>I'm trying to find a programming concept of representing the orientation of an object on a grid, but my logic is seriously failing me here. 
+If I have Robot (R) and he's facing North, I want him to turn left and right and change orientation accordingly. Obviously this needs to be in a loop (possibly a circular linked list) with regards to if R is facing West but I turn right then R needs to be back facing North. </p>
+
+<p>I've seen this answer <a href=""https://stackoverflow.com/questions/16637006/position-and-orientation-of-robot-in-a-grid"">Position and orientation of robot in a grid</a> and I have already done something similar using an array, but it doesn't seem right. There must be a better way of doing it. </p>
+
+<p>Looking this up on Google just gives me oriented programming links or really complicated robotics design papers. </p>
+
+<p>Thanks in advance!</p>
+",8/13/2013 17:49,19260828,122,2,2,2,,901486,England,8/18/2011 22:14,662,18308530,"<p>Since you don't ask your question for a specific language I can suggest a oo-pseudocode version of what I would do:</p>
+
+<pre><code>class Orientation2d
+{
+   int direction = 0;
+   static Position2d[4] move = { {0,1}, {1,0}, {-1,0}, {-1,-1} };
+
+   void left()
+   {
+       direction = (direction+4-1) % 4;
+   }
+   void right()
+   {
+       direction = (direction+1) % 4;
+   }
+   Pose2d forward()
+   {
+      return move[ direction ];
+   }
+}
+
+class Pose2d
+{
+   Position2d pos;
+   Orientation2d or;
+
+   void moveForward()
+   {
+       pos += or.forward();
+   }
+   void turnLeft()
+   {
+       or.left();
+   }
+   void turnRight()
+   {
+       or.right();
+   }
+}
+</code></pre>
+
+<p>You should easily be able to convert this to C++ or Java. </p>
+",672634,1,0,27131583,I'm not doing anything robotics specific. I'm doing a simple Mars Rover project - something similar to Winlogo. So I don't know if it would have any relevance on there. But thank you. I've never heard of that place.,orientation
+4199,70643681,Can I use Instantaneous screw with Finite screw?,|math|robotics|kinematics|inverse-kinematics|,"<p>I'm trying to calculate angular velocity of each axis by movement of end-effector,</p>
+<p>If S1 and S2 is finite screw, and S2 had infinitesimal movement from S1.
+Also, let S1_ be (-)array of S1 and instantaneous screw of S1 is St1</p>
+<p>So If I triangle product S2 and S1_ (S2△S1_=St1), It becomes almost instantaneous screw of S1 (I believe)</p>
+<p>What I want to calculate is, if St1 is instantaneous screw, than can I calculate the angular velocity of each axis by using inverse jacobian with [ (J^-1)*St1 = answer ]?
+(jacobian is from S1, if S1=S1_6△S1_5△S1_4△S1_3△S1_2△S1_1, (the robot has 6 axis),
+jacobian matrix 'J' = [Su1_1, Su1_2, Su1_3, Su1_4, Su1_5, Su1_6], Su is for 'unit twist')</p>
+",1/9/2022 17:12,,49,1,2,0,,17766063,"Busan, 대한민국",12/26/2021 11:10,2,70646595,"<p>When you look at the kinematics recursively from the base to the end effector you have</p>
+<p><strong>v</strong><sub>i</sub> = <strong>v</strong><sub>i-1</sub> + <strong>s</strong><sub>i</sub> u<sub>i</sub></p>
+<p>where <strong>v</strong><sub>i</sub> is the velocity screw of each link, <strong>v</strong><sub>i-1</sub> is the velocity screw of the previous link, <strong>s</strong><sub>i</sub> is the unit screw of the joint axis, and u<sub>i</sub> the joint speed.</p>
+<p>So the end effector has a final velocity screw of</p>
+<p><strong>v</strong><sub>6</sub> = <strong>s</strong><sub>1</sub> u<sub>1</sub> + <strong>s</strong><sub>2</sub> u<sub>2</sub> + <strong>s</strong><sub>3</sub> u<sub>3</sub> + <strong>s</strong><sub>4</sub> u<sub>4</sub> + <strong>s</strong><sub>5</sub> u<sub>5</sub> + <strong>s</strong><sub>6</sub> u<sub>6</sub></p>
+<p>and I think you are asking on how to find the vector of joint speeds <strong>u</strong> = (u<sub>1</sub>, u<sub>2</sub>, u<sub>3</sub>, u<sub>4</sub>, u<sub>5</sub>, u<sub>6</sub>)</p>
+<p>So you compose the 6×6 jacobian matrix <strong>J</strong>, by combining the individual joint axis unit screws in columns</p>
+<p><strong>J</strong> = [ <strong>s</strong><sub>1</sub> <strong>s</strong><sub>2</sub> <strong>s</strong><sub>3</sub> <strong>s</strong><sub>4</sub> <strong>s</strong><sub>5</sub> <strong>s</strong><sub>6</sub>]</p>
+<p>and invert the kinematics</p>
+<p><strong>v</strong><sub>6</sub> = <strong>J</strong> * <strong>u</strong>  ⇒ <strong>u</strong> = <strong>J</strong><sup>-1</sup> <strong>v</strong><sub>6</sub></p>
+",380384,0,3,124887268,"I have a MSME in Robotics and wrote my thesis on Screw theory. I still don't understand what you are asking. If this is indeed a programming question and not a [Mathematics.SE] or [Physics.SE] question then **a lot more details** are needed to effectively answer. You need to explain the kinematics framework used, any conventions you follow (what is the triangle product here) and what you want to calculate.",ik
+2648,41657165,Gazebo / Ros: How to create a camera plugin with pixel-level segmentation?,|ros|robotics|,"<p>I am looking to create a camera plugin where, at each pixel of the image, I'm able to output what object it belongs to, if any. I've struggled to find a solution to this problem. Any suggestions regarding where to begin?</p>
+",1/15/2017 2:19,,1938,1,0,1,,3672582,,5/24/2014 21:26,4,41665287,"<p>If u want to make a camera is Gazebo simulation than u have to use the sensor plugin or sensor element in ur robot sdf/urdf model like described <a href=""http://sdformat.org/spec?ver=1.6&amp;elem=sensor"" rel=""nofollow noreferrer"">here,</a>, U can find both type of camera their, depth and rgb. For example if u want a kinect sensor(camera) which contains both the rgb and depth image than u can use bolow sdf lines in ur robot model. Here when u run this code it will publish both rgb and depth datas as shown <a href=""https://www.youtube.com/watch?v=kkYRBFR3iqc"" rel=""nofollow noreferrer"">here</a>:, here i've used ray sensor. </p>
+
+<pre><code> &lt;gazebo reference=""top""&gt;
+    &lt;sensor name='camera1' type='depth'&gt;
+      &lt;always_on&gt;1&lt;/always_on&gt;
+      &lt;visualize&gt;1&lt;/visualize&gt;
+      &lt;camera name='__default__'&gt;
+        &lt;horizontal_fov&gt;1.047&lt;/horizontal_fov&gt;
+        &lt;image&gt;
+          &lt;width&gt;640&lt;/width&gt;
+          &lt;height&gt;480&lt;/height&gt;
+          &lt;format&gt;R8G8B8&lt;/format&gt;
+        &lt;/image&gt;
+        &lt;depth_camera&gt;
+          &lt;output&gt;depths&lt;/output&gt;
+        &lt;/depth_camera&gt;
+        &lt;clip&gt;
+          &lt;near&gt;0.1&lt;/near&gt;
+          &lt;far&gt;100&lt;/far&gt;
+        &lt;/clip&gt;
+      &lt;/camera&gt;
+      &lt;plugin name='camera_controller' filename='libgazebo_ros_openni_kinect.so'&gt;
+        &lt;alwaysOn&gt;true&lt;/alwaysOn&gt;
+        &lt;updateRate&gt;30.0&lt;/updateRate&gt;
+        &lt;cameraName&gt;camera&lt;/cameraName&gt;
+        &lt;frameName&gt;/camera_link&lt;/frameName&gt;
+        &lt;imageTopicName&gt;rgb/image_raw&lt;/imageTopicName&gt;
+        &lt;depthImageTopicName&gt;depth/image_raw&lt;/depthImageTopicName&gt;
+        &lt;pointCloudTopicName&gt;depth/points&lt;/pointCloudTopicName&gt;
+        &lt;cameraInfoTopicName&gt;rgb/camera_info&lt;/cameraInfoTopicName&gt;
+        &lt;depthImageCameraInfoTopicName&gt;depth/camera_info&lt;/depthImageCameraInfoTopicName&gt;
+        &lt;pointCloudCutoff&gt;0.4&lt;/pointCloudCutoff&gt;
+        &lt;hackBaseline&gt;0.07&lt;/hackBaseline&gt;
+        &lt;distortionK1&gt;0.0&lt;/distortionK1&gt;
+        &lt;distortionK2&gt;0.0&lt;/distortionK2&gt;
+        &lt;distortionK3&gt;0.0&lt;/distortionK3&gt;
+        &lt;distortionT1&gt;0.0&lt;/distortionT1&gt;
+        &lt;distortionT2&gt;0.0&lt;/distortionT2&gt;
+        &lt;CxPrime&gt;0.0&lt;/CxPrime&gt;
+        &lt;Cx&gt;0.0&lt;/Cx&gt;
+        &lt;Cy&gt;0.0&lt;/Cy&gt;
+        &lt;focalLength&gt;0.0&lt;/focalLength&gt;
+      &lt;/plugin&gt;
+    &lt;/sens
+
+or&gt;
+      &lt;/gazebo
+</code></pre>
+",,1,0,,,camera
+1718,16252951,NXT - Tortoise and Hare - follow moving object - Theoretical,|robotics|lego-mindstorms|nxt|lejos-nxj|,"<p>I'm going through Robotics past papers as a revision before the exam, and I found one problem which seems very confusing. My department does not provide answers to past papers, so I can't check if I'm right.</p>
+<p><img src=""https://i.stack.imgur.com/YTpo7.jpg"" alt=""partII"" /></p>
+<pre><code>public class Question4i{
+
+  public static main(){
+    float d = 30;
+    float k = 1; //If it's equal to 1, why do we need it at all?
+    while(true){
+      error= GetSonarDepth() - d;
+      if(error&gt;100) error=100;
+      setVelocity(k * error)
+    }
+  }
+
+}
+</code></pre>
+<p>Then second part is where things are getting interesting:</p>
+<p><img src=""https://i.stack.imgur.com/ZejCd.jpg"" alt=""partII"" /></p>
+<p>This is my understanding:</p>
+<ol>
+<li>Robot and Hare are placed in the same position 0</li>
+<li>Robot starts reversing, while hare travels forward at constant velocity (error is negative)</li>
+<li>Robot fires a sonar</li>
+<li>Sonar reading tells the distance is 30 (error is 0)</li>
+<li>Robot stops (error is 0)</li>
+<li>Hare travels constant distance during this adjustment</li>
+<li>Robot fires sonar (error is positive)</li>
+<li>Robot increases its speed to setVelocity(error)</li>
+<li>Hare travels constant distance during this adjustment</li>
+<li>Robot changes its speed based on &quot;old&quot; sonar reading, as during the speed change, hare will travel further</li>
+<li>Therefore, robot will always be at least a little bit too far from desired distance</li>
+</ol>
+<p>Also I came to a conclusion that if hare speed is higher than that of robot, distance will be constantly increasing. There will be NO STEADY STATE - where steady refers to kept distance.</p>
+<h3><strong>Question:</strong> I think in best case the robot will oscillate between 30 and 30+ distance, but how would you change the program to make it travel at constant 30cm distance? I also find it suspicious that k is 1 in part i, is that alright?</h3>
+",4/27/2013 13:58,16725327,521,2,0,0,,1087852,Imperial College London,12/8/2011 13:45,632,16254512,"<p>With proportionate gain, the robot's forward velocity will be proportionate to its distance from the robot - 30 cm. When we reach a steady state, the robot will be matching the hare's forward velocity, at some distance such that (d - 30) * k == the hare's speed. I.e. at some constant distance > 30 cm.</p>
+
+<p>As for how to modify the program, you might want to set the robot's speed not only proportionate to the error, but taking into account the rate of change of the error as well.</p>
+
+<p>Recommended reading:</p>
+
+<ul>
+<li><a href=""https://en.wikipedia.org/wiki/PID_controller"" rel=""nofollow"">https://en.wikipedia.org/wiki/PID_controller</a></li>
+<li><a href=""http://lejos.sourceforge.net/nxt/nxj/api/lejos/util/PIDController.html"" rel=""nofollow"">http://lejos.sourceforge.net/nxt/nxj/api/lejos/util/PIDController.html</a></li>
+</ul>
+
+<p>Alternatively you could probably hack it to remember the speed when the distance ceases changing, and use that as a new base speed, with regular proportionate gain to keep the distance constant, but using PD control would be more robust :-).</p>
+",2125397,2,4,,,mp
+3073,49725812,Robot Pepper Not able to run Android application on Real Pepper,|android|robotics|pepper|,"<ol>
+<li><p>I have developed an app for pepper using android studio. the app run fine on emulator, but cannot run it on real pepper robot. I have connected real pepper robot through IP, but when I run through android studio cannot find the real pepper robot tablet in the list of devices.</p></li>
+<li><p>From android.aldebaran.com site under connecting to real pepper its say 
+<strong>Developer mode</strong> should be activated.but couldn't find any such option on real pepper</p></li>
+</ol>
+
+<p>kindly help with above querys folks 
+<a href=""https://i.stack.imgur.com/01R8E.jpg"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/01R8E.jpg"" alt=""enter image description here""></a></p>
+",4/9/2018 4:57,,2266,3,5,3,0,5761320,Dubai - United Arab Emirates,1/8/2016 6:46,26,49775649,"<p>You can't simply skip the activation of the developer mode. You need to set the developer mode in the settings of the real pepper tablet. Check out <a href=""https://android.aldebaran.com/sdk/doc/pepper-sdk/getting_started/running_application.html#on-a-real-robot"" rel=""nofollow noreferrer"">this</a> manual.</p>
+
+<p>To show the settings on the tablet follow these instructions (<a href=""https://github.com/arlemi/setup-wifi-pepper#connect-peppers-tablet"" rel=""nofollow noreferrer"">Source</a>)</p>
+
+<ul>
+<li>Open a terminal</li>
+<li>Connect to Pepper using SSH (ssh nao@PEPPER_IP, ...)</li>
+<li>Run the followin command </li>
+</ul>
+
+<blockquote>
+  <p>qicli call ALTabletService._openSettings</p>
+</blockquote>
+
+<p>-> The Settings menü should now be opened on the tablet.</p>
+
+<p>There should be something like this:
+<a href=""https://i.stack.imgur.com/6nEB5.png"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/6nEB5.png"" alt=""Pepper description""></a></p>
+
+<p>If you can't do this, you can't go on...</p>
+",2557919,2,2,108818260,Is your problem solved now?,internet
+4759,78038352,Lidar intensity value normalization,|python|c#|windows|robotics|lidar-data|,"<p>We have a file with X,Y,Z,I in binary format, We want to convert this to las file with intensity values, But the intensity values range from 1 to 11629. Las file supports the intensity value between 0 to 255, Could anyone suggest on how to create las file with these intensity values?</p>
+<pre><code>var curIntensity = 525;
+var maxInensity = 11629;
+var fact = 255.0 / maxInensity;
+var nIntensity = curIntensity * fact;
+
+nIntensity = 11
+</code></pre>
+<p>tried to normalize with above formula, But results are not excepted.</p>
+",2/22/2024 4:02,,32,1,0,0,,23460169,,2/22/2024 3:31,1,78038386,"<p>Your input is 1-based, while the output is 0-based, so you should normalize the base first:</p>
+<pre><code>var curIntensity = 525;
+var maxInensity = 11629;
+var fact = 255.0 / (maxInensity - 1);
+var nIntensity = (curIntensity - 1) * fact;
+</code></pre>
+",6890912,1,0,,,dt
+4329,72335499,wrong result in cv2.CalibrateHandEye,|python|robotics|calibration|,"<p>I am trying to calibrate a hand-to-eye robotic arm and camera system. I am using the cv2.CalibrateHandEye function to calculate the transform matrix between robot base and camera. But I only get wrong results.</p>
+<p>The camera is calibrated, and I use the cv2.SolvePnp function to get the translation and rotation vector of the marker from images that took by camera, and use cv2.Rodrigues to transform the rotation vector into the rotation matrix.</p>
+<p>The rotation matrix of end is generated using tfs.euler.euler2mat according to the rotation of end effector.</p>
+<p>I checked both matrices many times, I think they are correct, but the cv2.CalibrateHandeye function just keep out put answers that not even close the true value.</p>
+<p>here is some of the code.</p>
+<p>I recorded about 20 sets of images and end pose, code below is how I extract matrix from each of them</p>
+<pre><code>(success, rvec, tvec) = cv2.solvePnP(np.array(point_3d), np.array(corners_2d), mtx, dist,flags=cv2.SOLVEPNP_ITERATIVE)
+R_board_in_camera = cv2.Rodrigues(rvec)[0]
+T_board_in_camera = tvec
+H_board_in_camera = np.zeros((4, 4), np.float)
+H_board_in_camera[:3, :3] = R_board_in_camera
+H_board_in_camera[:3, 3] = np.array(T_board_in_camera).flatten()
+H_board_in_camera[3, 3] = 1
+
+R_hand_in_base = tfs.euler.euler2mat(math.radians(angle_x), math.radians(angle_y), math.radians(angle_z), axes='rxyz')
+T_hand_in_base = np.array([x,y,z])  # calculated in advance
+
+H_hand_in_base = np.zeros((4, 4), np.float)
+H_hand_in_base[:3, :3] = R_hand_in_base
+H_hand_in_base[:3, 3] = T_hand_in_base.flatten()
+H_hand_in_base[3, 3] = 1
+
+</code></pre>
+<p>After I got all matrices, I use calibrate funcion</p>
+<pre><code>n = len(Ts_hand_to_base)
+R_base_to_hand = []
+T_base_to_hand = []
+R_board_to_camera = []
+T_board_to_camera = []
+
+for i in range(n):
+    Ts_base_to_hand = np.linalg.inv(Ts_hand_to_base[i])
+    R_base_to_hand.append(np.array(Ts_base_to_hand[:3, :3]))
+    T_base_to_hand.append(np.array(Ts_base_to_hand[:3, 3]))
+    R_board_to_camera.append(np.array(Ts_board_to_camera[i][0, :3]))
+    T_board_to_camera.append(np.array(Ts_board_to_camera[i][:3, 3]))
+
+R_camera_to_base, T_camera_to_base = cv2.calibrateHandEye(R_base_to_hand, T_base_to_hand, R_board_to_camera,T_board_to_camera, method=cv2.CALIB_HAND_EYE_DANIILIDIS)
+</code></pre>
+<p>here are some of the results i get.</p>
+<pre><code># method = cv2.CALIB_HAND_EYE_HORAUD
+H_camera_to_base:
+ [[  1.    -0.01  -0.04  13.54]
+ [  0.    -0.96   0.29 141.48]
+ [ -0.04  -0.29  -0.96   0.  ]
+ [  0.     0.     0.     1.  ]]
+
+method = cv2.CALIB_HAND_EYE_HORAUD
+ [[  -0.22   -0.98   -0.01  186.04]
+ [  -0.95    0.21    0.23 -187.49]
+ [  -0.22    0.05   -0.97  782.4 ]
+ [   0.      0.      0.      1.  ]]
+
+method = cv2.CALIB_HAND_EYE_TSAI
+ [[ 0.51 -0.3   0.8  64.88]
+ [-0.54  0.62  0.57 69.03]
+ [-0.67 -0.72  0.15  0.  ]
+ [ 0.    0.    0.    1.  ]]
+
+method = CALIB_HAND_EYE_ANDREFF
+error (-7:Iterations do not converge) Rotation normalization issue: determinant(R) is null in function 'normalizeRotation'
+
+method = CALIB_HAND_EYE_PARK
+ [[nan nan nan nan]
+ [nan nan nan nan]
+ [nan nan nan nan]
+ [ 0.  0.  0.  1.]]
+</code></pre>
+",5/22/2022 7:07,,1128,0,0,0,,19167018,,5/21/2022 9:58,7,,,,,,,,vision
+1215,6619222,A Question on Omnidirectional Control,|math|language-agnostic|vector|robotics|,"<p>I am reading the follwoing paper,</p>
+
+<p><a href=""http://robocup.mi.fu-berlin.de/buch/omnidrive.pdf"" rel=""nofollow"">http://robocup.mi.fu-berlin.de/buch/omnidrive.pdf</a></p>
+
+<p>On page ten it introduces a formula to generate movement for n omniwheels,</p>
+
+<pre>
+<code>
+                   −sin θ1 cos θ1 1 
+(v1, v2, v3, v4)=   −sin θ2 cos θ2 1   (vx, vy, Rω)
+                    ................
+                   −sin θn cos θn 1
+</code>
+</pre>
+
+<p>From what I understand, you take the vector of where you want to go say x direction no rotation that would be [1 0 0] and multiply that with sin cos matrix then you get how much each particular motor should be powered to generate motion in that direction.</p>
+
+<p>In order to double check the results I calculated for velecoties for [1 0 0], that gives me [a b c d] 4 motor speeds and I have 4 θs, when I add each wheels sin and cos components I think I shoudl get back to [1 0 0] but I actualy get back something like [2.5 0 0]. What I was wondering is did I forget some property about matrix multipication? or  Do I have flow in my logic?</p>
+",7/8/2011 2:07,6619411,101,1,0,1,,89904,,4/12/2009 4:27,3143,6619411,"<p>No, there's nothing wrong. Consider the simplest possible case, where a robot has two wheels across from each other on a single axle. For the robot to move forward at speed <code>x</code>, both wheels should be turning at speed <code>x</code>, not <code>x/2</code>.</p>
+",,2,0,,,wc
+3873,63952955,how to setup robotdyn arduino mega+esp8266,|html|robotics|arduino-esp8266|,"<p>I am making a web server with a robotdyn arduino mega + esp8266  to control a few bo motors I flashed the firmware for the esp8266 I have 2 questions, 1: when I give AT commands through the serial monitor It doesn't respond also when I open the serial monitor its saying, &quot;error opening COM4, port busy&quot; how can I solve this? the second one is how can I embed the html code into the arduino code? by the way I didn't use any code for the AT commands. Can you also tell how I should orient the switches (they're only on the robotdyn arduino mega/uno + esp8266 model not on normal esp8266 chips)on the mega while talking the the mega?</p>
+",9/18/2020 9:23,,103,0,5,0,,,,,,,,,,,113099806,there is no 'normal' firmware. https://blog.gabrielcsapo.com/arduino-web-server-mega-2560-r3-built-in-esp8266/,sc
+2446,35468253,SVG - Export of Points / Coordinates in Python,|python|svg|coordinates|robotics|cnc|,"<p>I am developing a robotic controlled drawing system and currently are looking for some input regarding the extraction of plain coordinates out of exisitng SVG-files. My question is very similar to <a href=""https://stackoverflow.com/questions/31557673/python-get-coordinates-of-the-vector-path-from-svg-file"">this one</a>, which did not get much feedback so far.</p>
+
+<p>-> Is there some simple/established/prebuild way to extract point-coordinates out of existing SVG files within python ?</p>
+
+<p>From my (limited) understanding, existing SVG libraries for python like <a href=""https://pypi.python.org/pypi/svg.path"" rel=""nofollow noreferrer"">svg.path</a> and <a href=""https://pypi.python.org/pypi/pysvg/0.2.2"" rel=""nofollow noreferrer"">pysvg</a> do not seem to include a function for extracting all points out of an existing file (as they seem to be build more towards writing SVG rather than reading SVG..)</p>
+
+<p>thanks for answers.</p>
+",2/17/2016 21:35,,1693,0,3,1,0,5942645,,2/17/2016 21:01,13,,,,,,58632801,"SVG is XML, use an XML parser.",api
+542,2764278,Potential field method : Real Robots,|robotics|,"<p>Potential field method is a very popular simulation for Robot Navigation. However, has anyone implemented Potential field method on real robots ? Any reference or any claim of using the method in real robots ?.</p>
+",5/4/2010 9:53,2799660,3399,5,1,5,0,280945,"New Delhi, India",2/25/2010 5:52,524,2799660,"<p>I have done potential field based path planning before, but abandoned it in favour of more appropriate approaches to my problem. It works adequately for environments where you have accurate localization, and accurate sensor readings, but much less so in real world environments (its not a particulary great solution even in terms of speed and path quality, even in simulation). Considering that there are now a lot of good SLAM implementations available either free or low cost, I wouldnt bother reimplementing unless you have very specific problems with reuse. For MRDS (what i work in) there is Karto Robotics, ROS has a SLAM implementation, and there are several open-source implementations only a google search away.</p>
+
+<p>If you want a good overview of different approaches to path planning, then you might want to grab a copy of ""introduction to Autonomous Mobile Robots"" by Segwart et al. Its a pretty good book, and the path planning section gives a nice overview of the different strategies around.</p>
+",336871,5,3,2856533,"Guys, I am overjoyed at the response, thanks to everyone who replied.",fp
+2403,33447171,Find pixel coordinates from real world using a Kinect,|matlab|computer-vision|kinect|robotics|,"<p>I am trying to do some basic level robotics with computer vision, and I have run into a problem with going from real world coordinates to pixels in order to read from the Kinect's depth map. I am doing this because I would like to be able to draw on a hand of non constant depth, which is located at a given x and y location in millimeters.</p>
+
+<p>The problem I'm having is that the distance of the object from the camera needs to be known in order to convert between real world and pixels. How could I either find the depth at a location, or convert the depth map into metric coordinates instead of pixels?</p>
+",10/31/2015 1:34,,415,0,2,0,,3764063,,6/22/2014 4:21,2,,,,,,54685938,"Thanks @ParagS.Chandakkar, I'll give it a shot.",vision
+3272,54242283,How to program line following and vex claw bot to autonomously pick up pipe on RobotC?,|robot|robotc|,"<p>Our teacher gave us an assignment which is supposed to be self-taught via YouTube. I can't find a good tutorial, so can anyone explain to me how one would program a vex claw bot to move straight until it finds a line and begins to follow the line (line is black tape). Then we have a ultrasonic sensor which will detect pipes and cause the claw to pick up the pipes.</p>
+
+<p><a href=""https://i.stack.imgur.com/EyH2e.png"" rel=""nofollow noreferrer"">Our claw bot looks like this</a></p>
+
+<p>we have three sensors attached to the front</p>
+
+<p><a href=""https://i.stack.imgur.com/ro9CQ.png"" rel=""nofollow noreferrer"">3 sensors attached like this</a></p>
+
+<p>if any can help I will be really greatful, our teacher hasn't taught us anything.</p>
+",1/17/2019 18:39,54242383,262,1,0,0,,9909400,,6/7/2018 14:11,4,54242383,"<p>This is a line following task. The approach should be that you move ahead, then use the IR sensors to detect if there is a black line (tape) detected due to the change in IR intensities and then start tracking that line with a normal line follower algorithm. </p>
+
+<p>This link has a nice list of resources for line following tasks. <a href=""https://www.intorobotics.com/line-following-robot-tutorials-how-to-build-programming-code-and-resources/"" rel=""nofollow noreferrer"">https://www.intorobotics.com/line-following-robot-tutorials-how-to-build-programming-code-and-resources/</a> </p>
+",4796617,0,0,,,line tracking
+3889,64320886,Turtlebot rotates and sways like mad with Ros# on Unity3D,|unity-game-engine|ros|robotics|,"<p>I was trying to move Turtlebot in Unity3D following the tutorial: <a href=""https://github.com/siemens/ros-sharp/wiki/User_App_ROS_UnitySimulationExample"" rel=""nofollow noreferrer"">https://github.com/siemens/ros-sharp/wiki/User_App_ROS_UnitySimulationExample</a>.</p>
+<p>All steps suggested by the tutorial and its video were done and double checked. The only difference was that I was running both ROS and Unity on a Linux device (Ubuntu 16.08). However, Unity could connect to localhost just fine and rviz could pick up the image published by Unity. So I do not think this should be the problem.</p>
+<p>After launching the Ros node and starting simulation in Unity, the turtlebot just started to sway like a drunk:</p>
+<p><a href=""https://i.stack.imgur.com/KxiCE.png"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/KxiCE.png"" alt=""enter image description here"" /></a></p>
+<p>I feel like this might be an Unity issue. Does anyone had similar problems before? Any help is appreciated.</p>
+",10/12/2020 15:34,,303,1,1,0,,14436770,,10/12/2020 15:17,3,67571987,"<p>Take a look at the following:
+<a href=""https://github.com/siemens/ros-sharp/issues/333"" rel=""nofollow noreferrer"">https://github.com/siemens/ros-sharp/issues/333</a></p>
+<p>As it states, if you Enable the &quot;IsKinetic&quot; option for your ROSConnector, turtlebot works as expected.</p>
+",8259546,0,0,113777355,"Please [edit] to add meaningful code and a problem description here. Posting a [Minimal, Complete, Verifiable Example](https://stackoverflow.com/help/mcve) that demonstrates your problem would help you get better answers. Thanks!",fp
+4497,75203121,drake bazel test failure in solvers:csdp_solver_test,|bazel|robotics|drake|,"<p>I followed these instrcutions:</p>
+<pre><code>cd /path/to/drake
+bazel build //...                 # Build the entire project.
+bazel test //...                  # Build and test the entire project.
+</code></pre>
+<p>But, I got the following error:</p>
+<pre><code>[----------] Global test environment tear-down
+[==========] 31 tests from 17 test suites ran. (123 ms total)
+[  PASSED  ] 30 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] TestSOS.MotzkinPolynomial
+
+ 1 FAILED TEST
+================================================================================
+INFO: Elapsed time: 1.431s, Critical Path: 0.32s
+INFO: 3 processes: 1 internal, 1 linux-sandbox, 1 local.
+INFO: Build completed, 1 test FAILED, 3 total actions
+//solvers:csdp_solver_test                                               FAILED in 0.2s
+  /home/aj/.cache/bazel/_bazel_aj/84dff73cad498d702e4464d2c661c905/execroot/drake/bazel-out/k8-opt/testlogs/solvers/csdp_solver_test/test.log
+
+Executed 2 out of 6054 tests: 6053 tests pass and 1 fails locally.
+INFO: Build completed, 1 test FAILED, 3 total actions
+</code></pre>
+<p>My OS is Ubuntu 20 and my complier is gcc 9.
+Here is the <a href=""https://gist.github.com/ajaygunalan/caf0da28ee735b2047b41fea684f8fd1#file-test-log"" rel=""nofollow noreferrer"">link</a> to my test.log file.</p>
+",1/22/2023 19:08,,41,1,1,0,,9976843,"Bengaluru, Karnataka, India",6/22/2018 6:56,1,75215499,"<p>It is solved by <code>sudo apt remove libatlas3-base</code></p>
+<p>The detailed discussion is at this <a href=""https://github.com/RobotLocomotion/drake/issues/18635"" rel=""nofollow noreferrer"">link</a>.</p>
+",9976843,0,0,132718780,"FYI for other readers, this question was also posted at https://github.com/RobotLocomotion/drake/issues/18635.  I'll reply there, instead of StackOverflow.",bf
+4351,72839814,Using Each Thread As Separate Publisher in Ros2 Node,|c++|multithreading|ros|robotics|ros2|,"<p>I am trying to make a node with multiple publisher in it and each publisher will be work own separate thread.</p>
+<p>When I try to basic idea implementation gives me this error;</p>
+<pre><code>2022-07-02 13:14:16.757 [PARTICIPANT Error] Type with the same name already exists:rcl_interfaces::srv::dds_::GetParameters_Request_ -&gt; Function registerType 
+2022-07-02 13:14:16.758 [PARTICIPANT Error] Type with the same name already exists:rcl_interfaces::srv::dds_::GetParameterTypes_Request_ -&gt; Function registerType 
+2022-07-02 13:14:16.758 [PARTICIPANT Error] Type with the same name already exists:rcl_interfaces::srv::dds_::GetParameterTypes_Response_ -&gt; Function registerType 
+2022-07-02 13:14:16.759 [PARTICIPANT Error] Type with the same name already exists:rcl_interfaces::srv::dds_::SetParameters_Request_ -&gt; Function registerType 2022-
+07-02 13:14:16.759 [PARTICIPANT Error] Type with the same name already exists:rcl_interfaces::srv::dds_::SetParameters_Response_ -&gt; Function registerType 2022-
+07-02 13:14:16.760 [PARTICIPANT Error] Type with the same name already exists:rcl_interfaces::srv::dds_::SetParametersAtomically_Request_ -&gt; Function registerType 
+2022-07-02 13:14:16.762 [PARTICIPANT Error] Type with the same name already exists:rcl_interfaces::srv::dds_::ListParameters_Request_ -&gt; Function registerType 2022-
+07-02 13:14:16.762 [PARTICIPANT Error] Type with the same name already exists:rcl_interfaces::srv::dds_::ListParameters_Response_ -&gt; Function registerType
+</code></pre>
+<p>My implementation;</p>
+<p>Firstly making a basic Ros Node class to publishing data and then create 5 thread to make a publisher for each and their own stack. Using this Ros Node class. Then using rclcpp::spin(node) must be publish the data but it gives the above error.</p>
+<pre><code>#include &quot;rclcpp/rclcpp.hpp&quot;
+#include &quot;example_interfaces/msg/string.hpp&quot;
+#include &lt;string&gt;
+#include &lt;thread&gt;
+
+
+class Publisher: public rclcpp::Node{
+
+public:
+    Publisher(std::string name, std::string _data) : Node(name), data(_data){
+        publisher = this-&gt;create_publisher&lt;example_interfaces::msg::String&gt;(&quot;pub_topic&quot;, 10);
+        timer = create_wall_timer(std::chrono::milliseconds(555), std::bind(&amp;Publisher::call_back, this));
+
+    }
+
+private:
+
+    void call_back(){
+
+        example_interfaces::msg::String msg;
+        msg.data = data;
+        publisher-&gt;publish(msg);
+    }
+
+    std::string data;
+    std::shared_ptr&lt;rclcpp::Publisher&lt;example_interfaces::msg::String&gt;&gt; publisher;
+    std::shared_ptr&lt;rclcpp::TimerBase&gt; timer; 
+ };
+
+void thread_main(std::string data){
+
+    std::shared_ptr&lt;Publisher&gt; node = std::make_shared&lt;Publisher&gt;(data , data);
+    rclcpp::spin(node);
+
+}
+
+int main(int argc, char* argv[]){
+
+    rclcpp::init(argc, argv);
+
+    std::vector&lt;std::string&gt; dataset{&quot;first&quot;, &quot;second&quot;, &quot;third&quot;, &quot;fourth&quot;, &quot;fifth&quot;};
+    std::vector&lt;std::thread&gt; threads(5);
+
+    for(size_t i=0; i&lt;dataset.size(); ++i){
+        threads[i] = std::thread(thread_main, dataset.at(i));
+    }
+
+    for(int i=0; i&lt;10; ++i){
+        threads[i].join();
+    }
+
+    rclcpp::shutdown();
+
+    return 0;
+ }
+</code></pre>
+",7/2/2022 14:27,,1390,0,0,0,,14595867,,11/7/2020 13:07,24,,,,,,,,multithreading
+2449,35598327,Using UDP to control robot via python,|python|udp|raspberry-pi|robot|udpclient|,"<p>I'm working on a robot using a raspberrypi. I was looking for a library that could help me with the networking stuff, like packets &amp;co. 
+So i'm using this code to select the commands I receive:</p>
+
+<pre><code>def selectPacket(x):
+    if x == '00': 
+        return '00'
+    elif x == ""01"":
+        Date = datetime.now()
+        return str(Date.microsecond)
+    elif x == ""02"":
+        return '98'
+    elif x == ""03"":
+        return '98'
+    elif x == ""04"":
+        return '98'
+    elif x == ""05"":
+        return '98'
+    else: 
+        return '99'
+</code></pre>
+
+<p>I'm sure that there is a lib to make quick servers and clients using python, I want to use UDP because the connection I will use will be very unstable, so tcp is out of question. </p>
+",2/24/2016 9:36,,1086,1,0,2,0,3722254,,6/9/2014 12:01,43,35599384,"<p>Because controlling robot depends on complex parts such as how many legs they have, how many joints they have and so on, I think there is no library you want. And connection phase on python is too simple to make a library.</p>
+
+<p>Here are simple UDP Client/Server code:</p>
+
+<p>UDP Server</p>
+
+<pre><code>import socket, traceback
+s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+s.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+s.bind(('', 5000))
+
+print ""Listening for broadcasts...""
+
+while 1:
+    try:
+        message, address = s.recvfrom(8192)
+        print ""Got message from %s: %s"" % (address, message)
+        s.sendto(""Hello from server"", address)
+        print ""Listening for broadcasts...""
+    except (KeyboardInterrupt, SystemExit):
+        raise
+    except:
+        traceback.print_exc()
+</code></pre>
+
+<p>UDP Client</p>
+
+<pre><code>import socket, sys
+dest = ('&lt;broadcast&gt;', 5000)
+
+s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+s.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+s.sendto(""Hello from client"", dest)
+print ""Listening for replies.""
+
+while 1:
+    (buf, address) = s.recvfrom(2048)
+    if not len(buf):
+        break
+    print ""Received from %s: %s"" % (address, buf)
+    s.sendto(""echo"", dest)
+</code></pre>
+
+<p>Also, if you have complex logic and need to separate into multiple parts that can be communication, control or I/O, refer Event-driven programming: <a href=""http://etutorials.org/Programming/Python+tutorial/Part+IV+Network+and+Web+Programming/Chapter+19.+Sockets+and+Server-Side+Network+Protocol+Modules/19.3+Event-Driven+Socket+Programs/"" rel=""nofollow"">http://etutorials.org/Programming/Python+tutorial/Part+IV+Network+and+Web+Programming/Chapter+19.+Sockets+and+Server-Side+Network+Protocol+Modules/19.3+Event-Driven+Socket+Programs/</a>)</p>
+",5963434,0,1,,,internet
