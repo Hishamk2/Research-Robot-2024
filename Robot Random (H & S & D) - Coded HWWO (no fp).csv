@@ -60,7 +60,7 @@ As for using the mouse for tracking how far you have driven: It did not work wel
 
 <p>Please advice from where i can start h/w programming. my aim is to combine both s/w &amp; h/w to work together. </p>
 ",40049.51181,1327292,205,4,1,5,0,147025,,40023.475,518,1322040,"<p>I'd recommend <a href=""http://www.arduino.cc"" rel=""nofollow noreferrer"">Arduinos</a> if you want to try some embedded programming. They're cheap, IDE works on multiple platforms and especially they are easy to start with.</p>
-",89024,3,2,93084415,ask a stupid question: does h/w mean hardware?,gs,what
+",89024,3,2,93084415,ask a stupid question: does h/w mean hardware?,gs,how
 297,1590073,Line Tracking Robot,|arduino|robotics|,"<p>Me and my friends are building a line tracking robot based on my previous question about how to track white line on a black surface. We settled on using photo resistors and a arduino board. Now all the reflectance sensors I've found are should be placed very close to the line 1 - 2 cm above the line. Now one of my team mates had a heated argument with the professor that there are reflectance sensors that can track 10cm or more but we could not find any.</p>
 
 <p>Are there any type of sensor that would allow us to track the line farther away?</p>
@@ -71,7 +71,7 @@ As for using the mouse for tracking how far you have driven: It did not work wel
 <p>Kindness,</p>
 
 <p>Dan</p>
-",63627,0,0,1453373,"I'm interested in line tracking, but this questions seems to deal with finding some commodity hardware. I'm not sure that fits with SO.",line tracking,other
+",63627,0,0,1453373,"I'm interested in line tracking, but this questions seems to deal with finding some commodity hardware. I'm not sure that fits with SO.",line tracking,what
 423,1811366,"Infinite timeouts or ""fail fast"" in custom network protocol?",|network-protocols|robotics|peripherals|,"<p>Consider custom network protocol. This custom protocol could be used to control robotic peripherals over LAN from central .NET based workstation. (If it is important, the robot is busy moving fabs in chip production environment).</p>
 
 <ul>
@@ -198,7 +198,7 @@ Vikram</p>
 <p>Anyone got some good ones?</p>
 ",40297.21389,2741125,3410,5,1,9,0,88770,"Portland, OR, USA",39911.80694,317,2734931,"<p>Actually Lego Mindstorms kits are cheap and have a lot of different libraries to code in. 
 <a href=""http://msdn.microsoft.com/robotics/"" rel=""nofollow noreferrer"">Microsoft Robotics</a> for example. More info can be pulled from <a href=""http://blogs.msdn.com/coding4fun/archive/2007/07/16/3902344.aspx"" rel=""nofollow noreferrer"">this article</a>. My experience with Lego Mindstorms was before the NXT versions and using C however it was a great and challenging time. I may even look into grabbing a kit now that this popped up..</p>
-",36,2,0,2762956,There's excellent information about all types of physical computing (including robotics) at http://www.chiphacker.com.,hr,other
+",36,2,0,2762956,There's excellent information about all types of physical computing (including robotics) at http://www.chiphacker.com.,hr,what
 540,2761748,Rotation Matrix calculates by column not by row,|matlab|matrix|rotation|linear-algebra|robotics|,"<p>I have a class called forest and a property called fixedPositions that stores 100 points (x,y) and they are stored 250x2 (rows x columns) in MatLab.  When I select 'fixedPositions', I can click scatter and it will plot the points.  </p>
 
 <p>Now, I want to rotate the plotted points and I have a rotation matrix that will allow me to do that.</p>
@@ -256,7 +256,7 @@ end
 
 <pre><code>apparent = ([cos(theta)  -sin(theta) ; sin(theta)  cos(theta)] * (obj.fixedPositions)')';
 </code></pre>
-",93910,3,1,,,orientation,other
+",93910,3,1,,,orientation,how
 592,3068658,What techniques exist for the software-driven locomotion of a bipedal robot?,|language-agnostic|machine-learning|robotics|robocup|,"<p>I'm programming a software agent to control a robot player in a simulated game of soccer.  Ultimately I hope to enter it in the RoboCup competition.</p>
 
 <p>Amongst the various challenges involved in creating such an agent, the motion of it's body is one of the first I'm facing.   The simulation I'm targeting uses a Nao robot body with 22 hinge to control.  Six in each leg, four in each arm and two in the neck:</p>
@@ -375,7 +375,7 @@ AngleChange (Theta) = (DistanceRight - DistanceLeft) / WheelBase
 <p>I think the way to solve it is to consider a related problem: two wheels located correctly, but both skewed a little to the left (which is exactly the situation you're in, thinking of the diagonal between the wheels as the ""wheelbase""). The motion can then be broken into two components, the major forward-back component, which acts normally, and the minor sideways component which causes no angle change and depends only on the sum of the wheel rotations.</p>
 
 <p>I'll see if I can come up with some math that makes sense...</p>
-",128940,0,0,,,wc,other
+",128940,0,0,,,wc,how
 780,3636814,Deciding on the covariance for a Kalman Filter matrixes,|math|probability|robotics|,"<p>I am beginning to explore using probability in my robotics applications. My goal is to progress to full SLAM, but I am starting with a more simple Kalman Filter to work my way up.</p>
 
 <p>I am using Extended Kalman Filter, with state as [X,Y,Theta]. I use control input [Distance, Vector], and I have an array of 76 laser ranges [Distance,Theta] as my measurement input.</p>
@@ -549,7 +549,7 @@ Thaskalas</p>
 ",40585.86458,,4910,7,6,17,0,613626,,40585.86458,12,4973940,"<p>What do you mean by a compatibility problem? Have you looked at <a href=""http://en.wikipedia.org/wiki/Mono_%28software%29"" rel=""nofollow"">Mono</a>? It's an open-source implementation of the .NET libraries. It's geared toward C# not VB.NET but if you're more comfortable in a .NET environment use that. Speed isn't really an issue here as a Core2Duo is plenty fast for what you need to do.</p>
 
 <p>If Mono won't work for you, I'd recommend C++. There are a lot more libraries out there for C++ (or at least, I am familiar with more, e.g. <a href=""http://www.boost.org/"" rel=""nofollow"">Boost</a>), which can use most C libraries too. There's no real speed penalty for using C++. While using C wouldn't be bad per-se, C++ has some benefits and no drawbacks, so it's probably the better choice.</p>
-",185936,8,3,5552965,@Hellfrost What's your problem with VB.net? While I prefer C# that's just a stylistic choice.,lu,other
+",185936,8,3,5552965,@Hellfrost What's your problem with VB.net? While I prefer C# that's just a stylistic choice.,lu,what
 1011,5207515,Robot camera + motion detection,|camera|detection|robotics|motion|,"<p>I have a project in which we (me and my student) will develop a system for robot.
 In this robot we have a camera that capture.</p>
 <p>My question is how to detect motions and movements?
@@ -601,7 +601,7 @@ As far as forums go, you could check out the <a href=""http://www.ai-forum.org/"
 <a href=""http://area51.stackexchange.com/proposals/2149/cognitive-science"">Cognitive Science</a><br>
 <a href=""http://area51.stackexchange.com/proposals/29987/robotics-research"">Robotics Research</a><br>
 <a href=""http://area51.stackexchange.com/proposals/26434/machine-learning"">Machine Learning</a>  </p>
-",545616,2,1,6604513,"Probably I'm not the best person to give this kind of advice (that's why I leave just a comment), but I'd go for the control class before. You should know what robots can/can't do and how do they work before trying to control them",gs,other
+",545616,2,1,6604513,"Probably I'm not the best person to give this kind of advice (that's why I leave just a comment), but I'd go for the control class before. You should know what robots can/can't do and how do they work before trying to control them",gs,what
 1140,6007822,Finding path obstacles in a 2D image,|opencv|robotics|image-recognition|,"<p>what approach would you recommend for finding obstacles in a 2D image?</p>
 
 <p>Here are some key points I came up with till now:</p>
@@ -655,7 +655,7 @@ http://www.youtube.com/watch?v=4XQeZE4nh6M
 <a href=""http://www.youtube.com/watch?v=0ipAKzCwn4Y"" rel=""nofollow"">http://www.youtube.com/watch?v=0ipAKzCwn4Y</a></p>
 
 <p>I would not recommend the Bluetooth path, as Apple considers bluetooth as an ""External Accessory"" and requires MFi certification (Made for iPhone)</p>
-",229081,1,0,7303247,sure:http://www.youtube.com/watch?v=4XQeZE4nh6M,wireless,other
+",229081,1,0,7303247,sure:http://www.youtube.com/watch?v=4XQeZE4nh6M,wireless,what
 1149,6140332,Real time live streaming with an iPhone for robotics,|objective-c|sockets|video-streaming|vlc|robotics|,"<p>For a research purpose, I developed and app to control a wheeled mobile robot using the gyro and the accelerometer of an iPhone. The robot has a IP address, and I control it by sending messages through a socket. Since the robot has to be controlled from anywhere in the world, I mounted a camera on top of it. I tried to stream the video from the camera using the http live streaming protocol and vlc, but the latency is too high (15-30sec) to properly control it.</p>
 
 <p>Now, vlc has the possibility to stream over udp or http, but the point is how do I decode the stream on the iPhone? How should I treat the data coming into the socket in order to visualize them as a continuous live video? </p>
@@ -679,7 +679,7 @@ http://www.youtube.com/watch?v=4XQeZE4nh6M
 
 <p>In order to double check the results I calculated for velecoties for [1 0 0], that gives me [a b c d] 4 motor speeds and I have 4 θs, when I add each wheels sin and cos components I think I shoudl get back to [1 0 0] but I actualy get back something like [2.5 0 0]. What I was wondering is did I forget some property about matrix multipication? or  Do I have flow in my logic?</p>
 ",40732.08819,6619411,101,1,0,1,,89904,,39915.18542,3143,6619411,"<p>No, there's nothing wrong. Consider the simplest possible case, where a robot has two wheels across from each other on a single axle. For the robot to move forward at speed <code>x</code>, both wheels should be turning at speed <code>x</code>, not <code>x/2</code>.</p>
-",,2,0,,,wc,other
+",,2,0,,,wc,what
 1216,6620778,Determining the duration of a frequency and the magnitude,|algorithm|controls|robotics|,"<p>I am working with a system in which I am getting data from a sensor (gyro) at 1KHz.</p>
 
 <p>What I am trying to do is determine when the system is vibrating so that I can turn down the PID gains on the output.<br>
@@ -1286,7 +1286,7 @@ Thanks</p>
 
 <p>Any help much appreciated. </p>
 ",41075.91597,,1867,1,2,5,0,1106578,,40896.80208,156,11058846,"<p>This is possible using an iterative IK algorithm, such as Cyclic Coordinate Decent.</p>
-",131345,1,0,27618481,"btw. for iteration algorithms you just need matrix arithmetics (i usually uses for IKs transformation matrices 4x4) needed operations are matrix*matrix, matrix*vector inverse matrix. for more detailed information google some OpenGL robotic arm demo/tutorial you will get there everything you need",ik,other
+",131345,1,0,27618481,"btw. for iteration algorithms you just need matrix arithmetics (i usually uses for IKs transformation matrices 4x4) needed operations are matrix*matrix, matrix*vector inverse matrix. for more detailed information google some OpenGL robotic arm demo/tutorial you will get there everything you need",ik,what
 1407,11581346,Voice and face recognition libraries for .Net Gadgeteer,|voice-recognition|robotics|face-recognition|.net-micro-framework|.net-gadgeteer|,"<p>Recently, I've been looking into robotics and I've become interested in trying to make a robot of my own. It woulde be a simple one but I want it to be capable of face and speech recognition at least.</p>
 
 <p>I've found a set called EZ-Robots that comes with face/speech recognition libraries already, but thought that .NET gadgeteer would be better (more simple, scalable...). So far, I haven't tried any programming yet, I still need to decide which set to buy (which way to go).</p>
@@ -1298,7 +1298,7 @@ Thanks</p>
 <p>It is more of a hobby matter :).</p>
 
 <p>For any advice, I would be grateful.</p>
-",7/20/2012 14:26,,472,0,0,1,,840405,Czech Republic and Slovakia,7/12/2011 9:27,201,,,,,,,,hr,other
+",7/20/2012 14:26,,472,0,0,1,,840405,Czech Republic and Slovakia,7/12/2011 9:27,201,,,,,,,,hr,how
 1447,11782221,iPhone - Any examples of communicating with an Arduino board using Bluetooth?,|iphone|objective-c|bluetooth|arduino|robotics|,"<p>I'm tinkering with an iPhone-controlled <a href=""http://en.wikipedia.org/wiki/Radio-controlled_car"" rel=""nofollow"">RC car</a> chassis that is the base of my <strong>robotics project</strong>. The chassis is controlled with a <a href=""http://wirc.dension.com/"" rel=""nofollow"">WiRC</a> Wi-Fi module. It has eight outputs to control electronic speed controllers and servos. </p>
 
 <p>I'd like to improve my robot's ability to avoid obstacles using sensors. For this purpose, I have an Arduino board which I can interface with various inexpensive rangefinders and proximity sensors. I'm looking for examples or demo projects that would <strong>connect an iPhone to an Arduino board using Bluetooth to send commands to the board and receive data from the board.</strong> Is what I'm thinking of possible? </p>
@@ -1585,7 +1585,7 @@ c = normalize(c)
 
 <p>that gives me a unit vector that will take me to my target. But a quadrotor can move in any direction without rotation so what I have tried to do is rotate that vector c by the robots yaw angle then split it into its x y components and pass them to the robot as roll and pitch angles the problem is when the yaw is 0 degrees (-+ 5) this works but when the yaw is say +90 or -90 it fails and steers to wrong directions. My question is am I missing something obvious here?</p>
 ",41267.59375,,136,1,1,0,,1926790,,41267.57569,7,14191503,"<p>Not doing all the research to be 100% sure of this answer, but it sounds like you are getting a (kind of?) <a href=""http://en.wikipedia.org/wiki/Gimbal_lock"" rel=""nofollow"">Gimbal Lock</a>. A solution to this is to use <a href=""http://en.wikipedia.org/wiki/Quaternion"" rel=""nofollow"">Quaternions</a> as they are not succeptible to Gimbal Lock.</p>
-",571138,0,0,19375126,"Do a search on ""Euler angle"" or ""quaternion"" or ""rotation matrix"" - three solutions to the same problem.  Each has its advantages.",wc,other
+",571138,0,0,19375126,"Do a search on ""Euler angle"" or ""quaternion"" or ""rotation matrix"" - three solutions to the same problem.  Each has its advantages.",wc,why
 1589,14041109,how to recognise a zebra crossing from top view using opencv?,|opencv|computer-vision|robotics|,"<p>you can get all the details about the problem from this pdf document: www.shaastra.org/2013/media/events/70/Tab/422/Modern_Warfare_ps_v1.pdf</p>
 
 <p>how to recognize a zebra crossing from top view using opencv ?? 
@@ -2119,7 +2119,7 @@ Any help will be appreciated.</p>
                           object height (pixels) * sensor height (mm)
 </code></pre></li>
 </ol>
-",1031417,1,0,23250440,I know object dimension only. What do you mean by sensor? I have camera,cameras,other
+",1031417,1,0,23250440,I know object dimension only. What do you mean by sensor? I have camera,cameras,how
 1718,16252951,NXT - Tortoise and Hare - follow moving object - Theoretical,|robotics|lego-mindstorms|nxt|lejos-nxj|,"<p>I'm going through Robotics past papers as a revision before the exam, and I found one problem which seems very confusing. My department does not provide answers to past papers, so I can't check if I'm right.</p>
 <p><img src=""https://i.stack.imgur.com/YTpo7.jpg"" alt=""partII"" /></p>
 <pre><code>public class Question4i{
@@ -2594,7 +2594,7 @@ Since I really care about getting the packets over to the UAV from the base stat
 1772,17103286,Any alternatives to libhand?,|opengl|computer-vision|robotics|ogre|libhand|,"<p><strong><a href=""http://www.libhand.org/"" rel=""nofollow"">LibHand</a></strong> seems to be tightly integrated with <strong>OGRE</strong> for rendering. And extending any OGRE program beyond the basics is an uphill task.</p>
 
 <p>Are there any alternatives to LibHand? I'm hoping to use it with simple OpenGL programs.</p>
-",6/14/2013 7:29,,447,0,2,1,,1630,"Santa Clara, CA, USA",8/17/2008 17:03,7263,,,,,,24756268,"As an experienced SO user, you should know that we're not a replacement for Google.",api,other
+",6/14/2013 7:29,,447,0,2,1,,1630,"Santa Clara, CA, USA",8/17/2008 17:03,7263,,,,,,24756268,"As an experienced SO user, you should know that we're not a replacement for Google.",api,what
 1774,17126898,Problems with bttv camera mobile robot - initialisation noisy image,|linux|video-capture|robot|v4l2|,"<p>I am working with Ubuntu 12.04 LTS. We are having problems receiving a non-noisy image from an eye-in-hand camera on a mobile robot.</p>
 
 <p>The camera image is collected with a BTTV PCI device, specifically the bt878  driver. The BTTV device is a PCI-104 card based on a Bt848 chip, and is supported under Linux by the bttv and associated kernel driver modules. The devices is a capture-only card - which means video is taken directly from a video source without the use of a tuner. The frame grabber is connected to the on-board computer Sensorary 311 (so bttv card=73)</p>
@@ -3164,7 +3164,7 @@ SteeringSend = steeringlabel.get()
 </code></pre>
 
 <p>The code now checks if the varibale is already set to the relevent direction if it is it does nothing, otherwise it modifies it. the print line is just there for me to check it was working properly and could be removed or commented out.</p>
-",1460057,2,5,,,wireless,other
+",1460057,2,5,,,wireless,how
 1809,18215873,How to represent N E S W orientation in OOP?,|oop|logic|orientation|robotics|,"<p>I'm trying to find a programming concept of representing the orientation of an object on a grid, but my logic is seriously failing me here. 
 If I have Robot (R) and he's facing North, I want him to turn left and right and change orientation accordingly. Obviously this needs to be in a loop (possibly a circular linked list) with regards to if R is facing West but I turn right then R needs to be back facing North. </p>
 
@@ -3520,7 +3520,7 @@ Thanks</p>
 </code></pre>
 
 <p>Hence too many arguments 3 vs 2...</p>
-",968969,0,1,30522763,Good question. Try to add what you have done to fixed these problems nad how what you did affected it.,mc,other
+",968969,0,1,30522763,Good question. Try to add what you have done to fixed these problems nad how what you did affected it.,mc,how
 1871,20863327,Unable to receive data from serial port,|c++|serial-port|robotics|,"<p>Currently I try to write a serial port communication in VC++ to transfer data from PC and robot via XBee transmitter. But after I wrote some commands to poll data from robot, I didn't receive anything from the robot (the output of filesize is 0 in the code.). Because my MATLAB interface works, so the problem should happen in the code not the hardware or communication. Would you please give me help? </p>
 
 <p>01/03/2014 Updated: I have updated my codes. It still can not receive any data from my robot (the output of read is 0). When I use ""cout&lt;&lt;&amp;read"" in the while loop, I obtain ""0041F01C1"". I also don't know how to define the size of buffer, because I don't know the size of data I will receive. In the codes, I just give it a random size like 103. Please help me.</p>
@@ -3727,7 +3727,7 @@ if (Ultrasonic &lt;= 10)
 </code></pre>
 
 <p>In fact, you could make this code even ""cleaner"" by combining the check for the value of the ultrasonic sensor by using an ""if... else..."" statement. This checks one value, and then makes a decision based on whether that value is true--or else. Just replace the line <code>if (Ultrasonic &lt;= 10)</code> with <code>else</code>.</p>
-",1292093,1,0,,,sensors,other
+",1292093,1,0,,,sensors,how
 1901,21249131,Monte-Carlo localization for mobile-robot,|robotics|montecarlo|,"<p>I'm implementing Monte-Carlo localization for my robot that is given a map of the enviroment and its starting location and orientation. My approach is as follows:</p>
 
 <ol>
@@ -4032,7 +4032,7 @@ with this bluesoleil, I also get my arduino bluetooth sensor paired to my laptop
 I tried a generic stack provided by broadcom, but failed by it keep asking me to plug in the bluetooth adapter, and actually it's always there.
 So I have to give up the paring between NXT and android phone, the andorid phone don't support replace the bluetooth stack except refresh another ROM.
 Hope this information could help someone like me.</p>
-",1602160,0,0,,,wireless,other
+",1602160,0,0,,,wireless,how
 1926,22228890,Neural Network for a Robot,|neural-network|robotics|,"<p>I need to implement a Robot Brain, I used feedforward neural network as a Controller. The robot has 24 sonar sonsor, and only one ouput which is R=Right, L=Left, F=Forward, B=Back. I also have a large dataset which contain sonar data and the desired output. The FNN is trained using backpropagation algorithm.</p>
 <p>I used neuroph Studio to construct the FNN and to do the trainnig. Here the network params:</p>
 <p>Input layer: 24
@@ -4055,7 +4055,7 @@ GlobalError: 0.1</p>
 <p>Neural networks often get stuck in local minima during training, that could be why your error is static. Increasing the momentum can help avoid this.  </p>
 
 <p>Your learning rate looks quite high. Try 0.1, but play around with these values. Every problem is different and there are no values guaranteed to work.</p>
-",3387972,0,3,,,dl,other
+",3387972,0,3,,,dl,how
 1932,22547738,RobotC VEX / Lego Programming: How to make a robot run multiple reactions in parallel?,|java|robotics|lego-mindstorms|nxt|,"<p>I need to get my robot to be able to use the bump switches so that either one can be pressed and the motor corresponding to that bumpswitch will run for as long as the bump switch is pressed. The problem I'm having is getting the LEDs to light up correctly. While the bump switch code block is running, I need the LEDs to light up and go off seven times for one second every time the Light sensor value gets higher than 400. How do I do it? Please Help!
 My Code is posted below:</p>
 
@@ -4441,7 +4441,7 @@ Whenever I try and do anything with the touch sensor it does not work. When I ou
     return isOn;
 }
 </code></pre>
-",1896761,2,0,38844972,"Awesome, that's what I'd expect given those values. So, change the while statement to `while(sensorValue(touchSensor) > 500)` and let me know what happens.",sensors,other
+",1896761,2,0,38844972,"Awesome, that's what I'd expect given those values. So, change the while statement to `while(sensorValue(touchSensor) > 500)` and let me know what happens.",sensors,how
 2020,24998038,Path planning and collision avoidance for multiple autonomous robots in static environment.,|algorithm|path|robotics|motion-planning|,"<p>I am going to start my work on a robotic project. Before jumping into the question, let me first give a brief description of the set up of this project.</p>
 
 <p>The set up consists of a facility where there is a rail system and there are multiple robots mounted on them. The environment is static with only mobile robots. As for now it can be 3 robots wagon on these rails. These robots are for pick-and-place tasks.There is, as such no communication between these robots but they are connected to the server, which gives the robots tasks.</p>
@@ -5661,7 +5661,7 @@ proxy pop()
     else return a[top--];
 }
 </code></pre>
-",2413201,0,0,,,mp,other
+",2413201,0,0,,,mp,how
 2184,28994556,Can somebody help explain RobotC Syntax?,|c|robotics|,"<p>I have been programming for some time in Python, and JavaScript.  I have also programmed with the arduino language which is a mix between C and C++.  I was just introduced to RobotC.  The syntax used for RobotC is not like any language I have learned.  Can someone help explain these syntax differences so I can better understand it?</p>
 
 <p><strong>Problem 1:</strong></p>
@@ -5855,7 +5855,7 @@ Possible causes:The project 'android_apps' may be using a version of Gradle that
 Open Gradle wrapper fileThe build file may be missing a Gradle plugin.
 Apply Gradle plugin
 </code></pre>
-",4/13/2015 22:09,,330,0,2,0,,474986,"Grenoble, France",10/13/2010 19:53,538,,,,,,47377663,Please include the specific code you are using from the tutorial so this question ages gracefully. It's possible that link might go offline or be moved in the future.,li,other
+",4/13/2015 22:09,,330,0,2,0,,474986,"Grenoble, France",10/13/2010 19:53,538,,,,,,47377663,Please include the specific code you are using from the tutorial so this question ages gracefully. It's possible that link might go offline or be moved in the future.,li,how
 2242,29952691,Error libraries Raspbian with GoPiGo,|python|opencv|raspberry-pi|raspbian|robotics|,"<p>I am working on a GoPiGo and i'm trying to make this robot to move when the camera detect a circle. </p>
 
 <p>The mainly problem i have here is that when i try to use the gopigo library in order to use functions as fwd(),stop(), etc, if i do NOT use sudo in the command line, and just type ""python CircleDetector_MOVEMENT.py"" it detects the gopigo library, but doesn't detect the picamera.array:</p>
@@ -7217,7 +7217,7 @@ error message </p>
 <p><a href=""https://i.stack.imgur.com/ysnuN.png"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/ysnuN.png"" alt=""enter image description here""></a>
 the distro' link is <a href=""https://github.com/RobotLocomotion/drake"" rel=""nofollow noreferrer"">drake distro</a>
 Thanks in advance</p>
-",3/31/2016 18:26,,62,0,3,0,,5556374,,11/12/2015 20:33,67,,,,,,60310194,"It might help to be more specific about what this project is, and/or where it's from. Is it from here: https://github.com/lcm-proj/lcm ? If so, specific build issues with building from source might get quicker responses if you create an issue ticket on the project?",li,other
+",3/31/2016 18:26,,62,0,3,0,,5556374,,11/12/2015 20:33,67,,,,,,60310194,"It might help to be more specific about what this project is, and/or where it's from. Is it from here: https://github.com/lcm-proj/lcm ? If so, specific build issues with building from source might get quicker responses if you create an issue ticket on the project?",li,how
 2469,36403200,Same coordinate system between two objects C#,|c#|robotics|coordinate-systems|kinect-sdk|,"<p>I am writing a code using C#. I use a Kinect SDK V2 and a robot, for example my robot model is an IRB 1600. From the Kinect sensor I take a human point cloud when a human is detecting from the camera and from the robot I take one position (X-Y-Z position) that tells me where the robot is every time I ask it.</p>
 <p>My problem is that the camera and robot have got different coordinate systems the sensor have the sender of the camera and the robot has his bases. I want to create a same coordinate system between them for distance calculation between human and robot. Are any methods to do that? tutorials?</p>
 ",4/4/2016 12:50,,87,1,0,1,,5436280,,10/12/2015 10:30,19,36409262,"<p>I think you just need to make a calibration...</p>
@@ -7471,7 +7471,7 @@ When I give positive x values I get correct results in the left side of the canv
 <p><strong>Derivative:</strong> This is supposed to account for the ""future"". It uses the slope of the most recent samples. Remember this is the slope, it has nothing to do with the position error(<code>current-goal</code>), it is <code>previous measured position - current measured position</code>. This is most sensitive to noise and when it is too high often causes ringing. A higher value encourages change since we are ""<em>amplifying</em>"" the slope.</p>
 
 <p>I hope that helps. Maybe someone else can offer another viewpoint, but that's typically how I think about it.</p>
-",2705382,1,0,,,wireless,other
+",2705382,1,0,,,wireless,what
 2541,37311326,Command received by controller through serial interface but robot arm doesn't move,|c#|serial-port|embedded|robotics|,"<pre><code>using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9469,7 +9469,7 @@ There is an local apache2 server on my raspberry pi and my robot checks every ti
 <p>Is it efficient if I setup REST server on my raspberry pi with MongoDB in JS? MongoDB should be much faster than my current MySQL solution. And If I had REST service I can use it to communicate android app or webapp or my pc to my robot.</p>
 
 <p>Could you give me any tip if that helps with my case? Or the current solution client-server with MySQL will give me the same effect. Or there is any other better solution to ensure control connection between raspberry pi robot and different clients.</p>
-",9/1/2017 8:32,,137,0,5,0,,3904216,,8/3/2014 15:59,392,,,,,,78972636,Is the webserver necessary? What about  querying the database directly from the controller? Is there a way to do that?,internet,other
+",9/1/2017 8:32,,137,0,5,0,,3904216,,8/3/2014 15:59,392,,,,,,78972636,Is the webserver necessary? What about  querying the database directly from the controller? Is there a way to do that?,internet,what
 2894,46154545,Bounding box orientation,|c++|computer-vision|point-cloud-library|robotics|,"<p>I have used a bounding box to get the pair of 4-points around an object after RANSAC and conditional outlier removal during the segmentation and filtration process.  After computing the 8 corner points of the bounding box, I have used 2 of them (front below) to localize the robot. for e.g following is a visual of the extracted object with the corner-points I intend to use </p>
 
 <p><a href=""https://i.stack.imgur.com/WDka0.png"" rel=""nofollow noreferrer""><img src=""https://i.stack.imgur.com/WDka0.png"" alt=""enter image description here""></a></p>
@@ -10069,7 +10069,7 @@ sin(gamma)    cos(gamma)     0      0;
 <p>That is essentially what the DH parameters helps you do, but I like to think of the individual steps to get from one frame to the next instead of jumping there with the DH parameters. </p>
 
 <p>With the corrected H0 through H6 transformations, your approach is correct. Just change the definitions of H0 through H6 in your code. </p>
-",7117084,1,0,81410343,"Maybe you could comment your code a little bit. It is not that straight forward to understand what you intend with each step. I figured e.g. out that RXX is the robots joints rotation, but then you do not give us your coordinates for joints...",hc,other
+",7117084,1,0,81410343,"Maybe you could comment your code a little bit. It is not that straight forward to understand what you intend with each step. I figured e.g. out that RXX is the robots joints rotation, but then you do not give us your coordinates for joints...",hc,what
 2950,47165908,Running python script in the background - Raspbian,|python|background-process|raspberry-pi3|robotics|,"<p>I have recently constructed a small robot car using my raspberry pi 3 with raspbian stretch. I am currently at the point where I can drive the car around using an xbox360 controller plugged into the pi USB port. My issue is that I do not like having to ssh into the pi and run the script I have written in order to use the robot (robot.py).</p>
 
 <p>What I would like to do is have a script running in the background which works something like this:</p>
@@ -11350,7 +11350,7 @@ arm_z = z
 </code></pre>
 
 <p>For more complex rotations please refer to the answers to <a href=""https://stackoverflow.com/questions/6802577/rotation-of-3d-vector"">this question</a>.</p>
-",1833711,0,2,89392819,"In my understanding you are able to find 3D coordinates centered on the camera, but you need to obtain arm-centered coordinates? Am I right?",cameras,other
+",1833711,0,2,89392819,"In my understanding you are able to find 3D coordinates centered on the camera, but you need to obtain arm-centered coordinates? Am I right?",cameras,what
 3166,51346929,"How to convert 2D(x,y) coordinates to 3D(x,y,z) coordinates using MATLAB?",|matlab|image-processing|computer-vision|camera-calibration|robotics|,"<p>I am trying to automate an robotic arm using MATLAB. So the thing is, camera will be mounted on the base of robotic arm. It will capture the snapshots of the camera frames and do image processing on it and it will detect the target(object) and find the pixel coordinate for it. After it is done, this pixel coordinates should be <strong>mapped to real world x-y-z metric coordinates?</strong> and this real world coordinates(x,y,z) would serve as parameters for inverse kinematics function which would give the value of theta so that servos can move.</p>
 
 <p>I'm stuck  here,  this pixel coordinates should be <strong>mapped to real world x-y-z metric coordinates?</strong> i dont know how to do it. nor getting any ideas, how to proceed it? 
@@ -11946,7 +11946,7 @@ end
 ",43508.62014,,128,1,0,-2,,11002744,,43497.79583,9,54664981,"<p>Have a look at <a href=""http://doc.aldebaran.com/2-5/naoqi/motion/alnavigation.html"" rel=""nofollow noreferrer"">ALNavigation</a> it offers the method <a href=""http://doc.aldebaran.com/2-5/naoqi/motion/exploration-api.html?highlight=exploration#ALNavigationProxy::explore__float"" rel=""nofollow noreferrer"">explore</a>.</p>
 
 <p>You can find Python script code examples for exploring and localizing <a href=""http://doc.aldebaran.com/2-5/naoqi/motion/exploration-api.html#code-samples"" rel=""nofollow noreferrer"">here</a>.</p>
-",3049394,0,0,,,mapping,
+",3049394,0,0,,,mapping,how
 3315,54935240,Robot reverses at high speed before following path given by ros nav stack,|localization|navigation|ros|robotics|motion-planning|,"<p>I am using ros nav stack in conjunction with google cartographer (Mapping and localization) to navigate the robot through a known map. Right now, the robot follows the path generated with acceptable accuracy. But,often, once the path has been generated, the robot reverses at the highest speed set in the params file (escape_velocity parameter), and then starts to move forward correctly on the genrated path.</p>
 
 <p>I have attached images of all my param file: 1.<a href=""https://i.stack.imgur.com/fEzXV.png"" rel=""nofollow noreferrer"">Praram Files-1</a> 2. <a href=""https://i.stack.imgur.com/G3wKO.png"" rel=""nofollow noreferrer"">Param Files-2</a>. The name of each parameter file is mentioned at the top. But to avoid confusion, they are in the order:</p>
@@ -16720,9 +16720,9 @@ int main (int argc, char** argv){
   return 0;
 }
 </code></pre>
-",1087119,1,1,112846729,Create a timer in the global scope; set it in main; check it in `sub_cb` before calling `publish`.,rn,
+",1087119,1,1,112846729,Create a timer in the global scope, set it in main,
 3873,63952955,how to setup robotdyn arduino mega+esp8266,|html|robotics|arduino-esp8266|,"<p>I am making a web server with a robotdyn arduino mega + esp8266  to control a few bo motors I flashed the firmware for the esp8266 I have 2 questions, 1: when I give AT commands through the serial monitor It doesn't respond also when I open the serial monitor its saying, &quot;error opening COM4, port busy&quot; how can I solve this? the second one is how can I embed the html code into the arduino code? by the way I didn't use any code for the AT commands. Can you also tell how I should orient the switches (they're only on the robotdyn arduino mega/uno + esp8266 model not on normal esp8266 chips)on the mega while talking the the mega?</p>
-",44092.39097,,103,0,5,0,,,,,,,,,,,113099806,there is no 'normal' firmware. https://blog.gabrielcsapo.com/arduino-web-server-mega-2560-r3-built-in-esp8266/,sc,
+",44092.39097,,103,0,5,0,,,,,,,,,,,113099806,there is no 'normal' firmware. https://blog.gabrielcsapo.com/arduino-web-server-mega-2560-r3-built-in-esp8266/,sc,how
 3886,64299715,Is there a way to simplify repetitive addition in x-drive?,|c++|robotics|,"<p>I wrote the C++ code below for controlling an x-drive, and it looks really repetitive, I feel like there should be a way to simplify, but I can't think of any that would keep it looking readable. Any ideas would be appreciated!</p>
 <pre class=""lang-cpp prettyprint-override""><code>int lefty_analog = master.get_analog(ANALOG_LEFT_Y);
 int leftx_analog = master.get_analog(ANALOG_LEFT_X);
@@ -17372,7 +17372,7 @@ No, that was wrong. I indeed calculated the Tait-Bryan x y z rotations. So this 
 <p>Relationship between measurements and signed distance to valid sensing region: (a) The expected position p^xt of the robot or object lies outside the field of view Π (shown in yellow) of a sensor, corresponding to a positive signed distance, where no measurements are obtained. The normal vector n indicates the direction of closest approach.</p>
 </blockquote>
 <p>Does anyone have any pointers on how to compute this?</p>
-",44180.84167,,140,0,0,2,,14832680,,44180.83333,2,,,,,,,,vision,
+",44180.84167,,140,0,0,2,,14832680,,44180.83333,2,,,,,,,,vision,what
 3934,65387147,Raspberry Pi connected to Motor Controller- Getting error in code,|python|gpio|robotics|,"<pre><code>*Hi, I am getting this code error:
 *blink.py:25: RuntimeWarning: This channel is already in use, continuing anyway. Use GPIO.setwarnings(False) to disable warnings.*
 GPIO.setup(ENA1,GPIO.OUT)
@@ -20353,7 +20353,7 @@ jacobian matrix 'J' = [Su1_1, Su1_2, Su1_3, Su1_4, Su1_5, Su1_6], Su is for 'uni
 <p><strong>J</strong> = [ <strong>s</strong><sub>1</sub> <strong>s</strong><sub>2</sub> <strong>s</strong><sub>3</sub> <strong>s</strong><sub>4</sub> <strong>s</strong><sub>5</sub> <strong>s</strong><sub>6</sub>]</p>
 <p>and invert the kinematics</p>
 <p><strong>v</strong><sub>6</sub> = <strong>J</strong> * <strong>u</strong>  ⇒ <strong>u</strong> = <strong>J</strong><sup>-1</sup> <strong>v</strong><sub>6</sub></p>
-",380384,0,3,124887268,"I have a MSME in Robotics and wrote my thesis on Screw theory. I still don't understand what you are asking. If this is indeed a programming question and not a [Mathematics.SE] or [Physics.SE] question then **a lot more details** are needed to effectively answer. You need to explain the kinematics framework used, any conventions you follow (what is the triangle product here) and what you want to calculate.",ik,
+",380384,0,3,124887268,"I have a MSME in Robotics and wrote my thesis on Screw theory. I still don't understand what you are asking. If this is indeed a programming question and not a [Mathematics.SE] or [Physics.SE] question then **a lot more details** are needed to effectively answer. You need to explain the kinematics framework used, any conventions you follow (what is the triangle product here) and what you want to calculate.",ik,other
 4202,70695409,how to go from pixel coordinates to angle off the optical axis (Object detection alignment),|raspberry-pi|camera|computer-vision|robotics|,"<p>I am making a robot that detects a ball and goes to it.</p>
 <p>Because I am doing the detection on a raspberry pi I thought that it will be better to work with images and not with real time detection.</p>
 <p>The robot rotates 45 degrees and take a photo. If the ball isn’t detected, it moves another 45 degrees till it detects the ball.</p>
@@ -20969,7 +20969,7 @@ method = CALIB_HAND_EYE_PARK
  [nan nan nan nan]
  [ 0.  0.  0.  1.]]
 </code></pre>
-",44703.29653,,1128,0,0,0,,19167018,,44702.41528,7,,,,,,,,vision,
+",44703.29653,,1128,0,0,0,,19167018,,44702.41528,7,,,,,,,,vision,other
 4335,72596431,IKPy Problem: TypeError: __init__() missing 1 required positional argument: 'origin_translation',|python|robotics|,"<p>I am trying to use IKPy Library(v3.3.3) with Python 3.8 to program some demos for my robot arm on the Mujoco platform. However, When I try to do the Kinematic demo, there is something wrong that happened as below.
 <a href=""https://i.stack.imgur.com/RDQST.png"" rel=""nofollow noreferrer"">enter image description here</a>
 Here is my project code below:</p>
@@ -21253,7 +21253,7 @@ int main(int argc, char* argv[]){
     return 0;
  }
 </code></pre>
-",44744.60208,,1390,0,0,0,,14595867,,44142.54653,24,,,,,,,,multithreading,
+",44744.60208,,1390,0,0,0,,14595867,,44142.54653,24,,,,,,,,multithreading,other
 4367,73277615,"Stereo calibration, do extrinsics change if the lens changes?",|opencv|3d|robotics|stereo-3d|calibration|,"<p>I have a stereo camera setup. Typically I would calibrate the intrinsics of each camera, and then using this result calibrate the extrinsics, so the baseline between the cameras.</p>
 <p>What happens now if I change for example the focus or zoom on the lenses? Of course I will have to re-calibrate the intrinsics, but what about the extrinsics?</p>
 <p>My first thought would be no, the actual body of the camera didn't move. But on my second thought, doesn't the focal point within the camera change with the changed focus? And isn't the extrinsic calibration actually the calibration between the two focal points of the cameras?</p>
@@ -22497,7 +22497,7 @@ INFO: Build completed, 1 test FAILED, 3 total actions
 Here is the <a href=""https://gist.github.com/ajaygunalan/caf0da28ee735b2047b41fea684f8fd1#file-test-log"" rel=""nofollow noreferrer"">link</a> to my test.log file.</p>
 ",44948.79722,,41,1,1,0,,9976843,"Bengaluru, Karnataka, India",43273.28889,1,75215499,"<p>It is solved by <code>sudo apt remove libatlas3-base</code></p>
 <p>The detailed discussion is at this <a href=""https://github.com/RobotLocomotion/drake/issues/18635"" rel=""nofollow noreferrer"">link</a>.</p>
-",9976843,0,0,132718780,"FYI for other readers, this question was also posted at https://github.com/RobotLocomotion/drake/issues/18635.  I'll reply there, instead of StackOverflow.",bf,
+",9976843,0,0,132718780,"FYI for other readers, this question was also posted at https://github.com/RobotLocomotion/drake/issues/18635.  I'll reply there, instead of StackOverflow.",bf,other
 4498,75279981,cartographer: Why does the position of radar not change during real-time mapping？,|lua|robotics|slam|,"<p><a href=""https://i.stack.imgur.com/Xa1LC.jpg"" rel=""nofollow noreferrer"">result Map</a></p>
 <p>No matter how I move the radar, the position of the radar that rviz shows don't change.</p>
 <p>Why is this happening? Do I need to add odom information to it?</p>
@@ -25890,7 +25890,7 @@ if __name__ == '__main__':
     rospy.loginfo(&quot;Disco sequence complete&quot;)
 
 </code></pre>
-",45314.94236,,16,0,0,0,,9596491,,43194.48611,1,,,,,,,,hc,
+",45314.94236,,16,0,0,0,,9596491,,43194.48611,1,,,,,,,,hc,how
 4750,77923548,Multi layer abstraction design for physical liquid handlers,|architecture|robotics|,"<p>I am attempting to implement a solution for our robotic liquid handlers. The problem is that we have many different vendor liquid handlers in our company and even liquid handlers from the same company can differ. So I want to create a multi layer abstraction to simplify the programming. We cannot use open source projects hence why I need to do this internally. We have also not found any good open source options anyway.</p>
 <p>As a high level overview:
 You have a liquid handler that picks up tips and performs pipetting operations, this robot also has a plate arm that pickup and move plates around the pipetting deck. Nothing in the physical world is perfect so of course the liquid handler will occasionally run into errors. Also, even if the liquid handler is working perfectly user may incorrectly load something on the deck that could also cause an error. What I want to do is create a multi layer abstraction to help with programming but also to simplify error handling.</p>
@@ -26007,7 +26007,7 @@ var maxInensity = 11629;
 var fact = 255.0 / (maxInensity - 1);
 var nIntensity = (curIntensity - 1) * fact;
 </code></pre>
-",6890912,1,0,,,dt,
+",6890912,1,0,,,dt,how
 4772,78120537,Drawing a circle in a 3D enviroment using a 3DOF arm,|arduino|robotics|,"<p>I am a second year robotics student and have been giving a task to draw a circle in a 3D enviroment so far I haven't had the best results I used the 2D equation for a circle in the X and Z axis and at the moment I have set the Y axis to 0 and somehow the Y axis is moving.</p>
 <pre><code>#include &lt;Servo.h&gt;
 
@@ -26117,7 +26117,7 @@ Having suspected that there might be inconsistencies in the updating of the pack
 ",3/23/2024 20:44,,19,0,1,0,,23759528,,3/23/2024 20:39,1,,,,,,137888784,"If I'm asking it's because I haven't gotten the answer on Google, It's common sense.",wpi,
 4784,78227765,I want to use 3.10 python to take input from leap motion sensor. Is there any useful module or library for this purpose?,|python-3.x|arduino|sensors|robotics|leap-motion|,"<p>I have been trying to use python for using leap motion sensor. But i am getting the libraries but they are outdated not compatible with the latest python. Is there any python library or arduino library for this purpose?</p>
 <p>I want libraries to get input from leap motion sensor and control my soft robot through it.</p>
-",45377.81597,,16,0,0,-1,,23824099,,45377.80972,0,,,,,,,,api,
+",45377.81597,,16,0,0,-1,,23824099,,45377.80972,0,,,,,,,,api,what
 4797,78231595,Linear trinagulation yields poor results,|computer-vision|robotics|visual-odometry|,"<p>I am working ona  project regarding visual odometry and I have trouble extracting the 3D coordinates of matched features using the method of linear triangulation. I a using the KITTI dataset and specifically I am using the synced and rectified data. For simplification purposes i have chosen a feature that is detected only in the first and second camera frame. Since the rotation and translation of the camera poses are not given directly i have chosen to use the GPS/IMU rotation and translation matrices and use the relevant transformations to calculate the camera rotation and translation. acoording to equation (8) of the relevant papaer (<a href=""https://www.cvlibs.net/publications/Geiger2013IJRR.pdf"" rel=""nofollow noreferrer"">https://www.cvlibs.net/publications/Geiger2013IJRR.pdf</a>) a 3D point in GPS IMU coordinates (current coordinate system of the GPS/IMU) is projected to a 2D point in the cameras frame as follows :
 y = P_rect<em>R_rect</em>Tvelo_cam*Timu_velo, where P_rect is the projection matrix of the camera after rectification. R_rect is the rectifying rotation matrix , Tvelo_cam is the transformation from the velodyne's coordinate frame to the cameras frame and Timu_velo is the transformation from the IMU's coordinate frame to the velodyne's coordinate frame. Note that I have chosen the first pose of the IMU as the origin of my world coordinate frame, meaning at point (0,0,0) the IMU has not rotated or moved.</p>
 <p>Assuming that X is computed with respect to the real world coordinate frame, the results dont make sense : Specifically X,Y,Z = array([-10.55149986,   4.61478588,   2.40134485]). By taking into account the configuration of the worlds coordinate frame (x axis forward, y axis left and z axis up) this means that the point was detected behind the IMU (X&lt;0), which is impossible because the IMU is behind the camera. I would appreciate any kind of help, since I am stuck a long time in this.</p>
