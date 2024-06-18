@@ -10,6 +10,7 @@ import math
 from datetime import datetime, timedelta
 
 
+
 def plotQuestionsByYear(dataRobot):
     # Initialize sets and dictionary
     question_ids_seen = set()
@@ -24,6 +25,8 @@ def plotQuestionsByYear(dataRobot):
     total_robot_questions = sum(year_count_dict.values())
     add_annotations(year_count_dict, total_robot_questions)
     
+    plt.tight_layout()
+
     plt.show()
     
     return year_count_dict
@@ -66,7 +69,7 @@ def add_annotations(year_count_dict, total_robot_questions):
     for year, count in year_count_dict.items():
         plt.text(year, count, str(count), ha='center', va='bottom', fontsize=15)
     
-    plt.text(2007,140, f'(HISHAM)Total: {total_robot_questions}', ha='left', fontsize=15)
+    # plt.text(2007,140, f'Total: {total_robot_questions}', ha='left', fontsize=15)
 
 def plot_data(year_count_dict):
     plt.bar(year_count_dict.keys(), year_count_dict.values(), label="Robot questions on Stack Overflow by year")
@@ -111,6 +114,8 @@ def calculatePopularity(allRobotDataSet, allQuestionData, allAnswerDataSet, rand
     dataIncoming = randomRobotWithCodesData.loc[(randomRobotWithCodesData['code'] == 'cameras') | (randomRobotWithCodesData['code'] == 'vision') | (randomRobotWithCodesData['code'] == 'line tracking') | (randomRobotWithCodesData['code'] == 'sensors')]
     calculatePopularityCategoriesGeneral(dataIncoming, "Incoming", allPopularityFactorsQuestions, allPopularityFactorsAnswers)
 
+    dataOther = randomRobotWithCodesData.loc[(randomRobotWithCodesData['code'] == 'gs') | (randomRobotWithCodesData['code'] == 'bp') | (randomRobotWithCodesData['code'] == 'repeat') | (randomRobotWithCodesData['code'] == 'decoupling') | (randomRobotWithCodesData['code'] == 'install') | (randomRobotWithCodesData['code'] == 'ra') | (randomRobotWithCodesData['code'] == 'ros') | (randomRobotWithCodesData['code'] == 'rn') | (randomRobotWithCodesData['code'] == 'dl') | (randomRobotWithCodesData['code'] == 'rl') | (randomRobotWithCodesData['code'] == 'dc') | (randomRobotWithCodesData['code'] == 'distance')]
+    calculatePopularityCategoriesGeneral(dataOther, "Other", allPopularityFactorsQuestions, allPopularityFactorsAnswers)
 
 def calculatePopularityAllRobotAnswers(allRobotData, allAnswerData):
     allRobotAnswerPopularityFactors = getRobotAnswersPopularityFactors(allRobotData)
@@ -121,7 +126,7 @@ def calculatePopularityAllRobotAnswers(allRobotData, allAnswerData):
     commentCount = normalizedAllRobotAnswerPopularityFactors[1]
     popularity = (score + commentCount) / 2
     
-    print(f'''(Hisham) All Robot Answer Popularity Factors:  
+    print(f'''All Robot Answer Popularity Factors:  
     Score: {score:.2f}
     Comment Count: {commentCount:.2f}
     Popularity: {popularity:.2f}\n''')
@@ -152,7 +157,7 @@ def calculatePopularityAllRobotQuestions(allRobotData, allQuestionData):
     viewCount = normalizedAllRobotPopularityFactors[3]
     popularity = (score + answerCount + commentCount + viewCount) / 4
 
-    print(f'''(Hisham) All Robot Questions Popularity Factors:   
+    print(f'''All Robot Questions Popularity Factors:   
     Score: {score:.2f}
     Answer Count: {answerCount:.2f}
     Comment Count: {commentCount:.2f} 
@@ -180,7 +185,7 @@ def getAllQuestionsPopularityFactors(allQuestionsData):
     return score, answerCount, commentCount, viewCount
 
 
-def calculatePopularityCategoriesGeneral(dataSet, codeLabel, allPopularityFactorsQuestions, allPopularityFactorsAnswers):
+def calculatePopularityCategoriesGeneral(dataSet, codeLabel, allPopularityFactorsQuestions, allPopularityFactorsAnswers):   
     questionScoreAll = allPopularityFactorsQuestions[0]
     questionAnswerCountAll = allPopularityFactorsQuestions[1]
     questionCommentCountAll = allPopularityFactorsQuestions[2]
@@ -208,19 +213,17 @@ def calculatePopularityCategoriesGeneral(dataSet, codeLabel, allPopularityFactor
     questionPopularity = (questionScore + answerCount + commentCount + viewCount) / 4
     answerPopularity = (answerScore + answerCommentCount) / 2
 
-    print(f'''(Hisham) Robot Questions {codeLabel} Popularity Factors:
+    print(f'''Robot Questions {codeLabel} Popularity Factors:
     Score: {questionScore:.2f}
     Answer Count: {answerCount:.2f}
     Comment Count: {commentCount:.2f}
     View Count: {viewCount:.2f}
     Popularity: {questionPopularity:.2f}\n''')
 
-    print(f'''(Hisham) Robot Answers {codeLabel} Popularity Factors:
+    print(f'''Robot Answers {codeLabel} Popularity Factors:
     Score: {answerScore:.2f}
     Comment Count: {answerCommentCount:.2f}
     Popularity: {answerPopularity:.2f}\n''')
-    
-
 
 # popularityFactor is the column name of the popularity factor in the dataframe
 # dataframe is the dataframe to calculate the popularity factor from
@@ -357,6 +360,24 @@ def getFalsePositiveQuestions(codedRobot: pd.DataFrame, allRobot: pd.DataFrame):
     print(f"Number of false positive questions: {len(falsePositiveQuestions)}")
 
 
+def getNumAnswersPerMajorTheme(robotDataSet: pd.DataFrame):
+    """
+    Args:\n
+    robotDataSet:
+                The dataset to get the number of answers per major theme from\n
+                It should have a column named 'code' that contains the MAJOR THEME LABEL\n
+                AND a column named 'AnswerCount' that contains the number of answers to the question\n
+                The dataset should NOT have any duplicate questions
+    """
+    majorThemes = {'Specifications': 0, 'Remote': 0, 'Connections': 0, 'Coordinates': 0, 'Moving': 0, 'Actuator': 0, 'Programming': 0, 'Error': 0, 'Timing': 0, 'Incoming': 0, 'Other': 0}
+    for index, row in robotDataSet.iterrows():
+        if row['code'] in majorThemes:
+            majorThemes[row['code']] += row['AnswerCount']
+        else:
+            majorThemes['Other'] += row['AnswerCount']
+    return majorThemes
+
+
 def generateCSVwithMajorThemes(robotDataSet: pd.DataFrame):
     """
     Generates a csv file with the major themes of the robot data set instead of the subthemes
@@ -385,7 +406,7 @@ def generateCSVwithMajorThemes(robotDataSet: pd.DataFrame):
     robotDataSetCopy = robotDataSet.copy(deep=True)
     robotDataSetCopy['code'] = robotDataSetCopy['code'].apply(lambda x: getMajorTheme(x, themesAndSubThemesDict))
     
-    with open('Robot Random (H & S & D) - Coded (no fp) (major themes).csv', 'w', encoding="utf-8") as f:
+    with open('Robot Random (H & S & D) - Coded (no fp) (major themes) (should be updated).csv', 'w', encoding="utf-8") as f:
         robotDataSetCopy.to_csv(f, lineterminator='\n')
 
 def getMajorTheme(subtheme: str, themesAndSubThemesDict: dict) -> str:
@@ -489,6 +510,7 @@ def getSuccessfulQuestionsPerTheme(dataset: pd.DataFrame) -> dict:
     return successfulQuestionsPerTheme
 
 
+# TODO Make it so it filters out duplicates / Or I can make a csv with no duplicates
 def getSuccessStatusPercentage(unsuccessfulQuestions: int, ordinaryQuestions: int, successfulQuestions: int) -> dict:
     """
     Get the percentage of unsuccessful, ordinary, and successful questions
@@ -566,6 +588,26 @@ def getNumSuccessfulQuestions(dataset: pd.DataFrame):
     return dataset['AcceptedAnswerId'].count()
 
 
+
+def getPercentageSubThemes(subThemes: dict) -> dict:
+    """
+    Get percentage of each subtheme in the dataset
+
+    Args:\n
+    subThemes: 
+                The subthemes to get the percentage of\n
+                It should be a dictionary where the keys are the subthemes and the values are the number of times that subtheme appears in the data set
+    
+    Returns:
+        dict: a dictionary where the keys are the subthemes and the values are the percentage of that subtheme in the data set
+    """
+    totalThemes = sum(subThemes.values())
+    percentageSubThemes = {}
+    for theme, count in subThemes.items():
+        percentage = (count / totalThemes) * 100
+        percentageSubThemes[theme] = f"{percentage:.2f}%"
+    return percentageSubThemes
+
 def getPercentageMajorThemes(majorThemes: dict) -> dict:
     """
     Get percentage of each major theme in the dataset (EXCLUDING FALSE POSITIVES)
@@ -632,6 +674,7 @@ def getNumMajorThemes(subThemes: dict):
                 break
     return majorThemes
 
+# TODO pretty sure this function is worthless
 def getNumSubThemes(allRobotDataSet):
     """
     Gets the number of subthemes in the passed in data set
@@ -673,8 +716,34 @@ if __name__ == "__main__":
     allAnswerDataSet = pd.read_csv("AllAnswerDataCombined.csv")
     randomRobotWithCodesDataSet = pd.read_csv("Robot Random (H & S & D) - Coded (no fp).csv")
     randomRobotAllDataSet = pd.read_csv("Robot Random (H & S & D) - Full Coded.csv")
-    robotMajorThemesDataSet = pd.read_csv("Robot Random (H & S & D) - Coded (no fp) (major themes).csv")
-    
+    robotMajorThemesDataSet = pd.read_csv("Robot Random (H & S & D) - Coded (no fp) (major themes) (should be updated).csv")
+
+    # TODO fix the major themes to corrobote with the updates subthemes
+    # generateCSVwithMajorThemes(randomRobotWithCodesDataSet)
+    # TODO look at what needs to be updates again  (like the questions and answers and answer question ratio as well as the success status and the popularity if the popularity is being used form the major themes robot data set)
+
+
+    # prettyPrintDict(getNumSubThemes(randomRobotWithCodesDataSet))
+    # prettyPrintDict(getNumMajorThemes(getAllSubThemeLabels(randomRobotWithCodesDataSet)))
+
+    # prettyPrintDict(getSuccessStatusPercentagePerTheme(getUnsuccessfulQuestionsPerTheme(robotMajorThemesDataSet), getOrdinaryQuestionsPerTheme(robotMajorThemesDataSet), getSuccessfulQuestionsPerTheme(robotMajorThemesDataSet)))
+
+    # prettyPrintDict(getNumAnswersPerMajorTheme(robotMajorThemesDataSet))
+    # prettyPrintDict(getNumMajorThemes(getAllSubThemeLabels(randomRobotWithCodesDataSet)))
+
+    # calculatePopularity(randomRobotWithCodesDataSet, allQuestionDataSet, allAnswerDataSet, randomRobotWithCodesDataSet, randomRobotAllDataSet)
+
+    # print('Popularity of no false positives robot questions and answers: ') 
+    # print(calculatePopularityAllRobotQuestions(randomRobotWithCodesDataSet, allQuestionDataSet))
+    # print(calculatePopularityAllRobotAnswers(randomRobotWithCodesDataSet, allAnswerDataSet))
+
+    # print('Popularity of all robot questions and answers: ')
+    # print(calculatePopularityAllRobotQuestions(allRobotDataSet, allQuestionDataSet))
+    # print(calculatePopularityAllRobotAnswers(allRobotDataSet, allAnswerDataSet))
+
+    plotQuestionsByYear(randomRobotWithCodesDataSet)
+    plotQuestionsByYear(allRobotDataSet)
+
     # getFalsePositiveQuestions(randomRobotWithCodesDataSet, randomRobotAllDataSet)
 
     # getAllMajorThemeLabels(randomRobotWithCodesDataSet)
@@ -684,8 +753,14 @@ if __name__ == "__main__":
 
     # getAllMajorThemeLabels(randomRobotAllDataSet)
 
-    prettyPrintDict(getSuccessStatusPercentage(getUnsuccessfulQuestions(randomRobotWithCodesDataSet), getOrdinaryQuestions(randomRobotWithCodesDataSet), getNumSuccessfulQuestions(randomRobotWithCodesDataSet)))
-    prettyPrintDict(getSuccessStatusPercentagePerTheme(getUnsuccessfulQuestionsPerTheme(robotMajorThemesDataSet), getOrdinaryQuestionsPerTheme(robotMajorThemesDataSet), getSuccessfulQuestionsPerTheme(robotMajorThemesDataSet)))
+
+    # prettyPrintDict(getNumAnswersPerMajorTheme(robotMajorThemesDataSet))
+
+
+    # getSuccessStatusPercentage(allQuestionDataSet)
+
+    # prettyPrintDict(getSuccessStatusPercentage(getUnsuccessfulQuestions(randomRobotWithCodesDataSet), getOrdinaryQuestions(randomRobotWithCodesDataSet), getNumSuccessfulQuestions(randomRobotWithCodesDataSet)))
+    # prettyPrintDict(getSuccessStatusPercentagePerTheme(getUnsuccessfulQuestionsPerTheme(robotMajorThemesDataSet), getOrdinaryQuestionsPerTheme(robotMajorThemesDataSet), getSuccessfulQuestionsPerTheme(robotMajorThemesDataSet)))
 
     # numSubThemes = getNumSubThemes(randomRobotAllDataSet)
     # numMajorThemes = getNumMajorThemes(numSubThemes)
@@ -694,9 +769,13 @@ if __name__ == "__main__":
     # prettyPrintDict(numMajorThemes)
     # prettyPrintDict(percentageMajorThemes)
     # For SOME REASON I DONT KNOW WHY, the above code does not print the same thing a below, use below
-    # prettyPrintDict(getNumSubThemes(randomRobotAllDataSet))
-    # prettyPrintDict(getNumMajorThemes(getAllSubThemeLabels(randomRobotAllDataSet)))
-    # prettyPrintDict(getPercentageMajorThemes(getNumMajorThemes(getAllSubThemeLabels(randomRobotAllDataSet))))
+    # prettyPrintDict(getNumSubThemes(randomRobotWithCodesDataSet))
+    # print()
+    # prettyPrintDict(getNumMajorThemes(getAllSubThemeLabels(randomRobotWithCodesDataSet)))
+    # print()
+    # prettyPrintDict(getPercentageMajorThemes(getNumMajorThemes(getAllSubThemeLabels(randomRobotWithCodesDataSet))))
+    # print()
+    # prettyPrintDict(getPercentageSubThemes(getNumSubThemes(randomRobotWithCodesDataSet)))
 
     # generateCSVwithMajorThemes(randomRobotWithCodesDataSet)
 
