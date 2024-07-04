@@ -1,8 +1,8 @@
 import pandas as pd
 
-def calculatePopularity(allRobotDataSet, allQuestionData, allAnswerDataSet, randomRobotWithCodesData):
-    allPopularityFactorsQuestions = calculatePopularityAllRobotQuestions(allRobotDataSet, allQuestionData)
-    allPopularityFactorsAnswers = calculatePopularityAllRobotAnswers(allRobotDataSet, allAnswerDataSet)
+def calculatePopularity(allRobotData, allQuestionData, allAnswerData, randomRobotWithCodesData):
+    allPopularityFactorsQuestions = calculatePopularityAllRobotQuestions(allRobotData, allQuestionData)
+    allPopularityFactorsAnswers = calculatePopularityAllRobotAnswers(allRobotData, allAnswerData)
 
     dataSpecifications = randomRobotWithCodesData.loc[(randomRobotWithCodesData['code'] == 'api') | (randomRobotWithCodesData['code'] == 'hr') | (randomRobotWithCodesData['code'] == 'os') | (randomRobotWithCodesData['code'] == 'lu')]
     calculatePopularityCategoriesGeneral(dataSpecifications, "Specifications", allPopularityFactorsQuestions, allPopularityFactorsAnswers)
@@ -37,23 +37,27 @@ def calculatePopularity(allRobotDataSet, allQuestionData, allAnswerDataSet, rand
     dataOther = randomRobotWithCodesData.loc[(randomRobotWithCodesData['code'] == 'gs') | (randomRobotWithCodesData['code'] == 'bp') | (randomRobotWithCodesData['code'] == 'repeat') | (randomRobotWithCodesData['code'] == 'decoupling') | (randomRobotWithCodesData['code'] == 'install') | (randomRobotWithCodesData['code'] == 'ra') | (randomRobotWithCodesData['code'] == 'ros') | (randomRobotWithCodesData['code'] == 'rn') | (randomRobotWithCodesData['code'] == 'dl') | (randomRobotWithCodesData['code'] == 'rl') | (randomRobotWithCodesData['code'] == 'dc') | (randomRobotWithCodesData['code'] == 'distance')]
     calculatePopularityCategoriesGeneral(dataOther, "Other", allPopularityFactorsQuestions, allPopularityFactorsAnswers)
 
-def calculatePopularityAllRobotAnswers(allRobotData, allAnswerData):
-    allRobotAnswerPopularityFactors = getRobotAnswersPopularityFactors(allRobotData)
+
+def calculatePopularityAllRobotAnswers(robot_data: pd.DataFrame, allAnswerData: pd.DataFrame) -> tuple:
+    robot_ans_pop_factors = getRobotAnswersPopularityFactors(robot_data)
     allAnswersPopularityFactors = getAllAnswersPopularityFactors(allAnswerData)
 
-    normalizedAllRobotAnswerPopularityFactors = normalizePopularityFactors(allRobotAnswerPopularityFactors, allAnswersPopularityFactors)
-    score = normalizedAllRobotAnswerPopularityFactors[0]
-    commentCount = normalizedAllRobotAnswerPopularityFactors[1]
-    popularity = (score + commentCount) / 2
+    # Ensure normalization factor is calculated correctly
+    normalizedAllRobotAnswerPopularityFactors = normalizePopularityFactors(robot_ans_pop_factors, allAnswersPopularityFactors)
+    normalized_score = normalizedAllRobotAnswerPopularityFactors[0]
+    normalized_comment_count = normalizedAllRobotAnswerPopularityFactors[1]
+    normalized_popularity = (normalized_score + normalized_comment_count) / 2
     
     print(f'''All Robot Answer Popularity Factors:  
-    Score: {score:.2f}
-    Comment Count: {commentCount:.2f}
-    Popularity: {popularity:.2f}\n''')
+    Score: {normalized_score:.2f}
+    Comment Count: {normalized_comment_count:.2f}
+    Popularity: {normalized_popularity:.2f}\n''')
 
     allScores = allAnswersPopularityFactors[0]
     allCommentCounts = allAnswersPopularityFactors[1]
-    return allScores, allCommentCounts
+
+    return normalized_score, normalized_comment_count, normalized_popularity
+
 
 def getRobotAnswersPopularityFactors(robotData):
     score = calculatePopularityFactorAvg('answerScore', robotData, 'answerId')
@@ -84,11 +88,8 @@ def calculatePopularityAllRobotQuestions(allRobotData, allQuestionData):
     View Count: {viewCount:.2f}
     Popularity: {popularity:.2f}\n''')
 
-    allScores = allQuestionsPopularityFactors[0]
-    allAnswerCounts = allQuestionsPopularityFactors[1]
-    allCommentCounts = allQuestionsPopularityFactors[2]
-    allViewCounts = allQuestionsPopularityFactors[3]
-    return allScores, allAnswerCounts, allCommentCounts, allViewCounts
+    return score, answerCount, commentCount, viewCount
+
 
 def getRobotQuestionsPopularityFactors(robotData):
     score = calculatePopularityFactorAvg('questionScore', robotData, 'questionId')
@@ -183,11 +184,20 @@ def normalizePopularityFactor(popularityFactor, allPopularityFactor):
     return popularityFactor / allPopularityFactor
 
 
-if __name__ == "__main__":
-    allRobotData = pd.read_csv('allRobotData.csv')
-    allQuestionData = pd.read_csv('allQuestionData.csv')
-    allAnswerData = pd.read_csv('allAnswerData.csv')
-    randomRobotWithCodesData = pd.read_csv('randomRobotWithCodesData.csv')
-    randomRobotAllData = pd.read_csv('randomRobotAllData.csv')
+# if __name__ == "__main__":
+#     allRobotData = pd.read_csv('allRobotData.csv')
+#     allQuestionData = pd.read_csv('allQuestionData.csv')
+#     allAnswerData = pd.read_csv('allAnswerData.csv')
+#     randomRobotWithCodesData = pd.read_csv('randomRobotWithCodesData.csv')
+#     randomRobotAllData = pd.read_csv('randomRobotAllData.csv')
 
-    calculatePopularity(allRobotData, allQuestionData, allAnswerData, randomRobotWithCodesData)
+#     calculatePopularity(allRobotData, allQuestionData, allAnswerData, randomRobotWithCodesData, randomRobotAllData)
+
+if __name__ == "__main__":
+    allRobotData = pd.read_csv(r'C:\Users\hamza\OneDrive - University of Manitoba\Documents\HISHAM\Research\SORobotProject\RobotDataSet.csv')
+    allQuestionData = pd.read_csv(r'C:\Users\hamza\OneDrive - University of Manitoba\Documents\HISHAM\Research\SORobotProject\AllQuestionDataCombined.csv')
+    allAnswerData = pd.read_csv(r'C:\Users\hamza\OneDrive - University of Manitoba\Documents\HISHAM\Research\SORobotProject\AllAnswerDataCombined.csv')
+    randomRobotWithCodesData = pd.read_csv(r'C:\Users\hamza\OneDrive - University of Manitoba\Documents\HISHAM\Research\SORobotProject\Robot Random (H & S & D) - Coded (no fp).csv')
+    randomRobotAllData = pd.read_csv(r'C:\Users\hamza\OneDrive - University of Manitoba\Documents\HISHAM\Research\SORobotProject\Robot Random (H & S & D) - Full Coded.csv')
+
+    calculatePopularity(randomRobotAllData, allQuestionData, allAnswerData, randomRobotWithCodesData)
