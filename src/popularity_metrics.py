@@ -1,203 +1,204 @@
 import pandas as pd
 
-def calculatePopularity(allRobotData, allQuestionData, allAnswerData, randomRobotWithCodesData):
-    allPopularityFactorsQuestions = calculatePopularityAllRobotQuestions(allRobotData, allQuestionData)
-    allPopularityFactorsAnswers = calculatePopularityAllRobotAnswers(allRobotData, allAnswerData)
-
-    dataSpecifications = randomRobotWithCodesData.loc[(randomRobotWithCodesData['code'] == 'api') | (randomRobotWithCodesData['code'] == 'hr') | (randomRobotWithCodesData['code'] == 'os') | (randomRobotWithCodesData['code'] == 'lu')]
-    calculatePopularityCategoriesGeneral(dataSpecifications, "Specifications", allPopularityFactorsQuestions, allPopularityFactorsAnswers)
-
-    dataRemote = randomRobotWithCodesData.loc[(randomRobotWithCodesData['code'] == 'wireless') | (randomRobotWithCodesData['code'] == 'cpmr')]
-    calculatePopularityCategoriesGeneral(dataRemote, "Remote", allPopularityFactorsQuestions, allPopularityFactorsAnswers)
-
-    dataConnections = randomRobotWithCodesData.loc[(randomRobotWithCodesData['code'] == 'internet') | (randomRobotWithCodesData['code'] == 'wpi') | (randomRobotWithCodesData['code'] == 'sc')]
-    calculatePopularityCategoriesGeneral(dataConnections, "Connections", allPopularityFactorsQuestions, allPopularityFactorsAnswers)
-
-    dataCoordinates = randomRobotWithCodesData.loc[(randomRobotWithCodesData['code'] == 'position') | (randomRobotWithCodesData['code'] == 'orientation')]
-    calculatePopularityCategoriesGeneral(dataCoordinates, "Coordinates", allPopularityFactorsQuestions, allPopularityFactorsAnswers)
-
-    dataMoving = randomRobotWithCodesData.loc[(randomRobotWithCodesData['code'] == 'mp') | (randomRobotWithCodesData['code'] == 'obstacles') | (randomRobotWithCodesData['code'] == 'mapping') | (randomRobotWithCodesData['code'] == 'SLAM')]
-    calculatePopularityCategoriesGeneral(dataMoving, "Moving", allPopularityFactorsQuestions, allPopularityFactorsAnswers)
-
-    dataActuator = randomRobotWithCodesData.loc[(randomRobotWithCodesData['code'] == 'ik') | (randomRobotWithCodesData['code'] == 'hc') | (randomRobotWithCodesData['code'] == 'wc') | (randomRobotWithCodesData['code'] == 'mc') | (randomRobotWithCodesData['code'] == 'balance')]
-    calculatePopularityCategoriesGeneral(dataActuator, "Actuator", allPopularityFactorsQuestions, allPopularityFactorsAnswers)
-
-    dataProgramming = randomRobotWithCodesData.loc[(randomRobotWithCodesData['code'] == 'pointers') | (randomRobotWithCodesData['code'] == 'dt') | (randomRobotWithCodesData['code'] == 'overflow') | (randomRobotWithCodesData['code'] == 'list')]
-    calculatePopularityCategoriesGeneral(dataProgramming, "Programming", allPopularityFactorsQuestions, allPopularityFactorsAnswers)
-
-    dataError = randomRobotWithCodesData.loc[(randomRobotWithCodesData['code'] == 'li') | (randomRobotWithCodesData['code'] == 'bf')]
-    calculatePopularityCategoriesGeneral(dataError, "Library", allPopularityFactorsQuestions, allPopularityFactorsAnswers)
-
-    dataTiming = randomRobotWithCodesData.loc[(randomRobotWithCodesData['code'] == 'timing') | (randomRobotWithCodesData['code'] == 'multithreading') | (randomRobotWithCodesData['code'] == 'rg')]
-    calculatePopularityCategoriesGeneral(dataTiming, "Timing", allPopularityFactorsQuestions, allPopularityFactorsAnswers)
-
-    dataIncoming = randomRobotWithCodesData.loc[(randomRobotWithCodesData['code'] == 'cameras') | (randomRobotWithCodesData['code'] == 'vision') | (randomRobotWithCodesData['code'] == 'line tracking') | (randomRobotWithCodesData['code'] == 'sensors')]
-    calculatePopularityCategoriesGeneral(dataIncoming, "Incoming", allPopularityFactorsQuestions, allPopularityFactorsAnswers)
-
-    dataOther = randomRobotWithCodesData.loc[(randomRobotWithCodesData['code'] == 'gs') | (randomRobotWithCodesData['code'] == 'bp') | (randomRobotWithCodesData['code'] == 'repeat') | (randomRobotWithCodesData['code'] == 'decoupling') | (randomRobotWithCodesData['code'] == 'install') | (randomRobotWithCodesData['code'] == 'ra') | (randomRobotWithCodesData['code'] == 'ros') | (randomRobotWithCodesData['code'] == 'rn') | (randomRobotWithCodesData['code'] == 'dl') | (randomRobotWithCodesData['code'] == 'rl') | (randomRobotWithCodesData['code'] == 'dc') | (randomRobotWithCodesData['code'] == 'distance')]
-    calculatePopularityCategoriesGeneral(dataOther, "Other", allPopularityFactorsQuestions, allPopularityFactorsAnswers)
-
-
-def calculatePopularityAllRobotAnswers(robot_data: pd.DataFrame, allAnswerData: pd.DataFrame) -> tuple:
-    robot_ans_pop_factors = getRobotAnswersPopularityFactors(robot_data)
-    allAnswersPopularityFactors = getAllAnswersPopularityFactors(allAnswerData)
-
-    # Ensure normalization factor is calculated correctly
-    normalizedAllRobotAnswerPopularityFactors = normalizePopularityFactors(robot_ans_pop_factors, allAnswersPopularityFactors)
-    normalized_score = normalizedAllRobotAnswerPopularityFactors[0]
-    normalized_comment_count = normalizedAllRobotAnswerPopularityFactors[1]
-    normalized_popularity = (normalized_score + normalized_comment_count) / 2
+def calculate_popularity(all_robot: pd.DataFrame, all_SO_q: pd.DataFrame , all_SO_a: pd.DataFrame, random_robot_with_codes_data: pd.DataFrame):
+    all_popularity_factors_questions = calculate_popularity_all_robot_questions(all_robot, all_SO_q)
+    all_popularity_factors_answers = calculate_popularity_all_robot_answers(all_robot, all_SO_a)
     
-    print(f'''All Robot Answer Popularity Factors:  
-    Score: {normalized_score:.2f}
-    Comment Count: {normalized_comment_count:.2f}
-    Popularity: {normalized_popularity:.2f}\n''')
+    data_specifications = random_robot_with_codes_data.loc[(random_robot_with_codes_data['code'] == 'api') | 
+                                                           (random_robot_with_codes_data['code'] == 'hr') | 
+                                                           (random_robot_with_codes_data['code'] == 'os') | 
+                                                           (random_robot_with_codes_data['code'] == 'lu')]
+    calculate_popularity_categories_general(data_specifications, "Specifications", all_popularity_factors_questions, all_popularity_factors_answers)
+    
+    data_remote = random_robot_with_codes_data.loc[(random_robot_with_codes_data['code'] == 'wireless') | 
+                                                   (random_robot_with_codes_data['code'] == 'cpmr')]
+    calculate_popularity_categories_general(data_remote, "Remote", all_popularity_factors_questions, all_popularity_factors_answers)
+    
+    data_connections = random_robot_with_codes_data.loc[(random_robot_with_codes_data['code'] == 'internet') | 
+                                                        (random_robot_with_codes_data['code'] == 'wpi') | 
+                                                        (random_robot_with_codes_data['code'] == 'sc')]
+    calculate_popularity_categories_general(data_connections, "Connections", all_popularity_factors_questions, all_popularity_factors_answers)
+    
+    data_coordinates = random_robot_with_codes_data.loc[(random_robot_with_codes_data['code'] == 'position') | 
+                                                        (random_robot_with_codes_data['code'] == 'orientation')]
+    calculate_popularity_categories_general(data_coordinates, "Coordinates", all_popularity_factors_questions, all_popularity_factors_answers)
+    
+    data_moving = random_robot_with_codes_data.loc[(random_robot_with_codes_data['code'] == 'mp') | 
+                                                   (random_robot_with_codes_data['code'] == 'obstacles') | 
+                                                   (random_robot_with_codes_data['code'] == 'mapping') | 
+                                                   (random_robot_with_codes_data['code'] == 'SLAM')]
+    calculate_popularity_categories_general(data_moving, "Moving", all_popularity_factors_questions, all_popularity_factors_answers)
+    
+    data_actuator = random_robot_with_codes_data.loc[(random_robot_with_codes_data['code'] == 'ik') | 
+                                                     (random_robot_with_codes_data['code'] == 'hc') | 
+                                                     (random_robot_with_codes_data['code'] == 'wc') | 
+                                                     (random_robot_with_codes_data['code'] == 'mc') | 
+                                                     (random_robot_with_codes_data['code'] == 'balance')]
+    calculate_popularity_categories_general(data_actuator, "Actuator", all_popularity_factors_questions, all_popularity_factors_answers)
+    
+    data_programming = random_robot_with_codes_data.loc[(random_robot_with_codes_data['code'] == 'pointers') | 
+                                                        (random_robot_with_codes_data['code'] == 'dt') | 
+                                                        (random_robot_with_codes_data['code'] == 'overflow') | 
+                                                        (random_robot_with_codes_data['code'] == 'list')]
+    calculate_popularity_categories_general(data_programming, "Programming", all_popularity_factors_questions, all_popularity_factors_answers)
+    
+    data_error = random_robot_with_codes_data.loc[(random_robot_with_codes_data['code'] == 'li') | 
+                                                  (random_robot_with_codes_data['code'] == 'bf')]
+    calculate_popularity_categories_general(data_error, "Library", all_popularity_factors_questions, all_popularity_factors_answers)
+    
+    data_timing = random_robot_with_codes_data.loc[(random_robot_with_codes_data['code'] == 'timing') | 
+                                                   (random_robot_with_codes_data['code'] == 'multithreading') | 
+                                                   (random_robot_with_codes_data['code'] == 'rg')]
+    calculate_popularity_categories_general(data_timing, "Timing", all_popularity_factors_questions, all_popularity_factors_answers)
+    
+    data_incoming = random_robot_with_codes_data.loc[(random_robot_with_codes_data['code'] == 'cameras') | 
+                                                     (random_robot_with_codes_data['code'] == 'vision') | 
+                                                     (random_robot_with_codes_data['code'] == 'line tracking') | 
+                                                     (random_robot_with_codes_data['code'] == 'sensors')]
+    calculate_popularity_categories_general(data_incoming, "Incoming", all_popularity_factors_questions, all_popularity_factors_answers)
 
-    allScores = allAnswersPopularityFactors[0]
-    allCommentCounts = allAnswersPopularityFactors[1]
-
-    return normalized_score, normalized_comment_count, normalized_popularity
-
-
-def getRobotAnswersPopularityFactors(robotData):
-    score = calculatePopularityFactorAvg('answerScore', robotData, 'answerId')
-    commentCount = calculatePopularityFactorAvg('answerCommentCount', robotData, 'answerId')
-    return score, commentCount
-
-def getAllAnswersPopularityFactors(allAnswersData):
-    score = calculatePopularityFactorAvg('Score', allAnswersData, 'Id')
-    commentCount = calculatePopularityFactorAvg('CommentCount', allAnswersData, 'Id')
-    return score, commentCount
-
-
-def calculatePopularityAllRobotQuestions(allRobotData, allQuestionData):
-    allRobotPopularityFactors = getRobotQuestionsPopularityFactors(allRobotData)
-    allQuestionsPopularityFactors = getAllQuestionsPopularityFactors(allQuestionData)
-
-    normalizedAllRobotPopularityFactors = normalizePopularityFactors(allRobotPopularityFactors, allQuestionsPopularityFactors)
-    score = normalizedAllRobotPopularityFactors[0]
-    answerCount = normalizedAllRobotPopularityFactors[1]
-    commentCount = normalizedAllRobotPopularityFactors[2]
-    viewCount = normalizedAllRobotPopularityFactors[3]
-    popularity = (score + answerCount + commentCount + viewCount) / 4
-
-    print(f'''All Robot Questions Popularity Factors:   
+def calculate_popularity_all_robot_answers(all_robot_data, all_answer_data):
+    all_robot_answer_popularity_factors = get_robot_answers_popularity_factors(all_robot_data)
+    all_answers_popularity_factors = get_all_answers_popularity_factors(all_answer_data)
+    normalized_all_robot_answer_popularity_factors = normalize_popularity_factors(all_robot_answer_popularity_factors, all_answers_popularity_factors)
+    score = normalized_all_robot_answer_popularity_factors[0]
+    comment_count = normalized_all_robot_answer_popularity_factors[1]
+    popularity = (score + comment_count) / 2
+    
+    print(f'''(Hisham) All Robot Answer Popularity Factors:  
     Score: {score:.2f}
-    Answer Count: {answerCount:.2f}
-    Comment Count: {commentCount:.2f} 
-    View Count: {viewCount:.2f}
+    Comment Count: {comment_count:.2f}
     Popularity: {popularity:.2f}\n''')
+    all_scores = all_answers_popularity_factors[0]
+    all_comment_counts = all_answers_popularity_factors[1]
+    return all_scores, all_comment_counts
 
-    return score, answerCount, commentCount, viewCount
+def get_robot_answers_popularity_factors(robot_data):
+    score = calculate_popularity_factor_avg('answer_score', robot_data, 'answer_id')
+    comment_count = calculate_popularity_factor_avg('answer_comment_count', robot_data, 'answer_id')
+    return score, comment_count
 
+def get_all_answers_popularity_factors(all_answers_data):
+    score = calculate_popularity_factor_avg('score', all_answers_data, 'id')
+    comment_count = calculate_popularity_factor_avg('comment_count', all_answers_data, 'id')
+    return score, comment_count
 
-def getRobotQuestionsPopularityFactors(robotData):
-    score = calculatePopularityFactorAvg('questionScore', robotData, 'questionId')
-    answerCount = calculatePopularityFactorAvg('AnswerCount', robotData, 'questionId')
-    commentCount = calculatePopularityFactorAvg('CommentCount', robotData, 'questionId')
-    viewCount = calculatePopularityFactorAvg('questionViewCount', robotData, 'questionId')
-    return score, answerCount, commentCount, viewCount
+def calculate_popularity_all_robot_questions(all_robot_data, all_question_data):
+    all_robot_popularity_factors = get_robot_questions_popularity_factors(all_robot_data)
+    all_questions_popularity_factors = get_all_questions_popularity_factors(all_question_data)
+    normalized_all_robot_popularity_factors = normalize_popularity_factors(all_robot_popularity_factors, all_questions_popularity_factors)
+    score = normalized_all_robot_popularity_factors[0]
+    answer_count = normalized_all_robot_popularity_factors[1]
+    comment_count = normalized_all_robot_popularity_factors[2]
+    view_count = normalized_all_robot_popularity_factors[3]
+    popularity = (score + answer_count + comment_count + view_count) / 4
+    print(f'''(Hisham) All Robot Questions Popularity Factors:   
+    Score: {score:.2f}
+    Answer Count: {answer_count:.2f}
+    Comment Count: {comment_count:.2f} 
+    View Count: {view_count:.2f}
+    Popularity: {popularity:.2f}\n''')
+    all_scores = all_questions_popularity_factors[0]
+    all_answer_counts = all_questions_popularity_factors[1]
+    all_comment_counts = all_questions_popularity_factors[2]
+    all_view_counts = all_questions_popularity_factors[3]
+    return all_scores, all_answer_counts, all_comment_counts, all_view_counts
 
-def getAllQuestionsPopularityFactors(allQuestionsData):
-    score = calculatePopularityFactorAvg('Score', allQuestionsData, 'Id')
-    answerCount = calculatePopularityFactorAvg('AnswerCount', allQuestionsData, 'Id')
-    commentCount = calculatePopularityFactorAvg('CommentCount', allQuestionsData, 'Id')
-    viewCount = calculatePopularityFactorAvg('viewCount', allQuestionsData, 'Id')
-    return score, answerCount, commentCount, viewCount
+def get_robot_questions_popularity_factors(robot_data):
+    score = calculate_popularity_factor_avg('question_score', robot_data, 'question_id')
+    answer_count = calculate_popularity_factor_avg('answer_count', robot_data, 'question_id')
+    comment_count = calculate_popularity_factor_avg('comment_count', robot_data, 'question_id')
+    view_count = calculate_popularity_factor_avg('question_view_count', robot_data, 'question_id')
+    return score, answer_count, comment_count, view_count
 
+def get_all_questions_popularity_factors(all_questions_data):
+    score = calculate_popularity_factor_avg('score', all_questions_data, 'id')
+    answer_count = calculate_popularity_factor_avg('answer_count', all_questions_data, 'id')
+    comment_count = calculate_popularity_factor_avg('comment_count', all_questions_data, 'id')
+    view_count = calculate_popularity_factor_avg('view_count', all_questions_data, 'id')
+    return score, answer_count, comment_count, view_count
 
-def calculatePopularityCategoriesGeneral(dataSet, codeLabel, allPopularityFactorsQuestions, allPopularityFactorsAnswers):   
-    questionScoreAll = allPopularityFactorsQuestions[0]
-    questionAnswerCountAll = allPopularityFactorsQuestions[1]
-    questionCommentCountAll = allPopularityFactorsQuestions[2]
-    questionViewCountAll = allPopularityFactorsQuestions[3]
-    answerScoreAll = allPopularityFactorsAnswers[0]
-    answerCommentsAll = allPopularityFactorsAnswers[1]
+def calculate_popularity_categories_general(data_set, code_label, all_popularity_factors_questions, all_popularity_factors_answers):
+    question_score_all = all_popularity_factors_questions[0]
+    question_answer_count_all = all_popularity_factors_questions[1]
+    question_comment_count_all = all_popularity_factors_questions[2]
+    question_view_count_all = all_popularity_factors_questions[3]
+    answer_score_all = all_popularity_factors_answers[0]
+    answer_comments_all = all_popularity_factors_answers[1]
     
-    questionPopularityFactors = getRobotQuestionsPopularityFactors(dataSet)
-    answerPopularityFactors = getRobotAnswersPopularityFactors(dataSet)
+    question_popularity_factors = get_robot_questions_popularity_factors(data_set)
+    answer_popularity_factors = get_robot_answers_popularity_factors(data_set)
+    all_questions_popularity_factors = (question_score_all, question_answer_count_all, question_comment_count_all, question_view_count_all)
+    all_answers_popularity_factors = (answer_score_all, answer_comments_all)
+    normalized_question_popularity_factors = normalize_popularity_factors(question_popularity_factors, all_questions_popularity_factors)
+    normalized_answer_popularity_factors = normalize_popularity_factors(answer_popularity_factors, all_answers_popularity_factors)
+    question_score = normalized_question_popularity_factors[0]
+    answer_count = normalized_question_popularity_factors[1]
+    comment_count = normalized_question_popularity_factors[2]
+    view_count = normalized_question_popularity_factors[3]
+    answer_score = normalized_answer_popularity_factors[0]
+    answer_comment_count = normalized_answer_popularity_factors[1]
+    question_popularity = (question_score + answer_count + comment_count + view_count) / 4
+    answer_popularity = (answer_score + answer_comment_count) / 2
+    print(f'''(Hisham) Robot Questions {code_label} Popularity Factors:
+    Score: {question_score:.2f}
+    Answer Count: {answer_count:.2f}
+    Comment Count: {comment_count:.2f}
+    View Count: {view_count:.2f}
+    Popularity: {question_popularity:.2f}\n''')
+    print(f'''(Hisham) Robot Answers {code_label} Popularity Factors:
+    Score: {answer_score:.2f}
+    Comment Count: {answer_comment_count:.2f}
+    Popularity: {answer_popularity:.2f}\n''')
 
-    allQuestionsPopularityFactors = (questionScoreAll, questionAnswerCountAll, questionCommentCountAll, questionViewCountAll)
-    allAnswersPopularityFactors = (answerScoreAll, answerCommentsAll)
-
-    normalizedQuestionPopularityFactors = normalizePopularityFactors(questionPopularityFactors, allQuestionsPopularityFactors)
-    normalizedAnswerPopularityFactors = normalizePopularityFactors(answerPopularityFactors, allAnswersPopularityFactors)
-
-    questionScore = normalizedQuestionPopularityFactors[0]
-    answerCount = normalizedQuestionPopularityFactors[1]
-    commentCount = normalizedQuestionPopularityFactors[2]
-    viewCount = normalizedQuestionPopularityFactors[3]
-
-    answerScore = normalizedAnswerPopularityFactors[0]
-    answerCommentCount = normalizedAnswerPopularityFactors[1]
-
-    questionPopularity = (questionScore + answerCount + commentCount + viewCount) / 4
-    answerPopularity = (answerScore + answerCommentCount) / 2
-
-    print(f'''Robot Questions {codeLabel} Popularity Factors:
-    Score: {questionScore:.2f}
-    Answer Count: {answerCount:.2f}
-    Comment Count: {commentCount:.2f}
-    View Count: {viewCount:.2f}
-    Popularity: {questionPopularity:.2f}\n''')
-
-    print(f'''Robot Answers {codeLabel} Popularity Factors:
-    Score: {answerScore:.2f}
-    Comment Count: {answerCommentCount:.2f}
-    Popularity: {answerPopularity:.2f}\n''')
-
-# popularityFactor is the column name of the popularity factor in the dataframe
+# popularity_factor is the column name of the popularity factor in the dataframe
 # dataframe is the dataframe to calculate the popularity factor from
-# idLabel is the column name of the id in the dataframe
+# id_label is the column name of the id in the dataframe
 # check for nan because there are a few cells that are empty fsm
-def calculatePopularityFactorAvg(popularityFactor, dataframe, idLabel):
-    popularityFactorTotal = 0
-    questionIdsSeenSet = set()
-    totalNumUniqueQuestions = 0
-
+def calculate_popularity_factor_avg(popularity_factor, dataframe, id_label):
+    popularity_factor_total = 0
+    question_ids_seen_set = set()
+    total_num_unique_questions = 0
     for index, row in dataframe.iterrows():
-        questionId = row[idLabel]
-        if ((questionId is not None) and 
-            (questionId not in questionIdsSeenSet) and 
-            (not pd.isna(row[popularityFactor]))):
-                popularityFactorCount = row[popularityFactor]
-                popularityFactorTotal += popularityFactorCount
-                totalNumUniqueQuestions += 1
-                questionIdsSeenSet.add(questionId)
-
+        question_id = row[id_label]
+        if ((question_id is not None) and 
+            (question_id not in question_ids_seen_set) and 
+            (not pd.isna(row[popularity_factor]))):
+                popularity_factor_count = row[popularity_factor]
+                popularity_factor_total += popularity_factor_count
+                total_num_unique_questions += 1
+                question_ids_seen_set.add(question_id)
     # I don't think this is necessary, but I'm keeping it in case it is
     # because even if 0 questions are found, the popularity factor should be 0 so no division by 0 error
-    if totalNumUniqueQuestions == 0:
+    if total_num_unique_questions == 0:
         return 0
-
     # return the average popularity factor
     # This is NOT normalizing the factor, it is just the average
-    return popularityFactorTotal / totalNumUniqueQuestions
+    return popularity_factor_total / total_num_unique_questions
 
-def normalizePopularityFactors(popularityFactors, allPopularityFactors):
-    normalizedPopularityFactors = []
-    for i in range(len(popularityFactors)):
-        normalizedPopularityFactors.append(normalizePopularityFactor(popularityFactors[i], allPopularityFactors[i]))
-    return normalizedPopularityFactors
+def normalize_popularity_factors(popularity_factors, all_popularity_factors):
+    normalized_popularity_factors = []
+    for i in range(len(popularity_factors)):
+        normalized_popularity_factors.append(normalize_popularity_factor(popularity_factors[i], all_popularity_factors[i]))
+    return normalized_popularity_factors
 
-def normalizePopularityFactor(popularityFactor, allPopularityFactor):
-    return popularityFactor / allPopularityFactor
-
+def normalize_popularity_factor(popularity_factor, all_popularity_factor):
+    return popularity_factor / all_popularity_factor
 
 # if __name__ == "__main__":
-#     allRobotData = pd.read_csv('allRobotData.csv')
-#     allQuestionData = pd.read_csv('allQuestionData.csv')
-#     allAnswerData = pd.read_csv('allAnswerData.csv')
-#     randomRobotWithCodesData = pd.read_csv('randomRobotWithCodesData.csv')
-#     randomRobotAllData = pd.read_csv('randomRobotAllData.csv')
+#     all_robot_data = pd.read_csv('allRobotData.csv')
+#     all_question_data = pd.read_csv('allQuestionData.csv')
+#     all_answer_data = pd.read_csv('allAnswerData.csv')
+#     random_robot_with_codes_data = pd.read_csv('randomRobotWithCodesData.csv')
+#     random_robot_all_data = pd.read_csv('randomRobotAllData.csv')
 
-#     calculatePopularity(allRobotData, allQuestionData, allAnswerData, randomRobotWithCodesData, randomRobotAllData)
+#     calculate_popularity(all_robot_data, all_question_data, all_answer_data, random_robot_with_codes_data, random_robot_all_data)
 
 if __name__ == "__main__":
-    allRobotData = pd.read_csv(r'C:\Users\hamza\OneDrive - University of Manitoba\Documents\HISHAM\Research\SORobotProject\RobotDataSet.csv')
-    allQuestionData = pd.read_csv(r'C:\Users\hamza\OneDrive - University of Manitoba\Documents\HISHAM\Research\SORobotProject\AllQuestionDataCombined.csv')
-    allAnswerData = pd.read_csv(r'C:\Users\hamza\OneDrive - University of Manitoba\Documents\HISHAM\Research\SORobotProject\AllAnswerDataCombined.csv')
-    randomRobotWithCodesData = pd.read_csv(r'C:\Users\hamza\OneDrive - University of Manitoba\Documents\HISHAM\Research\SORobotProject\Robot Random (H & S & D) - Coded (no fp).csv')
-    randomRobotAllData = pd.read_csv(r'C:\Users\hamza\OneDrive - University of Manitoba\Documents\HISHAM\Research\SORobotProject\Robot Random (H & S & D) - Full Coded.csv')
+    all_robot_data = pd.read_csv(r'C:\Users\hamza\OneDrive - University of Manitoba\Documents\HISHAM\Research\SORobotProject\RobotDataSet.csv')
+    all_question_data = pd.read_csv(r'C:\Users\hamza\OneDrive - University of Manitoba\Documents\HISHAM\Research\SORobotProject\AllQuestionDataCombined.csv')
+    all_answer_data = pd.read_csv(r'C:\Users\hamza\OneDrive - University of Manitoba\Documents\HISHAM\Research\SORobotProject\AllAnswerDataCombined.csv')
+    random_robot_with_codes_data = pd.read_csv(r'C:\Users\hamza\OneDrive - University of Manitoba\Documents\HISHAM\Research\SORobotProject\Robot Random (H & S & D) - Coded (no fp).csv')
+    random_robot_all_data = pd.read_csv(r'C:\Users\hamza\OneDrive - University of Manitoba\Documents\HISHAM\Research\SORobotProject\Robot Random (H & S & D) - Full Coded.csv')
 
-    calculatePopularity(randomRobotAllData, allQuestionData, allAnswerData, randomRobotWithCodesData)
+    calculate_popularity(random_robot_with_codes_data, all_question_data, all_answer_data, random_robot_with_codes_data)
