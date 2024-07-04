@@ -106,7 +106,7 @@ def process_row(row: pd.Series, question_ids_seen: set, year_count_dict: dict) -
 
     return year_count_dict
 
-def add_annotations(year_count_dict, total_robot_questions):
+def add_annotations(year_count_dict: dict, total_robot_questions: int) -> None:
     """
     Adds annotations to the plot showing the number of questions per year as a number on top of the bars
     As well as the total number of robot questions asked
@@ -126,7 +126,7 @@ def add_annotations(year_count_dict, total_robot_questions):
     y_coord_total = max(year_count_dict.values())
     plt.text(x_coord_total, y_coord_total, f'Total: {total_robot_questions}', ha='left', fontsize=15)
 
-def plot_data(year_count_dict):
+def plot_data(year_count_dict: dict) -> None:
     """
     Creates a bar plot with the yearly question data
 

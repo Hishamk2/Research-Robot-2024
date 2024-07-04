@@ -1,3 +1,5 @@
+import pandas as pd
+
 def randomXQuestions(numQuestions, allRobotDataSet: pd.DataFrame, previousRandomQuestions: pd.DataFrame):
     copyAllRobotDataSet = allRobotDataSet.copy(deep=True) #why do deep copy? because we don't want to change the original dataset
     copyAllRobotDataSet = copyAllRobotDataSet.drop_duplicates('questionId')

@@ -309,6 +309,8 @@ def getAllSubThemeLabels(robotCodedData):
     return allSubThemes
 
 
+
+
 def randomXQuestions(numQuestions, allRobotDataSet: pd.DataFrame, previousRandomQuestions: pd.DataFrame):
     copyAllRobotDataSet = allRobotDataSet.copy(deep=True) #why do deep copy? because we don't want to change the original dataset
     copyAllRobotDataSet = copyAllRobotDataSet.drop_duplicates('questionId')
@@ -339,8 +341,8 @@ def getListOfQuestionIds(dataSet: pd.DataFrame):
     listOfQuestionIds = dataSet['questionId'].values.tolist()
     return listOfQuestionIds
 
-def doesQuestionIDExist(questionID, robotDataSet):
-    return questionID in robotDataSet['questionId'].values
+# def doesQuestionIDExist(questionID, robotDataSet):
+#     return questionID in robotDataSet['questionId'].values
 
 
 # Get list of all questionIds from codedRobot and allRobot
@@ -358,24 +360,6 @@ def getFalsePositiveQuestions(codedRobot: pd.DataFrame, allRobot: pd.DataFrame):
         falsePositiveQuestions.to_csv(f, lineterminator='\n')
     
     print(f"Number of false positive questions: {len(falsePositiveQuestions)}")
-
-
-def getNumAnswersPerMajorTheme(robotDataSet: pd.DataFrame):
-    """
-    Args:\n
-    robotDataSet:
-                The dataset to get the number of answers per major theme from\n
-                It should have a column named 'code' that contains the MAJOR THEME LABEL\n
-                AND a column named 'AnswerCount' that contains the number of answers to the question\n
-                The dataset should NOT have any duplicate questions
-    """
-    majorThemes = {'Specifications': 0, 'Remote': 0, 'Connections': 0, 'Coordinates': 0, 'Moving': 0, 'Actuator': 0, 'Programming': 0, 'Error': 0, 'Timing': 0, 'Incoming': 0, 'Other': 0}
-    for index, row in robotDataSet.iterrows():
-        if row['code'] in majorThemes:
-            majorThemes[row['code']] += row['AnswerCount']
-        else:
-            majorThemes['Other'] += row['AnswerCount']
-    return majorThemes
 
 
 def generateCSVwithMajorThemes(robotDataSet: pd.DataFrame):
@@ -414,6 +398,24 @@ def getMajorTheme(subtheme: str, themesAndSubThemesDict: dict) -> str:
         if subtheme in subThemes:
             return majorTheme
     return 'Unknown'
+
+
+def getNumAnswersPerMajorTheme(robotDataSet: pd.DataFrame):
+    """
+    Args:\n
+    robotDataSet:
+                The dataset to get the number of answers per major theme from\n
+                It should have a column named 'code' that contains the MAJOR THEME LABEL\n
+                AND a column named 'AnswerCount' that contains the number of answers to the question\n
+                The dataset should NOT have any duplicate questions
+    """
+    majorThemes = {'Specifications': 0, 'Remote': 0, 'Connections': 0, 'Coordinates': 0, 'Moving': 0, 'Actuator': 0, 'Programming': 0, 'Error': 0, 'Timing': 0, 'Incoming': 0, 'Other': 0}
+    for index, row in robotDataSet.iterrows():
+        if row['code'] in majorThemes:
+            majorThemes[row['code']] += row['AnswerCount']
+        else:
+            majorThemes['Other'] += row['AnswerCount']
+    return majorThemes
 
 
 def getSuccessStatusPercentagePerTheme(unsuccessfulQuestionsPerTheme: dict, ordinaryQuestionsPerTheme: dict, successfulQuestionsPerTheme: dict) -> dict:
@@ -711,12 +713,11 @@ if __name__ == "__main__":
     start_time = time.time()
 
     
-    allRobotDataSet = pd.read_csv("RobotDataSet.csv")
-    allQuestionDataSet = pd.read_csv("AllQuestionDataCombined.csv")
-    allAnswerDataSet = pd.read_csv("AllAnswerDataCombined.csv")
-    randomRobotWithCodesDataSet = pd.read_csv("Robot Random (H & S & D) - Coded (no fp).csv")
-    randomRobotAllDataSet = pd.read_csv("Robot Random (H & S & D) - Full Coded.csv")
-    robotMajorThemesDataSet = pd.read_csv("Robot Random (H & S & D) - Coded (no fp) (major themes) (should be updated).csv")
+    allRobotData = pd.read_csv(r'C:\Users\hamza\OneDrive - University of Manitoba\Documents\HISHAM\Research\SORobotProject\RobotDataSet.csv')
+    allQuestionData = pd.read_csv(r'C:\Users\hamza\OneDrive - University of Manitoba\Documents\HISHAM\Research\SORobotProject\AllQuestionDataCombined.csv')
+    allAnswerData = pd.read_csv(r'C:\Users\hamza\OneDrive - University of Manitoba\Documents\HISHAM\Research\SORobotProject\AllAnswerDataCombined.csv')
+    randomRobotWithCodesData = pd.read_csv(r'C:\Users\hamza\OneDrive - University of Manitoba\Documents\HISHAM\Research\SORobotProject\Robot Random (H & S & D) - Coded (no fp).csv')
+    randomRobotAllData = pd.read_csv(r'C:\Users\hamza\OneDrive - University of Manitoba\Documents\HISHAM\Research\SORobotProject\Robot Random (H & S & D) - Full Coded.csv')
 
     # TODO fix the major themes to corrobote with the updates subthemes
     # generateCSVwithMajorThemes(randomRobotWithCodesDataSet)
@@ -774,9 +775,9 @@ if __name__ == "__main__":
     # print()
     # prettyPrintDict(getNumMajorThemes(getAllSubThemeLabels(randomRobotWithCodesDataSet)))
     # print()
-    prettyPrintDict(getPercentageMajorThemes(getNumMajorThemes(getAllSubThemeLabels(randomRobotWithCodesDataSet))))
-    print()
-    prettyPrintDict(getPercentageSubThemes(getNumSubThemes(randomRobotWithCodesDataSet)))
+    # prettyPrintDict(getPercentageMajorThemes(getNumMajorThemes(getAllSubThemeLabels(randomRobotWithCodesDataSet))))
+    # print()
+    # prettyPrintDict(getPercentageSubThemes(getNumSubThemes(randomRobotWithCodesDataSet)))
 
     # generateCSVwithMajorThemes(randomRobotWithCodesDataSet)
 
@@ -790,7 +791,7 @@ if __name__ == "__main__":
 
     # getAllMajorThemeLabels(randomRobotAllDataSet)
 
-    # calculatePopularity(allRobotDataSet, allQuestionDataSet, allAnswerDataSet, randomRobotWithCodesDataSet, randomRobotAllDataSet)
+    calculatePopularity(allRobotDataSet, allQuestionDataSet, allAnswerDataSet, randomRobotWithCodesDataSet, randomRobotAllDataSet)
     # plotQuestionsByYear(randomRobotWithCodesDataSet)
     # plotQuestionsByYear(allRobotDataSet)
     print(f"--- {time.time() - start_time:.2f} seconds ---")
