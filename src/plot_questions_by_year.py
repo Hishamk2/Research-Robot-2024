@@ -70,7 +70,8 @@ def process_row(row: pd.Series, question_ids_seen: set, year_count_dict: dict) -
 
     Parameters:
         row: pd.Series
-            The row of data containing the question ID and creation date (can have other columns, but these are required)
+            The row of data containing the question ID and creation date (can have other columns, but these are required)\n
+            The date should be in the format "mm/dd/yyyy hh:mm" or a float representing the number of days since 12/30/1899
         question_ids_seen: set
             A set containing the question IDs that have already been processed
             This is used to ensure that a question is only counted once in case the data has duplicates
